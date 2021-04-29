@@ -1,0 +1,4 @@
+.app-header {
+    grid-area: header;
+    background-color: #eee;
+}
