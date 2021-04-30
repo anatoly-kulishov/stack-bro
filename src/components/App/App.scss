@@ -1,3 +1,5 @@
+@import "../../colors";
+
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -76,13 +78,30 @@ img {
     border-radius: 0;
 }
 
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
 .app-content {
     display: grid;
-    grid-template-areas: "app-header app-header" "sidebar profile";
+    grid-template-areas: "sidebar profile";
     grid-row-gap: 15px;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
     grid-area: content;
-    max-width: 1240px;
-    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+
+    font-weight: 500;
+    color: $mainColor;
+
+    border: 1px solid $secondColor;
+    border-radius: 4px;
+    background-color: $secondColor;
+
+    cursor: pointer;
 }

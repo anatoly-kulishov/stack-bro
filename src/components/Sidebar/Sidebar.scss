@@ -1,0 +1,8 @@
+@import "../../colors";
+
+.app-sidebar {
+    grid-area: sidebar;
+    margin-top: 60px;
+
+    background-color: $secondColor;
+}
