@@ -1,13 +1,13 @@
 import React from 'react';
 import "./Header.css";
-import logo from "../../images/logo.svg"
+import avatar from '../../images/avatar.jpg'
 
 const Header = () => {
     return (
         <div className="app-header">
-            <div className="app-header__wrapper">
-                <img className="logo" src={logo} alt="StackBro"/>
-            </div>
+            <img className="avatar" src={avatar} alt="Кулишов Анатолий"/>
+            <span>Кулишов Анатолий</span>
+            <button className="btn">Выйти</button>
         </div>
     );
 }

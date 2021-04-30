@@ -76,32 +76,13 @@ img {
     border-radius: 0;
 }
 
-.logo {
-    width: 100%;
-    max-width: 60px;
-}
-
-.app {
+.app-content {
     display: grid;
-    grid-template-areas: "header header" "sidebar content" "footer footer";
-    grid-template-rows: 60px 1fr;
+    grid-template-areas: "app-header app-header" "sidebar profile";
+    grid-row-gap: 15px;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
+    grid-area: content;
     max-width: 1240px;
     margin: 0 auto;
-}
-
-.app-content {
-    grid-area: content;
-    background-color: #eee;
-}
-
-.main-hero {
-
-}
-
-.main-hero__image {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
 }

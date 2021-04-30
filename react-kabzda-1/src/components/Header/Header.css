@@ -1,4 +1,11 @@
 .app-header {
-    grid-area: header;
+    grid-area: app-header;
     background-color: #eee;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
