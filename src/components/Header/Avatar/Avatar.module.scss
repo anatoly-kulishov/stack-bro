@@ -1,0 +1,26 @@
+@import "../../../variables";
+
+.avatar {
+    position: absolute;
+    top: -140px;
+
+    @media (max-width: 992px) {
+        .avatar {
+            left: 20px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .avatar {
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}

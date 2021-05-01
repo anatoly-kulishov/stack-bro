@@ -1,4 +1,4 @@
-@import "../../colors";
+@import "../../variables";
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -7,15 +7,14 @@
 body {
     min-width: 320px;
     margin: 0;
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: $font-family-primary;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
     color: #3F3F46;
-    background-color: #FAFAFA;
+    background-color: $palette-bg-color;
     letter-spacing: -0.18px;
     overflow-x: hidden !important;
 }
@@ -26,12 +25,12 @@ code {
 }
 
 a {
-    color: #71717A;
+    color: $palette-link-color;
     text-decoration: none;
 }
 
 a:focus {
-    outline-color: #E4E4E7;
+    outline-color: $palette-link-color;
 }
 
 img {
@@ -85,23 +84,67 @@ img {
 
 .app-content {
     display: grid;
-    grid-template-areas: "sidebar profile";
+    grid-template-areas: "navbar profile";
     grid-row-gap: 15px;
     grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+    grid-gap: 15px;
     grid-area: content;
     margin-top: 15px;
+
+    @media(max-width: 767px) {
+        display: block;
+    }
 }
 
 .btn {
+    display: inline-block;
     padding: 12px 24px;
-
     font-weight: 500;
-    color: $mainColor;
-
-    border: 1px solid $secondColor;
+    font-size: $font-size-base;
+    line-height: 1;
     border-radius: 4px;
-    background-color: $secondColor;
-
+    border: 1px solid;
     cursor: pointer;
+    user-select: none;
+    transition: all .15s ease;
+
+    &--green {
+        color: $x-color-white;
+        border-color: $x-color-green;
+        background-color: $x-color-green;
+
+        &:hover {
+            background-color: darken($x-color-green, 3%);
+        }
+    }
+
+    &--light-green {
+        color: $x-color-green;
+        border-color: $x-color-light-green;
+        background-color: $x-color-light-green;
+
+        &:hover {
+            background-color: darken($x-color-light-green, 3%);
+        }
+    }
+
+    &--warning {
+        color: $x-warning-color;
+        border-color: $x-warning-bg-color;
+        background-color: $x-warning-bg-color;
+
+        &:hover {
+            background-color: darken($x-warning-bg-color, 3%);
+        }
+    }
+
+    &--danger {
+        color: $x-danger-color;
+        border-color: $x-danger-bg-color;
+        background-color: $x-danger-bg-color;
+
+        &:hover {
+            background-color: darken($x-danger-bg-color, 3%);
+        }
+    }
 }

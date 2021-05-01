@@ -21,8 +21,8 @@ export function hideLoader() {
     }
 }
 
-export function showAlert(color, text) {
-    return dispatch => {
+export function showAlert(color: string, text: string) {
+    return (dispatch: any) => {
         dispatch({
             type: SHOW_ALERT,
             payload: {color, text}

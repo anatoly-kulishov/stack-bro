@@ -1,15 +1,15 @@
 import React from 'react';
 import "./App.scss";
 import Header from "../Header";
-import Sidebar from "../Sidebar";
+import Navbar from "../Navbar";
 import Profile from "../Profile";
 
-const App = () => {
+const App: React.FC = () => {
     return (
         <div className="app">
             <Header/>
             <div className="app-content container">
-                <Sidebar/>
+                <Navbar/>
                 <Profile/>
             </div>
         </div>

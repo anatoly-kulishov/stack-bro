@@ -16,8 +16,8 @@ const initialState = {
     showModal: false,
 }
 
-const appReducer = (state = initialState, {type, payload}) => {
-    switch (type) {
+const appReducer = (state = initialState, action: any) => {
+    switch (action.type) {
         case SHOW_LOADER:
             return {
                 ...state,
@@ -31,7 +31,7 @@ const appReducer = (state = initialState, {type, payload}) => {
         case SHOW_ALERT:
             return {
                 ...state,
-                alert: payload
+                alert: action.payload
             }
         case HIDE_ALERT:
             return {

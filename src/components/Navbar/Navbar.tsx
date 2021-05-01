@@ -1,10 +1,10 @@
 import React from 'react';
-import "./Sidebar.scss";
+import styles from "./Navbar.module.scss";
 
-const Sidebar = () => {
+const Navbar: React.FC = () => {
     return (
-        <nav className="app-sidebar">
-            <ul>
+        <nav className={styles.nav}>
+            <ul className={styles.navList}>
                 <li>Profile</li>
                 <li>Messages</li>
                 <li>News</li>
@@ -14,4 +14,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default Navbar;
