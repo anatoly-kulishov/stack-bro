@@ -77,12 +77,40 @@ img {
     border-radius: 0;
 }
 
+label {
+    display: inline-block;
+    margin: 0 0 5px 4px;
+    font-size: 15px;
+    color: #52525B;
+}
+
+textarea {
+    max-width: 100%;
+    padding: 10px 16px 10px 10px !important;
+    resize: none;
+}
+
+.form-control {
+    display: block;
+    height: calc(1.5em + .75rem + 5px);
+    padding: .375rem .75rem;
+
+    background: #ffffff;
+    background-clip: padding-box;
+
+    border: 1px solid #E4E4E7;
+    border-radius: 4px;
+    outline-color: #22C55E;
+
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
 .container {
     max-width: 1240px;
     margin: 0 auto;
 }
 
-.app-content {
+.app-main {
     display: grid;
     grid-template-areas: "navbar profile";
     grid-row-gap: 15px;
@@ -90,10 +118,18 @@ img {
     grid-gap: 15px;
     grid-area: content;
     margin-top: 15px;
+    margin-bottom: 100px;
 
     @media(max-width: 767px) {
         display: block;
     }
+}
+
+.app-content {
+    grid-area: profile;
+    padding: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: $x-color-white;
 }
 
 .btn {

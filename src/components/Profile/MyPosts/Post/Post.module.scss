@@ -1,0 +1,12 @@
+@import "../../../../variables";
+
+.post {
+    max-width: 250px;
+    padding: 12px;
+    margin: 15px 0;
+    background-color: $palette-secondary;
+}
+
+.message {
+    margin: 0 0 5px;
+}

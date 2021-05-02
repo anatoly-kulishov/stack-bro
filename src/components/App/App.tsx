@@ -1,17 +1,19 @@
 import React from 'react';
 import "./App.scss";
+import AppNavigation from "../../navigation/AppNavigation";
 import Header from "../Header";
 import Navbar from "../Navbar";
-import Profile from "../Profile";
 
 const App: React.FC = () => {
     return (
         <div className="app">
             <Header/>
-            <div className="app-content container">
+            <main className="app-main container">
                 <Navbar/>
-                <Profile/>
-            </div>
+                <div className="app-content">
+                    <AppNavigation/>
+                </div>
+            </main>
         </div>
     );
 }

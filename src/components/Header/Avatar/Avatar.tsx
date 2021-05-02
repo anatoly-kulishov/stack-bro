@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Link} from "react-router-dom";
 import styles from "./Avatar.module.scss";
 import avatar from '../../../images/avatar.jpg'
 
@@ -7,9 +8,11 @@ const Avatar: React.FC = () => {
         <Fragment>
             <div/>
             <div className={styles.avatar}>
-                <img className={styles.image}
-                     src={avatar}
-                     alt="Кулишов Анатолий"/>
+                <Link to="/">
+                    <img className={styles.image}
+                         src={avatar}
+                         alt="Кулишов Анатолий"/>
+                </Link>
             </div>
         </Fragment>
     );

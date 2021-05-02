@@ -1,1 +1,13 @@
 @import "../../../variables";
+
+.form {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.textarea {
+    min-width: 300px;
+    min-height: 80px;
+    margin-right: 15px;
+}
