@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Post.module.scss';
+import avatar from '../../../../images/avatar-2.jpg';
 
 type IPost = {
     message: string,
@@ -9,8 +10,11 @@ type IPost = {
 const Post: React.FC<IPost> = ({message, likes}) => {
     return (
         <div className={styles.post}>
-            <p className={styles.message}>{message}</p>
-            <span>Likes: {likes}</span>
+            <div className={styles.row}>
+                <img className={styles.authorAvatar} src={avatar} alt=""/>
+                <p className={styles.message}>{message}</p>
+            </div>
+            <div>Likes: {likes}</div>
         </div>
     );
 }

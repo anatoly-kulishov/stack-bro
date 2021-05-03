@@ -1,11 +1,15 @@
+@import "../../variables";
+
 .bgImage {
     grid-area: main-cover;
     width: 100%;
     height: 400px;
-    background-position: center center;
-    background-size: cover;
 
-    @media (max-width: 767px) {
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+
+    @media (max-width: $smd) {
         height: 300px;
     }
 }

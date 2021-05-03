@@ -1,3 +1,13 @@
+// Variables for file path
+$url-fonts: "../fonts"; //	    #{$url-fonts}
+$url-img: "../img"; // 	   #{$url-img}
+
+// Functions
+// ---------
+@function rem($px) {
+    @return ($px / 16) +rem;
+}
+
 // Internal Variables
 $x-color-green: #22C55E;
 $x-color-light-green: #DCFCE7;
@@ -8,6 +18,7 @@ $x-danger-color: #EF4444;
 $x-danger-bg-color: #FEE2E2;
 $x-warning-color: #EA580C;
 $x-warning-bg-color: #FED7AA;
+$x-black-color: #3F3F46;
 
 // Global Variables
 $palette-primary: $x-color-green;
@@ -16,9 +27,77 @@ $palette-bg-color: $x-color-grey;
 $palette-border: $x-color-grey-2;
 
 // Typography Variables
-$font-family-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
-'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-$font-size-base: 16px;
+$primary_font: 'Roboto';
+$secondary_font: 'Arial';
+
+$font-stack: -apple-system, BlinkMacSystemFont, Segoe UI,
+Arial, Roboto, Oxygen, Ubuntu, Cantarell,
+Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+$font-family-primary: $primary_font, $font-stack;
+$font-family-secondary: $secondary_font, $font-stack;
+
+$font_size_big: 52px;
+$font_size_middle: 36px;
+$font_size_small: 16px;
+
+$font-size-base: rem(16);
 $line-height-base: 1.5;
-$primary-text-color: #3F3F46;
+$font-weight-base: 400;
+
+$primary-text-color: $x-black-color;
 $palette-link-color: $x-color-green;
+
+// Variables for media
+$xxl: 1400px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$smd: 767px;
+$sm: 576px;
+
+// Base Variables
+$placeholder-color: #B3B3B3;
+$selection-bg: #DCFCE7;
+$selection-color: inherit;
+$scrollbar-box-color: inherit;
+$scrollbar-color: #22C55E;
+
+// Mixins
+@mixin font($family, $url, $weight, $style, $display: swap) {
+    font-family: $family;
+    src: $url;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: $display;
+}
+
+@mixin bg($size: cover, $position: center, $repeat: no-repeat) {
+    background-repeat: $repeat;
+    background-position: $position;
+    background-size: $size;
+}
+
+@mixin img-cover($fit: cover, $position: center) {
+    object-fit: $fit;
+    object-position: $position;
+}
+
+@mixin list-reset($margin: 0, $padding: 0) {
+    margin: $margin;
+    padding: $padding;
+    list-style: none;
+}
+
+@mixin transition($property: all, $duration: .25s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin position($position, $z) {
+    position: $position;
+    z-index: $z;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}

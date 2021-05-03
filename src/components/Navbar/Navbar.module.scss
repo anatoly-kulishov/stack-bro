@@ -1,23 +1,45 @@
 @import "../../variables";
 
 .nav {
-    grid-area: navbar;
-    margin-top: 60px;
+    @media (min-width: $md) {
+        position: sticky;
+        top: 20px;
+    }
 
+    grid-area: navbar;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
     background-color: $x-color-white;
 
-    @media(max-width: 767px) {
+    @media(max-width: $smd) {
         margin: 0 0 15px 0;
     }
 }
 
 .navList {
     margin: 0;
-    padding: 20px 0;
+    padding: 0;
+    border: 1px solid $palette-border;
+    border-bottom: none;
     list-style: none;
 
     & > li {
-        padding: 12px 12px 12px 24px;
+        & > a {
+            display: block;
+            padding: 12px 12px 12px 24px;
+            border-bottom: 1px solid $palette-border;
+            color: $primary-text-color;
+            transition: all .1s ease;
+            user-select: none;
+
+            &:hover {
+                color: $palette-primary;
+                background-color: $palette-secondary;
+            }
+        }
+
+        a.current {
+            color: $palette-link-color;
+            background-color: $palette-secondary;
+        }
     }
 }

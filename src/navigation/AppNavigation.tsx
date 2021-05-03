@@ -1,16 +1,21 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import Dialogs from "../components/Dialogs/Dialogs";
-import Profile from "../components/Profile/Profile";
+import routes from "./routes";
+import NoMatch from "../components/NoMatch";
 
 const AppNavigation: React.FC = () => {
     return (
         <Switch>
-            <Route path="/dialogs">
-                <Dialogs/>
-            </Route>
-            <Route path="/">
-                <Profile/>
+            {routes.map((route: any, index: number) => (
+                <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    children={route.component}
+                />
+            ))}
+            <Route path="*">
+                <NoMatch/>
             </Route>
         </Switch>
     )

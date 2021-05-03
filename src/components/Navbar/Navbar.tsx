@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from "./Navbar.module.scss";
 
 const Navbar: React.FC = () => {
@@ -7,10 +7,19 @@ const Navbar: React.FC = () => {
         <nav className={styles.nav}>
             <ul className={styles.navList}>
                 <li>
-                    <Link to="/">Profile</Link>
+                    <NavLink to="/" exact activeClassName={styles.current}>Profile</NavLink>
                 </li>
                 <li>
-                    <Link to="/dialogs">Dialogs</Link>
+                    <NavLink to="/dialogs" activeClassName={styles.current}>Dialogs</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/news" activeClassName={styles.current}>News</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/music" activeClassName={styles.current}>Music</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/settings" activeClassName={styles.current}>Settings</NavLink>
                 </li>
             </ul>
         </nav>

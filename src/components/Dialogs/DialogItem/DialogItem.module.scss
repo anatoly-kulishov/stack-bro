@@ -1,0 +1,43 @@
+@import "../../../variables";
+
+.listItem {
+    & > a {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        margin-bottom: 10px;
+        background-color: $x-color-grey;
+        color: $primary-text-color;
+    }
+
+    & > a.current {
+        color: $palette-link-color;
+    }
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+
+    border: 3px solid #BBF7D0;
+    border-radius: 50%;
+    background-color: #4ADE80;
+
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 1.5s;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}

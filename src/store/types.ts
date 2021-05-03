@@ -8,3 +8,9 @@ export const SHOW_ERROR = 'APP/SHOW_ERROR';
 export const HIDE_ERROR = 'APP/HIDE_ERROR';
 export const ENABLE_BUTTONS = 'APP/ENABLE_BUTTONS';
 export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
+
+export const SIGN_IN = 'LOGIN/SIGN_IN';
+
+export const CREATE_POST = 'POSTS/CREATE_POST';
+
+export const CREATE_DIALOG = 'DIALOGS/CREATE_DIALOG';

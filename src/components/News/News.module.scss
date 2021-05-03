@@ -1,15 +1,11 @@
 @import "../../variables";
 
-.dialogs {
+.news {
     display: grid;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 }
 
-.dialogsList {
-    @include list-reset();
-}
-
-.messagesList {
-    @include list-reset();
+.title {
+    margin-top: 0;
 }

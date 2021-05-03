@@ -1,0 +1,8 @@
+@import "../../../variables";
+
+.message {
+    padding: 8px;
+    margin-bottom: 10px;
+    color: $palette-primary;
+    background-color: $palette-secondary;
+}
