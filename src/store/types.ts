@@ -1,16 +1,18 @@
+/******************** APP ********************/
 export const SHOW_LOADER = 'APP/SHOW_LOADER';
 export const HIDE_LOADER = 'APP/HIDE_LOADER';
-export const SHOW_ALERT = 'APP/SHOW_ALERT';
-export const HIDE_ALERT = 'APP/HIDE_ALERT';
-export const SHOW_MODAL = 'APP/SHOW_MODAL';
-export const HIDE_MODAL = 'APP/HIDE_MODAL';
-export const SHOW_ERROR = 'APP/SHOW_ERROR';
-export const HIDE_ERROR = 'APP/HIDE_ERROR';
 export const ENABLE_BUTTONS = 'APP/ENABLE_BUTTONS';
 export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 
+/******************** LOGIN ********************/
 export const SIGN_IN = 'LOGIN/SIGN_IN';
 
-export const CREATE_POST = 'POSTS/CREATE_POST';
+/******************** POSTS ********************/
+export const FETCH_POSTS = 'POSTS/FETCH_POSTS';
+export const ADD_POST = 'POSTS/CREATE_POST';
+export const REMOVE_POST = 'POSTS/REMOVE_POST';
 
-export const CREATE_DIALOG = 'DIALOGS/CREATE_DIALOG';
+/******************** DIALOGS ********************/
+export const FETCH_DIALOGS = 'DIALOGS/FETCH_DIALOGS';
+export const ADD_DIALOG = 'DIALOGS/CREATE_DIALOG';
+export const REMOVE_DIALOG = 'POSTS/REMOVE_POST';

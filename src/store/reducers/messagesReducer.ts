@@ -1,4 +1,4 @@
-import {CREATE_DIALOG} from "../types";
+import {ADD_DIALOG} from "../types";
 
 const initialState = {
     dialogs: [],
@@ -8,10 +8,10 @@ const initialState = {
 
 const messagesReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case CREATE_DIALOG:
+        case ADD_DIALOG:
             return {
                 ...state,
-                // dialogs: state.dialogs.concat([action.payload])
+                dialogs: [{...action.payload}, ...state.dialogs]
             }
         default:
             return state

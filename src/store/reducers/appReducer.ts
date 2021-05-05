@@ -1,19 +1,8 @@
-import {
-    DISABLE_BUTTONS,
-    ENABLE_BUTTONS,
-    HIDE_ALERT,
-    HIDE_LOADER,
-    HIDE_MODAL,
-    SHOW_ALERT,
-    SHOW_LOADER,
-    SHOW_MODAL
-} from "../types";
+import {DISABLE_BUTTONS, ENABLE_BUTTONS, HIDE_LOADER, SHOW_LOADER,} from "../types";
 
 const initialState = {
     loading: true,
-    alert: false,
-    disable: false,
-    showModal: false,
+    disable: false
 }
 
 const appReducer = (state = initialState, action: any) => {
@@ -27,26 +16,6 @@ const appReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 loading: false
-            }
-        case SHOW_ALERT:
-            return {
-                ...state,
-                alert: action.payload
-            }
-        case HIDE_ALERT:
-            return {
-                ...state,
-                alert: null
-            }
-        case SHOW_MODAL:
-            return {
-                ...state,
-                showModal: true
-            }
-        case HIDE_MODAL:
-            return {
-                ...state,
-                showModal: false
             }
         case ENABLE_BUTTONS:
             return {

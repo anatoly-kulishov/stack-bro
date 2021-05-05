@@ -11,7 +11,7 @@ const Avatar: React.FC = () => {
                 <Link to="/">
                     <img className={styles.image}
                          src={avatar}
-                         alt="Кулишов Анатолий"/>
+                         alt=""/>
                 </Link>
             </div>
         </Fragment>

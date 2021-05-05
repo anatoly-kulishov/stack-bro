@@ -1,8 +1,14 @@
 @import "../../../variables";
 
 .message {
-    padding: 8px;
-    margin-bottom: 10px;
+    display: block;
     color: $palette-primary;
-    background-color: $palette-secondary;
+}
+
+.messageBox {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    background: #dcfce7;
+    border-radius: 4px;
 }

@@ -8,9 +8,9 @@ type  IMessageItem = {
 
 const MessageItem: React.FC<IMessageItem> = ({id, message}) => {
     return (
-        <li className={styles.message} key={id}>
-            {message}
-        </li>
+        <div className={styles.message} key={id}>
+            <small className={styles.messageBox}>{message}</small>
+        </div>
     )
 }
 

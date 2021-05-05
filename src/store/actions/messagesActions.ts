@@ -1,7 +1,15 @@
-import {CREATE_DIALOG} from "../types";
+import {ADD_DIALOG} from "../types";
+import {errorMessage} from "../../constants";
 
-export function createDialog() {
-    return {
-        type: CREATE_DIALOG
+export function addDialog(dialog: object) {
+    return async (dispatch: any) => {
+        try {
+            dispatch({
+                type: ADD_DIALOG,
+                payload: dialog
+            })
+        } catch (e) {
+            console.error(errorMessage)
+        }
     }
 }

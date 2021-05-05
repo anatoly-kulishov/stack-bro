@@ -5,7 +5,7 @@
 // import {disable_buttons, enable_buttons, hideAlert, showAlert} from "./appActions";
 // import store from "../index";
 
-export function signIn(profile) {
+export function signIn(profile: object) {
     // store.dispatch(disable_buttons());
     // return async dispatch => {
     //     try {

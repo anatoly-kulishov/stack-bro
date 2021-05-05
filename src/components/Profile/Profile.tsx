@@ -6,7 +6,7 @@ const Profile: React.FC = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts={[]}/>
         </div>
     );
 }

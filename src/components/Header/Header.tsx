@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./Header.module.scss";
-import MainCover from "../MainCover";
+import MainCover from "./MainCover";
 import Avatar from "./Avatar";
 import User from "./User";
 

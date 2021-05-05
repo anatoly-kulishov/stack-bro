@@ -1,4 +1,4 @@
-import {CREATE_POST} from "../types";
+import {ADD_POST} from "../types";
 
 const initialState = {
     posts: [],
@@ -7,10 +7,10 @@ const initialState = {
 
 const profileReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case CREATE_POST:
+        case ADD_POST:
             return {
                 ...state,
-                // posts: []
+                posts: [{...action.payload}, ...state.posts]
             }
         default:
             return state

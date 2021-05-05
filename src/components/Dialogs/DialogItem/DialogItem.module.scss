@@ -4,14 +4,25 @@
     & > a {
         display: flex;
         align-items: center;
-        padding: 8px;
+
+        padding: 10px;
         margin-bottom: 10px;
-        background-color: $x-color-grey;
+
+        font-weight: 500;
         color: $primary-text-color;
+
+        border: 1px solid #f4f4f5;
+        border-radius: 4px;
+        background-color: $x-color-grey-3;
     }
 
     & > a.current {
         color: $palette-link-color;
+        background-color: $palette-secondary
+    }
+
+    &:last-child > a {
+        margin-bottom: 0;
     }
 }
 
