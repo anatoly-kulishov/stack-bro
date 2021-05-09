@@ -23,3 +23,11 @@ export function disable_buttons() {
         type: DISABLE_BUTTONS
     }
 }
+
+export function copy(text: string) {
+    return async () => {
+        navigator.clipboard.writeText(text).then(() => {
+            console.log(`copy(${text})`)
+        })
+    }
+}

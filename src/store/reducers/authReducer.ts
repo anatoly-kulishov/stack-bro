@@ -1,9 +1,8 @@
-import {SIGN_IN} from "../types";
-import {__accessToken__} from "../../constants";
+import {LOG_OUT, SIGN_IN} from "../types";
+import Cookies from 'js-cookie';
 
 const initialState = {
-    token: window.localStorage[__accessToken__],
-    isAuth: !!window.localStorage[__accessToken__]
+    token: Cookies.get('token') || null,
 }
 
 const authReducer = (state = initialState, action: any) => {
@@ -11,8 +10,12 @@ const authReducer = (state = initialState, action: any) => {
         case SIGN_IN:
             return {
                 ...state,
-                isAuth: !!window.localStorage.access_token,
-                token: window.localStorage.access_token
+                token: Cookies.get('token') || null,
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                token: Cookies.get('token') || null,
             }
         default:
             return state;

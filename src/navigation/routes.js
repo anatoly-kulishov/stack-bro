@@ -4,8 +4,9 @@ import Dialogs from "../components/Dialogs";
 import News from "../components/News";
 import Music from "../components/Music";
 import Settings from "../components/Settings";
+import Login from "../components/Login";
 
-const routes = [
+export const appRoutes = [
     {
         path: "/",
         exact: true,
@@ -29,5 +30,10 @@ const routes = [
     },
 ];
 
-
-export default routes;
+export const authRoutes = [
+    {
+        path: "/",
+        exact: true,
+        component: <Login/>
+    }
+];

@@ -1,59 +1,54 @@
-// import axios from "axios";
-// import jwtDecode from "jwt-decode";
-// import {SIGN_IN} from "../types";
-// import {__authLogin__, _apiBase, errorMessage} from "../../constants";
-// import {disable_buttons, enable_buttons, hideAlert, showAlert} from "./appActions";
-// import store from "../index";
+import axios from "axios";
+import Cookies from 'js-cookie';
+import {_apiBase} from "../../constants";
+import {LOG_OUT, SIGN_IN} from "../types";
+import {fetchUserData} from "./userActions";
 
-export function signIn(profile: object) {
-    // store.dispatch(disable_buttons());
-    // return async dispatch => {
-    //     try {
-    //         console.log(profile);
-    //         axios.post(`${_apiBase}/signin/JoblinkUser`, profile)
-    //             .then((response) => {
-    //                 dispatch(hideAlert())
-    //                 const access_token = response.data.token;
-    //                 if (!!access_token) {
-    //                     localStorage.setItem(__token__, access_token);
-    //                     localStorage.setItem(__authLogin__, profile.email);
-    //                     const id = jwtDecode(access_token).JoblinkUserId;
-    //                     dispatch(getRole(id))
-    //                     dispatch({type: SIGN_IN})
-    //                 }
-    //             })
-    //             .catch(function (error) {
-    //                 console.log(error)
-    //                 dispatch(showAlert('warning', error.toString()));
-    //                 dispatch(enable_buttons())
-    //             });
-    //     } catch (e) {
-    //         console.error(errorMessage)
-    //     }
-    // }
+export function init() {
+    console.log('init()')
+    return async (dispatch: any) => {
+        const token = Cookies.get('token');
+        console.log(token)
+
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = token;
+            await dispatch(fetchUserData(1));
+            // some other code
+        } else {
+            // else case code
+        }
+    };
 }
 
-export function refreshToken() {
-    console.log('refreshToken()');
-    // return async dispatch => {
-    //     const auth_token = localStorage.getItem(__token__);
-    //     if (!!auth_token) {
-    //         dispatch({type: AUTHORIZATION})
-    //     } else {
-    //         console.log('You are not authorized...')
-    //     }
-    // }
+export function signIn(profile: object) {
+    return async (dispatch: any) => {
+        try {
+            axios.post(`${_apiBase}/signin/JoblinkUser`, profile)
+                .then((response) => {
+                    const access_token = response.data.token;
+                    Cookies.set('token', access_token)
+                    dispatch({
+                        type: SIGN_IN,
+                        payload: access_token
+                    })
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+        } catch (e) {
+            console.error(e)
+        }
+    }
 }
 
 export function logOut() {
-    // localStorage.clear();
-    // return async dispatch => {
-    //     console.log('logOut()');
-    //     try {
-    //         dispatch({type: LOG_OUT})
-    //     } catch (e) {
-    //         console.error(errorMessage)
-    //     }
-    //     dispatch(enable_buttons())
-    // }
+    Cookies.remove('token');
+    return async (dispatch: any) => {
+        console.log('logOut()');
+        try {
+            dispatch({type: LOG_OUT})
+        } catch (e) {
+            console.error(e)
+        }
+    }
 }

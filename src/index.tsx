@@ -4,6 +4,9 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from "react-router-dom";
 import store from "./store";
 import App from "./components/App";
+import {init} from "./store/actions/authActions";
+
+store.dispatch(init());
 
 const app = (
     <StrictMode>

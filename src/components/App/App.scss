@@ -147,6 +147,11 @@ textarea {
     user-select: none;
     transition: all .15s ease;
 
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
     &--green {
         color: $x-color-white;
         border-color: $x-color-green;
