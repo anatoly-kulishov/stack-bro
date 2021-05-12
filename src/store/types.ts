@@ -20,5 +20,6 @@ export const REMOVE_POST = 'POSTS/REMOVE_POST';
 
 /******************** DIALOGS ********************/
 export const FETCH_DIALOGS = 'DIALOGS/FETCH_DIALOGS';
-export const ADD_DIALOG = 'DIALOGS/CREATE_DIALOG';
-export const REMOVE_DIALOG = 'POSTS/REMOVE_POST';
+export const ADD_DIALOG = 'DIALOGS/ADD_DIALOG';
+export const ADD_MESSAGE = 'DIALOGS/ADD_MESSAGE';
+export const REMOVE_DIALOG = 'POSTS/REMOVE_DIALOG';

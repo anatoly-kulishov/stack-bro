@@ -1,17 +1,17 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './MessageInput.module.scss';
 
-const MessageInput: React.FC = () => {
-    const [message, setMessage] = useState<string>('');
+type IMessageInput = {
+    message: string,
+    setMessage: Function,
+    onAddMessage: Function
+}
+
+const MessageInput: React.FC<IMessageInput> = ({message, setMessage, onAddMessage}) => {
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const messageData = {
-            id: Date.now(),
-            message: message,
-        }
-        console.log(messageData); // dispatch(addMessage(message))
-        setMessage('');
+        onAddMessage();
     }
 
     return (

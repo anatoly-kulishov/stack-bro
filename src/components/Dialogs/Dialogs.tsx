@@ -1,14 +1,17 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './Dialogs.module.scss';
-import {dialogs, yourMessages, foreignMessages} from "./data";
+import {useSelector} from "react-redux";
 import DialogItem from "./DialogItem";
 import MessageItem from "./MessageItem";
 import MessageInput from "./MessageInput";
 
 const Dialogs: React.FC = () => {
-    let dialogsElements = dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>);
-    let yourMessagesElements = yourMessages.map(m => <MessageItem key={m.id} id={m.id} message={m.text}/>);
-    let foreignMessagesElements = foreignMessages.map(m => <MessageItem key={m.id} id={m.id} message={m.text}/>);
+    const dialogs = useSelector((state: any) => state.dialogs.dialogs);
+    const messages = useSelector((state: any) => state.dialogs.messages);
+
+    let dialogsElements = dialogs.map((d: any) => <DialogItem key={d.id} id={d.id} name={d.name}/>);
+    let yourMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
+    let foreignMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
 
     const messagesEndRef = useRef<HTMLInputElement>(null);
     const scrollToBottom = () => {

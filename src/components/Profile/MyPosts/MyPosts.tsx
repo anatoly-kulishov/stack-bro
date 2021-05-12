@@ -1,7 +1,5 @@
 import React from 'react';
-import {connect, useDispatch} from "react-redux";
 import styles from './MyPosts.module.scss';
-import {addPost} from "../../../store/actions/profileActions";
 import Post from "./Post";
 
 type IMyPosts = {
@@ -10,28 +8,23 @@ type IMyPosts = {
         message: string,
         likeCount: number
     }>
+    onAddPost: Function
 }
 
-const MyPosts: React.FC<IMyPosts> = ({posts}) => {
-    const dispatch = useDispatch();
+const MyPosts: React.FC<IMyPosts> = ({posts, onAddPost}) => {
     let postsElements = posts.map(p => <Post key={p.id} message={p.message} likes={p.likeCount}/>);
 
-    const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;
-        const post = {
-            id: Date.now(),
-            message: form['message'].value,
-            likeCount: 0
-        }
-        dispatch(addPost(post));
+        const message = form['message'].value;
+        onAddPost(message);
         form['message'].value = '';
     }
 
     return (
         <div className={styles.myPosts}>
-            <form className={styles.form}
-                  onSubmit={submitHandler}>
+            <form className={styles.form} onSubmit={onSubmitHandler}>
                 <div className={styles.title}>My posts</div>
                 <textarea className={`form-control ${styles.textarea}`}
                           name="message"/>
@@ -46,11 +39,4 @@ const MyPosts: React.FC<IMyPosts> = ({posts}) => {
     );
 }
 
-
-const mapStateToProps = (state: any) => {
-    return {
-        posts: state.profile.posts,
-    }
-}
-
-export default connect(mapStateToProps, null)(MyPosts);
+export default MyPosts;

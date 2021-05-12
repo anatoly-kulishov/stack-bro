@@ -1,12 +1,12 @@
 import React from 'react';
-import MyPosts from "./MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 
 const Profile: React.FC = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={[]}/>
+            <MyPostsContainer/>
         </div>
     );
 }

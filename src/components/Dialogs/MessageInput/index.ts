@@ -1,3 +1,3 @@
-import MessageInput from "./MessageInput";
+import MessageInputContainer from "./MessageInputContainer";
 
-export default MessageInput;
+export default MessageInputContainer;
