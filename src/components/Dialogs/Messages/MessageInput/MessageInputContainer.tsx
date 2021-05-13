@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {addMessage} from "../../../store/actions/dialogsActions";
+import {addMessage} from "../../../../store/actions/dialogsActions";
 import MessageInput from "./MessageInput";
 
 const MessageInputContainer: React.FC = () => {

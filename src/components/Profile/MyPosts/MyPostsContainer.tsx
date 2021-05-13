@@ -1,13 +1,13 @@
-import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
 import {addPost} from "../../../store/actions/profileActions";
 
-const MyPostsContainer: React.FC = () => {
-    const dispatch = useDispatch();
-    const posts = useSelector((state: any) => state.profile.posts);
+const mapStateToProps = (state: any) => ({
+    posts: state.profile.posts
+})
 
-    const onAddPost = (message: string) => {
+const mapToDispatchToProps = (dispatch: any) => ({
+    onAddPost: (message: string) => {
         const post = {
             id: Date.now(),
             message,
@@ -15,8 +15,8 @@ const MyPostsContainer: React.FC = () => {
         }
         dispatch(addPost(post));
     }
+})
 
-    return <MyPosts posts={posts} onAddPost={onAddPost}/>
-}
+const MyPostsContainer = connect(mapStateToProps, mapToDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

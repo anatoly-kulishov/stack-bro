@@ -6,7 +6,7 @@ type ICopyToClipboard = {
     children: string
 }
 
-const CopyToClipboard: React.FC<ICopyToClipboard> = ({children = '123'}) => {
+const CopyToClipboard: React.FC<ICopyToClipboard> = ({children = ''}) => {
     const [copySuccess] = useState(children);
 
     const copyToClipboard = (text: string) => {
