@@ -5,6 +5,7 @@ import News from "../components/News";
 import Music from "../components/Music";
 import Settings from "../components/Settings";
 import Login from "../components/Login";
+import UserContainer from "../components/Users/UsersContainer";
 
 export const appRoutes = [
     {
@@ -15,6 +16,10 @@ export const appRoutes = [
     {
         path: "/dialogs",
         component: <Dialogs/>,
+    },
+    {
+        path: "/users",
+        component: <UserContainer/>,
     },
     {
         path: "/news",

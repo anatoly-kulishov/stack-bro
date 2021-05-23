@@ -1,6 +1,6 @@
 import axios from "axios";
 import {_apiBase} from "../../constants";
-import {USER_REQUEST} from "../types";
+import {USERS_FOLLOW, USERS_REQUEST} from "../types";
 
 export function fetchUserData(id: number) {
     console.log(`selectUser(${id})`);
@@ -9,14 +9,25 @@ export function fetchUserData(id: number) {
             axios.get(`${_apiBase}/joblinkusers/${id}`)
                 .then((response) => {
                     const userData = response.data;
-
-
                     dispatch({
-                        type: USER_REQUEST,
-                        payload: userData
+                        type: USERS_REQUEST,
+                        users: userData
                     })
                 })
                 .catch((error) => console.log(error));
+        } catch (e) {
+            console.error(e)
+        }
+    }
+}
+
+export function userFollow(id: number) {
+    return async (dispatch: any) => {
+        try {
+            dispatch({
+                type: USERS_FOLLOW,
+                userId: id
+            })
         } catch (e) {
             console.error(e)
         }

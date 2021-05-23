@@ -13,6 +13,9 @@ const Navbar: React.FC = () => {
                     <NavLink to="/dialogs" activeClassName={styles.current}>Dialogs</NavLink>
                 </li>
                 <li>
+                    <NavLink to="/users" activeClassName={styles.current}>Users</NavLink>
+                </li>
+                <li>
                     <NavLink to="/news" activeClassName={styles.current}>News</NavLink>
                 </li>
                 <li>

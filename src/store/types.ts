@@ -8,10 +8,11 @@ export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 export const SIGN_IN = 'LOGIN/SIGN_IN';
 export const LOG_OUT = 'LOGIN/LOG_OUT';
 
-/******************** USER ********************/
-export const USER_REQUEST = 'USER/REQUEST';
-export const USER_REQUEST_SUCCESS = 'USER/REQUEST_SUCCESS';
-export const USER_REQUEST_FAILURE = 'USER/REQUEST_FAILURE';
+/******************** USERS ********************/
+export const USERS_REQUEST = 'USERS/REQUEST';
+export const USERS_FOLLOW = 'USERS/FOLLOW';
+// export const USER_REQUEST_SUCCESS = 'USERS/REQUEST_SUCCESS';
+// export const USER_REQUEST_FAILURE = 'USERS/REQUEST_FAILURE';
 
 /******************** POSTS ********************/
 export const FETCH_POSTS = 'POSTS/FETCH_POSTS';

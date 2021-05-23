@@ -1,0 +1,18 @@
+@import "../../variables";
+
+.section {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+}
+
+.title {
+    margin-top: 0;
+}
+
+.userPhoto {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}

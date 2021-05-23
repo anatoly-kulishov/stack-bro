@@ -8,7 +8,7 @@ import profileReducer from "./profileReducer";
 export const rootReducer = combineReducers({
     app: appReducer,
     auth: authReducer,
-    user: userReducer,
+    users: userReducer,
     dialogs: dialogsReducer,
     profile: profileReducer
 })
