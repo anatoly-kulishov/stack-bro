@@ -1,12 +1,14 @@
 import {connect} from "react-redux";
 import Users from "./Users";
-import {userFollow} from "../../store/actions/userActions";
+import {setUsers, userFollow} from "../../store/actions/userActions";
 
 const mapStateToProps = (state: any) => ({
-    users: state.users.users
+    users: state.users.users,
+    loading: state.users.loading,
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
+    setUsers: () => dispatch(setUsers()),
     userFollow: (id: number) => dispatch(userFollow(id)),
 })
 

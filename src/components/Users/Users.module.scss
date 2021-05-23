@@ -1,18 +1,25 @@
 @import "../../variables";
 
-.section {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
-}
-
 .title {
     margin-top: 0;
+}
+
+.users {
+    @include list-reset();
+
+    li {
+        display: grid;
+        grid-template-columns: 80px 2fr;
+        align-items: center;
+        grid-gap: 10px;
+        margin-bottom: 15px;
+    }
 }
 
 .userPhoto {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    object-position: center;
     border-radius: 50%;
 }

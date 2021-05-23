@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import {_apiBase} from "../../constants";
 import {LOG_OUT, SIGN_IN} from "../types";
-import {fetchUserData} from "./userActions";
+// import {fetchUserData} from "./userActions";
 
 export function init() {
     console.log('init()')
@@ -11,8 +11,8 @@ export function init() {
         console.log(token)
 
         if (token) {
-            axios.defaults.headers.common['Authorization'] = token;
-            await dispatch(fetchUserData(1));
+            // axios.defaults.headers.common['Authorization'] = token;
+            // await dispatch(fetchUserData(1));
             // some other code
         } else {
             // else case code

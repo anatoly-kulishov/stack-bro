@@ -2,16 +2,15 @@ import axios from "axios";
 import {_apiBase} from "../../constants";
 import {USERS_FOLLOW, USERS_REQUEST} from "../types";
 
-export function fetchUserData(id: number) {
-    console.log(`selectUser(${id})`);
+export function setUsers() {
+    console.log(`setUsers()`);
     return async (dispatch: any) => {
         try {
-            axios.get(`${_apiBase}/joblinkusers/${id}`)
-                .then((response) => {
-                    const userData = response.data;
+            axios.get(`${_apiBase}/users`)
+                .then((res) => {
                     dispatch({
                         type: USERS_REQUEST,
-                        users: userData
+                        users: res.data.items
                     })
                 })
                 .catch((error) => console.log(error));

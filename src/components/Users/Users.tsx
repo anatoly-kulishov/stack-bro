@@ -1,38 +1,54 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Users.module.scss';
+import userPhoto from "../../images/avatar.jpg";
+import Spinner from "../Spinner/Spinner";
 
 type IUsers = {
     users: Array<{
         id: number,
-        photoUrl: string,
-        followed: boolean,
-        fullName: string,
+        name: string,
+        photos: { small: string, large: string },
         status: string,
-        location: { city: string, country: string },
+        followed: boolean,
     }>,
+    loading: boolean,
+    setUsers: Function,
     userFollow: Function,
 }
 
-const Users: React.FC<IUsers> = ({users, userFollow}) => {
+const Users: React.FC<IUsers> = ({users, loading, setUsers, userFollow}) => {
+
+    useEffect(() => {
+        setUsers()
+    }, [setUsers])
+
+    if (loading) {
+        return <Spinner/>
+    }
+
     return (
         <section className={styles.section}>
             <h3 className={styles.title}>Users</h3>
-            <ul>
+            <ul className={styles.users}>
                 {
-                    users.map(user => {
+                    users ? users.map(user => {
                         return (
-                            <li>
-                                <img className={styles.userPhoto} src={user.photoUrl} alt=""/>
-                                <b>{user.fullName}</b>
-                                <b>{user.status}</b>
-                                <b>{user.location.country}</b>
-                                <b>{user.location.city}</b>
-                                <button
-                                    onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
-                                </button>
+                            <li key={user.id}>
+                                <div>
+                                    <img src={user.photos.small ? user.photos.small : userPhoto}
+                                         className={styles.userPhoto}
+                                         alt=""/>
+                                </div>
+                                <div>
+                                    <b>{user.name}</b>
+                                    <b>{user.status}</b>
+                                    <button
+                                        onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
+                                    </button>
+                                </div>
                             </li>
                         )
-                    })
+                    }) : null
                 }
             </ul>
         </section>
