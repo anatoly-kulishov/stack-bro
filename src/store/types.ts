@@ -13,6 +13,8 @@ export const USERS_REQUEST = 'USERS/REQUEST';
 export const USERS_FOLLOW = 'USERS/FOLLOW';
 // export const USER_REQUEST_SUCCESS = 'USERS/REQUEST_SUCCESS';
 // export const USER_REQUEST_FAILURE = 'USERS/REQUEST_FAILURE';
+export const SET_TOTAL_USERS_COUNT = 'USERS/SET_TOTAL_COUNT';
+export const SET_CURRENT_PAGE = 'USERS/SET_CURRENT_PAGE';
 
 /******************** POSTS ********************/
 export const FETCH_POSTS = 'POSTS/FETCH_POSTS';

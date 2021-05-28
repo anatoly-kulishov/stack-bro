@@ -23,3 +23,19 @@
     object-position: center;
     border-radius: 50%;
 }
+
+.paginator {
+    display: flex;
+    max-width: 215px;
+    overflow: hidden
+}
+
+.paginator > span {
+    margin: 6px;
+    cursor: pointer;
+}
+
+.paginator > span.activePage {
+    color: red;
+    cursor: default;
+}
