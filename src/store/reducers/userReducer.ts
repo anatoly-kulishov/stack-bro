@@ -1,7 +1,7 @@
 import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USERS_FOLLOW, USERS_REQUEST} from "../types";
 
 const initialState = {
-    loading: true,
+    isLoading: true,
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action: any) => {
                 ...state,
                 users: action.users,
                 totalUsersCount: action.totalUsersCount,
-                loading: false
+                isLoading: false
             }
         case USERS_FOLLOW:
             return {
@@ -31,13 +31,13 @@ const userReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 currentPage: action.currentPage,
-                loading: true
+                isLoading: true
             }
         case SET_TOTAL_USERS_COUNT:
             return {
                 ...state,
                 totalUsersCount: action.totalUserCount,
-                loading: true
+                isLoading: true
             }
         default:
             return state;

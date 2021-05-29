@@ -11,7 +11,7 @@ type IUsers = {
         status: string,
         followed: boolean,
     }>,
-    loading: boolean,
+    isLoading: boolean,
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
@@ -20,7 +20,7 @@ type IUsers = {
     setCurrentPage: Function
 }
 
-const Users: React.FC<IUsers> = ({users, loading, pageSize, totalUsersCount, currentPage, setUsers, userFollow, setCurrentPage}) => {
+const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, currentPage, setUsers, userFollow, setCurrentPage}) => {
     let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
     let pages: number[] = [];
     for (let i: number = 1; i <= pagesCount; i++) {
@@ -31,7 +31,7 @@ const Users: React.FC<IUsers> = ({users, loading, pageSize, totalUsersCount, cur
         setUsers(currentPage, pageSize)
     }, [setUsers, currentPage, pageSize])
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner/>
     }
 

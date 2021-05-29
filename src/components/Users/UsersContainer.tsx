@@ -4,7 +4,7 @@ import {setCurrentPageAC, setTotalUserCountAC, setUsersAC, userFollowAC} from ".
 
 const mapStateToProps = (state: any) => ({
     users: state.users.users,
-    loading: state.users.loading,
+    isLoading: state.users.isLoading,
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
     currentPage: state.users.currentPage

@@ -32,10 +32,16 @@
 
 .paginator > span {
     margin: 6px;
+    font-weight: 500;
     cursor: pointer;
 }
 
+.paginator > span.activePage,
+.paginator > span:hover {
+    font-weight: 700;
+    color: $palette-primary;
+}
+
 .paginator > span.activePage {
-    color: red;
     cursor: default;
 }
