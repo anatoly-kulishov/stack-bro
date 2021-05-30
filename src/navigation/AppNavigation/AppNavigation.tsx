@@ -9,22 +9,30 @@ const AppNavigation: React.FC = () => {
     return (
         <>
             <Header/>
-            <main className="app-main container">
-                <Navbar/>
-                <div className="app-content">
-                    <Switch>
-                        {appRoutes.map((route: any, index: number) => (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                children={route.component}
-                            />
-                        ))}
-                        <Route path="*">
-                            <NoMatch/>
-                        </Route>
-                    </Switch>
+            <main className="app-main">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-2 pl-0 pr-0">
+                            <Navbar/>
+                        </div>
+                        <div className="col-lg-9">
+                            <div className="app-content">
+                                <Switch>
+                                    {appRoutes.map((route: any, index: number) => (
+                                        <Route
+                                            key={index}
+                                            path={route.path}
+                                            exact={route.exact}
+                                            children={route.component}
+                                        />
+                                    ))}
+                                    <Route path="*">
+                                        <NoMatch/>
+                                    </Route>
+                                </Switch>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </>

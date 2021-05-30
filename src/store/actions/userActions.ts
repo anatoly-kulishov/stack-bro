@@ -2,7 +2,7 @@ import axios from "axios";
 import {_apiBase} from "../../constants";
 import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USERS_FOLLOW, USERS_REQUEST} from "../types";
 
-export function setUsersAC(currentPage: number, pageSize: number) {
+export function setUsers(currentPage: number, pageSize: number) {
     console.log(`setUsers()`);
     return async (dispatch: any) => {
         try {
@@ -21,7 +21,7 @@ export function setUsersAC(currentPage: number, pageSize: number) {
     }
 }
 
-export function userFollowAC(id: number) {
+export function userFollow(id: number) {
     return async (dispatch: any) => {
         try {
             dispatch({
@@ -34,7 +34,7 @@ export function userFollowAC(id: number) {
     }
 }
 
-export function setCurrentPageAC(pageNumber: number) {
+export function setCurrentPage(pageNumber: number) {
     return async (dispatch: any) => {
         try {
             dispatch({
@@ -47,7 +47,7 @@ export function setCurrentPageAC(pageNumber: number) {
     }
 }
 
-export function setTotalUserCountAC(totalUserCount: number) {
+export function setTotalUserCount(totalUserCount: number) {
     return async (dispatch: any) => {
         try {
             dispatch({

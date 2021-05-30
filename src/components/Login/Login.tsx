@@ -20,18 +20,18 @@ const Login: React.FC = () => {
     }
 
     return (
-        <section className={styles.login}>
-            <h1 className={styles.title}>Sign In</h1>
-            <form onSubmit={submitHandler}>
-                <p>
-                    <label htmlFor="email">Login</label>
+        <section className={styles.section}>
+            <h1 className={styles.title}>StackBro</h1>
+            <form onSubmit={submitHandler} className={styles.form}>
+                <p className="form-row">
+                    <label htmlFor="email">Email</label>
                     <input className={`form-control`}
                            type="email"
                            name="email"
                            id="email"
                            placeholder="Your email"/>
                 </p>
-                <p>
+                <p className="form-row">
                     <label htmlFor="password">Password</label>
                     <input className={`form-control`}
                            type="password"
@@ -42,7 +42,7 @@ const Login: React.FC = () => {
                 </p>
                 <div>
                     <button type="submit"
-                            className="btn btn--block btn--green">Submit
+                            className="btn btn--block btn--green">Sign in
                     </button>
                 </div>
             </form>

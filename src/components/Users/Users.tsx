@@ -41,12 +41,6 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
 
     return (
         <section className={styles.section}>
-            <div className={styles.paginator}>
-                {pages.map((p: number) => (
-                    <span key={p} onClick={() => onPageChanged(p)}
-                          className={(currentPage === p) ? styles.activePage : ''}>{p}</span>
-                ))}
-            </div>
             <h3 className={styles.title}>Users</h3>
             <ul className={styles.users}>
                 {
@@ -70,6 +64,12 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
                     }) : null
                 }
             </ul>
+            <div className={styles.paginator}>
+                {pages.map((p: number) => (
+                    <span key={p} onClick={() => onPageChanged(p)}
+                          className={(currentPage === p) ? styles.activePage : ''}>{p}</span>
+                ))}
+            </div>
         </section>
     );
 }

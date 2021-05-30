@@ -92,7 +92,7 @@ textarea {
 
 .form-control {
     display: block;
-    height: calc(1.5em + .75rem + 5px);
+    height: calc(1.5em + .75rem + 12px);
     padding: .375rem .75rem;
 
     background: #ffffff;
@@ -105,18 +105,13 @@ textarea {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.container {
-    max-width: 1240px;
-    margin: 0 auto;
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 24px;
 }
 
 .app-main {
-    display: grid;
-    grid-template-areas: "navbar profile";
-    grid-row-gap: 15px;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 15px;
-    grid-area: content;
     align-items: start;
     min-height: 50vh;
     margin-top: 15px;
