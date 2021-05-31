@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Users from "./Users";
-import {setCurrentPage, setTotalUserCount, setUsers, userFollow} from "../../store/actions/userActions";
+import {setCurrentPage, setTotalUserCount, setUsers, userFollow} from "../../store/actions/usersActions";
 
 const mapStateToProps = (state: any) => ({
     users: state.users.users,

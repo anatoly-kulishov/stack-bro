@@ -7,7 +7,7 @@
 .users {
     @include list-reset();
 
-    li {
+    li > a {
         display: grid;
         grid-template-columns: 80px 2fr;
         align-items: center;

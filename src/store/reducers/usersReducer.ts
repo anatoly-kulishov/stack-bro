@@ -8,7 +8,7 @@ const initialState = {
     currentPage: 1
 }
 
-const userReducer = (state = initialState, action: any) => {
+const usersReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case USERS_REQUEST:
             return {
@@ -44,4 +44,4 @@ const userReducer = (state = initialState, action: any) => {
     }
 }
 
-export default userReducer;
+export default usersReducer;

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {NavLink} from "react-router-dom";
 import styles from './Users.module.scss';
 import userPhoto from "../../images/avatar.jpg";
 import Spinner from "../Spinner/Spinner";
@@ -44,24 +45,27 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
             <h3 className={styles.title}>Users</h3>
             <ul className={styles.users}>
                 {
-                    users ? users.map(user => {
+                    users && users.map(user => {
                         return (
                             <li key={user.id}>
-                                <div>
-                                    <img src={user.photos.small ? user.photos.small : userPhoto}
-                                         className={styles.userPhoto}
-                                         alt=""/>
-                                </div>
-                                <div>
-                                    <b>{user.name}</b>
-                                    <b>{user.status}</b>
-                                    <button
-                                        onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
-                                    </button>
-                                </div>
+                                <NavLink to={`user/${user.id}`}>
+                                    <div>
+                                        <img src={user.photos.small ? user.photos.small : userPhoto}
+                                             className={styles.userPhoto}
+                                             alt=""/>
+                                    </div>
+                                    <div>
+                                        <b>{user.name}</b>
+                                        <b>{user.status}</b>
+                                        <button
+                                            className="ml-3"
+                                            onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
+                                        </button>
+                                    </div>
+                                </NavLink>
                             </li>
                         )
-                    }) : null
+                    })
                 }
             </ul>
             <div className={styles.paginator}>

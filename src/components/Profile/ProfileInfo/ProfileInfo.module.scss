@@ -2,9 +2,7 @@
 
 .descriptionBlock {
     padding: 15px;
-
     font-size: 14px;
-
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
     background-color: $x-color-grey-3;
 
@@ -14,12 +12,21 @@
 }
 
 .title {
-    margin: 0 0 10px;
+    margin: 0 5px 10px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .copyBox {
     width: 100%;
     min-height: 150px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    object-fit: cover;
 }

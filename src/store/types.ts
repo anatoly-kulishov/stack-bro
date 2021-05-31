@@ -8,6 +8,9 @@ export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 export const SIGN_IN = 'LOGIN/SIGN_IN';
 export const LOG_OUT = 'LOGIN/LOG_OUT';
 
+/******************** PROFILE ********************/
+export const SET_USER_PROFILE = 'PROFILE/SET_USER';
+
 /******************** USERS ********************/
 export const USERS_REQUEST = 'USERS/REQUEST';
 export const USERS_FOLLOW = 'USERS/FOLLOW';
