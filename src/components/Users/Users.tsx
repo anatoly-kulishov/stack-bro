@@ -48,7 +48,7 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
                     users && users.map(user => {
                         return (
                             <li key={user.id}>
-                                <NavLink to={`user/${user.id}`}>
+                                <NavLink to={`profile/${user.id}`}>
                                     <div>
                                         <img src={user.photos.small ? user.photos.small : userPhoto}
                                              className={styles.userPhoto}

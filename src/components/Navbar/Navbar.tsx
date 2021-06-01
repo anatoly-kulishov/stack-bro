@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
         <nav className={styles.nav}>
             <ul className={styles.navList}>
                 <li>
-                    <NavLink to="/" exact activeClassName={styles.current}>Profile</NavLink>
+                    <NavLink to="/profile" exact activeClassName={styles.current}>Profile</NavLink>
                 </li>
                 <li>
                     <NavLink to="/dialogs" activeClassName={styles.current}>Dialogs</NavLink>

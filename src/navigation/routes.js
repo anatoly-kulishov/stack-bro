@@ -9,7 +9,12 @@ import UserContainer from "../components/Users/UsersContainer";
 
 export const appRoutes = [
     {
-        path: "/",
+        path: "/profile",
+        exact: true,
+        component: <Profile/>
+    },
+    {
+        path: "/profile/:userId?",
         exact: true,
         component: <Profile/>
     },

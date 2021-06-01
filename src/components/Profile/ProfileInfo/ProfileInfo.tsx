@@ -5,10 +5,11 @@ import Spinner from "../../Spinner/Spinner";
 
 type ProfileInfo = {
     profile: any,
-    isLoading: boolean
+    isLoading: boolean,
+    history: any
 }
 
-const ProfileInfo: React.FC<ProfileInfo> = ({profile, isLoading}) => {
+const ProfileInfo: React.FC<ProfileInfo> = ({profile, isLoading, history}) => {
 
     if (isLoading) {
         return <Spinner/>
@@ -16,6 +17,7 @@ const ProfileInfo: React.FC<ProfileInfo> = ({profile, isLoading}) => {
 
     return (
         <div className={styles.descriptionBlock}>
+            <button onClick={() => history.goBack()} className="btn btn--green mb-3">Go Back</button>
             <div className="d-flex align-items-center">
                 <img className={styles.avatar} src={profile?.photos?.large} alt=""/>
                 <span className={styles.title}>{profile?.aboutMe}</span>

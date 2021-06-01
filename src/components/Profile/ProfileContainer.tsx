@@ -1,4 +1,5 @@
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {setProfile} from "../../store/actions/profileActions";
 
@@ -7,6 +8,6 @@ const mapStateToProps = (state: any) => ({
     isLoading: state.profile.isLoading,
 })
 
-const ProfileContainer = connect(mapStateToProps, {setProfile})(Profile);
+const ProfileContainer = connect(mapStateToProps, {setProfile})(withRouter(Profile));
 
 export default ProfileContainer;
