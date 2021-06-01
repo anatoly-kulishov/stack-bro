@@ -1,29 +1,47 @@
 import axios from "axios";
 import Cookies from 'js-cookie';
 import {_apiBase} from "../../constants";
-import {LOG_OUT, SIGN_IN} from "../types";
-// import {fetchUserData} from "./userActions";
+import {AUTH_ME, LOG_OUT, SIGN_IN} from "../types";
 
-export function init() {
-    console.log('init()')
+export function authMe() {
     return async (dispatch: any) => {
-        const token = Cookies.get('token');
-        console.log(token)
-
-        if (token) {
-            // axios.defaults.headers.common['Authorization'] = token;
-            // await dispatch(fetchUserData(1));
-            // some other code
-        } else {
-            // else case code
+        try {
+            axios.get(`${_apiBase}/auth/me`, {
+                withCredentials: true
+            })
+                .then((res) => {
+                    console.log(res.data)
+                    if (res.data.resultCode === 0) {
+                        const {id, email, login} = res.data.data;
+                        dispatch({
+                            type: AUTH_ME,
+                            data: {id, email, login}
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+        } catch (e) {
+            console.error(e)
         }
     };
 }
 
+// const token = Cookies.get('token');
+// console.log(token)
+// if (token) {
+// axios.defaults.headers.common['Authorization'] = token;
+// await dispatch(fetchUserData(1));
+// some other code
+// } else {
+// else case code
+// }
+
 export function signIn(profile: object) {
     return async (dispatch: any) => {
         try {
-            axios.post(`${_apiBase}/signin/JoblinkUser`, profile)
+            axios.post(`${_apiBase}/auth/login`, profile)
                 .then((response) => {
                     const access_token = response.data.token;
                     Cookies.set('token', access_token)

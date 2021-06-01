@@ -1,22 +1,19 @@
 import React from 'react';
 import styles from './Login.module.scss';
-import {useDispatch} from "react-redux";
-import {signIn} from "../../store/actions/authActions";
 
-const Login: React.FC = () => {
-    const dispatch = useDispatch()
+type ILogin = {
+    signIn: Function
+}
 
+const Login: React.FC<ILogin> = ({signIn}) => {
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // const form = event.currentTarget;
+        const form = event.currentTarget;
         const profile = {
-            // form['email'].value
-            email: 'ja@gmail.com',
-            // form['password'].value
-            password: 'password'
+            email: form['email'].value,
+            password: form['password'].value
         }
-        console.log(profile);
-        dispatch(signIn(profile))
+        signIn(profile)
     }
 
     return (

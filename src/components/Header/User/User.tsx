@@ -3,7 +3,11 @@ import styles from "./User.module.scss";
 import {useDispatch} from "react-redux";
 import {logOut} from "../../../store/actions/authActions";
 
-const User: React.FC = () => {
+type IUser = {
+    login: string
+}
+
+const User: React.FC<IUser> = ({login}) => {
     const dispatch = useDispatch();
 
     const onLogOutHandler = () => {
@@ -12,7 +16,7 @@ const User: React.FC = () => {
 
     return (
         <div className={styles.user}>
-            <div className={styles.info}>Кулишов Анатолий</div>
+            <div className={styles.info}>{login}</div>
             <div className={styles.control}>
                 <span className="btn btn--danger"
                       onClick={onLogOutHandler}>Выйти</span>

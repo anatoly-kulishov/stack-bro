@@ -18,7 +18,7 @@ const Profile: React.FC<IProfile> = ({setProfile, profile, isLoading, match, loc
         setProfile(userId ? userId : 2)
     }, [setProfile, match])
 
-    console.log(match, location, history)
+    // console.log(match, location, history)
 
     return (
         <div>

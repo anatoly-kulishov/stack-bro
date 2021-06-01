@@ -5,8 +5,10 @@ export const ENABLE_BUTTONS = 'APP/ENABLE_BUTTONS';
 export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 
 /******************** LOGIN ********************/
-export const SIGN_IN = 'LOGIN/SIGN_IN';
-export const LOG_OUT = 'LOGIN/LOG_OUT';
+export const SIGN_IN = 'AUTH/SIGN_IN';
+export const LOG_OUT = 'AUTH/LOG_OUT';
+export const AUTH_ME = 'AUTH/AUTH_ME';
+// export const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 
 /******************** PROFILE ********************/
 export const SET_USER_PROFILE = 'PROFILE/SET_USER';
