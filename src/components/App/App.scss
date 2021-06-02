@@ -80,8 +80,10 @@ img {
 label {
     display: inline-block;
     margin: 0 0 5px 4px;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 14px;
     color: #52525B;
+    opacity: .8;
 }
 
 textarea {
@@ -132,10 +134,11 @@ textarea {
 
 .btn {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 15px 26px;
     font-weight: 500;
     font-size: $font-size-base;
     line-height: 1;
+    text-align: center;
     border-radius: 4px;
     border: 1px solid;
     cursor: pointer;

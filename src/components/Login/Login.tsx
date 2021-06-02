@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Login.module.scss';
+import {NavLink} from "react-router-dom";
 
 type ILogin = {
     signIn: Function
@@ -39,8 +40,9 @@ const Login: React.FC<ILogin> = ({signIn}) => {
                 </p>
                 <div>
                     <button type="submit"
-                            className="btn btn--block btn--green">Sign in
+                            className="btn btn--block btn--green mb-2">Sign in
                     </button>
+                    <NavLink className="btn btn--block btn--light-green" to="/reset-password">Forgot password?</NavLink>
                 </div>
             </form>
         </section>

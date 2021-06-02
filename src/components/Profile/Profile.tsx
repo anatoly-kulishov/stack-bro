@@ -15,7 +15,7 @@ const Profile: React.FC<IProfile> = ({setProfile, profile, isLoading, match, loc
 
     useEffect(() => {
         let userId = match.params.userId;
-        setProfile(userId ? userId : 2)
+        setProfile(userId ? userId : 17461)
     }, [setProfile, match])
 
     // console.log(match, location, history)

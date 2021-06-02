@@ -9,7 +9,7 @@ import UserContainer from "../components/Users/UsersContainer";
 
 export const appRoutes = [
     {
-        path: "/profile",
+        path: "/",
         exact: true,
         component: <Profile/>
     },
@@ -45,5 +45,10 @@ export const authRoutes = [
         path: "/",
         exact: true,
         component: <Login/>
+    },
+    {
+        path: "/reset-password",
+        exact: true,
+        component: <div>Soon</div>
     }
 ];

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
-import copyIcon from "../../images/copy-icon.svg";
+import copyIcon from "../../assets/img/copy-icon.svg";
 
 type ICopyToClipboard = {
     children: string

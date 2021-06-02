@@ -26,7 +26,7 @@
 
 .paginator {
     display: flex;
-    max-width: 215px;
+    max-width: 350px;
     overflow: hidden
 }
 
@@ -38,7 +38,6 @@
 
 .paginator > span.activePage,
 .paginator > span:hover {
-    font-weight: 700;
     color: $palette-primary;
 }
 

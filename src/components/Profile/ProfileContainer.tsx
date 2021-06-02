@@ -4,7 +4,7 @@ import Profile from "./Profile";
 import {setProfile} from "../../store/actions/profileActions";
 
 const mapStateToProps = (state: any) => ({
-    myProfile: state.auth.profile,
+    profile: state.profile.profile,
     isLoading: state.profile.isLoading,
 })
 

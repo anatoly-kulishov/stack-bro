@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 import styles from "./Avatar.module.scss";
-import avatar from '../../../images/avatar.jpg'
+import avatar from '../../../assets/img/no-avatar.svg'
 
 const Avatar: React.FC = () => {
     return (

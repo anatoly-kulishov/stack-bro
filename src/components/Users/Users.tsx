@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './Users.module.scss';
-import userPhoto from "../../images/avatar.jpg";
+import userPhoto from "../../assets/img/no-avatar.svg";
 import Spinner from "../Spinner/Spinner";
 
 type IUsers = {
@@ -57,12 +57,12 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
                                     <div>
                                         <b>{user.name}</b>
                                         <b>{user.status}</b>
-                                        <button
-                                            className="ml-3"
-                                            onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
-                                        </button>
                                     </div>
                                 </NavLink>
+                                <button
+                                    className="ml-3"
+                                    onClick={() => userFollow(user.id)}>{user.followed ? 'Unfollow' : 'Follow'}
+                                </button>
                             </li>
                         )
                     })

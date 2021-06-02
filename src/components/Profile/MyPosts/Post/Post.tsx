@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Post.module.scss';
-import avatar from '../../../../images/avatar-2.jpg';
-import avatarWebp from '../../../../images/avatar-2.webp';
+import avatar from '../../../../assets/img/no-avatar.svg';
 
 type IPost = {
     message: string,
@@ -13,7 +12,6 @@ const Post: React.FC<IPost> = ({message, likes}) => {
         <div className={styles.post}>
             <div className={styles.row}>
                 <picture>
-                    <source type="image/webp" srcSet={avatarWebp}/>
                     <source type="image/jpeg" srcSet={avatar}/>
                     <img className={styles.authorAvatar} src={avatar} alt=""/>
                 </picture>

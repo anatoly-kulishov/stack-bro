@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProfileInfo.module.scss';
 import CopyToClipboard from "../../CopyToClipboard";
 import Spinner from "../../Spinner/Spinner";
+import noAvatar from "../../../assets/img/no-avatar.svg"
 
 type ProfileInfo = {
     profile: any,
@@ -15,18 +16,23 @@ const ProfileInfo: React.FC<ProfileInfo> = ({profile, isLoading, history}) => {
         return <Spinner/>
     }
 
+    console.log(profile)
+
     return (
         <div className={styles.descriptionBlock}>
             <button onClick={() => history.goBack()} className="btn btn--green mb-3">Go Back</button>
             <div className="d-flex align-items-center">
-                <img className={styles.avatar} src={profile?.photos?.large} alt=""/>
-                <span className={styles.title}>{profile?.aboutMe}</span>
+                <img className={styles.avatar}
+                     src={profile.photos.large ? profile.photos.large : noAvatar}
+                     alt=""/>
+                <span className={styles.title}>{profile?.fullName}</span>
             </div>
-            <CopyToClipboard>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, aperiam architecto commodi corporis
-                dolor dolorum ducimus eaque eos, fuga laudantium nostrum perspiciatis quas quasi, ratione reiciendis
-                sequi sunt tempore totam?
-            </CopyToClipboard>
+            <div className="mt-2">
+                <label>lookingForAJobDescription</label>
+                <CopyToClipboard>
+                    {profile?.lookingForAJobDescription}
+                </CopyToClipboard>
+            </div>
         </div>
     );
 }

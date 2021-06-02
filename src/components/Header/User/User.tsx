@@ -19,7 +19,7 @@ const User: React.FC<IUser> = ({login}) => {
             <div className={styles.info}>{login}</div>
             <div className={styles.control}>
                 <span className="btn btn--danger"
-                      onClick={onLogOutHandler}>Выйти</span>
+                      onClick={onLogOutHandler}>Sign out</span>
             </div>
         </div>
     );
