@@ -1,10 +1,8 @@
 import React, {useEffect} from 'react';
-import {NavLink} from "react-router-dom";
 import styles from './Users.module.scss';
-import userPhoto from "../../assets/img/no-avatar.svg";
 import Spinner from "../Spinner/Spinner";
 import User from "./User";
-import {getCurrentUserFollower, userUnfollow} from "../../store/actions/usersActions";
+import {getCurrentUserFollower} from "../../store/actions/usersActions";
 
 type IUsers = {
     users: Array<{

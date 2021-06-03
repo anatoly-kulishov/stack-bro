@@ -19,6 +19,7 @@ export function setUsers(currentPage: number, pageSize: number) {
                 }
             })
                 .then((res) => {
+                    console.log(res.data.items)
                     dispatch({
                         type: USERS_REQUEST,
                         users: res.data.items,
@@ -60,10 +61,13 @@ export function userFollow(userId: number) {
             }
         })
             .then(res => {
-                dispatch({
-                    type: USER_FOLLOW_OR_UNFOLLOW,
-                    userId: userId
-                })
+                console.log(res.data)
+                if (res.data.resultCode === 0) {
+                    dispatch({
+                        type: USER_FOLLOW_OR_UNFOLLOW,
+                        userId: userId
+                    })
+                }
             })
             .catch((e) => console.error(e))
     }
@@ -78,10 +82,12 @@ export function userUnfollow(userId: number) {
             }
         })
             .then(res => {
-                dispatch({
-                    type: USER_FOLLOW_OR_UNFOLLOW,
-                    userId: userId
-                })
+                if (res.data.resultCode === 0) {
+                    dispatch({
+                        type: USER_FOLLOW_OR_UNFOLLOW,
+                        userId: userId
+                    })
+                }
             })
             .catch((e) => console.error(e))
     }

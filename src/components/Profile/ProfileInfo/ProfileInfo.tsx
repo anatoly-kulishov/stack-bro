@@ -10,13 +10,14 @@ type ProfileInfo = {
     history: any
 }
 
-const ProfileInfo: React.FC<ProfileInfo> = ({profile, isLoading, history}) => {
+const ProfileInfo: React.FC<ProfileInfo> = props => {
+    const {profile, isLoading, history} = props;
 
     if (isLoading) {
         return <Spinner/>
     }
 
-    console.log(profile)
+    // console.log(profile)
 
     return (
         <div className={styles.descriptionBlock}>

@@ -6,12 +6,16 @@
 
 .users {
     @include list-reset();
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 15px;
 }
 
 .paginator {
     display: flex;
     max-width: 350px;
-    overflow: hidden
+    overflow: hidden;
+    margin: 25px 15px 0;
 }
 
 .paginator > span {

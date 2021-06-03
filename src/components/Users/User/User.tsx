@@ -21,7 +21,7 @@ const User: React.FC<IUser> = props => {
 
     useEffect(() => {
         getCurrentUserFollower()
-    }, [user])
+    }, [user, getCurrentUserFollower])
 
     return (
         <li key={user.id} className={styles.user}>
@@ -32,15 +32,13 @@ const User: React.FC<IUser> = props => {
                          alt=""/>
                 </div>
                 <div>
-                    <b>{user.name}</b>
-                    <b>{user.status}</b>
+                    <b className={styles.userName}>{user.name}</b>
+                    <b className={styles.userStatus}>{user.status}</b>
                 </div>
             </NavLink>
             <button
                 className="btn btn--small btn--light-green ml-3"
-
-                onClick={() => userFollow(user.id)}>
-
+                onClick={() => (!user.followed) ? userFollow(user.id) : userUnfollow(user.id)}>
                 {user.followed ? 'Unfollow' : 'Follow'}
             </button>
         </li>
