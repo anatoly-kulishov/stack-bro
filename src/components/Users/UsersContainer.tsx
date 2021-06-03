@@ -1,6 +1,13 @@
 import {connect} from "react-redux";
 import Users from "./Users";
-import {setCurrentPage, setTotalUserCount, setUsers, userFollow} from "../../store/actions/usersActions";
+import {
+    getCurrentUserFollower,
+    setCurrentPage,
+    setTotalUserCount,
+    setUsers,
+    userFollow,
+    userUnfollow
+} from "../../store/actions/usersActions";
 
 const mapStateToProps = (state: any) => ({
     users: state.users.users,
@@ -10,6 +17,6 @@ const mapStateToProps = (state: any) => ({
     currentPage: state.users.currentPage
 })
 
-const UserContainer = connect(mapStateToProps, {setUsers, userFollow, setCurrentPage, setTotalUserCount})(Users);
+const UserContainer = connect(mapStateToProps, {setUsers, getCurrentUserFollower, userFollow, userUnfollow, setCurrentPage, setTotalUserCount})(Users);
 
 export default UserContainer;

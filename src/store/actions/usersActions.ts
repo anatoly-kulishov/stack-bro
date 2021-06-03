@@ -1,12 +1,23 @@
 import axios from "axios";
-import {_apiBase} from "../../constants";
-import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USERS_FOLLOW, USERS_REQUEST} from "../types";
+import {_apiBase, API_KEY} from "../../constants";
+import {
+    SET_CURRENT_PAGE,
+    SET_TOTAL_USERS_COUNT,
+    USER_FOLLOW_OR_UNFOLLOW,
+    USER_GET_FOLLOWING_STATUS,
+    USERS_REQUEST
+} from "../types";
 
 export function setUsers(currentPage: number, pageSize: number) {
     console.log(`setUsers()`);
     return async (dispatch: any) => {
         try {
-            axios.get(`${_apiBase}/users?page=${currentPage}&count=${pageSize}`)
+            axios.get(`${_apiBase}/users?page=${currentPage}&count=${pageSize}`, {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": API_KEY
+                }
+            })
                 .then((res) => {
                     dispatch({
                         type: USERS_REQUEST,
@@ -21,21 +32,63 @@ export function setUsers(currentPage: number, pageSize: number) {
     }
 }
 
-export function userFollow(id: number) {
-    return async (dispatch: any) => {
-        try {
-            dispatch({
-                type: USERS_FOLLOW,
-                userId: id
+export function getCurrentUserFollower(userId: number) {
+    return (dispatch: Function) => {
+        axios.get(`${_apiBase}/follow/${userId}`, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": API_KEY
+            }
+        })
+            .then(res => {
+                dispatch({
+                    type: USER_GET_FOLLOWING_STATUS,
+                    userId: userId
+                })
             })
-        } catch (e) {
-            console.error(e)
-        }
+            .catch((e) => console.error(e))
+    }
+}
+
+
+export function userFollow(userId: number) {
+    return (dispatch: Function) => {
+        axios.post(`${_apiBase}/follow/${userId}`, {}, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": API_KEY
+            }
+        })
+            .then(res => {
+                dispatch({
+                    type: USER_FOLLOW_OR_UNFOLLOW,
+                    userId: userId
+                })
+            })
+            .catch((e) => console.error(e))
+    }
+}
+
+export function userUnfollow(userId: number) {
+    return (dispatch: Function) => {
+        axios.delete(`${_apiBase}/follow/${userId}`, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": API_KEY
+            }
+        })
+            .then(res => {
+                dispatch({
+                    type: USER_FOLLOW_OR_UNFOLLOW,
+                    userId: userId
+                })
+            })
+            .catch((e) => console.error(e))
     }
 }
 
 export function setCurrentPage(pageNumber: number) {
-    return async (dispatch: any) => {
+    return (dispatch: Function) => {
         try {
             dispatch({
                 type: SET_CURRENT_PAGE,

@@ -150,6 +150,11 @@ textarea {
         width: 100%;
     }
 
+    &--small {
+        font-size: $font-size-base - 3px;
+        padding: 8px 16px;
+    }
+
     &--green {
         color: $x-color-white;
         border-color: $x-color-green;

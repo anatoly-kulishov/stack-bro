@@ -1,4 +1,4 @@
-import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USERS_FOLLOW, USERS_REQUEST} from "../types";
+import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USER_FOLLOW_OR_UNFOLLOW, USERS_REQUEST} from "../types";
 
 const initialState = {
     isLoading: true,
@@ -17,15 +17,15 @@ const usersReducer = (state = initialState, action: any) => {
                 totalUsersCount: action.totalUsersCount,
                 isLoading: false
             }
-        case USERS_FOLLOW:
+        case USER_FOLLOW_OR_UNFOLLOW:
             return {
                 ...state,
-                // users: state.users.map(user => {
-                //     if (user.id === action.userId) {
-                //         return {...user, followed: !user.followed}
-                //     }
-                //     return user;
-                // })
+                users: state.users.map((user: any) => {
+                    if (user.id === action.userId) {
+                        return {...user, followed: !user.followed}
+                    }
+                    return user;
+                })
             }
         case SET_CURRENT_PAGE:
             return {
