@@ -3,7 +3,7 @@ import {SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, USER_FOLLOW_OR_UNFOLLOW, USERS_
 const initialState = {
     isLoading: true,
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1
 }

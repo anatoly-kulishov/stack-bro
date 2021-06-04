@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
 import userPhoto from "../../../assets/img/no-avatar.svg";
@@ -13,15 +13,16 @@ type IUser = {
     },
     userFollow: Function,
     userUnfollow: Function,
-    getCurrentUserFollower: Function,
+    setCurrentUserFollower: Function,
 }
 
 const User: React.FC<IUser> = props => {
-    const {user, userFollow, userUnfollow, getCurrentUserFollower} = props;
+    const {user, userFollow, userUnfollow} = props;
 
-    useEffect(() => {
-        getCurrentUserFollower()
-    }, [user, getCurrentUserFollower])
+    // props ==> setCurrentUserFollower
+    // useEffect(() => {
+    //     setCurrentUserFollower(user.id)
+    // }, [user, setCurrentUserFollower])
 
     return (
         <li key={user.id} className={styles.user}>

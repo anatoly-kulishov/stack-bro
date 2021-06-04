@@ -1,5 +1,3 @@
-import axios from "axios";
-import {_apiBase, API_KEY} from "../../constants";
 import {
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
@@ -7,89 +5,56 @@ import {
     USER_GET_FOLLOWING_STATUS,
     USERS_REQUEST
 } from "../types";
+import usersAPI from "../../api/usersAPI";
+
 
 export function setUsers(currentPage: number, pageSize: number) {
-    console.log(`setUsers()`);
-    return async (dispatch: any) => {
-        try {
-            axios.get(`${_apiBase}/users?page=${currentPage}&count=${pageSize}`, {
-                withCredentials: true,
-                headers: {
-                    "API-KEY": API_KEY
-                }
-            })
-                .then((res) => {
-                    console.log(res.data.items)
-                    dispatch({
-                        type: USERS_REQUEST,
-                        users: res.data.items,
-                        totalUsersCount: res.data.totalCount
-                    })
-                })
-                .catch((error) => console.log(error));
-        } catch (e) {
-            console.error(e)
-        }
-    }
-}
-
-export function getCurrentUserFollower(userId: number) {
     return (dispatch: Function) => {
-        axios.get(`${_apiBase}/follow/${userId}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": API_KEY
-            }
-        })
-            .then(res => {
-                dispatch({
-                    type: USER_GET_FOLLOWING_STATUS,
-                    userId: userId
-                })
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            console.log(data.items)
+            dispatch({
+                type: USERS_REQUEST,
+                users: data.items,
+                totalUsersCount: data.totalCount
             })
-            .catch((e) => console.error(e))
+        }).catch((e) => console.log(e));
     }
 }
 
+export function setCurrentUserFollower(userId: number) {
+    return (dispatch: Function) => {
+        usersAPI.getCurrentUserFollower(userId).then(() => {
+            dispatch({
+                type: USER_GET_FOLLOWING_STATUS,
+                userId: userId
+            })
+        }).catch((e) => console.error(e))
+    }
+}
 
 export function userFollow(userId: number) {
     return (dispatch: Function) => {
-        axios.post(`${_apiBase}/follow/${userId}`, {}, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": API_KEY
+        usersAPI.postUserFollow(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch({
+                    type: USER_FOLLOW_OR_UNFOLLOW,
+                    userId: userId
+                })
             }
-        })
-            .then(res => {
-                console.log(res.data)
-                if (res.data.resultCode === 0) {
-                    dispatch({
-                        type: USER_FOLLOW_OR_UNFOLLOW,
-                        userId: userId
-                    })
-                }
-            })
-            .catch((e) => console.error(e))
+        }).catch((e) => console.error(e))
     }
 }
 
 export function userUnfollow(userId: number) {
     return (dispatch: Function) => {
-        axios.delete(`${_apiBase}/follow/${userId}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": API_KEY
+        usersAPI.deleteUserUnfollow(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch({
+                    type: USER_FOLLOW_OR_UNFOLLOW,
+                    userId: userId
+                })
             }
-        })
-            .then(res => {
-                if (res.data.resultCode === 0) {
-                    dispatch({
-                        type: USER_FOLLOW_OR_UNFOLLOW,
-                        userId: userId
-                    })
-                }
-            })
-            .catch((e) => console.error(e))
+        }).catch((e) => console.error(e))
     }
 }
 
@@ -107,7 +72,7 @@ export function setCurrentPage(pageNumber: number) {
 }
 
 export function setTotalUserCount(totalUserCount: number) {
-    return async (dispatch: any) => {
+    return (dispatch: any) => {
         try {
             dispatch({
                 type: SET_TOTAL_USERS_COUNT,

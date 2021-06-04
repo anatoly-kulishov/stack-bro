@@ -1,33 +1,28 @@
-import axios from "axios";
 import {ADD_POST, SET_USER_PROFILE} from "../types";
-import {_apiBase, errorMessage} from "../../constants";
+import profileAPI from "../../api/profileAPI";
 
 export function setProfile(userId: number) {
-    return async (dispatch: any) => {
-        try {
-            axios.get(`${_apiBase}/profile/${userId}`)
-                .then((res) => {
-                    dispatch({
-                        type: SET_USER_PROFILE,
-                        profile: res.data
-                    })
+    return (dispatch: any) => {
+        profileAPI.getProfile(userId)
+            .then(data => {
+                dispatch({
+                    type: SET_USER_PROFILE,
+                    profile: data
                 })
-                .catch((error) => console.log(error));
-        } catch (e) {
-            console.error(e)
-        }
+            })
+            .catch((e) => console.log(e));
     }
 }
 
 export function addPost(post: object) {
-    return async (dispatch: any) => {
+    return (dispatch: any) => {
         try {
             dispatch({
                 type: ADD_POST,
                 payload: post
             })
         } catch (e) {
-            console.error(errorMessage)
+            console.error(e)
         }
     }
 }

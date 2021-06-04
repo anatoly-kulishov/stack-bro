@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import styles from './Users.module.scss';
 import Spinner from "../Spinner/Spinner";
 import User from "./User";
-import {getCurrentUserFollower} from "../../store/actions/usersActions";
 
 type IUsers = {
     users: Array<{
@@ -19,10 +18,11 @@ type IUsers = {
     setUsers: Function,
     userFollow: Function,
     userUnfollow: Function,
-    setCurrentPage: Function
+    setCurrentPage: Function,
+    setCurrentUserFollower: Function,
 }
 
-const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, currentPage, setUsers, userFollow, userUnfollow, setCurrentPage}) => {
+const Users: React.FC<IUsers> = ({users, isLoading, pageSize, setCurrentUserFollower, totalUsersCount, currentPage, setUsers, userFollow, userUnfollow, setCurrentPage}) => {
     let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
     let pages: number[] = [];
     for (let i: number = 1; i <= pagesCount; i++) {
@@ -47,7 +47,7 @@ const Users: React.FC<IUsers> = ({users, isLoading, pageSize, totalUsersCount, c
             <ul className={styles.users}>
                 {
                     users && users.map(user => <User key={user.id} user={user}
-                                                     getCurrentUserFollower={getCurrentUserFollower}
+                                                     setCurrentUserFollower={setCurrentUserFollower}
                                                      userFollow={userFollow} userUnfollow={userUnfollow}/>)
                 }
             </ul>

@@ -1,5 +1,4 @@
 import {ADD_DIALOG, ADD_MESSAGE} from "../types";
-import {errorMessage} from "../../constants";
 
 export function addDialog(dialog: object) {
     return async (dispatch: any) => {
@@ -9,7 +8,7 @@ export function addDialog(dialog: object) {
                 payload: dialog
             })
         } catch (e) {
-            console.error(errorMessage)
+            console.error(e)
         }
     }
 }
@@ -22,7 +21,7 @@ export function addMessage(message: object) {
                 payload: message
             })
         } catch (e) {
-            console.error(errorMessage)
+            console.error(e)
         }
     }
 }

@@ -17,8 +17,6 @@ const ProfileInfo: React.FC<ProfileInfo> = props => {
         return <Spinner/>
     }
 
-    // console.log(profile)
-
     return (
         <div className={styles.descriptionBlock}>
             <button onClick={() => history.goBack()} className="btn btn--green mb-3">Go Back</button>
