@@ -34,13 +34,8 @@ export function authMe() {
 }
 
 export function logOut() {
-    Cookies.remove('token');
     return (dispatch: Function) => {
-        console.log('logOut()');
-        try {
-            dispatch({type: LOG_OUT})
-        } catch (e) {
-            console.error(e)
-        }
+        Cookies.remove('token');
+        dispatch({type: LOG_OUT})
     }
 }

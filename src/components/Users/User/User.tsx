@@ -14,10 +14,11 @@ type IUser = {
     userFollow: Function,
     userUnfollow: Function,
     setCurrentUserFollower: Function,
+    followingInProgress: [number]
 }
 
 const User: React.FC<IUser> = props => {
-    const {user, userFollow, userUnfollow} = props;
+    const {user, userFollow, userUnfollow, followingInProgress} = props;
 
     // props ==> setCurrentUserFollower
     // useEffect(() => {
@@ -39,7 +40,8 @@ const User: React.FC<IUser> = props => {
             </NavLink>
             <button
                 className="btn btn--small btn--light-green ml-3"
-                onClick={() => (!user.followed) ? userFollow(user.id) : userUnfollow(user.id)}>
+                onClick={() => (!user.followed) ? userFollow(user.id) : userUnfollow(user.id)}
+                disabled={followingInProgress.some((id: number) => id === user.id)}>
                 {user.followed ? 'Unfollow' : 'Follow'}
             </button>
         </li>

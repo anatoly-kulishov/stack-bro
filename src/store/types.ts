@@ -8,19 +8,20 @@ export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 export const SIGN_IN = 'AUTH/SIGN_IN';
 export const LOG_OUT = 'AUTH/LOG_OUT';
 export const AUTH_ME = 'AUTH/AUTH_ME';
-// export const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 
 /******************** PROFILE ********************/
 export const SET_USER_PROFILE = 'PROFILE/SET_USER';
 
 /******************** USERS ********************/
-export const USERS_REQUEST = 'USERS/REQUEST';
-export const USER_GET_FOLLOWING_STATUS = 'USERS/USER_GET_FOLLOWING_STATUS';
-export const USER_FOLLOW_OR_UNFOLLOW = 'USERS/USER_FOLLOW_OR_UNFOLLOW';
-// export const USER_REQUEST_SUCCESS = 'USERS/REQUEST_SUCCESS';
-// export const USER_REQUEST_FAILURE = 'USERS/REQUEST_FAILURE';
+/** Fetching **/
+export const SET_USERS = 'USERS/SET_USERS';
 export const SET_TOTAL_USERS_COUNT = 'USERS/SET_TOTAL_COUNT';
 export const SET_CURRENT_PAGE = 'USERS/SET_CURRENT_PAGE';
+
+/** Follow && UNFOLLOW **/
+export const GET_FOLLOWING_STATUS = 'USERS/GET_FOLLOWING_STATUS';
+export const FOLLOW_UNFOLLOW = 'USERS/FOLLOW_UNFOLLOW';
+export const TOGGLE_IS_FOLLOWING_PROGRESS = 'USERS/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 /******************** POSTS ********************/
 export const FETCH_POSTS = 'POSTS/FETCH_POSTS';

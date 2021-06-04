@@ -145,6 +145,11 @@ textarea {
     user-select: none;
     transition: all .15s ease;
 
+    &:disabled {
+        opacity: .7;
+        cursor: not-allowed;
+    }
+
     &--block {
         display: block;
         width: 100%;

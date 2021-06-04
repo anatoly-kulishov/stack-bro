@@ -14,7 +14,8 @@ const mapStateToProps = (state: any) => ({
     isLoading: state.users.isLoading,
     pageSize: state.users.pageSize,
     totalUsersCount: state.users.totalUsersCount,
-    currentPage: state.users.currentPage
+    currentPage: state.users.currentPage,
+    followingInProgress: state.users.followingInProgress
 })
 
 const UserContainer = connect(mapStateToProps, {
@@ -23,7 +24,7 @@ const UserContainer = connect(mapStateToProps, {
     userFollow,
     userUnfollow,
     setCurrentPage,
-    setTotalUserCount
+    setTotalUserCount,
 })(Users);
 
 export default UserContainer;
