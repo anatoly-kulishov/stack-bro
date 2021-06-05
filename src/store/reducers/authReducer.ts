@@ -2,6 +2,7 @@ import {AUTH_ME, LOG_OUT, SIGN_IN} from "../types";
 import Cookies from 'js-cookie';
 
 const initialState = {
+    isLoading: true,
     isAuth: false,
     userId: null,
     email: null,

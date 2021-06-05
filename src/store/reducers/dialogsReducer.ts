@@ -1,6 +1,7 @@
 import {ADD_DIALOG, ADD_MESSAGE} from "../types";
 
 const initialState = {
+    isLoading: true,
     dialogs: [
         {
             id: 1,
@@ -33,7 +34,6 @@ const initialState = {
             message: 'Dolores qui voluptas?'
         }
     ],
-    loading: true
 }
 
 const dialogsReducer = (state = initialState, action: any) => {

@@ -1,13 +1,9 @@
 import React, {ChangeEvent} from 'react';
 import styles from './MessageInput.module.scss';
+import {IMessageInput} from "../../../../interfaces";
 
-type IMessageInput = {
-    message: string,
-    setMessage: Function,
-    onAddMessage: Function
-}
-
-const MessageInput: React.FC<IMessageInput> = ({message, setMessage, onAddMessage}) => {
+const MessageInput: React.FC<IMessageInput> = props => {
+    const {message, setMessage, onAddMessage} = props;
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

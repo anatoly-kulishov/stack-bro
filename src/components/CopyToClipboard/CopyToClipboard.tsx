@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from "../../assets/img/copy-icon.svg";
+import {ICopyToClipboard} from "../../interfaces";
 
-type ICopyToClipboard = {
-    children: string
-}
-
-const CopyToClipboard: React.FC<ICopyToClipboard> = ({children = ''}) => {
+const CopyToClipboard: React.FC<ICopyToClipboard> = props => {
+    const {children = ''} = props;
     const [copySuccess] = useState(children);
 
     const copyToClipboard = (text: string) => {

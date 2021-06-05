@@ -1,24 +1,15 @@
 import React, {useEffect} from 'react';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
+import {IProfile} from "../../interfaces";
 
-type IProfile = {
-    setProfile: Function,
-    profile: any,
-    isLoading: boolean,
-    match: any,
-    location: any,
-    history: any
-}
-
-const Profile: React.FC<IProfile> = ({setProfile, profile, isLoading, match, location, history}) => {
+const Profile: React.FC<IProfile> = props => {
+    const {setProfile, profile, isLoading, match, history} = props;
 
     useEffect(() => {
         let userId = match.params.userId;
         setProfile(userId ? userId : 17495)
     }, [setProfile, match])
-
-    // console.log(match, location, history)
 
     return (
         <div>

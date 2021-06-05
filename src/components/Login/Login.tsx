@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './Login.module.scss';
 import {NavLink} from "react-router-dom";
+import {ILogin} from "../../interfaces";
 
-type ILogin = {
-    signIn: Function
-}
+const Login: React.FC<ILogin> = props => {
+    const {signIn} = props;
 
-const Login: React.FC<ILogin> = ({signIn}) => {
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;

@@ -1,25 +1,16 @@
 import React from 'react';
 import styles from "./User.module.scss";
-import {useDispatch} from "react-redux";
-import {logOut} from "../../../store/actions/authActions";
+import {IHeaderUser} from "../../../interfaces";
 
-type IUser = {
-    login: string
-}
-
-const User: React.FC<IUser> = ({login}) => {
-    const dispatch = useDispatch();
-
-    const onLogOutHandler = () => {
-        dispatch(logOut())
-    }
+const User: React.FC<IHeaderUser> = props => {
+    const {login, logOut} = props;
 
     return (
         <div className={styles.user}>
             <div className={styles.info}>{login}</div>
             <div className={styles.control}>
                 <span className="btn btn--danger"
-                      onClick={onLogOutHandler}>Sign out</span>
+                      onClick={() => logOut()}>Sign out</span>
             </div>
         </div>
     );

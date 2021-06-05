@@ -1,13 +1,10 @@
 import React from 'react';
 import styles from './Post.module.scss';
 import avatar from '../../../../assets/img/no-avatar.svg';
+import {IPost} from "../../../../interfaces";
 
-type IPost = {
-    message: string,
-    likes: number
-}
-
-const Post: React.FC<IPost> = ({message, likes}) => {
+const Post: React.FC<IPost> = props => {
+    const {message, likes} = props;
     return (
         <div className={styles.post}>
             <div className={styles.row}>

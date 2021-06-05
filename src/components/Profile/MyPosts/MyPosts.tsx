@@ -1,17 +1,10 @@
 import React from 'react';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
+import {IMyPosts} from "../../../interfaces";
 
-type IMyPosts = {
-    posts: Array<{
-        id: number,
-        message: string,
-        likeCount: number
-    }>
-    onAddPost: Function
-}
-
-const MyPosts: React.FC<IMyPosts> = ({posts, onAddPost}) => {
+const MyPosts: React.FC<IMyPosts> = props => {
+    const {posts, onAddPost} = props;
     let postsElements = posts.map(p => <Post key={p.id} message={p.message} likes={p.likeCount}/>);
 
     const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {

@@ -1,5 +1,17 @@
 import {DISABLE_BUTTONS, ENABLE_BUTTONS, HIDE_LOADER, SHOW_LOADER} from "../types";
 
+/**
+ * Copy
+ * @param text
+ */
+export function copy(text: string) {
+    return async () => {
+        navigator.clipboard.writeText(text).then(() => {
+            console.log(`copy(${text})`)
+        })
+    }
+}
+
 export function showLoader() {
     return {
         type: SHOW_LOADER
@@ -21,13 +33,5 @@ export function enable_buttons() {
 export function disable_buttons() {
     return {
         type: DISABLE_BUTTONS
-    }
-}
-
-export function copy(text: string) {
-    return async () => {
-        navigator.clipboard.writeText(text).then(() => {
-            console.log(`copy(${text})`)
-        })
     }
 }

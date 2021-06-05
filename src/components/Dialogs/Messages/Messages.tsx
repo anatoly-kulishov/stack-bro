@@ -2,12 +2,10 @@ import React, {useEffect, useRef} from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
+import {IMessages} from "../../../interfaces";
 
-type IMessages = {
-    messages: Array<object>
-}
-
-const Messages: React.FC<IMessages> = ({messages}) => {
+const Messages: React.FC<IMessages> = props => {
+    const {messages} = props;
     let yourMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
     let foreignMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
 

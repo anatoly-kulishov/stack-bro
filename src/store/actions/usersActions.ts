@@ -8,7 +8,7 @@ import {
 import usersAPI from "../../api/usersAPI";
 
 /**
- * Set all user
+ * Returns all (or only filtered by name with term parameter) users splitted by page
  * @param currentPage
  * @param pageSize
  */
@@ -42,7 +42,7 @@ export function setCurrentPage(pageNumber: number) {
  * @param totalUserCount
  */
 export function setTotalUserCount(totalUserCount: number) {
-    return (dispatch: any) => {
+    return (dispatch: Function) => {
         dispatch({
             type: SET_TOTAL_USERS_COUNT,
             totalUserCount: totalUserCount
@@ -98,7 +98,6 @@ export function userUnfollow(userId: number) {
                     userId: userId
                 })
             }
-            dispatch(toggleFollowingProgress(true, userId))
         }).catch((e) => console.error(e))
     }
 }
@@ -109,7 +108,7 @@ export function userUnfollow(userId: number) {
  * @param userId
  */
 export function toggleFollowingProgress(followingInProgress: boolean, userId: number) {
-    return (dispatch: any) => {
+    return (dispatch: Function) => {
         dispatch({
             type: TOGGLE_IS_FOLLOWING_PROGRESS,
             followingInProgress,

@@ -2,35 +2,13 @@ import React, {useEffect} from 'react';
 import styles from './Users.module.scss';
 import Spinner from "../Spinner/Spinner";
 import User from "./User";
-import {toggleFollowingProgress} from "../../store/actions/usersActions";
-
-type IUsers = {
-    users: Array<{
-        id: number,
-        name: string,
-        photos: { small: string, large: string },
-        status: string,
-        followed: boolean,
-    }>,
-    isLoading: boolean,
-    pageSize: number,
-    totalUsersCount: number,
-    currentPage: number,
-    setUsers: Function,
-    userFollow: Function,
-    userUnfollow: Function,
-    setCurrentPage: Function,
-    setCurrentUserFollower: Function,
-    followingInProgress: [number]
-}
+import {IUsers} from "../../interfaces";
 
 const Users: React.FC<IUsers> = props => {
     const {
-        users, isLoading,
-        pageSize, setCurrentUserFollower,
-        totalUsersCount,
-        currentPage, setUsers,
-        userFollow, userUnfollow,
+        users, isLoading, pageSize,
+        setCurrentUserFollower, totalUsersCount, currentPage,
+        setUsers, userFollow, userUnfollow,
         setCurrentPage, followingInProgress
     } = props;
     let pagesCount: number = Math.ceil(totalUsersCount / pageSize);

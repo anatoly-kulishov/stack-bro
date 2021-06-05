@@ -1,8 +1,12 @@
 import {ADD_POST, SET_USER_PROFILE} from "../types";
 import profileAPI from "../../api/profileAPI";
 
+/**
+ * Returns user profile information
+ * @param userId
+ */
 export function setProfile(userId: number) {
-    return (dispatch: any) => {
+    return (dispatch: Function) => {
         profileAPI.getProfile(userId)
             .then(data => {
                 dispatch({
@@ -14,15 +18,15 @@ export function setProfile(userId: number) {
     }
 }
 
+/**
+ * Add new post
+ * @param post
+ */
 export function addPost(post: object) {
-    return (dispatch: any) => {
-        try {
-            dispatch({
-                type: ADD_POST,
-                payload: post
-            })
-        } catch (e) {
-            console.error(e)
-        }
+    return (dispatch: Function) => {
+        dispatch({
+            type: ADD_POST,
+            payload: post
+        })
     }
 }

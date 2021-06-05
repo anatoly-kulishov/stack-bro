@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {appRoutes} from "../routes";
-import NoMatch from "../../components/NoMatch/index";
+import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 

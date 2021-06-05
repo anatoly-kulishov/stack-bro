@@ -1,7 +1,7 @@
 import {DISABLE_BUTTONS, ENABLE_BUTTONS, HIDE_LOADER, SHOW_LOADER,} from "../types";
 
 const initialState = {
-    loading: true,
+    isLoading: true,
     disable: false
 }
 
@@ -10,12 +10,12 @@ const appReducer = (state = initialState, action: any) => {
         case SHOW_LOADER:
             return {
                 ...state,
-                loading: true
+                isLoading: true
             }
         case HIDE_LOADER:
             return {
                 ...state,
-                loading: false
+                isLoading: false
             }
         case ENABLE_BUTTONS:
             return {

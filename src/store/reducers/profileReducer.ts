@@ -1,9 +1,9 @@
 import {ADD_POST, SET_USER_PROFILE} from "../types";
 
 const initialState = {
-    profile: null,
+    isLoading: true,
     posts: [],
-    isLoading: true
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action: any) => {

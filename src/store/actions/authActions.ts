@@ -2,6 +2,10 @@ import Cookies from 'js-cookie';
 import authAPI from "../../api/authAPI";
 import {AUTH_ME, LOG_OUT, SIGN_IN} from "../types";
 
+/**
+ * Login to profile
+ * @param profile
+ */
 export function signIn(profile: object) {
     return (dispatch: Function) => {
         authAPI.postSignIn(profile)
@@ -17,6 +21,9 @@ export function signIn(profile: object) {
     }
 }
 
+/**
+ * Is current user authorized
+ */
 export function authMe() {
     return (dispatch: Function) => {
         authAPI.getAuthMe()
@@ -33,6 +40,9 @@ export function authMe() {
     }
 }
 
+/**
+ * Exit profile
+ */
 export function logOut() {
     return (dispatch: Function) => {
         Cookies.remove('token');

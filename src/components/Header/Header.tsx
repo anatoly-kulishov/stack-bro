@@ -3,13 +3,10 @@ import styles from "./Header.module.scss";
 import MainCover from "./MainCover";
 import Avatar from "./Avatar";
 import User from "./User";
+import {IHeader} from "../../interfaces";
 
-type IHeader = {
-    authMe: Function,
-    login: string
-}
-
-const Header: React.FC<IHeader> = ({authMe, login}) => {
+const Header: React.FC<IHeader> = props => {
+    const {authMe, login, logOut} = props;
 
     useEffect(() => {
         authMe()
@@ -20,7 +17,7 @@ const Header: React.FC<IHeader> = ({authMe, login}) => {
             <MainCover/>
             <div className={`${styles.row} container`}>
                 <Avatar/>
-                <User login={login}/>
+                <User login={login} logOut={logOut}/>
             </div>
         </div>
     );

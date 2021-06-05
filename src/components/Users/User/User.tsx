@@ -2,28 +2,10 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
 import userPhoto from "../../../assets/img/no-avatar.svg";
-
-type IUser = {
-    user: {
-        id: number,
-        name: string,
-        photos: { small: string, large: string },
-        status: string,
-        followed: boolean
-    },
-    userFollow: Function,
-    userUnfollow: Function,
-    setCurrentUserFollower: Function,
-    followingInProgress: [number]
-}
+import {IUser} from "../../../interfaces";
 
 const User: React.FC<IUser> = props => {
     const {user, userFollow, userUnfollow, followingInProgress} = props;
-
-    // props ==> setCurrentUserFollower
-    // useEffect(() => {
-    //     setCurrentUserFollower(user.id)
-    // }, [user, setCurrentUserFollower])
 
     return (
         <li key={user.id} className={styles.user}>
