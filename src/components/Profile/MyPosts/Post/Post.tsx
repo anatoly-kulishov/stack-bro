@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Post.module.scss';
-import avatar from '../../../../assets/img/no-avatar.svg';
+import avatar from '../../../../assets/images/no-avatar.svg';
 import {IPost} from "../../../../interfaces";
 
 const Post: React.FC<IPost> = props => {

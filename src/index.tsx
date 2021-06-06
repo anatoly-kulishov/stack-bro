@@ -4,8 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from "react-router-dom";
 import store from "./store";
 import App from "./components/App";
-import "./assets/css/normalize.css";
-import "./assets/css/bootstrap-grid.min.css";
+import 'antd/dist/antd.css';
 
 const app = (
     <StrictMode>

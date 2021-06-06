@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
-import userPhoto from "../../../assets/img/no-avatar.svg";
+import userPhoto from "../../../assets/images/no-avatar.svg";
 import {IUser} from "../../../interfaces";
 
 const User: React.FC<IUser> = props => {

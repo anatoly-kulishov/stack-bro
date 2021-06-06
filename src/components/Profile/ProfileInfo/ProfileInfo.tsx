@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProfileInfo.module.scss';
 import CopyToClipboard from "../../CopyToClipboard";
 import Spinner from "../../Spinner/Spinner";
-import noAvatar from "../../../assets/img/no-avatar.svg"
+import noAvatar from "../../../assets/images/no-avatar.svg"
 import {IProfileInfo} from "../../../interfaces";
 
 const ProfileInfo: React.FC<IProfileInfo> = props => {

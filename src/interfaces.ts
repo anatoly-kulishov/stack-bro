@@ -1,3 +1,5 @@
+import {setProfile} from "./store/actions/profileActions";
+
 export interface ICopyToClipboard {
     children: string
 }
@@ -93,4 +95,12 @@ export interface IUser {
     userUnfollow: Function,
     setCurrentUserFollower: Function,
     followingInProgress: [number]
+}
+
+export interface ISideBar {
+    profile: any
+}
+
+export interface IAppNavigation {
+    setProfile: any
 }
