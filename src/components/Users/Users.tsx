@@ -41,6 +41,7 @@ const Users: React.FC<IUsers> = props => {
                               setCurrentUserFollower={setCurrentUserFollower}
                               userFollow={userFollow}
                               userUnfollow={userUnfollow}
+                              isLoading={isLoading}
                               followingInProgress={followingInProgress}/>
                     ))
                 }

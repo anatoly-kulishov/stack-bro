@@ -94,6 +94,7 @@ export interface IUser {
     userFollow: Function,
     userUnfollow: Function,
     setCurrentUserFollower: Function,
+    isLoading: boolean,
     followingInProgress: [number]
 }
 

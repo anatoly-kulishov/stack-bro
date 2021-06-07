@@ -10,7 +10,7 @@ const initialState = {
     isLoading: true,
     followingInProgress: [],
     users: [],
-    pageSize: 10,
+    pageSize: 12,
     totalUsersCount: 0,
     currentPage: 1
 }
