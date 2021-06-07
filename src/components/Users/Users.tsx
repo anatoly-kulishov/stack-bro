@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import styles from './Users.module.scss';
 import Spinner from "../Spinner/Spinner";
 import User from "./User";
+// import Pagination from "../Pagination";
 import {IUsers} from "../../interfaces";
+import {Pagination} from "antd";
 
 const Users: React.FC<IUsers> = props => {
     const {
@@ -43,11 +45,10 @@ const Users: React.FC<IUsers> = props => {
                     ))
                 }
             </ul>
-            <div className={styles.paginator}>
-                {pages.map((page: number) => (
-                    <span key={page} onClick={() => onPageChanged(page)}
-                          className={(currentPage === page) ? styles.activePage : ''}>{page}</span>
-                ))}
+            <div style={{marginTop: 20}}>
+                <Pagination defaultCurrent={currentPage}
+                            total={pages.length}
+                            onChange={onPageChanged}/>
             </div>
         </section>
     );

@@ -160,6 +160,18 @@ textarea {
         padding: 8px 16px;
     }
 
+    &--go-back {
+        margin: 5px 0 15px;
+        padding: 0;
+        font-size: 14px;
+        border: none;
+        background-color: transparent;
+
+        span {
+            margin-left: 3px;
+        }
+    }
+
     &--green {
         color: $x-color-white;
         border-color: $x-color-green;
@@ -216,22 +228,19 @@ textarea {
 .app .logo {
     display: flex;
     align-items: center;
-    margin: 16px;
+    padding: 12px 10px;
+    font-size: 13px;
+    transition: .1s ease;
 
-    & > h1 {
-        margin: 0;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 1.4;
-        color: #20b858;
-        transition: all .15s ease-in-out;
+    b {
+        margin-left: 6px;
     }
 }
 
-.ant-layout-sider-collapsed .logo h1 {
-    font-size: 12px;
+.site-layout-background {
+    background-color: #fff;
 }
 
-.site-layout-background {
-    background-color: #fff !important;
+.ant-layout-sider-collapsed .logo {
+    font-size: 0;
 }

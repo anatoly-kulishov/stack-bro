@@ -1,6 +1,7 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
-import {Layout, Menu} from "antd";
+import {Link, NavLink} from "react-router-dom";
+import {Avatar, Layout, Menu} from "antd";
+
 import {
     MessageOutlined,
     TeamOutlined,
@@ -22,9 +23,7 @@ const SideBar: React.FC<ISideBar> = props => {
             <div className="logo">
                 {profile && (
                     <>
-                        <img className={styles.avatar}
-                             src={profile.photos.large ? profile.photos.large : noAvatar}
-                             alt=""/>
+                        <Avatar size={50} src={profile.photos.large && profile.photos.large} icon={<UserOutlined/>}/>
                         <b style={{color: "#fff", letterSpacing: '-.7px'}}>{profile.fullName}</b>
                     </>
                 )}

@@ -1,21 +1,23 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import styles from "./Avatar.module.scss";
+import {Avatar} from 'antd';
+import {UserOutlined} from '@ant-design/icons';
+import styles from "./Ava.module.scss";
 import avatar from '../../../assets/images/no-avatar.svg'
 
-const Avatar: React.FC = () => {
+const Ava: React.FC = () => {
     return (
         <>
             <div/>
             <div className={styles.avatar}>
                 <Link to="/">
-                    <img className={styles.image}
-                         src={avatar}
-                         alt=""/>
+                    {/*<img className={styles.image}*/}
+                    {/*     src={avatar}*/}
+                    {/*     alt=""/>*/}
                 </Link>
             </div>
         </>
     );
 }
 
-export default Avatar;
+export default Ava;

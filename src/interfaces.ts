@@ -104,3 +104,14 @@ export interface ISideBar {
 export interface IAppNavigation {
     setProfile: any
 }
+
+export interface IGoBack {
+    title?: string,
+    history: any
+}
+
+export interface IPagination {
+    pages: any,
+    onPageChanged: Function,
+    currentPage: number
+}

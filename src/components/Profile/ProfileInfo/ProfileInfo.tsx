@@ -4,6 +4,7 @@ import CopyToClipboard from "../../CopyToClipboard";
 import Spinner from "../../Spinner/Spinner";
 import noAvatar from "../../../assets/images/no-avatar.svg"
 import {IProfileInfo} from "../../../interfaces";
+import GoBack from "../../GoBack";
 
 const ProfileInfo: React.FC<IProfileInfo> = props => {
     const {profile, isLoading, history} = props;
@@ -14,7 +15,7 @@ const ProfileInfo: React.FC<IProfileInfo> = props => {
 
     return (
         <div className={styles.descriptionBlock}>
-            <button onClick={() => history.goBack()} className="btn btn--green mb-3">Go Back</button>
+            <GoBack history={history}/>
             <div className="d-flex align-items-center">
                 <img className={styles.avatar}
                      src={profile.photos.large ? profile.photos.large : noAvatar}
