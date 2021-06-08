@@ -18,7 +18,11 @@ const CopyToClipboard: React.FC<ICopyToClipboard> = props => {
             <span className={styles.copyButton}
                   style={{backgroundImage: 'url(' + copyIcon + ')'}}
                   onClick={() => copyToClipboard(copySuccess)}/>
-            <div className={styles.textBox}>{children}</div>
+            <div className={styles.textBox}>
+                {children
+                    ? children
+                    : <span className={styles.emptyBox}>No Data</span>}
+            </div>
         </div>
     )
 }

@@ -12,7 +12,7 @@ const ProfileInfo: React.FC<IProfileInfo> = props => {
     const {profile, isLoading, history} = props;
     const {Meta} = Card;
 
-    console.log(profile)
+    console.log(profile?.lookingForAJobDescription)
 
     if (isLoading) {
         return <Spinner/>
