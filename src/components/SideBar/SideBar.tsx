@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {Avatar, Layout, Menu} from "antd";
-
 import {
     MessageOutlined,
     TeamOutlined,
@@ -10,8 +9,6 @@ import {
     AudioOutlined,
     SettingOutlined
 } from '@ant-design/icons';
-import styles from "../Profile/ProfileInfo/ProfileInfo.module.scss";
-import noAvatar from "../../assets/images/no-avatar.svg";
 import {ISideBar} from "../../interfaces";
 
 const SideBar: React.FC<ISideBar> = props => {

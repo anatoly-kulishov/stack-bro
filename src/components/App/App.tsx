@@ -5,7 +5,7 @@ import AppNavigation from "../../navigation/AppNavigation";
 import AuthNavigation from "../../navigation/AuthNavigation";
 
 const App: React.FC = () => {
-    const isAuth = useSelector((state: any) => state.auth.token)
+    const isAuth: boolean = useSelector((state: any) => state.auth.token)
 
     return (
         <div className="app">

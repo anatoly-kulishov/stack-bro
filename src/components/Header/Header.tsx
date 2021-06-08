@@ -7,7 +7,8 @@ import {IHeader} from "../../interfaces";
 import {Layout} from "antd";
 
 const Header: React.FC<IHeader> = props => {
-    const {authMe, login, logOut} = props;
+    const {authMe} = props;
+    // login, logOut
     const {Header} = Layout;
 
 

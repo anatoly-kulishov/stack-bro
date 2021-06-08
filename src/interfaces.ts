@@ -1,5 +1,3 @@
-import {setProfile} from "./store/actions/profileActions";
-
 export interface ICopyToClipboard {
     children: string
 }

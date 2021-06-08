@@ -7,7 +7,7 @@ import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
 
 const User: React.FC<IUser> = props => {
-    const {user, userFollow, userUnfollow, followingInProgress, isLoading} = props;
+    const {user, userFollow, userUnfollow, isLoading} = props;
     const {Meta} = Card;
 
     // disabled={followingInProgress.some((id: number) => id === user.id)}

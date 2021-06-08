@@ -23,14 +23,13 @@ const Users: React.FC<IUsers> = props => {
         setUsers(currentPage, pageSize)
     }, [setUsers, currentPage, pageSize])
 
-    if (isLoading) {
-        return <Spinner/>
-    }
-
     const onPageChanged = (p: any) => {
         setCurrentPage(p);
     }
 
+    if (isLoading) {
+        return <Spinner/>
+    }
     return (
         <section className={styles.section}>
             <h3 className={styles.title}>Users</h3>
