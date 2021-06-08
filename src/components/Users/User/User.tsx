@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
 import {IUser} from "../../../interfaces";
-
 import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
 

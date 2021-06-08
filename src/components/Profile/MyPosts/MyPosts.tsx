@@ -15,7 +15,7 @@ const messagesSchema = Yup.object().shape({
 
 const MyPosts: React.FC<IMyPosts> = props => {
     const {posts, onAddPost} = props;
-    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likes={p.likeCount}/>);
+    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likeCount}/>);
 
     return (
         <div className={styles.myPosts}>

@@ -58,7 +58,7 @@ export interface IMyPosts {
 
 export interface IPost {
     message: string,
-    likes: number
+    likesCount: number
 }
 
 export interface IUsers {
