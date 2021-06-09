@@ -1,5 +1,7 @@
 export interface ICopyToClipboard {
-    children: string
+    children: string,
+    customStyles?: any,
+    onDoubleClickHandler?: any
 }
 
 export interface IMessages {
@@ -24,7 +26,6 @@ export interface IHeader {
 }
 
 export interface IHeaderUser {
-    login: string,
     logOut: Function
 }
 
@@ -109,8 +110,6 @@ export interface IGoBack {
     history: any
 }
 
-export interface IPagination {
-    pages: any,
-    onPageChanged: Function,
-    currentPage: number
+export interface IProfileStatus {
+    status: string
 }

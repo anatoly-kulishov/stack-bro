@@ -21,20 +21,27 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
             <SideBar profile={{}}/>
             <Layout className="site-layout">
                 <Header/>
-                <Content style={{margin: '16px'}}>
-                    <Switch>
-                        {appRoutes.map((route: any, index: number) => (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                children={route.component}
-                            />
-                        ))}
-                        <Route path="*">
-                            <NoMatch/>
-                        </Route>
-                    </Switch>
+                <Content className="container-fluid" style={{margin: '16px 0'}}>
+                    <div className="row">
+                        <div className="col-12 col-lg-9">
+                            <Switch>
+                                {appRoutes.map((route: any, index: number) => (
+                                    <Route
+                                        key={index}
+                                        path={route.path}
+                                        exact={route.exact}
+                                        children={route.component}
+                                    />
+                                ))}
+                                <Route path="*">
+                                    <NoMatch/>
+                                </Route>
+                            </Switch>
+                        </div>
+                        <div className="col-12 col-lg-3">
+                            Soon
+                        </div>
+                    </div>
                 </Content>
                 <Footer/>
             </Layout>

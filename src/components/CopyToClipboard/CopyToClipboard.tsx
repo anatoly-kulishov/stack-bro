@@ -4,7 +4,7 @@ import copyIcon from "../../assets/images/copy-icon.svg";
 import {ICopyToClipboard} from "../../interfaces";
 
 const CopyToClipboard: React.FC<ICopyToClipboard> = props => {
-    const {children = ''} = props;
+    const {onDoubleClickHandler, customStyles, children = ''} = props;
     const [copySuccess] = useState(children);
 
     const copyToClipboard = (text: string) => {
@@ -13,12 +13,18 @@ const CopyToClipboard: React.FC<ICopyToClipboard> = props => {
         })
     }
 
+    const doubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+        onDoubleClickHandler()
+        event.preventDefault();
+    }
+
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${customStyles?.statusBar}`}
+             onDoubleClick={(e) => onDoubleClickHandler && doubleClickHandler(e)}>
             <span className={styles.copyButton}
                   style={{backgroundImage: 'url(' + copyIcon + ')'}}
                   onClick={() => copyToClipboard(copySuccess)}/>
-            <div className={styles.textBox}>
+            <div className={`${styles.textBox} ${customStyles?.statusTextBox}`}>
                 {children
                     ? children
                     : <span className={styles.emptyBox}>No Data</span>}
