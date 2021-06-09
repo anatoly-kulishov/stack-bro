@@ -8,8 +8,6 @@ import {IProfileInfo} from "../../../interfaces";
 const ProfileInfo: React.FC<IProfileInfo> = props => {
     const {profile, isLoading, history} = props;
 
-    console.log(profile)
-
     if (isLoading) {
         return <Spinner/>
     }
