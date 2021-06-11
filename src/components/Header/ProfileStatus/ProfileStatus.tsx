@@ -1,11 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import {IProfileStatus} from "../../../interfaces";
 import CopyToClipboard from "../../CopyToClipboard";
 
 const ProfileStatus: React.FC<IProfileStatus> = props => {
+    const {profile, getStatus, updateStatus, status} = props;
+    const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
-    const [status, setStatus] = useState<string>("Hello World!");
+
+    const updateStatusHandler = () => {
+        setEditMode(!editMode)
+        updateStatus(currentStatus)
+    }
+
+    useEffect(() => {
+        getStatus(profile?.userId || 17495)
+    }, [getStatus, profile])
 
     return (
         <div className={styles.wrapper}>
@@ -18,9 +28,9 @@ const ProfileStatus: React.FC<IProfileStatus> = props => {
                 <div>
                     <input type="text"
                            className={`${styles.statusInput} form-control`}
-                           value={status}
-                           onChange={(e) => setStatus(e.target.value)}
-                           onBlur={() => setEditMode(!editMode)}
+                           value={currentStatus}
+                           onChange={(e) => setCurrentStatus(e.target.value)}
+                           onBlur={() => updateStatusHandler()}
                            autoFocus
                            placeholder="Your Status"
                     />

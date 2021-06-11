@@ -1,9 +1,10 @@
-import {ADD_POST, SET_USER_PROFILE} from "../types";
+import {ADD_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
 
 const initialState = {
     isLoading: true,
     posts: [],
     profile: null,
+    status: ''
 }
 
 const profileReducer = (state = initialState, action: any) => {
@@ -13,6 +14,11 @@ const profileReducer = (state = initialState, action: any) => {
                 ...state,
                 profile: action.profile,
                 isLoading: false
+            }
+        case SET_PROFILE_STATUS:
+            return {
+                ...state,
+                status: action.status
             }
         case ADD_POST:
             return {

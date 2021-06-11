@@ -14,6 +14,7 @@ export const AUTH_ME = 'AUTH/AUTH_ME';
 /******************** PROFILE ********************/
 /** Fetching **/
 export const SET_USER_PROFILE = 'PROFILE/SET_USER';
+export const SET_PROFILE_STATUS = 'PROFILE/SET_STATUS';
 
 /******************** USERS ********************/
 /** Fetching **/

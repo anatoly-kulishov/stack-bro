@@ -1,4 +1,4 @@
-import {ADD_POST, SET_USER_PROFILE} from "../types";
+import {ADD_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
 import profileAPI from "../../api/profileAPI";
 
 /**
@@ -7,14 +7,42 @@ import profileAPI from "../../api/profileAPI";
  */
 export function setProfile(userId: number) {
     return (dispatch: Function) => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch({
-                    type: SET_USER_PROFILE,
-                    profile: data
-                })
+        profileAPI.getProfile(userId).then(data => {
+            dispatch({
+                type: SET_USER_PROFILE,
+                profile: data
             })
-            .catch((e) => console.log(e));
+        }).catch((e) => console.error(e));
+    }
+}
+
+/**
+ * Returns text status of requested user
+ * @param userId
+ */
+export function getStatus(userId: number) {
+    return (dispatch: Function) => {
+        profileAPI.getStatus(userId).then(data => {
+            dispatch({
+                type: SET_PROFILE_STATUS,
+                status: data
+            })
+        }).catch((e) => console.error(e));
+    }
+}
+
+/**
+ * Update status for current authorized user
+ * @param status
+ */
+export function updateStatus(status: string) {
+    return (dispatch: Function) => {
+        profileAPI.updateStatus(status).then(data => {
+            dispatch({
+                type: SET_PROFILE_STATUS,
+                status: data
+            })
+        }).catch((e) => console.error(e));
     }
 }
 

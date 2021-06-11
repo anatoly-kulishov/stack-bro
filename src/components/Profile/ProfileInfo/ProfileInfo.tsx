@@ -12,8 +12,6 @@ const ProfileInfo: React.FC<IProfileInfo> = props => {
         return <Spinner/>
     }
 
-    console.log()
-
     return (
         <div className={styles.descriptionBlock}>
             {(match.path !== '/' && <GoBack history={history}/>)}

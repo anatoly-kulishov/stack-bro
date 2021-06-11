@@ -1,3 +1,3 @@
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatus from "./ProfileStatusContainer";
 
 export default ProfileStatus;

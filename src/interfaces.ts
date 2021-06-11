@@ -1,3 +1,5 @@
+import {getStatus} from "./store/actions/profileActions";
+
 export interface ICopyToClipboard {
     children: string,
     customStyles?: any,
@@ -20,9 +22,7 @@ export interface IMessageInput {
 }
 
 export interface IHeader {
-    authMe: Function,
-    login: string,
-    logOut: Function
+    logOut: Function,
 }
 
 export interface IHeaderUser {
@@ -103,7 +103,7 @@ export interface INavBar {
 }
 
 export interface IAppNavigation {
-    setProfile: any
+    authMe: Function
 }
 
 export interface IGoBack {
@@ -112,5 +112,8 @@ export interface IGoBack {
 }
 
 export interface IProfileStatus {
-    status: string
+    getStatus: Function,
+    updateStatus: Function,
+    profile: any,
+    status: string,
 }

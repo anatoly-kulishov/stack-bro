@@ -8,7 +8,7 @@ import {IPost} from "../../../../interfaces";
 
 
 const Post: React.FC<IPost> = props => {
-    const {message, likesCount} = props;
+    const {message} = props;
 
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);

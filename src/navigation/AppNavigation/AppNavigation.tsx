@@ -5,17 +5,17 @@ import {Layout} from 'antd';
 import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/Footer";
-import {IAppNavigation} from "../../interfaces";
 import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
+import {IAppNavigation} from "../../interfaces";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
-    const {setProfile} = props;
+    const {authMe} = props;
     const {Content} = Layout;
 
     useEffect(() => {
-        setProfile(17495)
-    }, [setProfile])
+        authMe()
+    }, [authMe])
 
     return (
         <Layout style={{minHeight: '100vh'}}>
