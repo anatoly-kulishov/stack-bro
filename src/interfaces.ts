@@ -45,7 +45,8 @@ export interface IProfile {
 export interface IProfileInfo {
     profile: any,
     isLoading: boolean,
-    history: any
+    history: any,
+    match: any
 }
 
 export interface IMyPosts {
@@ -97,7 +98,7 @@ export interface IUser {
     followingInProgress: [number]
 }
 
-export interface ISideBar {
+export interface INavBar {
     profile: any
 }
 

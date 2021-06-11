@@ -6,15 +6,17 @@ import GoBack from "../../GoBack";
 import {IProfileInfo} from "../../../interfaces";
 
 const ProfileInfo: React.FC<IProfileInfo> = props => {
-    const {profile, isLoading, history} = props;
+    const {profile, isLoading, history, match} = props;
 
     if (isLoading) {
         return <Spinner/>
     }
 
+    console.log()
+
     return (
         <div className={styles.descriptionBlock}>
-            <GoBack history={history}/>
+            {(match.path !== '/' && <GoBack history={history}/>)}
             <div className="mt-3">
                 <span className={styles.status}>
 

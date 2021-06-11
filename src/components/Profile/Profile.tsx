@@ -13,7 +13,7 @@ const Profile: React.FC<IProfile> = props => {
 
     return (
         <div>
-            <ProfileInfo profile={profile} history={history} isLoading={isLoading}/>
+            <ProfileInfo profile={profile} history={history} isLoading={isLoading} match={match}/>
             <MyPostsContainer/>
         </div>
     );

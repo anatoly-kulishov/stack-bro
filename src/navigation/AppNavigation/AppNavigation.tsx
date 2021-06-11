@@ -6,6 +6,7 @@ import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/Footer";
 import {IAppNavigation} from "../../interfaces";
+import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
@@ -18,7 +19,7 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
 
     return (
         <Layout style={{minHeight: '100vh'}}>
-            <SideBar profile={{}}/>
+            <NavBar profile={{}}/>
             <Layout className="site-layout">
                 <Header/>
                 <Content className="container-fluid" style={{margin: '16px 0'}}>
@@ -38,8 +39,8 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
                                 </Route>
                             </Switch>
                         </div>
-                        <div className="col-12 col-lg-3">
-                            Soon
+                        <div className="col-12 col-lg-3 pr-4 pl-0">
+                            <SideBar/>
                         </div>
                     </div>
                 </Content>
