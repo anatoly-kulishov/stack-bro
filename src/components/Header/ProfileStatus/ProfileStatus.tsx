@@ -15,7 +15,7 @@ const ProfileStatus: React.FC<IProfileStatus> = props => {
 
     useEffect(() => {
         getStatus(profile?.userId || 17495)
-    }, [getStatus, profile])
+    }, [getStatus, status])
 
     return (
         <div className={styles.wrapper}>

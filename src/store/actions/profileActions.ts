@@ -38,10 +38,13 @@ export function getStatus(userId: number) {
 export function updateStatus(status: string) {
     return (dispatch: Function) => {
         profileAPI.updateStatus(status).then(data => {
-            dispatch({
-                type: SET_PROFILE_STATUS,
-                status: data
-            })
+            console.log(data)
+            if (data.resultCode === 0) {
+                dispatch({
+                    type: SET_PROFILE_STATUS,
+                    status
+                })
+            }
         }).catch((e) => console.error(e));
     }
 }
