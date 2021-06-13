@@ -14,7 +14,7 @@ const ProfileStatus: React.FC<IProfileStatus> = props => {
     }
 
     useEffect(() => {
-        getStatus(profile?.userId || 17495)
+        getStatus(profile?.userId || 17494)
     }, [getStatus, status])
 
     return (

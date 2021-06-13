@@ -8,7 +8,7 @@ const Profile: React.FC<IProfile> = props => {
 
     useEffect(() => {
         let userId = match.params.userId;
-        setProfile(userId ? userId : 17495)
+        setProfile(userId ? userId : 17494)
     }, [setProfile, match])
 
     return (

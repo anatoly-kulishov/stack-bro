@@ -10,5 +10,5 @@ export const rootReducer = combineReducers({
     auth: authReducer,
     users: usersReducer,
     dialogs: dialogsReducer,
-    profile: profileReducer
+    profile: profileReducer,
 })

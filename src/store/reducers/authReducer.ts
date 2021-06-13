@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 
 const initialState = {
     isLoading: true,
+    isDisabled: false,
     isAuth: false,
     userId: null,
     email: null,
@@ -16,7 +17,8 @@ const authReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 token: Cookies.get('token') || null,
-                isLoading: true
+                isLoading: true,
+                isDisabled: true // Todo
             }
         case LOG_OUT:
             return {

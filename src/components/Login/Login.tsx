@@ -1,49 +1,15 @@
 import React from 'react';
 import styles from './Login.module.scss';
-import {NavLink} from "react-router-dom";
+import LoginForm from "./LoginForm/LoginForm";
 import {ILogin} from "../../interfaces";
 
 const Login: React.FC<ILogin> = props => {
     const {signIn} = props;
 
-    const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const profile = {
-            email: form['email'].value,
-            password: form['password'].value
-        }
-        signIn(profile)
-    }
-
     return (
         <section className={styles.section}>
             <h1 className={styles.title}>StackBro</h1>
-            <form onSubmit={submitHandler} className={styles.form}>
-                <p className="form-row">
-                    <label htmlFor="email">Email</label>
-                    <input className={`form-control`}
-                           type="email"
-                           name="email"
-                           id="email"
-                           placeholder="Your email"/>
-                </p>
-                <p className="form-row">
-                    <label htmlFor="password">Password</label>
-                    <input className={`form-control`}
-                           type="password"
-                           name="password"
-                           id="password"
-                           placeholder="Your password"
-                           autoComplete="on"/>
-                </p>
-                <div>
-                    <button type="submit"
-                            className="btn btn--block btn--green mb-2">Sign in
-                    </button>
-                    <NavLink className="btn btn--block btn--light-green" to="/reset-password">Forgot password?</NavLink>
-                </div>
-            </form>
+            <LoginForm onSubmit={signIn}/>
         </section>
     );
 }

@@ -10,11 +10,12 @@ import SideBar from "../../components/SideBar";
 import {IAppNavigation} from "../../interfaces";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
-    const {authMe} = props;
+    const {authMe, setProfile} = props;
     const {Content} = Layout;
 
     useEffect(() => {
         authMe()
+        setProfile(17494)
     }, [authMe])
 
     return (
