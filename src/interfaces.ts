@@ -4,6 +4,20 @@ export interface ICopyToClipboard {
     onDoubleClickHandler?: any
 }
 
+export interface IMyAccount {
+    profile: {
+        fullName: string | null,
+        photos: {
+            small: string | null
+        }
+    },
+    logOut: Function,
+}
+
+export interface IMyAccountSubMenu {
+    logOut: Function,
+}
+
 export interface IMessages {
     messages: Array<object>
 }
@@ -17,14 +31,6 @@ export interface IMessageInput {
     message: string,
     setMessage: Function,
     onAddMessage: Function
-}
-
-export interface IHeader {
-    logOut: Function,
-}
-
-export interface IHeaderUser {
-    logOut: Function
 }
 
 export interface ILogin {

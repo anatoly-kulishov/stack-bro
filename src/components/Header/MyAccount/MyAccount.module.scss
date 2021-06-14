@@ -1,0 +1,16 @@
+@import "../../../variables";
+
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    font-weight: 500;
+}

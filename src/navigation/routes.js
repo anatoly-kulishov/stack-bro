@@ -6,6 +6,7 @@ import News from "../components/News";
 import Music from "../components/Music";
 import Settings from "../components/Settings";
 import Users from "../components/Users";
+import Help from "../components/Help";
 
 export const authRoutes = [
     {
@@ -50,5 +51,9 @@ export const appRoutes = [
     {
         path: "/settings",
         component: <Settings/>,
+    },
+    {
+        path: "/help",
+        component: <Help/>,
     },
 ];

@@ -1,34 +1,25 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {Avatar, Layout, Menu} from "antd";
+import {Layout, Menu} from "antd";
 import {
     MessageOutlined,
     TeamOutlined,
     UserOutlined,
     FileOutlined,
     AudioOutlined,
-    SettingOutlined
 } from '@ant-design/icons';
 import {INavBar} from "../../interfaces";
 
 const NavBar: React.FC<INavBar> = props => {
-    const {profile} = props;
+    const {} = props;
     const {Sider} = Layout;
 
     return (
-        <Sider collapsible>
-            <div className="logo">
-                {profile && (
-                    <>
-                        <Avatar size={50} src={profile?.photos.large && profile.photos.large} icon={<UserOutlined/>}/>
-                        <b style={{color: "#fff", letterSpacing: '-.7px'}}>{profile.fullName}</b>
-                    </>
-                )}
-            </div>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Sider collapsible width={150}>
+            <Menu defaultSelectedKeys={['1']} mode="inline">
                 <Menu.Item key="1" icon={<UserOutlined/>}>
                     <NavLink to="/">
-                        Profile
+                        My profile
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<MessageOutlined/>}>
@@ -49,11 +40,6 @@ const NavBar: React.FC<INavBar> = props => {
                 <Menu.Item key="5" icon={<AudioOutlined/>}>
                     <NavLink to="/music">
                         Music
-                    </NavLink>
-                </Menu.Item>
-                <Menu.Item key="6" icon={<SettingOutlined/>}>
-                    <NavLink to="/settings">
-                        Settings
                     </NavLink>
                 </Menu.Item>
             </Menu>

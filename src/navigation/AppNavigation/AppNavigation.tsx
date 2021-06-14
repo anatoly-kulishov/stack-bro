@@ -4,9 +4,7 @@ import {appRoutes} from "../routes";
 import {Layout} from 'antd';
 import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar";
-import SideBar from "../../components/SideBar";
 import {IAppNavigation} from "../../interfaces";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
@@ -19,33 +17,33 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
     }, [authMe])
 
     return (
-        <Layout style={{minHeight: '100vh'}}>
-            <NavBar profile={{}}/>
+        <Layout style={{minHeight: "150vh"}}>
+            <Header/>
             <Layout className="site-layout">
-                <Header/>
-                <Content className="container-fluid" style={{margin: '16px 0'}}>
-                    <div className="row">
-                        <div className="col-12 col-lg-9">
-                            <Switch>
-                                {appRoutes.map((route: any, index: number) => (
-                                    <Route
-                                        key={index}
-                                        path={route.path}
-                                        exact={route.exact}
-                                        children={route.component}
-                                    />
-                                ))}
-                                <Route path="*">
-                                    <NoMatch/>
-                                </Route>
-                            </Switch>
+                <div className="container">
+                    <div className="row mt-3">
+                        <div className="col-12 col-md-3 col-xl-2 pr-0">
+                            <NavBar profile={{}}/>
                         </div>
-                        <div className="col-12 col-lg-3 pr-4 pl-0">
-                            <SideBar/>
+                        <div className="col-12 col-md-9 col-xl-10">
+                            <Content>
+                                <Switch>
+                                    {appRoutes.map((route: any, index: number) => (
+                                        <Route
+                                            key={index}
+                                            path={route.path}
+                                            exact={route.exact}
+                                            children={route.component}
+                                        />
+                                    ))}
+                                    <Route path="*">
+                                        <NoMatch/>
+                                    </Route>
+                                </Switch>
+                            </Content>
                         </div>
                     </div>
-                </Content>
-                <Footer/>
+                </div>
             </Layout>
         </Layout>
     )

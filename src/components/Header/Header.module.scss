@@ -1,18 +1,18 @@
 @import "../../variables";
 
 .header {
-    height: auto !important;
-    background-color: #fff !important;
-}
-
-.row {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
+    width: 100%;
+    height: auto !important;
+    padding: 5px 0 !important;
 
+    line-height: inherit !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: $x-color-white;
+    background-color: $x-color-white !important;
 }
