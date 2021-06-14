@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
+import {Spin} from 'antd';
 import styles from './Users.module.scss';
-import Spinner from "../Spinner/Spinner";
 import User from "./User";
 // import Pagination from "../Pagination";
 import {IUsers} from "../../interfaces";
@@ -28,23 +28,27 @@ const Users: React.FC<IUsers> = props => {
     }
 
     if (isLoading) {
-        return <Spinner/>
+        return <Spin size="large"/>
     }
     return (
         <section className={styles.section}>
             <h3 className={styles.title}>Users</h3>
-            <ul className={styles.users}>
-                {
-                    users && users.map(user => (
-                        <User key={user.id} user={user}
-                              setCurrentUserFollower={setCurrentUserFollower}
-                              userFollow={userFollow}
-                              userUnfollow={userUnfollow}
-                              isLoading={isLoading}
-                              followingInProgress={followingInProgress}/>
-                    ))
-                }
-            </ul>
+            <div className={styles.users}>
+                <div className="row">
+                    {
+                        users && users.map(user => (
+                            <div key={user.id} className="col-12 col-lg-4">
+                                <User user={user}
+                                      setCurrentUserFollower={setCurrentUserFollower}
+                                      userFollow={userFollow}
+                                      userUnfollow={userUnfollow}
+                                      isLoading={isLoading}
+                                      followingInProgress={followingInProgress}/>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
             <div style={{marginTop: 20}}>
                 <Pagination defaultCurrent={currentPage}
                             total={pages.length}

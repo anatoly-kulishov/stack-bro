@@ -17,7 +17,7 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
     }, [authMe])
 
     return (
-        <Layout style={{minHeight: "150vh"}}>
+        <Layout style={{minHeight: "100vh"}}>
             <Header/>
             <Layout className="site-layout">
                 <div className="container">

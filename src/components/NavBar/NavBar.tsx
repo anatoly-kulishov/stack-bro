@@ -22,19 +22,19 @@ const NavBar: React.FC<INavBar> = props => {
                         My profile
                     </NavLink>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<MessageOutlined/>}>
-                    <NavLink to="/dialogs">
-                        Dialogs
-                    </NavLink>
-                </Menu.Item>
-                <Menu.Item key="3" icon={<TeamOutlined/>}>
-                    <NavLink to="/users">
-                        Users
-                    </NavLink>
-                </Menu.Item>
-                <Menu.Item key="4" icon={<FileOutlined/>}>
+                <Menu.Item key="2" icon={<FileOutlined/>}>
                     <NavLink to="/news">
                         News
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="3" icon={<MessageOutlined/>}>
+                    <NavLink to="/dialogs">
+                        Messenger
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<TeamOutlined/>}>
+                    <NavLink to="/users">
+                        Friends
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="5" icon={<AudioOutlined/>}>

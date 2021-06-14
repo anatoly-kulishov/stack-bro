@@ -20,8 +20,7 @@ const User: React.FC<IUser> = props => {
         )
 
     return (
-        <li key={user.id} className={styles.user}>
-
+        <div key={user.id} className={styles.user}>
             <Card
                 style={{width: 300, marginTop: 16}}
                 actions={[
@@ -31,7 +30,6 @@ const User: React.FC<IUser> = props => {
                     followAction
                 ]}>
                 <Skeleton loading={isLoading} avatar active>
-
                     <Meta
                         avatar={
                             <Avatar src={user.photos.small && user.photos.small} icon={<UserOutlined/>}/>
@@ -41,12 +39,7 @@ const User: React.FC<IUser> = props => {
                     />
                 </Skeleton>
             </Card>
-            {/*<button*/}
-            {/*    className="btn btn--small btn--light-green ml-3"*/}
-            {/*    onClick={() => (!user.followed) ? userFollow(user.id) : userUnfollow(user.id)}>*/}
-            {/*    {user.followed ? 'Unfollow' : 'Follow'}*/}
-            {/*</button>*/}
-        </li>
+        </div>
     );
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
+import {Input} from 'antd';
 import {Formik} from 'formik';
 import * as Yup from "yup";
-import {Alert} from 'antd';
+import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
 import {IMyPosts} from "../../../interfaces";
@@ -15,10 +16,11 @@ const messagesSchema = Yup.object().shape({
 
 const MyPosts: React.FC<IMyPosts> = props => {
     const {posts, onAddPost} = props;
+    const {TextArea} = Input;
     let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likeCount}/>);
 
     return (
-        <div className={styles.myPosts}>
+        <div className={`${styles.myPosts} default-box`}>
             <Formik
                 initialValues={{message: ''}}
                 validationSchema={messagesSchema}
@@ -38,19 +40,20 @@ const MyPosts: React.FC<IMyPosts> = props => {
                   }) => (
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.title}>My posts</div>
-                        <textarea
-                            className={`form-control ${styles.textarea}`}
-                            name="message"
-                            value={values.message}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        <div className={styles.row}>
-                            <button type="submit" className="btn btn--light-green" disabled={isSubmitting}>
-                                Add Post
-                            </button>
-                            {errors.message && touched.message &&
-                            <Alert style={{marginLeft: 15}} message={errors.message} type="warning"/>}
+                        <div className="row">
+                            <div className="col-lg-4">
+                                <TextArea name="message" rows={2}
+                                          value={values.message}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}/>
+                            </div>
+                            <div className="col-12">
+                                <div className={`${styles.row} mt-3`}>
+                                    <Button type="primary" htmlType="submit" disabled={isSubmitting}>Add Post</Button>
+                                    {errors.message && touched.message &&
+                                    <Alert style={{marginLeft: 15}} message={errors.message} type="warning"/>}
+                                </div>
+                            </div>
                         </div>
                     </form>
                 )}
