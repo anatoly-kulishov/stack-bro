@@ -3,7 +3,7 @@ import MyAccount from "./MyAccount";
 import {logOut} from "../../../store/actions/authActions";
 
 const mapStateToProps = (state: any) => ({
-    profile: state.profile.profile
+    myProfile: state.auth.myProfile
 })
 
 const MyAccountContainer = connect(mapStateToProps, {logOut})(MyAccount);

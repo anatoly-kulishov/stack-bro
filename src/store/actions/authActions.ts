@@ -28,10 +28,9 @@ export function authMe() {
     return (dispatch: Function) => {
         authAPI.getAuthMe().then(data => {
             if (data.resultCode === 0) {
-                const {id, email, login} = data.data;
                 dispatch({
                     type: AUTH_ME,
-                    data: {id, email, login}
+                    payload: data.data
                 })
             }
         }).catch((e) => console.log(e));

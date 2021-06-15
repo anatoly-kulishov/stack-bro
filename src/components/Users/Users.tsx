@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {Spin} from 'antd';
 import styles from './Users.module.scss';
 import User from "./User";
 // import Pagination from "../Pagination";
 import {IUsers} from "../../interfaces";
 import {Pagination} from "antd";
+import Spinner from "../Spinner/Spinner";
 
 const Users: React.FC<IUsers> = props => {
     const {
@@ -27,35 +27,37 @@ const Users: React.FC<IUsers> = props => {
         setCurrentPage(p);
     }
 
-    if (isLoading) {
-        return <Spin size="large"/>
-    }
     return (
-        <section className={styles.section}>
-            <h3 className={styles.title}>Users</h3>
-            <div className={styles.users}>
-                <div className="row">
-                    {
-                        users && users.map(user => (
-                            <div key={user.id} className="col-12 col-lg-4">
-                                <User user={user}
-                                      setCurrentUserFollower={setCurrentUserFollower}
-                                      userFollow={userFollow}
-                                      userUnfollow={userUnfollow}
-                                      isLoading={isLoading}
-                                      followingInProgress={followingInProgress}/>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-            <div style={{marginTop: 20}}>
-                <Pagination defaultCurrent={currentPage}
-                            total={pages.length}
-                            onChange={onPageChanged}/>
-            </div>
-        </section>
-    );
+        <div className={`${styles.descriptionBlock} default-box`}>
+            {isLoading && <Spinner/>}
+            {!isLoading && (
+                <section className={styles.section}>
+                    <h3 className={styles.title}>Users</h3>
+                    <div className={styles.users}>
+                        <div className="row">
+                            {
+                                users && users.map(user => (
+                                    <div key={user.id} className="col-12 col-lg-4">
+                                        <User user={user}
+                                              setCurrentUserFollower={setCurrentUserFollower}
+                                              userFollow={userFollow}
+                                              userUnfollow={userUnfollow}
+                                              isLoading={isLoading}
+                                              followingInProgress={followingInProgress}/>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div style={{marginTop: 20}}>
+                        <Pagination defaultCurrent={currentPage}
+                                    total={pages.length}
+                                    onChange={onPageChanged}/>
+                    </div>
+                </section>
+            )}
+        </div>
+    )
 }
 
 export default Users;

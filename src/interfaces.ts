@@ -5,7 +5,7 @@ export interface ICopyToClipboard {
 }
 
 export interface IMyAccount {
-    profile: {
+    myProfile: {
         fullName: string | null,
         photos: {
             small: string | null
@@ -107,7 +107,7 @@ export interface IUser {
 }
 
 export interface INavBar {
-    profile: any
+    profile?: any
 }
 
 export interface IAppNavigation {

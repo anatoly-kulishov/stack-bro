@@ -14,7 +14,7 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
     useEffect(() => {
         authMe()
         setProfile(17494)
-    }, [authMe])
+    }, [authMe, setProfile])
 
     return (
         <Layout style={{minHeight: "100vh"}}>
@@ -23,7 +23,7 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
                 <div className="container">
                     <div className="row mt-3">
                         <div className="col-12 col-md-3 col-xl-2 pr-0">
-                            <NavBar profile={{}}/>
+                            <NavBar/>
                         </div>
                         <div className="col-12 col-md-9 col-xl-10">
                             <Content>

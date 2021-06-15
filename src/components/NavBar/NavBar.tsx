@@ -10,8 +10,7 @@ import {
 } from '@ant-design/icons';
 import {INavBar} from "../../interfaces";
 
-const NavBar: React.FC<INavBar> = props => {
-    const {} = props;
+const NavBar: React.FC<INavBar> = () => {
     const {Sider} = Layout;
 
     return (
@@ -34,7 +33,7 @@ const NavBar: React.FC<INavBar> = props => {
                 </Menu.Item>
                 <Menu.Item key="4" icon={<TeamOutlined/>}>
                     <NavLink to="/users">
-                        Friends
+                        Users
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="5" icon={<AudioOutlined/>}>

@@ -3,7 +3,8 @@ import {ADD_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
 const initialState = {
     isLoading: true,
     posts: [],
-    profile: null,
+    myProfile: null,
+    selectedProfile: null,
     status: ''
 }
 

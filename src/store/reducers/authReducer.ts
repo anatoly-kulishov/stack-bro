@@ -6,8 +6,7 @@ const initialState = {
     isDisabled: false,
     isAuth: false,
     userId: null,
-    email: null,
-    login: null,
+    myProfile: null,
     token: Cookies.get('token') || null,
 }
 
@@ -28,7 +27,7 @@ const authReducer = (state = initialState, action: any) => {
         case AUTH_ME:
             return {
                 ...state,
-                ...action.data,
+                myProfile: action.payload,
                 isAuth: true
             }
         default:

@@ -3,8 +3,8 @@ import {Comment, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
 // import styles from './Post.module.scss';
-// import avatar from '../../../../assets/images/no-avatar.svg';
 import {IPost} from "../../../../interfaces";
+import {NavLink} from "react-router-dom";
 
 
 const Post: React.FC<IPost> = props => {
@@ -45,7 +45,7 @@ const Post: React.FC<IPost> = props => {
     return (
         <Comment
             actions={actions}
-            author={<a>Han Solo</a>}
+            author={<NavLink to="/">Han Solo</NavLink>}
             avatar={
                 <Avatar
                     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
