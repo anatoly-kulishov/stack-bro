@@ -6,7 +6,7 @@ const initialState = {
     isDisabled: false,
     isAuth: false,
     userId: null,
-    myProfile: null,
+    myProfile: [],
     token: Cookies.get('token') || null,
 }
 

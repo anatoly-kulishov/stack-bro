@@ -13,7 +13,7 @@ const MyAccount: React.FC<IMyAccount> = props => {
             <Dropdown overlay={<SubMenu logOut={logOut}/>}>
                 <Button style={{height: 40}}>
                     <div className={styles.inner}>
-                        <span className={`${styles.login} mr-2`}>{myProfile ? myProfile : 'Loading...'}</span>
+                        <span className={`${styles.login} mr-2`}>{!myProfile.lenght ? myProfile.login : 'Loading...'}</span>
                         <Avatar icon={<UserOutlined/>}/>
                         {/*src={myProfile}*/}
                     </div>

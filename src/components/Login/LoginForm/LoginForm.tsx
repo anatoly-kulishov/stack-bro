@@ -1,4 +1,6 @@
 import React from 'react';
+import {Button} from 'antd';
+import {LoginOutlined} from "@ant-design/icons";
 import {Formik, Field, Form, FormikHelpers} from 'formik';
 import styles from './LoginForm.module.scss';
 import {iForm} from "../../../interfaces";
@@ -48,10 +50,14 @@ const LoginForm: React.FC<iForm> = props => {
                         autoComplete="on"
                     />
                 </div>
-                <button
-                    className="btn btn--block btn--green mb-2"
-                    type="submit">Submit
-                </button>
+                <div>
+                    <Button htmlType="submit"
+                            icon={<LoginOutlined/>}
+                            size="large" ghost
+                            type="primary"
+                            block>Submit
+                    </Button>
+                </div>
             </Form>
         </Formik>
     );

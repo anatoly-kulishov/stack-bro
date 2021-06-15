@@ -22,10 +22,10 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
             <Layout className="site-layout">
                 <div className="container">
                     <div className="row mt-3">
-                        <div className="col-12 col-md-3 col-xl-2 pr-0">
+                        <div className="col-12 col-md-3 col-lg-2 pr-0">
                             <NavBar/>
                         </div>
-                        <div className="col-12 col-md-9 col-xl-10">
+                        <div className="col-12 col-md-9 col-xl-10 mb-5">
                             <Content>
                                 <Switch>
                                     {appRoutes.map((route: any, index: number) => (

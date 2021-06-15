@@ -27,6 +27,7 @@ export function signIn(profile: object) {
 export function authMe() {
     return (dispatch: Function) => {
         authAPI.getAuthMe().then(data => {
+            console.log(data)
             if (data.resultCode === 0) {
                 dispatch({
                     type: AUTH_ME,

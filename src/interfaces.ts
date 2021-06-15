@@ -5,12 +5,7 @@ export interface ICopyToClipboard {
 }
 
 export interface IMyAccount {
-    myProfile: {
-        fullName: string | null,
-        photos: {
-            small: string | null
-        }
-    },
+    myProfile?: any,
     logOut: Function,
 }
 

@@ -28,7 +28,7 @@ const Users: React.FC<IUsers> = props => {
     }
 
     return (
-        <div className={`${styles.descriptionBlock} default-box`}>
+        <div className={`default-box pl-3 pt-3 pb-3`}>
             {isLoading && <Spinner/>}
             {!isLoading && (
                 <section className={styles.section}>
