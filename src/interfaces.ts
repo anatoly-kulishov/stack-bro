@@ -1,3 +1,9 @@
+export interface IApp {
+    isAuth?: boolean | undefined,
+    isLoading?: boolean | undefined,
+    authMe: Function
+}
+
 export interface ICopyToClipboard {
     children: string,
     customStyles?: any,
@@ -29,15 +35,16 @@ export interface IMessageInput {
 }
 
 export interface ILogin {
-    signIn: Function
+    signIn: Function,
+    isValidAuth: boolean | undefined
 }
 
 export interface iForm {
-    onSubmit: Function
+    onSubmit: Function,
+    isValid: boolean | undefined
 }
 
 export interface IProfile {
-    setProfile: Function,
     profile: any,
     isLoading: boolean,
     match: any,
@@ -106,7 +113,7 @@ export interface INavBar {
 }
 
 export interface IAppNavigation {
-    authMe: Function,
+    isLoading?: boolean | undefined,
     setProfile: Function
 }
 

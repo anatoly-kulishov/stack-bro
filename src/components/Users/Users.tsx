@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
+import {Pagination} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 // import Pagination from "../Pagination";
 import {IUsers} from "../../interfaces";
-import {Pagination} from "antd";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../ui/Spinner";
 
 const Users: React.FC<IUsers> = props => {
     const {

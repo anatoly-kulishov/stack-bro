@@ -1,11 +1,15 @@
-import React, {} from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
 import "./App.scss";
 import AppNavigation from "../../navigation/AppNavigation";
 import AuthNavigation from "../../navigation/AuthNavigation";
+import {IApp} from "../../interfaces";
 
-const App: React.FC = () => {
-    const isAuth: boolean = useSelector((state: any) => state.auth.token)
+const App: React.FC<IApp> = props => {
+    const {isAuth, authMe} = props
+
+    useEffect(() => {
+        authMe()
+    }, [authMe])
 
     return (
         <div className="app">

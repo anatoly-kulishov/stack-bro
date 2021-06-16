@@ -1,26 +1,23 @@
 @import "../../variables";
 
-.section {
-    min-width: 500px;
-    padding: 80px;
-    border-radius: 4px;
+.loginBox {
+    min-width: 380px;
+    padding: 25px 15px;
+    border-radius: 8px;
     background: $x-color-white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
-.title {
-    margin: 0 0 40px;
-    font-size: $font_size_middle - 4px;
-    line-height: 1.21;
-    letter-spacing: -.74px;
+.subtitle {
+    margin: 0 auto 15px;
+    font-size: 18px;
     text-align: center;
     color: $palette-primary;
-    text-shadow: 1px 1px 2px $palette-secondary, 0 0 3px $palette-primary;
     user-select: none;
 }
 
 @media (max-width: 768px) {
-    .section {
+    .loginBox {
         max-width: 350px;
         min-width: auto;
         width: 100vw;

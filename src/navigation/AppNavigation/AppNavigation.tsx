@@ -8,13 +8,12 @@ import NavBar from "../../components/NavBar";
 import {IAppNavigation} from "../../interfaces";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
-    const {authMe, setProfile} = props;
+    const {setProfile} = props;
     const {Content} = Layout;
 
     useEffect(() => {
-        authMe()
         setProfile(17494)
-    }, [authMe, setProfile])
+    }, [setProfile])
 
     return (
         <Layout style={{minHeight: "100vh"}}>

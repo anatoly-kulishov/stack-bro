@@ -2,6 +2,10 @@ import {connect} from "react-redux";
 import Login from "./Login";
 import {signIn} from "../../store/actions/authActions";
 
-const UserContainer = connect(null, {signIn})(Login);
+const mapStateToProps = (state: any) => ({
+    isValidAuth: state.auth.isValid
+})
+
+const UserContainer = connect(mapStateToProps, {signIn})(Login);
 
 export default UserContainer;

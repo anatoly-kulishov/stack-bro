@@ -10,6 +10,7 @@ export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
 export const SIGN_IN = 'AUTH/SIGN_IN';
 export const LOG_OUT = 'AUTH/LOG_OUT';
 export const AUTH_ME = 'AUTH/AUTH_ME';
+export const AUTH_NOT_VALID = 'AUTH/NOT_VALID';
 
 /******************** PROFILE ********************/
 /** Fetching **/

@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
-import {setProfile} from "../../store/actions/profileActions";
 import {compose} from "redux";
 
 const mapStateToProps = (state: any) => ({
@@ -11,7 +10,7 @@ const mapStateToProps = (state: any) => ({
 
 const ProfileContainer = compose(
     withRouter,
-    connect(mapStateToProps, {setProfile})
+    connect(mapStateToProps, null)
 )(Profile);
 
 export default ProfileContainer;

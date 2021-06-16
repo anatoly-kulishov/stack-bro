@@ -1,20 +1,23 @@
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 import authAPI from "../../api/authAPI";
-import {AUTH_ME, LOG_OUT, SIGN_IN} from "../types";
+import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
 
 /**
- * Login to profile
+ * Authorize on the service
  * @param profile
  */
 export function signIn(profile: object) {
     return (dispatch: Function) => {
         authAPI.postSignIn(profile).then(data => {
             if (data.resultCode === 0) {
-                const access_token = data.token;
-                Cookies.set('token', access_token)
                 dispatch({
                     type: SIGN_IN,
-                    payload: access_token
+                    userId: data.data.userId
+                })
+                dispatch(authMe())
+            } else {
+                dispatch({
+                    type: AUTH_NOT_VALID
                 })
             }
         }).catch((e) => console.log(e));
@@ -33,17 +36,18 @@ export function authMe() {
                     type: AUTH_ME,
                     payload: data.data
                 })
+                Cookies.set('token', 'f37d2ed1-ea22-430c-8f01-d225540e907d')
             }
         }).catch((e) => console.log(e));
     }
 }
 
 /**
- * Exit profile
+ * Unfollow requested user
  */
 export function logOut() {
     return (dispatch: Function) => {
-        Cookies.remove('token');
+        authAPI.deleteLogOut().then(data => Cookies.remove('token'))
         dispatch({type: LOG_OUT})
     }
 }

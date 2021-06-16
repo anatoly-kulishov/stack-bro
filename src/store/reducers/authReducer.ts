@@ -1,13 +1,12 @@
-import {AUTH_ME, LOG_OUT, SIGN_IN} from "../types";
+import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
 import Cookies from 'js-cookie';
 
 const initialState = {
     isLoading: true,
-    isDisabled: false,
-    isAuth: false,
+    isValid: true,
+    isAuth: Cookies.get('token'),
     userId: null,
     myProfile: [],
-    token: Cookies.get('token') || null,
 }
 
 const authReducer = (state = initialState, action: any) => {
@@ -15,20 +14,29 @@ const authReducer = (state = initialState, action: any) => {
         case SIGN_IN:
             return {
                 ...state,
-                token: Cookies.get('token') || null,
-                isLoading: true,
-                isDisabled: true // Todo
+                isAuth: true,
+                isLoading: false,
+                isValid: true,
+                userId: action.userId
             }
         case LOG_OUT:
             return {
                 ...state,
-                token: Cookies.get('token') || null,
+                myProfile: [],
+                isAuth: false,
+                isLoading: false
             }
         case AUTH_ME:
             return {
                 ...state,
                 myProfile: action.payload,
-                isAuth: true
+                isAuth: true,
+                isLoading: false
+            }
+        case AUTH_NOT_VALID:
+            return {
+                ...state,
+                isValid: false
             }
         default:
             return state;
