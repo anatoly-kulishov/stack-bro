@@ -36,12 +36,14 @@ export interface IMessageInput {
 
 export interface ILogin {
     signIn: Function,
+    errorText: string | undefined,
     isValidAuth: boolean | undefined
 }
 
 export interface iForm {
     onSubmit: Function,
-    isValid: boolean | undefined
+    isValid: boolean | undefined,
+    errorText: string | undefined
 }
 
 export interface IProfile {

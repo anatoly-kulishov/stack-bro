@@ -5,8 +5,9 @@ import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
 /**
  * Authorize on the service
  * @param profile
+ * @param setSubmitting
  */
-export function signIn(profile: object) {
+export function signIn(profile: object, setSubmitting: Function) {
     return (dispatch: Function) => {
         authAPI.postSignIn(profile).then(data => {
             if (data.resultCode === 0) {
@@ -17,10 +18,15 @@ export function signIn(profile: object) {
                 dispatch(authMe())
             } else {
                 dispatch({
-                    type: AUTH_NOT_VALID
+                    type: AUTH_NOT_VALID,
+                    error: data.messages
                 })
             }
-        }).catch((e) => console.log(e));
+            setSubmitting(false)
+        }).catch((e) => {
+            console.log(e)
+            setSubmitting(false)
+        })
     }
 }
 
@@ -30,7 +36,7 @@ export function signIn(profile: object) {
 export function authMe() {
     return (dispatch: Function) => {
         authAPI.getAuthMe().then(data => {
-            console.log(data)
+            // console.log(data)
             if (data.resultCode === 0) {
                 dispatch({
                     type: AUTH_ME,
@@ -47,7 +53,7 @@ export function authMe() {
  */
 export function logOut() {
     return (dispatch: Function) => {
-        authAPI.deleteLogOut().then(data => Cookies.remove('token'))
+        authAPI.deleteLogOut().then(() => Cookies.remove('token'))
         dispatch({type: LOG_OUT})
     }
 }

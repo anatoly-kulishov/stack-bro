@@ -1,12 +1,16 @@
 import React from 'react';
-import styles from './Settings.module.scss';
+import {Field} from "formik";
+import {WarningTwoTone} from '@ant-design/icons';
+import styles from "./CustomField.module.scss"
 
-const CustomField: React.FC = () => {
+const CustomField: React.FC<any> = props => {
+    const {errormessage} = props;
     return (
-        <section className={styles.settings}>
-            <h3 className={styles.title}>Settings</h3>
-        </section>
-    );
+        <div className={styles.fieldBox}>
+            <Field {...props} />
+            {errormessage && <span title={errormessage} className={styles.icon}><WarningTwoTone twoToneColor="#dc3545" style={{fontSize: 20}} /></span>}
+        </div>
+    )
 }
 
 export default CustomField;

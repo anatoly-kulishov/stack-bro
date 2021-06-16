@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 const initialState = {
     isLoading: true,
     isValid: true,
+    error: null,
     isAuth: Cookies.get('token'),
     userId: null,
     myProfile: [],
@@ -36,7 +37,8 @@ const authReducer = (state = initialState, action: any) => {
         case AUTH_NOT_VALID:
             return {
                 ...state,
-                isValid: false
+                isValid: false,
+                error: action.error
             }
         default:
             return state;
