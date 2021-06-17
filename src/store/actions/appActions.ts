@@ -1,4 +1,5 @@
-import {DISABLE_BUTTONS, ENABLE_BUTTONS, HIDE_LOADER, SHOW_LOADER} from "../types";
+import {INITIALIZED_SUCCESS} from "../types";
+import {authMe} from "./authActions";
 
 /**
  * Copy
@@ -12,26 +13,19 @@ export function copy(text: string) {
     }
 }
 
-export function showLoader() {
-    return {
-        type: SHOW_LOADER
+export function initializedSuccess() {
+    return (dispatch: Function) => {
+        dispatch({
+            type: INITIALIZED_SUCCESS
+        })
     }
 }
 
-export function hideLoader() {
-    return {
-        type: HIDE_LOADER
-    }
-}
+export const initializeApp = () => (dispatch: any) => {
+    let promise = dispatch(authMe());
 
-export function enable_buttons() {
-    return {
-        type: ENABLE_BUTTONS
-    }
-}
-
-export function disable_buttons() {
-    return {
-        type: DISABLE_BUTTONS
-    }
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        });
 }

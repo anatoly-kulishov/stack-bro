@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import AppNavigation from "./AppNavigation";
-import {setProfile} from "../../store/actions/profileActions";
 
-const ProfileContainer = connect(null, {setProfile})(AppNavigation);
+const ProfileContainer = connect(null, null)(AppNavigation);
 
 export default ProfileContainer;

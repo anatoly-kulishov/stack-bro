@@ -36,13 +36,12 @@ export function signIn(profile: object, setSubmitting: Function) {
 export function authMe() {
     return (dispatch: Function) => {
         authAPI.getAuthMe().then(data => {
-            // console.log(data)
             if (data.resultCode === 0) {
                 dispatch({
                     type: AUTH_ME,
                     payload: data.data
                 })
-                Cookies.set('token', 'f37d2ed1-ea22-430c-8f01-d225540e907d')
+                Cookies.set('token', 'f37d2ed1-ea22-430c-8f01-d225540e907d');
             }
         }).catch((e) => console.log(e));
     }

@@ -1,9 +1,6 @@
 /******************** APP ********************/
 /** App state management **/
-export const SHOW_LOADER = 'APP/SHOW_LOADER';
-export const HIDE_LOADER = 'APP/HIDE_LOADER';
-export const ENABLE_BUTTONS = 'APP/ENABLE_BUTTONS';
-export const DISABLE_BUTTONS = 'APP/DISABLE_BUTTONS';
+export const INITIALIZED_SUCCESS = 'APP/INITIALIZED_SUCCESS';
 
 /******************** LOGIN ********************/
 /** Authorization **/

@@ -1,7 +1,7 @@
 export interface IApp {
-    isAuth?: boolean | undefined,
-    isLoading?: boolean | undefined,
-    authMe: Function
+    isAuth: boolean | undefined,
+    initialized: boolean | undefined,
+    initializeApp: Function
 }
 
 export interface ICopyToClipboard {
@@ -116,7 +116,6 @@ export interface INavBar {
 
 export interface IAppNavigation {
     isLoading?: boolean | undefined,
-    setProfile: Function
 }
 
 export interface IGoBack {

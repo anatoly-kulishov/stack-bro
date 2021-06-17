@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-import {Pagination} from "antd";
+import {Pagination, Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 // import Pagination from "../Pagination";
 import {IUsers} from "../../interfaces";
-import Spinner from "../ui/Spinner";
 
 const Users: React.FC<IUsers> = props => {
     const {
@@ -29,7 +28,7 @@ const Users: React.FC<IUsers> = props => {
 
     return (
         <div className={`default-box pl-3 pt-3 pb-3`}>
-            {isLoading && <Spinner/>}
+            {isLoading && <div className="spin-box"><Spin size="large"/></div>}
             {!isLoading && (
                 <section className={styles.section}>
                     <h3 className={styles.title}>Users</h3>

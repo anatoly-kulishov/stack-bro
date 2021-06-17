@@ -2,13 +2,13 @@
 
 .message {
     display: block;
-    color: $palette-primary;
+    color: $x-black-color;
 }
 
 .messageBox {
     display: inline-block;
     padding: 8px 16px;
     margin-bottom: 8px;
-    background: #dcfce7;
+    background-color: $x-color-grey;
     border-radius: 4px;
 }

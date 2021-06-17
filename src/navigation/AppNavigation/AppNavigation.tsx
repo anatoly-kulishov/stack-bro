@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {appRoutes} from "../routes";
 import {Layout} from 'antd';
@@ -8,12 +8,7 @@ import NavBar from "../../components/NavBar";
 import {IAppNavigation} from "../../interfaces";
 
 const AppNavigation: React.FC<IAppNavigation> = props => {
-    const {setProfile} = props;
     const {Content} = Layout;
-
-    useEffect(() => {
-        setProfile(17494)
-    }, [setProfile])
 
     return (
         <Layout style={{minHeight: "100vh"}}>
