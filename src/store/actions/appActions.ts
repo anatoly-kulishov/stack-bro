@@ -13,6 +13,9 @@ export function copy(text: string) {
     }
 }
 
+/**
+ * App initialized Success
+ */
 export function initializedSuccess() {
     return (dispatch: Function) => {
         dispatch({
@@ -21,6 +24,9 @@ export function initializedSuccess() {
     }
 }
 
+/**
+ * Initialize App
+ */
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(authMe());
 

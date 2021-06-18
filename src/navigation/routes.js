@@ -25,12 +25,12 @@ export const appRoutes = [
     {
         path: "/",
         exact: true,
-        component: <Profile/>
+        component: <Profile/> // Todo
     },
     {
         path: "/profile/:userId?",
         exact: true,
-        component: <Profile/>
+        component: <Profile/> // Todo
     },
     {
         path: "/dialogs",

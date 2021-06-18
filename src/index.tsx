@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import store from "./store";
 import App from "./components/App";
 import 'antd/dist/antd.css';
-import './assets/css/bootstrap-grid.min.css';
+import './libs/bootstrap-grid.min.css';
 
 const app = (
     <StrictMode>

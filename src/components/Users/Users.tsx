@@ -27,7 +27,7 @@ const Users: React.FC<IUsers> = props => {
     }
 
     return (
-        <div className={`default-box pl-3 pt-3 pb-3`}>
+        <div className={`default-box p-3`}>
             {isLoading && <div className="spin-box"><Spin size="large"/></div>}
             {!isLoading && (
                 <section className={styles.section}>
