@@ -9,12 +9,12 @@ import usersAPI from "../../api/usersAPI";
 
 /**
  * Returns all (or only filtered by name with term parameter) users splitted by page
- * @param currentPage
+ * @param requestPage
  * @param pageSize
  */
-export function setUsers(currentPage: number, pageSize: number) {
+export function setUsers(requestPage: number, pageSize: number) {
     return (dispatch: Function) => {
-        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+        usersAPI.requestUsers(requestPage, pageSize).then((data) => {
             dispatch({
                 type: SET_USERS,
                 users: data.items,

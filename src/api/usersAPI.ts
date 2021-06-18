@@ -1,7 +1,7 @@
 import {baseInstance} from "./instances";
 
 const usersAPI = {
-    getUsers: (currentPage: number = 1, pageSize: number = 10) => {
+    requestUsers: (currentPage: number = 1, pageSize: number = 10) => {
         return baseInstance.get(`users?page=${currentPage}&count=${pageSize}`).then(res => res.data)
     },
     getCurrentUserFollower: (userId: number) => {
