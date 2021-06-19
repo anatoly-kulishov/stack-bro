@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
-import {IProfileStatus} from "../../interfaces";
-import CopyToClipboard from "../ui/CopyToClipboard";
+import CopyToClipboard from "../../../ui/CopyToClipboard";
+import {IProfileStatus} from "../../../../interfaces";
 
 const ProfileStatus: React.FC<IProfileStatus> = props => {
     const {profile, getStatus, updateStatus, status} = props;
-    const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
+    const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
     const updateStatusHandler = () => {
@@ -14,14 +14,18 @@ const ProfileStatus: React.FC<IProfileStatus> = props => {
     }
 
     useEffect(() => {
-        getStatus(profile?.userId || 17494)
-    }, [getStatus, status])
+        getStatus(profile?.userId || 17461)
+    }, [getStatus, status, profile])
+
+    useEffect(() => {
+        setCurrentStatus(profile?.userId || status)
+    }, [status, profile])
 
     return (
         <div className={styles.wrapper}>
             {!editMode && (
                 <CopyToClipboard customStyles={styles} onDoubleClickHandler={() => setEditMode(!editMode)}>
-                    {status}
+                    {currentStatus}
                 </CopyToClipboard>
             )}
             {editMode && (

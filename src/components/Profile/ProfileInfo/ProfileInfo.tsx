@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProfileInfo.module.scss';
 import CopyToClipboard from "../../ui/CopyToClipboard";
 import GoBack from "../../GoBack";
+import ProfileStatus from "./ProfileStatus";
 import {IProfileInfo} from "../../../interfaces";
 
 const ProfileInfo: React.FC<IProfileInfo> = props => {
@@ -11,6 +12,9 @@ const ProfileInfo: React.FC<IProfileInfo> = props => {
         <div className={`${styles.descriptionBlock} default-box`}>
             <>
                 {(match.path !== '/' && <GoBack history={history}/>)}
+                <div className="mt-3">
+                    <ProfileStatus/>
+                </div>
                 <div className="mt-3">
                     <span className={styles.status}/>
                 </div>
