@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {Pagination, Spin} from "antd";
+import {Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
-// import Pagination from "../Pagination";
+import Paginator from "../common/Paginator";
 import {IUsers} from "../../interfaces";
 
 const Users: React.FC<IUsers> = props => {
@@ -12,19 +12,10 @@ const Users: React.FC<IUsers> = props => {
         setUsers, userFollow, userUnfollow,
         setCurrentPage, followingInProgress
     } = props;
-    let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
-    let pages: number[] = [];
-    for (let i: number = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
 
     useEffect(() => {
         setUsers(currentPage, pageSize)
     }, [setUsers, currentPage, pageSize])
-
-    const onPageChanged = (p: any) => {
-        setCurrentPage(p);
-    }
 
     return (
         <div className={`default-box p-3`}>
@@ -49,9 +40,10 @@ const Users: React.FC<IUsers> = props => {
                         </div>
                     </div>
                     <div style={{marginTop: 20}}>
-                        <Pagination defaultCurrent={currentPage}
-                                    total={pages.length}
-                                    onChange={onPageChanged}/>
+                        <Paginator currentPage={currentPage}
+                                   totalUsersCount={totalUsersCount}
+                                   pageSize={pageSize}
+                                   setCurrentPage={setCurrentPage}/>
                     </div>
                 </section>
             )}

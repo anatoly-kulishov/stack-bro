@@ -3,9 +3,9 @@ import {Button} from 'antd';
 import {LoginOutlined} from "@ant-design/icons";
 import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
-import {validateEmail, validatePassword} from "../../../utils/validates";
+import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
 import {iForm} from "../../../interfaces";
-import CustomField from "../../ui/CustomField/CustomField";
+import CustomField from "../../common/CustomField";
 
 const LoginForm: React.FC<iForm> = props => {
     const {onSubmit, isValid, errorText} = props;

@@ -129,3 +129,10 @@ export interface IProfileStatus {
     profile: any,
     status: string,
 }
+
+export interface IPaginator {
+    currentPage: number,
+    totalUsersCount: number,
+    pageSize: number,
+    setCurrentPage: Function
+}

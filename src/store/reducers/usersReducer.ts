@@ -1,6 +1,6 @@
 import {
     SET_USERS,
-    FOLLOW_UNFOLLOW,
+    TOGGLE_FOLLOW_UNFOLLOW,
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
     TOGGLE_IS_FOLLOWING_PROGRESS
@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action: any) => {
                 totalUsersCount: action.totalUserCount,
                 isLoading: true
             }
-        case FOLLOW_UNFOLLOW:
+        case TOGGLE_FOLLOW_UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map((user: any) => {

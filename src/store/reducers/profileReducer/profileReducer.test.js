@@ -4,7 +4,7 @@ import {addPost, removePost} from "../../actions/profileActions";
 let state = {
     posts: [
         {id: 1, message: 'Hello World!', likesCount: 1},
-        {id: 2, message: 'Hi...', likesCount: 2}
+        {id: 2, message: 'Just Text...', likesCount: 2}
     ]
 }
 

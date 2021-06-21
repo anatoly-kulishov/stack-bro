@@ -28,7 +28,7 @@ const profileReducer = (state = initialState, action: any) => {
         case REMOVE_POST:
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId)
+                posts: state.posts.filter(p => p.id !== action.postId)
             }
         default:
             return state

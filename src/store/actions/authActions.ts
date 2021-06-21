@@ -7,52 +7,46 @@ import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
  * @param profile
  * @param setSubmitting
  */
-export function signIn(profile: object, setSubmitting: Function) {
-    return (dispatch: Function) => {
-        authAPI.postSignIn(profile).then(data => {
-            if (data.resultCode === 0) {
-                dispatch({
-                    type: SIGN_IN,
-                    userId: data.data.userId
-                })
-                dispatch(authMe())
-            } else {
-                dispatch({
-                    type: AUTH_NOT_VALID,
-                    error: data.messages
-                })
-            }
-            setSubmitting(false)
-        }).catch((e) => {
-            console.log(e)
-            setSubmitting(false)
-        })
-    }
+export const signIn = (profile: object, setSubmitting: Function) => (dispatch: Function) => {
+    authAPI.postSignIn(profile).then(data => {
+        if (data.resultCode === 0) {
+            dispatch({
+                type: SIGN_IN,
+                userId: data.data.userId
+            })
+            dispatch(authMe())
+        } else {
+            dispatch({
+                type: AUTH_NOT_VALID,
+                error: data.messages
+            })
+        }
+        setSubmitting(false)
+    }).catch((e) => {
+        console.log(e)
+        setSubmitting(false)
+    })
 }
 
 /**
  * Is current user authorized
  */
-export function authMe() {
-    return (dispatch: Function) => {
-        authAPI.getAuthMe().then(data => {
-            if (data.resultCode === 0) {
-                dispatch({
-                    type: AUTH_ME,
-                    payload: data.data
-                })
-                Cookies.set('token', 'f37d2ed1-ea22-430c-8f01-d225540e907d');
-            }
-        }).catch((e) => console.log(e));
-    }
+export const authMe = () => (dispatch: Function) => {
+    authAPI.getAuthMe().then(data => {
+        if (data.resultCode === 0) {
+            dispatch({
+                type: AUTH_ME,
+                payload: data.data
+            })
+            Cookies.set('token', 'f7245be5-e090-4424-a6bf-7942681a4b6d');
+        }
+    }).catch((e) => console.log(e));
 }
 
 /**
  * Unfollow requested user
  */
-export function logOut() {
-    return (dispatch: Function) => {
-        authAPI.deleteLogOut().then(() => Cookies.remove('token'))
-        dispatch({type: LOG_OUT})
-    }
+export const logOut = () => (dispatch: Function) => {
+    authAPI.deleteLogOut().then(() => Cookies.remove('token'))
+    dispatch({type: LOG_OUT})
 }

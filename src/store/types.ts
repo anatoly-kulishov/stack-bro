@@ -2,7 +2,7 @@
 /** App state management **/
 export const INITIALIZED_SUCCESS = 'APP/INITIALIZED_SUCCESS';
 
-/******************** LOGIN ********************/
+/******************** AUTH ********************/
 /** Authorization **/
 export const SIGN_IN = 'AUTH/SIGN_IN';
 export const LOG_OUT = 'AUTH/LOG_OUT';
@@ -22,7 +22,7 @@ export const SET_CURRENT_PAGE = 'USERS/SET_CURRENT_PAGE';
 
 /** Follow && UNFOLLOW **/
 export const GET_FOLLOWING_STATUS = 'USERS/GET_FOLLOWING_STATUS';
-export const FOLLOW_UNFOLLOW = 'USERS/FOLLOW_UNFOLLOW';
+export const TOGGLE_FOLLOW_UNFOLLOW = 'USERS/TOGGLE_FOLLOW_UNFOLLOW';
 export const TOGGLE_IS_FOLLOWING_PROGRESS = 'USERS/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 /******************** POSTS ********************/

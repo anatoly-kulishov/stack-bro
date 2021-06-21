@@ -23,4 +23,3 @@ export const validatePassword = (value: string): string | undefined => {
     }
     return error;
 }
-

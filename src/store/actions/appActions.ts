@@ -16,20 +16,13 @@ export function copy(text: string) {
 /**
  * App initialized Success
  */
-export function initializedSuccess() {
-    return (dispatch: Function) => {
-        dispatch({
-            type: INITIALIZED_SUCCESS
-        })
-    }
-}
+export const initializedSuccess = () => (dispatch: Function) => dispatch({type: INITIALIZED_SUCCESS});
 
 /**
  * Initialize App
  */
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(authMe());
-
     Promise.all([promise])
         .then(() => {
             dispatch(initializedSuccess());
