@@ -1,4 +1,4 @@
-import {ADD_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
+import {ADD_POST, REMOVE_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
 import profileAPI from "../../api/profileAPI";
 
 /**
@@ -54,10 +54,19 @@ export function updateStatus(status: string) {
  * @param post
  */
 export function addPost(post: object) {
-    return (dispatch: Function) => {
-        dispatch({
-            type: ADD_POST,
-            payload: post
-        })
+    return {
+        type: ADD_POST,
+        payload: post
+    }
+}
+
+/**
+ * Delete post
+ * @param postId
+ */
+export function removePost(postId: number) {
+    return {
+        type: REMOVE_POST,
+        postId
     }
 }

@@ -17,7 +17,7 @@ const messagesSchema = Yup.object().shape({
 const MyPosts: React.FC<IMyPosts> = props => {
     const {posts, onAddPost} = props;
     const {TextArea} = Input;
-    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likeCount}/>);
+    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 
     return (
         <div className={`${styles.myPosts} default-box`}>
@@ -30,13 +30,9 @@ const MyPosts: React.FC<IMyPosts> = props => {
                     setSubmitting(false);
                 }}>
                 {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                      isSubmitting,
+                      values, errors,
+                      touched, handleChange,
+                      handleBlur, handleSubmit, isSubmitting
                   }) => (
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.title}>My posts</div>

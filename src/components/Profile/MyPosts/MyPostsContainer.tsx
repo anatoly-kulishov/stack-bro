@@ -6,12 +6,12 @@ const mapStateToProps = (state: any) => ({
     posts: state.profile.posts
 })
 
-const mapToDispatchToProps = (dispatch: any) => ({
+const mapToDispatchToProps = (dispatch: Function) => ({
     onAddPost: (message: string) => {
         const post = {
             id: Date.now(),
             message,
-            likeCount: 0
+            likesCount: 0
         }
         dispatch(addPost(post));
     }

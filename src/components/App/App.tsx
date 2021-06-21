@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
-import AppNavigation from "../../navigation/AppNavigation";
-import AuthNavigation from "../../navigation/AuthNavigation";
+import AppNavigation from "../../routes/AppNavigation";
+import AuthNavigation from "../../routes/AuthNavigation";
 import {initializeApp} from "../../store/actions/appActions";
 import {IApp} from "../../interfaces";
 

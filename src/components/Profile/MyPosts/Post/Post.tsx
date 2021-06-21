@@ -1,4 +1,4 @@
-import React, {createElement, useState} from 'react';
+import React, {createElement, useState, memo} from 'react';
 import {Comment, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
@@ -8,28 +8,28 @@ import {NavLink} from "react-router-dom";
 
 
 const Post: React.FC<IPost> = props => {
-    const {message} = props;
+    const {message, likesCount} = props;
 
-    const [likes, setLikes] = useState(0);
-    const [dislikes, setDislikes] = useState(0);
+    let [likes, setLikes] = useState(likesCount);
+    let [dislikes, setDislikes] = useState(0);
     const [action, setAction] = useState<any>(null);
 
     const like = () => {
-        setLikes(1);
-        setDislikes(0);
+        setLikes(++likes);
+        setDislikes(dislikes);
         setAction('liked');
     };
 
     const dislike = () => {
-        setLikes(0);
-        setDislikes(1);
+        setLikes(likes);
+        setDislikes(++dislikes);
         setAction('disliked');
     };
 
     const actions = [
         <Tooltip key="comment-basic-like" title="Like">
       <span onClick={like}>
-        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
+        {createElement(action === 'like d' ? LikeFilled : LikeOutlined)}
           <span className="comment-action">{likes}</span>
       </span>
         </Tooltip>,
@@ -63,18 +63,7 @@ const Post: React.FC<IPost> = props => {
                 </Tooltip>
             }
         />
-
-        // <div className={styles.post}>
-        //     <div className={styles.row}>
-        //         <picture>
-        //             <source type="image/jpeg" srcSet={avatar}/>
-        //             <img className={styles.authorAvatar} src={avatar} alt=""/>
-        //         </picture>
-        //         <p className={styles.message}>{message}</p>
-        //     </div>
-        //     <div>Likes: {likes}</div>
-        // </div>
     );
 }
 
-export default Post;
+export default memo(Post);

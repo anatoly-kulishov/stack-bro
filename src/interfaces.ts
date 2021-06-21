@@ -65,7 +65,7 @@ export interface IMyPosts {
     posts: Array<{
         id: number,
         message: string,
-        likeCount: number
+        likesCount: number
     }>
     onAddPost: Function
 }
