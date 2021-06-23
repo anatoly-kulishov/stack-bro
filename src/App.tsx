@@ -4,11 +4,11 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
-import store from "../../store";
-import {IApp} from "../../interfaces";
-import AppNavigation from "../../routes/AppNavigation";
-import AuthNavigation from "../../routes/AuthNavigation";
-import {initializeApp} from "../../store/actions/appActions";
+import store from "./store";
+import {IApp} from "./interfaces";
+import AppNavigation from "./routes/AppNavigation";
+import AuthNavigation from "./routes/AuthNavigation";
+import {initializeApp} from "./store/actions/appActions";
 
 class App extends React.Component<IApp> {
 

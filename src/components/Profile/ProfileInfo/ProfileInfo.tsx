@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProfileInfo.module.scss';
-import CopyToClipboard from "../../CopyToClipboard";
+import CopyToClipboard from "../../common/CopyToClipboard";
 import GoBack from "../../common/GoBack";
 import ProfileStatus from "./ProfileStatus";
 import {IProfileInfo} from "../../../interfaces";

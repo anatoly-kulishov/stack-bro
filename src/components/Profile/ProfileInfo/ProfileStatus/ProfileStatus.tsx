@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
-import CopyToClipboard from "../../../CopyToClipboard";
-import {IProfileStatus} from "../../../../interfaces";
+import CopyToClipboard from "../../../common/CopyToClipboard";
+// import {IProfileStatus} from "../../../../interfaces";
 
-const ProfileStatus: React.FC<IProfileStatus> = props => {
+const ProfileStatus: React.FC<any> = props => {
     const {profile, getStatus, updateStatus, status} = props;
     const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
