@@ -17,6 +17,7 @@ it('length of posts should be incremented', () => {
     });
 
     // 2. Action
+    // @ts-ignore
     let newState = profileReducer(state, action)
 
     // 3. Expectation
@@ -29,6 +30,7 @@ it('after deleting length of posts should be decrement', () => {
     let action = removePost(1);
 
     // 2. Action
+    // @ts-ignore
     let newState = profileReducer(state, action)
 
     // 3. Expectation
@@ -40,6 +42,7 @@ it('after deleting length of posts should`be decrement if id is incorrect', () =
     let action = removePost(100);
 
     // 2. Action
+    // @ts-ignore
     let newState = profileReducer(state, action)
 
     // 3. Expectation

@@ -1,20 +1,7 @@
-import React, {StrictMode} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter as Router} from "react-router-dom";
-import store from "./store";
-import App from "./components/App";
 import 'antd/dist/antd.css';
 import './libs/bootstrap-grid.min.css';
+import StackBroTSApp from "./components/App";
 
-const app = (
-    <StrictMode>
-        <Provider store={store}>
-            <Router>
-                <App/>
-            </Router>
-        </Provider>
-    </StrictMode>
-)
-
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(<StackBroTSApp/>, document.getElementById('root'));

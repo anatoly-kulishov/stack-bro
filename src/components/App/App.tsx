@@ -1,12 +1,14 @@
-import React from 'react';
-import {connect} from "react-redux";
+import React, {StrictMode} from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
+import store from "../../store";
+import {IApp} from "../../interfaces";
 import AppNavigation from "../../routes/AppNavigation";
 import AuthNavigation from "../../routes/AuthNavigation";
 import {initializeApp} from "../../store/actions/appActions";
-import {IApp} from "../../interfaces";
 
 class App extends React.Component<IApp> {
 
@@ -36,7 +38,20 @@ const mapStateToProps = (state: any) => ({
     isAuth: state.auth.isAuth
 })
 
-export default compose<React.ComponentType>(connect(mapStateToProps, {initializeApp}))(App);
+const AppContainer = compose<React.ComponentType>(connect(mapStateToProps, {initializeApp}))(App);
 
+const StackBroTSApp = () => {
+    return (
+        <StrictMode>
+            <Provider store={store}>
+                <Router>
+                    <AppContainer/>
+                </Router>
+            </Provider>
+        </StrictMode>
+    )
+}
+
+export default StackBroTSApp;
 
 
