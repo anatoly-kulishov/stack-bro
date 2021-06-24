@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 import {IProfile} from "../../interfaces";
 
 const Profile: React.FC<IProfile> = props => {
-    const {profile, isLoading, match, history} = props;
+    const {match} = props;
+    const currentUserId = match?.params.userId;
+
+    useEffect(() => {
+        console.log(currentUserId)
+    }, [currentUserId])
 
     return (
         <div>
-            <ProfileInfo profile={profile} history={history} isLoading={isLoading} match={match}/>
+            <ProfileInfo {...props}/>
             <MyPostsContainer/>
         </div>
     );
