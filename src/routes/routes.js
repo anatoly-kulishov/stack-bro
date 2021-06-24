@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {lazy} from 'react';
+import {withSuspense} from "../hoc/withSuspense";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
-import Dialogs from "../components/Dialogs";
 import News from "../components/News";
 import Music from "../components/Music";
 import Settings from "../components/Settings";
 import Users from "../components/Users";
-import Help from "../components/Help";
+
+const Dialogs = lazy(() => import("../components/Dialogs"));
+const Help = lazy(() => import("../components/Help"));
 
 export const authRoutes = [
     {
@@ -34,7 +36,7 @@ export const appRoutes = [
     },
     {
         path: "/dialogs",
-        component: <Dialogs/>,
+        component: withSuspense(Dialogs),
     },
     {
         path: "/users",
@@ -54,6 +56,6 @@ export const appRoutes = [
     },
     {
         path: "/help",
-        component: <Help/>,
+        component: withSuspense(Help),
     },
 ];
