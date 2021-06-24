@@ -39,7 +39,10 @@ export const authMe = () => (dispatch: Function) => {
                 payload: data.data
             })
             Cookies.set('token', 'f7245be5-e090-4424-a6bf-7942681a4b6d');
+            return data.data.id;
         }
+    }).then(userId => {
+        // dispatch(setProfile(userId))
     }).catch((e) => console.log(e));
 }
 

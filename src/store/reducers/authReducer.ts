@@ -31,6 +31,7 @@ const authReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 myProfile: action.payload,
+                userId: action.payload.id,
                 isAuth: true,
                 isLoading: false
             }

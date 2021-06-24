@@ -4,7 +4,7 @@ import CopyToClipboard from "../../../common/CopyToClipboard";
 // import {IProfileStatus} from "../../../../interfaces";
 
 const ProfileStatus: React.FC<any> = props => {
-    const {profile, getStatus, updateStatus, status} = props;
+    const {profile, updateStatus, status} = props;
     const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -13,9 +13,9 @@ const ProfileStatus: React.FC<any> = props => {
         updateStatus(currentStatus)
     }
 
-    useEffect(() => {
-        getStatus(profile?.userId || 17461)
-    }, [getStatus, status, profile])
+    // useEffect(() => {
+    //     getStatus(myProfileId)
+    // }, [getStatus, status, profile, myProfileId])
 
     useEffect(() => {
         setCurrentStatus(profile?.userId || status)
