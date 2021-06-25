@@ -14,6 +14,9 @@ export const AUTH_NOT_VALID = 'AUTH/NOT_VALID';
 export const SET_USER_PROFILE = 'PROFILE/SET_USER';
 export const SET_PROFILE_STATUS = 'PROFILE/SET_STATUS';
 
+/** Profile Functions **/
+export const SAVE_PHOTO_SUCCESS = 'PROFILE/SAVE_PHOTO_SUCCESS';
+
 /******************** USERS ********************/
 /** Fetching **/
 export const SET_USERS = 'USERS/SET_USERS';

@@ -1,5 +1,6 @@
 import {INITIALIZED_SUCCESS} from "../types";
 import {authMe} from "./authActions";
+import {setProfile} from "./profileActions";
 
 /**
  * Copy
@@ -23,7 +24,8 @@ export const initializedSuccess = () => (dispatch: Function) => dispatch({type: 
  */
 export const initializeApp = () => (dispatch: any) => {
     let authMePromise = dispatch(authMe());
-    Promise.all([authMePromise])
+    let setProfilePromise = dispatch(setProfile(17461));
+    Promise.all([authMePromise, setProfilePromise])
         .then(() => {
             dispatch(initializedSuccess());
         });

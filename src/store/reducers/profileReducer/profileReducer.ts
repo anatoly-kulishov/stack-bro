@@ -1,9 +1,10 @@
-import {ADD_POST, REMOVE_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../../types";
+import {ADD_POST, REMOVE_POST, SAVE_PHOTO_SUCCESS, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../../types";
 
 const initialState = {
     isLoading: true,
-    posts: [{id: 1, message: 'Hello World!', likesCount: 1}, {id: 2, message: 'Hi...', likesCount: 2}],
-    selectedProfile: null,
+    posts: [],
+    selectedProfile: {},
+    profile: {},
     status: ''
 }
 
@@ -20,6 +21,11 @@ const profileReducer = (state = initialState, action: any) => {
                 ...state,
                 status: action.status
             }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos: {...action.photos}}
+            }
         case ADD_POST:
             return {
                 ...state,
@@ -28,7 +34,7 @@ const profileReducer = (state = initialState, action: any) => {
         case REMOVE_POST:
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id !== action.postId)
+                posts: state.posts.filter((p: any) => p.id !== action.postId)
             }
         default:
             return state

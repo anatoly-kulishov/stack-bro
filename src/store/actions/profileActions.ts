@@ -1,4 +1,4 @@
-import  {ADD_POST, REMOVE_POST, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
+import {ADD_POST, REMOVE_POST, SAVE_PHOTO_SUCCESS, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../types";
 import profileAPI from "../../api/profileAPI";
 
 /**
@@ -63,4 +63,27 @@ export const removePost = (postId: number) => {
         type: REMOVE_POST,
         postId
     }
+}
+
+/**
+ * Save Photo
+ * @param file
+ */
+export const savePhoto = (file: File) => (dispatch: Function) => {
+    profileAPI.putPhoto(file).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(savePhotoSuccess(data.photos))
+        }
+    }).catch((e) => console.error(e));
+}
+
+/**
+ * Save photo success
+ * @param photos
+ */
+export const savePhotoSuccess = (photos: any) => (dispatch: Function) => {
+    dispatch({
+        type: SAVE_PHOTO_SUCCESS,
+        photos
+    })
 }

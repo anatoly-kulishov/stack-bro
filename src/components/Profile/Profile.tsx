@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
+import ProfilePhoto from './ProfilePhoto';
 import {IProfile} from "../../interfaces";
 
 const Profile: React.FC<IProfile> = props => {
@@ -13,8 +14,19 @@ const Profile: React.FC<IProfile> = props => {
 
     return (
         <div>
-            <ProfileInfo {...props}/>
-            <MyPostsContainer/>
+            <div className="row">
+                <div className="col-12 col-lg-4 pr-lg-2">
+                    <ProfilePhoto {...props}/>
+                </div>
+                <div className="col-12 col-lg-8 pl-lg-2">
+                    <ProfileInfo {...props}/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <MyPostsContainer/>
+                </div>
+            </div>
         </div>
     );
 }

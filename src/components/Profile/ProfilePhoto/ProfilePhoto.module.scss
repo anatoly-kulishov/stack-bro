@@ -1,0 +1,28 @@
+@import "../../../variables";
+
+.wrapper {
+    padding: 15px;
+}
+
+.profilePhoto {
+    & > img {
+        width: 100%;
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 2px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.profileActions {
+    margin-top: 15px;
+
+    & > * {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

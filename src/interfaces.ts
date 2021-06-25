@@ -7,6 +7,8 @@ export interface IApp {
 export interface ICopyToClipboard {
     children: string,
     customStyles?: any,
+    copy?: boolean,
+    placeholder?: string,
     onDoubleClickHandler?: any
 }
 
@@ -48,6 +50,7 @@ export interface iForm {
 
 export interface IProfile {
     profile: any,
+    myProfile: any,
     isLoading: boolean,
     match: any,
     location: any,
@@ -56,6 +59,7 @@ export interface IProfile {
 
 export interface IProfileInfo {
     profile: any,
+    myProfile: any,
     isLoading: boolean,
     history: any,
     match: any
