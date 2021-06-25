@@ -1,8 +1,8 @@
 import React from 'react';
 import {Formik, Form} from 'formik';
-import {Button} from "antd";
-// import {WarningTwoTone} from '@ant-design/icons';
-// import styles from "./FileField.module.scss"
+import {Button} from 'antd';
+import {UploadOutlined} from '@ant-design/icons';
+import styles from './FileField.module.scss'
 
 const FileField: React.FC<any> = props => {
     const {save} = props;
@@ -13,15 +13,17 @@ const FileField: React.FC<any> = props => {
             onSubmit={(values, {setSubmitting}) => {
                 save(values.file)
             }}>
-            {({handleSubmit, setFieldValue}) => (
+            {({handleSubmit, setFieldValue, values}) => (
                 <Form onSubmit={handleSubmit}>
-                    <label>
-                        <input name="file" type="file" onChange={(event: any) => {
-                            setFieldValue("file", event.currentTarget.files[0])
-                        }}/>
-                    </label>
+                    <label className={styles.label} htmlFor="file"><span className="mr-2">Update photo</span><UploadOutlined/></label>
+                    <input name="file" type="file" id="file" className='d-none' onChange={(event: any) => {
+                        setFieldValue("file", event.currentTarget.files[0])
+                    }}/>
                     <div className="mt-2">
-                        <Button htmlType="submit" block>Edit</Button>
+                        <Button htmlType="submit" block disabled={!values.file}>Submit</Button>
+                    </div>
+                    <div className="mt-2">
+                        <Button htmlType="reset" block danger disabled={!values.file}>Cancel</Button>
                     </div>
                 </Form>
             )}

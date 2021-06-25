@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './News.module.scss';
+import Mock from "../common/Mock";
 
 const News: React.FC = () => {
     return (
-        <section className={`default-box p-3`}>
-            <h3 className={styles.title}>News</h3>
+        <section className={`${styles.wrapper} default-box`}>
+            <Mock/>
         </section>
     );
 }

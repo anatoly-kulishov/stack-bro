@@ -1,1 +1,13 @@
 @import "../../../variables";
+
+.label {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: .05s ease;
+
+    &:hover {
+        color: #40a9ff;
+    }
+}
