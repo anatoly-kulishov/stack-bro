@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import {IAppNavigation} from "../../interfaces";
 
-const AppNavigation: React.FC<IAppNavigation> = props => {
+const AppRoutes: React.FC<IAppNavigation> = props => {
     const {Content} = Layout;
 
     return (
@@ -43,4 +43,4 @@ const AppNavigation: React.FC<IAppNavigation> = props => {
     )
 }
 
-export default AppNavigation;
+export default AppRoutes;

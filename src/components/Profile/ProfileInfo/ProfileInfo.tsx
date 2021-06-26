@@ -2,6 +2,7 @@ import React from 'react';
 import {ApiTwoTone} from '@ant-design/icons';
 import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
+import ProfileDescription from "./ProfileDescription";
 import {IProfileInfo} from "../../../interfaces";
 
 const ProfileInfo: React.FC<IProfileInfo> = props => {
@@ -18,20 +19,7 @@ const ProfileInfo: React.FC<IProfileInfo> = props => {
                     <ProfileStatus/>
                     <span className={styles.status}/>
                 </div>
-                <div className={styles.profileBody}>
-                    <div className={styles.infoList}>
-                        <div className={styles.infoRow}><span className={styles.label}>Looking for a job:</span> <span className={styles.desc}>True</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Looking for a job description:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Github:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>VK:</span> <span>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Facebook:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Instagram:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Twitter:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Website:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Youtube:</span> <span className={styles.desc}>...</span></div>
-                        <div className={styles.infoRow}><span className={styles.label}>Main Link:</span> <span className={styles.desc}>...</span></div>
-                    </div>
-                </div>
+                <ProfileDescription/>
             </>
         </div>
     );

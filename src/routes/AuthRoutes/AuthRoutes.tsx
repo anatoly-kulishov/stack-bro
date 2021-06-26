@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch, Redirect} from "react-router-dom";
 import {authRoutes} from "../routes";
-import styles from "./AuthNavigation.module.scss";
+import styles from "./AuthRoutes.module.scss";
 
-const AuthNavigation: React.FC = () => {
+const AuthRoutes: React.FC = () => {
     return (
         <div className={styles.auth}>
             <div>
@@ -25,4 +25,4 @@ const AuthNavigation: React.FC = () => {
     )
 }
 
-export default AuthNavigation;
+export default AuthRoutes;

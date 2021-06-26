@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Music.module.scss';
+import styles from './Sandbox.module.scss';
 import Mock from "../common/Mock";
 
-const Music: React.FC = () => {
+const Sandbox: React.FC = () => {
     return (
         <section className={`${styles.wrapper} default-box`}>
             <Mock/>
@@ -10,4 +10,4 @@ const Music: React.FC = () => {
     );
 }
 
-export default Music;
+export default Sandbox;

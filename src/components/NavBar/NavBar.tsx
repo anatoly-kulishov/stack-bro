@@ -6,39 +6,46 @@ import {
     TeamOutlined,
     UserOutlined,
     FileOutlined,
-    AudioOutlined,
+    CodeSandboxOutlined
 } from '@ant-design/icons';
 import {INavBar} from "../../interfaces";
 
 const NavBar: React.FC<INavBar> = () => {
     const {Sider} = Layout;
 
+    const onSelectNavKey = (key: number) => {
+        sessionStorage.setItem('nav_key', String(key));
+    }
+
+    const navKey: string = sessionStorage.getItem('nav_key') || '1';
+
     return (
         <Sider collapsible width={150}>
-            <Menu defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<UserOutlined/>}>
+            <Menu defaultSelectedKeys={[navKey]}
+                  mode="inline">
+                <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
                     <NavLink to="/">
                         My profile
                     </NavLink>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<FileOutlined/>}>
+                <Menu.Item key="2" onClick={() => onSelectNavKey(2)} icon={<FileOutlined/>}>
                     <NavLink to="/news">
                         News
                     </NavLink>
                 </Menu.Item>
-                <Menu.Item key="3" icon={<MessageOutlined/>}>
+                <Menu.Item key="3" onClick={() => onSelectNavKey(3)} icon={<MessageOutlined/>}>
                     <NavLink to="/dialogs">
                         Messenger
                     </NavLink>
                 </Menu.Item>
-                <Menu.Item key="4" icon={<TeamOutlined/>}>
+                <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<TeamOutlined/>}>
                     <NavLink to="/users">
                         Users
                     </NavLink>
                 </Menu.Item>
-                <Menu.Item key="5" icon={<AudioOutlined/>}>
-                    <NavLink to="/music">
-                        Music
+                <Menu.Item key="5" onClick={() => onSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>
+                    <NavLink to="/sandbox">
+                        Sandbox
                     </NavLink>
                 </Menu.Item>
             </Menu>

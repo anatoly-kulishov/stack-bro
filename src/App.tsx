@@ -6,8 +6,8 @@ import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
 import {IApp} from "./interfaces";
-import AppNavigation from "./routes/AppNavigation";
-import AuthNavigation from "./routes/AuthNavigation";
+import AppNavigation from "./routes/AppRoutes";
+import AuthRoutes from "./routes/AuthRoutes";
 import {initializeApp} from "./store/actions/appActions";
 
 class App extends React.Component<IApp> {
@@ -25,7 +25,7 @@ class App extends React.Component<IApp> {
                 {!this.props.initialized && <div className="d-center"><Spin size="large"/></div>}
                 {this.props.initialized && (
                     <div className="app">
-                        {this.props.isAuth ? <AppNavigation/> : <AuthNavigation/>}
+                        {this.props.isAuth ? <AppNavigation/> : <AuthRoutes/>}
                     </div>
                 )}
             </>
