@@ -4,7 +4,8 @@ import {signIn} from "../../store/actions/authActions";
 
 const mapStateToProps = (state: any) => ({
     isValidAuth: state.auth.isValid,
-    errorText: state.auth.error
+    errorText: state.auth.error,
+    captchaUrl: state.auth.captchaUrl,
 })
 
 const UserContainer = connect(mapStateToProps, {signIn})(Login);

@@ -8,6 +8,7 @@ export const SIGN_IN = 'AUTH/SIGN_IN';
 export const LOG_OUT = 'AUTH/LOG_OUT';
 export const AUTH_ME = 'AUTH/AUTH_ME';
 export const AUTH_NOT_VALID = 'AUTH/NOT_VALID';
+export const GET_CAPTCHA_URL_SUCCESS = 'AUTH/GET_CAPTCHA_URL';
 
 /******************** PROFILE ********************/
 /** Fetching **/

@@ -1,3 +1,5 @@
+import {getCaptchaUrl} from "./store/actions/authActions";
+
 export interface IApp {
     isAuth: boolean | undefined,
     initialized: boolean | undefined,
@@ -40,13 +42,15 @@ export interface IMessageInput {
 export interface ILogin {
     signIn: Function,
     errorText: string | undefined,
-    isValidAuth: boolean | undefined
+    isValidAuth: boolean | undefined,
+    captchaUrl: any
 }
 
 export interface iForm {
     onSubmit: Function,
+    errorText: string | undefined,
     isValid: boolean | undefined,
-    errorText: string | undefined
+    captchaUrl: any
 }
 
 export interface IProfile {

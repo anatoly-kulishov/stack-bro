@@ -3,16 +3,15 @@ import {Button} from 'antd';
 import {LoginOutlined} from "@ant-design/icons";
 import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
+import CustomField from "../../common/CustomField";
 import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
 import {iForm} from "../../../interfaces";
-import CustomField from "../../common/CustomField";
 
 const LoginForm: React.FC<iForm> = props => {
-    const {onSubmit, isValid, errorText} = props;
-
+    const {onSubmit, isValid, errorText, captchaUrl} = props;
     return (
         <Formik
-            initialValues={{email: '', password: ''}}
+            initialValues={{email: '', password: '', captcha: null}}
             onSubmit={(values, {setSubmitting}) => {
                 console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting);
@@ -60,6 +59,14 @@ const LoginForm: React.FC<iForm> = props => {
                             disabled={isSubmitting}
                             block>Log in
                     </Button>
+                    {captchaUrl && <div className={styles.captchaBox}><img src={captchaUrl} alt=""/></div>}
+                    {captchaUrl && (
+                        <div className={styles.captchaInputBox}>
+                            <CustomField className={`form-control`}
+                                         name="captcha"
+                                         placeholder="Symbols from image"/>
+                        </div>
+                    )}
                     <div className="mt-3 text-center">
                         <div>Forgotten password?</div>
                     </div>

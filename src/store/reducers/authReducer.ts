@@ -1,4 +1,4 @@
-import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
+import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../types";
 import Cookies from 'js-cookie';
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     isAuth: Cookies.get('token'),
     userId: null,
     myProfile: [],
+    captchaUrl: null // if null, then captcha is not required
 }
 
 const authReducer = (state = initialState, action: any) => {
@@ -40,6 +41,11 @@ const authReducer = (state = initialState, action: any) => {
                 ...state,
                 isValid: false,
                 error: action.error
+            }
+        case GET_CAPTCHA_URL_SUCCESS:
+            return {
+                ...state,
+                captchaUrl: action.payload
             }
         default:
             return state;

@@ -6,7 +6,7 @@ const authAPI = {
             email: profile.email,
             password: profile.password,
             rememberMe: true,
-            captcha: false
+            captcha: profile.captcha
         }).then(res => res.data)
     },
     deleteLogOut: () => {

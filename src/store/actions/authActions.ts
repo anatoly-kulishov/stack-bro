@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import authAPI from "../../api/authAPI";
-import {AUTH_ME, AUTH_NOT_VALID, LOG_OUT, SIGN_IN} from "../types";
+import securityAPI from "../../api/securityAPI.ts";
+import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../types";
 
 /**
  * Authorize on the service
@@ -14,8 +15,11 @@ export const signIn = (profile: object, setSubmitting: Function) => (dispatch: F
                 type: SIGN_IN,
                 userId: data.data.userId
             })
-            dispatch(authMe())
+            dispatch(authMe());
         } else {
+            if (data.resultCode === 10) {
+                dispatch(getCaptchaUrl());
+            }
             dispatch({
                 type: AUTH_NOT_VALID,
                 error: data.messages
@@ -50,4 +54,24 @@ export const authMe = () => (dispatch: Function) => {
 export const logOut = () => (dispatch: Function) => {
     authAPI.deleteLogOut().then(() => Cookies.remove('token'))
     dispatch({type: LOG_OUT})
+}
+
+/**
+ * Get New Captcha
+ */
+export const getCaptchaUrl = () => (dispatch: Function) => {
+    securityAPI.getCaptcha().then(data => {
+        console.log(data.url);
+        dispatch(getCaptchaUrlSuccess(data.url));
+    })
+}
+
+/**
+ * Get New Captcha Success
+ */
+export const getCaptchaUrlSuccess = (captchaUrl: any) => (dispatch: Function) => {
+    dispatch({
+        type: GET_CAPTCHA_URL_SUCCESS,
+        payload: captchaUrl
+    })
 }
