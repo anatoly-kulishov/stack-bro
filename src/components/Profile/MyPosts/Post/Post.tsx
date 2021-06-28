@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 
 
 const Post: React.FC<IPost> = props => {
-    const {message, likesCount} = props;
+    const {message, likesCount, profile} = props;
 
     let [likes, setLikes] = useState(likesCount);
     let [dislikes, setDislikes] = useState(0);
@@ -45,12 +45,11 @@ const Post: React.FC<IPost> = props => {
     return (
         <Comment
             actions={actions}
-            author={<NavLink to="/">Han Solo</NavLink>}
+            author={<NavLink to="/">{profile?.fullName}</NavLink>}
             avatar={
                 <Avatar
-                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                    alt="Han Solo"
-                />
+                    src={profile?.photos && profile?.photos.large}
+                    alt={profile?.fullName}/>
             }
             content={
                 <p>

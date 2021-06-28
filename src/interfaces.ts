@@ -13,7 +13,8 @@ export interface ICopyToClipboard {
 }
 
 export interface IMyAccount {
-    myProfile?: any,
+    myProfile: any,
+    profile: any,
     logOut: Function,
 }
 
@@ -54,7 +55,8 @@ export interface IProfile {
     isLoading: boolean,
     match: any,
     location: any,
-    history: any
+    history: any,
+    saveProfile: any
 }
 
 export interface IProfileInfo {
@@ -62,7 +64,9 @@ export interface IProfileInfo {
     myProfile: any,
     isLoading: boolean,
     history: any,
-    match: any
+    match: any,
+    saveProfile: any
+    errorText?: any
 }
 
 export interface IMyPosts {
@@ -71,12 +75,14 @@ export interface IMyPosts {
         message: string,
         likesCount: number
     }>
-    onAddPost: Function
+    onAddPost: Function,
+    profile: any
 }
 
 export interface IPost {
     message: string,
-    likesCount: number
+    likesCount: number,
+    profile: any
 }
 
 export interface IUsers {

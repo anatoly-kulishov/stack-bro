@@ -14,6 +14,8 @@ export function copy(text: string) {
     }
 }
 
+
+
 /**
  * App initialized Success
  */

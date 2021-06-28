@@ -15,7 +15,10 @@ export const SET_USER_PROFILE = 'PROFILE/SET_USER';
 export const SET_PROFILE_STATUS = 'PROFILE/SET_STATUS';
 
 /** Profile Functions **/
+export const NEW_PROFILE_PHOTO_SENDS = 'PROFILE/NEW_PHOTO_SENDS';
 export const SAVE_PHOTO_SUCCESS = 'PROFILE/SAVE_PHOTO_SUCCESS';
+export const SAVE_PROFILE_SUCCESS = 'PROFILE/SAVE_PROFILE_SUCCESS';
+export const SAVE_PROFILE_FAILED = 'PROFILE/SAVE_PROFILE_FAILED';
 
 /******************** USERS ********************/
 /** Fetching **/

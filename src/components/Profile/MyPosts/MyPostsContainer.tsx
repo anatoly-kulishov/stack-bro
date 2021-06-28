@@ -3,7 +3,8 @@ import MyPosts from "./MyPosts";
 import {addPost} from "../../../store/actions/profileActions";
 
 const mapStateToProps = (state: any) => ({
-    posts: state.profile.posts
+    posts: state.profile.posts,
+    profile: state.profile.profile,
 })
 
 const mapToDispatchToProps = (dispatch: Function) => ({

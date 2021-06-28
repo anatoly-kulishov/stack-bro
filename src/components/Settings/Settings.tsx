@@ -1,13 +1,8 @@
 import React from 'react';
-import styles from './Settings.module.scss';
-import SettingsForm from "./SettingsForm";
+import Mock from "../common/Mock";
 
 const Settings: React.FC = () => {
-    return (
-        <section className={`${styles.wrapper} default-box`}>
-            <SettingsForm onSubmit={(values: object) => console.log(values)}/>
-        </section>
-    );
+    return <Mock/>
 }
 
 export default Settings;

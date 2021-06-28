@@ -1,7 +1,16 @@
-import {ADD_POST, REMOVE_POST, SAVE_PHOTO_SUCCESS, SET_PROFILE_STATUS, SET_USER_PROFILE} from "../../types";
+import {
+    ADD_POST, NEW_PROFILE_PHOTO_SENDS,
+    REMOVE_POST,
+    SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS,
+    SET_PROFILE_STATUS,
+    SET_USER_PROFILE
+} from "../../types";
 
 const initialState = {
+    isOwner: true,
     isLoading: true,
+    isValid: true,
+    error: null,
     posts: [],
     selectedProfile: {},
     profile: {},
@@ -21,10 +30,16 @@ const profileReducer = (state = initialState, action: any) => {
                 ...state,
                 status: action.status
             }
+        case NEW_PROFILE_PHOTO_SENDS:
+            return {
+                ...state,
+                isLoading: true
+            }
         case SAVE_PHOTO_SUCCESS:
             return {
                 ...state,
-                profile: {...state.profile, photos: {...action.photos}}
+                profile: {...state.profile, photos: {...action.photos}},
+                isLoading: false
             }
         case ADD_POST:
             return {
@@ -35,6 +50,17 @@ const profileReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 posts: state.posts.filter((p: any) => p.id !== action.postId)
+            }
+        case SAVE_PROFILE_SUCCESS:
+            return {
+                ...state,
+                isValid: true
+            }
+        case SAVE_PROFILE_FAILED:
+            return {
+                ...state,
+                isValid: false,
+                error: action.error
             }
         default:
             return state

@@ -6,16 +6,15 @@ import SubMenu from "./SubMenu";
 import {IMyAccount} from "../../../interfaces";
 
 const MyAccount: React.FC<IMyAccount> = props => {
-    const {logOut, myProfile} = props;
+    const {logOut, profile} = props;
 
     return (
         <div className={`${styles.wrapper} no-border`}>
             <Dropdown overlay={<SubMenu logOut={logOut}/>}>
                 <Button style={{height: 40}}>
                     <div className={styles.inner}>
-                        <span className={`${styles.login} mr-2`}>{!myProfile.lenght ? myProfile.login : 'Loading...'}</span>
+                        <span className={`${styles.login} mr-2`}>{profile?.fullName}</span>
                         <Avatar icon={<UserOutlined/>}/>
-                        {/*src={myProfile}*/}
                     </div>
                 </Button>
             </Dropdown>

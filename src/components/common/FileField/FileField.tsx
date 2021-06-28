@@ -11,19 +11,20 @@ const FileField: React.FC<any> = props => {
         <Formik
             initialValues={{file: null}}
             onSubmit={(values, {setSubmitting}) => {
-                save(values.file)
+                setSubmitting(true)
+                save(values.file, setSubmitting)
             }}>
-            {({handleSubmit, setFieldValue, values}) => (
+            {({handleSubmit, setFieldValue, values, isSubmitting}) => (
                 <Form onSubmit={handleSubmit}>
                     <label className={styles.label} htmlFor="file"><span className="mr-2">Update photo</span><UploadOutlined/></label>
                     <input name="file" type="file" id="file" className='d-none' onChange={(event: any) => {
                         setFieldValue("file", event.currentTarget.files[0])
                     }}/>
                     <div className="mt-2">
-                        <Button htmlType="submit" block disabled={!values.file}>Submit</Button>
+                        <Button htmlType="submit" block disabled={!values.file || isSubmitting}>Submit</Button>
                     </div>
                     <div className="mt-2">
-                        <Button htmlType="reset" block danger disabled={!values.file}>Cancel</Button>
+                        <Button htmlType="reset" block danger disabled={!values.file || isSubmitting}>Cancel</Button>
                     </div>
                 </Form>
             )}

@@ -15,9 +15,9 @@ const messagesSchema = Yup.object().shape({
 });
 
 const MyPosts: React.FC<IMyPosts> = props => {
-    const {posts, onAddPost} = props;
+    const {posts, onAddPost, profile} = props;
     const {TextArea} = Input;
-    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
+    let postsElements = posts.map(p => <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount}/>);
 
     return (
         <div className={`${styles.myPosts} default-box`}>
@@ -46,8 +46,13 @@ const MyPosts: React.FC<IMyPosts> = props => {
                             <div className="col-12">
                                 <div className={`${styles.row} mt-3`}>
                                     <Button type="primary" htmlType="submit" disabled={isSubmitting}>Add Post</Button>
-                                    {errors.message && touched.message &&
-                                    <Alert style={{marginLeft: 15}} message={errors.message} type="warning"/>}
+                                    {
+                                        errors.message && touched.message &&
+                                        <Alert style={{marginLeft: 15}}
+                                               message={errors.message}
+                                               type="warning" showIcon
+                                        />
+                                    }
                                 </div>
                             </div>
                         </div>

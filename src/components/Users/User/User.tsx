@@ -9,15 +9,9 @@ const User: React.FC<IUser> = props => {
     const {user, userFollow, userUnfollow, isLoading} = props;
     const {Meta} = Card;
 
-    // disabled={followingInProgress.some((id: number) => id === user.id)}
     const followAction = (user.followed)
-        ? (
-            <MinusOutlined key="edit"
-                           onClick={() => userUnfollow(user.id)}/>
-        ) : (
-            <PlusOutlined key="edit"
-                          onClick={() => userFollow(user.id)}/>
-        )
+        ? <MinusOutlined key="edit" onClick={() => userUnfollow(user.id)}/>
+        : <PlusOutlined key="edit" onClick={() => userFollow(user.id)}/>
 
     return (
         <div key={user.id} className={styles.user}>
