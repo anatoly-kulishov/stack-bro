@@ -3,9 +3,9 @@ import {Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
-import {IUsers} from "../../interfaces";
+import {UsersType} from "../../types";
 
-const Users: React.FC<IUsers> = props => {
+const Users: React.FC<UsersType> = props => {
     const {
         users, isLoading, pageSize,
         setCurrentUserFollower, totalUsersCount, currentPage,

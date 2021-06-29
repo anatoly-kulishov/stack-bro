@@ -3,11 +3,11 @@ import {Comment, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
 // import styles from './Post.module.scss';
-import {IPost} from "../../../../interfaces";
+import {PostType} from "../../../../types";
 import {NavLink} from "react-router-dom";
 
 
-const Post: React.FC<IPost> = props => {
+const Post: React.FC<PostType> = props => {
     const {message, likesCount, profile} = props;
 
     let [likes, setLikes] = useState(likesCount);

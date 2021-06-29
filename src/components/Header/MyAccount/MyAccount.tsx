@@ -3,9 +3,9 @@ import {Avatar, Dropdown, Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import styles from "./MyAccount.module.scss";
 import SubMenu from "./SubMenu";
-import {IMyAccount} from "../../../interfaces";
+import {MyAccountType} from "../../../types";
 
-const MyAccount: React.FC<IMyAccount> = props => {
+const MyAccount: React.FC<MyAccountType> = props => {
     const {logOut, profile} = props;
 
     return (

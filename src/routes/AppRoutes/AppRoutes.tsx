@@ -5,9 +5,8 @@ import {Layout} from 'antd';
 import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
-import {IAppNavigation} from "../../interfaces";
 
-const AppRoutes: React.FC<IAppNavigation> = props => {
+const AppRoutes: React.FC = () => {
     const {Content} = Layout;
 
     return (

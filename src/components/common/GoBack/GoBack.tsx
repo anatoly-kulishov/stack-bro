@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button} from 'antd';
 import {ArrowLeftOutlined} from "@ant-design/icons";
-import {IGoBack} from "../../../interfaces";
+import {GoBackType} from "../../../types";
 
-const GoBack: React.FC<IGoBack> = props => {
+const GoBack: React.FC<GoBackType> = props => {
     const {title = 'Go Back', history} = props;
 
     return (

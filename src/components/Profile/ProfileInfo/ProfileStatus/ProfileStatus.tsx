@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-// import {IProfileStatus} from "../../../../interfaces";
 
 const ProfileStatus: React.FC<any> = props => {
     const {profile, status} = props;

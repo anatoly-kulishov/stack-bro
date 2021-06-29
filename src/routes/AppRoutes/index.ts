@@ -1,3 +1,3 @@
-import AppNavigation from "./AppRoutesContainer";
+import AppRoutes from "./AppRoutes";
 
-export default AppNavigation;
+export default AppRoutes;

@@ -160,6 +160,11 @@ textarea {
 }
 
 .ant-alert {
-    font-size: 11px;
-    line-height: 1.1;
+    font-size: 11px!important;
+    line-height: 1.1!important;
+}
+
+.ant-alert-with-description.ant-alert-no-icon {
+    max-height: 350px;
+    overflow: auto;
 }

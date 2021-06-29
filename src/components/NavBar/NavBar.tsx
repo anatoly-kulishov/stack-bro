@@ -8,9 +8,8 @@ import {
     FileOutlined,
     CodeSandboxOutlined
 } from '@ant-design/icons';
-import {INavBar} from "../../interfaces";
 
-const NavBar: React.FC<INavBar> = () => {
+const NavBar: React.FC = () => {
     const {Sider} = Layout;
 
     const onSelectNavKey = (key: number) => {
@@ -24,7 +23,7 @@ const NavBar: React.FC<INavBar> = () => {
             <Menu defaultSelectedKeys={[navKey]}
                   mode="inline">
                 <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
-                    <NavLink to="/">
+                    <NavLink to="/profile">
                         My profile
                     </NavLink>
                 </Menu.Item>

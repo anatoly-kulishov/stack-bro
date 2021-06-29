@@ -6,6 +6,7 @@ import Users from "../components/Users";
 import News from "../components/News";
 import Settings from "../components/Settings";
 import Sandbox from "../components/Sandbox";
+import {Redirect} from "react-router-dom";
 
 const Dialogs = lazy(() => import("../components/Dialogs"));
 const Help = lazy(() => import("../components/Help"));
@@ -27,11 +28,10 @@ export const appRoutes = [
     {
         path: "/",
         exact: true,
-        component: <Profile/> // Todo
+        component: <Redirect to="/profile"/>
     },
     {
         path: "/profile/:userId?",
-        exact: true,
         component: <Profile/> // Todo
     },
     {

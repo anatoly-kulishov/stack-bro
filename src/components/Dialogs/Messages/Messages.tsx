@@ -2,18 +2,12 @@ import React from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
-import {IMessages} from "../../../interfaces";
+import {MessagesType} from "../../../types";
 
-const Messages: React.FC<IMessages> = props => {
+const Messages: React.FC<MessagesType> = props => {
     const {messages} = props;
     let yourMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
     let foreignMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
-
-    // const messagesEndRef = useRef<HTMLInputElement>(null);
-    // const scrollToBottom = () => {
-    //     messagesEndRef?.current?.scrollIntoView({behavior: "smooth"})
-    // }
-    // useEffect(scrollToBottom, [yourMessagesElements, foreignMessagesElements]);
 
     return (
         <div className={styles.messages}>
@@ -24,7 +18,6 @@ const Messages: React.FC<IMessages> = props => {
                 <div className={styles.yourMessages}>
                     {yourMessagesElements}
                 </div>
-                {/*<span ref={messagesEndRef}/>*/}
             </div>
             <MessageInputContainer/>
         </div>

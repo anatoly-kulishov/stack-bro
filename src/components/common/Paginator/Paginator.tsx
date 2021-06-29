@@ -1,8 +1,8 @@
 import React from 'react';
 import {Pagination} from "antd";
-import {IPaginator} from "../../../interfaces";
+import {PaginatorType} from "../../../types";
 
-const Paginator: React.FC<IPaginator> = props => {
+const Paginator: React.FC<PaginatorType> = props => {
     const {currentPage, totalUsersCount, pageSize, setCurrentPage} = props;
     let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
     let pages: number[] = [];

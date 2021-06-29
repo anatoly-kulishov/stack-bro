@@ -5,21 +5,24 @@ import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
-import {IApp} from "./interfaces";
+import {AppType} from "./types";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
+import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
 
-class App extends React.Component<IApp> {
+class App extends React.Component<AppType> {
 
     componentDidMount() {
-        this.props.initializeApp()
+        this.props.initializeApp();
+        window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
     }
 
     render() {
-        if (!this.props.initialized) {
-            return <div className="d-center"><Spin size="large"/></div>
-        }
         return (
             <>
                 {!this.props.initialized && <div className="d-center"><Spin size="large"/></div>}

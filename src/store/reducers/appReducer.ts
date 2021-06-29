@@ -1,7 +1,8 @@
 import {INITIALIZED_SUCCESS} from "../types";
 
 const initialState = {
-    initialized: false
+    initialized: false,
+    globalErrors: null // Todo: Catch All Errors width alert
 }
 
 const appReducer = (state = initialState, action: any) => {

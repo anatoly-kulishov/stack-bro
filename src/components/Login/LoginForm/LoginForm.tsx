@@ -5,15 +5,15 @@ import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
 import CustomField from "../../common/CustomField";
 import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
-import {iForm} from "../../../interfaces";
+import {FormType} from "../../../types";
 
-const LoginForm: React.FC<iForm> = props => {
+const LoginForm: React.FC<FormType> = props => {
     const {onSubmit, isValid, errorText, captchaUrl} = props;
     return (
         <Formik
             initialValues={{email: '', password: '', captcha: null}}
             onSubmit={(values, {setSubmitting}) => {
-                console.log(JSON.stringify(values, null, 2));
+                // console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting);
             }}>
             {({
