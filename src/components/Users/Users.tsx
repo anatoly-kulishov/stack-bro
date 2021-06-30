@@ -3,7 +3,7 @@ import {Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
-import {UsersType} from "../../types";
+import {UsersType} from "../../types/types";
 
 const Users: React.FC<UsersType> = props => {
     const {

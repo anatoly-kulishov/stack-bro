@@ -5,16 +5,17 @@ import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
 import CustomField from "../../common/CustomField";
 import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
-import {FormType} from "../../../types";
+import {FormType} from "../../../types/types";
 
 const LoginForm: React.FC<FormType> = props => {
     const {onSubmit, isValid, errorText, captchaUrl} = props;
     return (
         <Formik
-            initialValues={{email: '', password: '', captcha: null}}
-            onSubmit={(values, {setSubmitting}) => {
+            initialValues={{email: '', password: '', captcha: ''}}
+            onSubmit={(values, {setSubmitting, resetForm}) => {
                 // console.log(JSON.stringify(values, null, 2));
-                onSubmit(values, setSubmitting);
+                onSubmit(values, setSubmitting, resetForm);
+                values.captcha = '';
             }}>
             {({
                   values, errors, touched, handleChange,
@@ -47,6 +48,7 @@ const LoginForm: React.FC<FormType> = props => {
                             value={values.password}
                             placeholder="Password"
                             validate={validatePassword}
+                            autoComplete="on"
                             errormessage={errors.password && touched.password && errors.password}/>
                     </div>
                     <div className="validate-box text-center mb-3">

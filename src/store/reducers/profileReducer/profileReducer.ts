@@ -4,20 +4,22 @@ import {
     SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS,
     SET_PROFILE_STATUS,
     SET_USER_PROFILE
-} from "../../types";
+} from "../../store-types";
 
 const initialState = {
     isOwner: true,
     isLoading: true,
     isValid: true,
     error: null,
-    posts: [],
+    posts: [] as object[],
     selectedProfile: {},
     profile: {},
     status: ''
 }
 
-const profileReducer = (state = initialState, action: any) => {
+type InitialStateType = typeof initialState;
+
+const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_USER_PROFILE:
             return {

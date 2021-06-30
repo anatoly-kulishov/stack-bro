@@ -2,7 +2,7 @@ import React from 'react';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
-import {ProfileType} from "../../types";
+import {ProfileType} from "../../types/types";
 
 const Profile: React.FC<ProfileType> = props => {
     // const {match} = props;

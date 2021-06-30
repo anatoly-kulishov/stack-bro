@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import styles from './MessageInput.module.scss';
-import {MessageInputType} from "../../../../types";
+import {MessageInputType} from "../../../../types/types";
 
 const MessageInput: React.FC<MessageInputType> = props => {
     const {message, setMessage, onAddMessage} = props;

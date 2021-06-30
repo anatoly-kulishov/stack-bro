@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Login.module.scss';
 import LoginForm from "./LoginForm/LoginForm";
-import {LoginType} from "../../types";
+import {LoginType} from "../../types/types";
 
 const Login: React.FC<LoginType> = props => {
     const {signIn, isValidAuth, errorText, captchaUrl} = props;

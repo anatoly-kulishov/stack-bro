@@ -4,8 +4,10 @@ import {
     SAVE_PHOTO_SUCCESS,
     SET_PROFILE_STATUS,
     SET_USER_PROFILE
-} from "../types";
+} from "../store-types";
 import profileAPI from "../../api/profileAPI";
+
+export const actions = {}
 
 /**
  * Returns user profile information
@@ -101,6 +103,11 @@ export const savePhotoSuccess = (photos: object) => (dispatch: Function) => {
     })
 }
 
+/**
+ * Save profile changes
+ * @param profile
+ * @param setSubmitting
+ */
 export const saveProfile = (profile: object, setSubmitting: Function) => (dispatch: Function, getState: Function) => {
     const userId = getState().auth.userId;
     profileAPI.putProfile(profile).then(data => {

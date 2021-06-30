@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
+import {Alert} from "antd";
 import {ApiTwoTone, EditTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
 import ProfileData from "./ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
-import {ProfileInfoType} from "../../../types";
+import {ProfileInfoType} from "../../../types/types";
 
 const ProfileInfo: React.FC<ProfileInfoType> = props => {
     const {profile, saveProfile, errorText} = props;
     const [editMode, setEditMode] = useState(false);
+    const {ErrorBoundary} = Alert;
 
     const onSubmit = () => {
         saveProfile().then(() => {

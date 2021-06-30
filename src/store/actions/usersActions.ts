@@ -4,7 +4,7 @@ import {
     SET_TOTAL_USERS_COUNT,
     GET_FOLLOWING_STATUS,
     TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS,
-} from "../types";
+} from "../store-types";
 import usersAPI from "../../api/usersAPI";
 
 /**

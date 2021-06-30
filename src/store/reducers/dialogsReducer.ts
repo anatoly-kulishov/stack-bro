@@ -1,4 +1,13 @@
-import {ADD_DIALOG, ADD_MESSAGE} from "../types";
+import {ADD_DIALOG, SEND_MESSAGE} from "../store-types";
+
+type DialogType = {
+    id: number
+    name: string
+}
+type MessageType = {
+    id: number
+    message: string
+}
 
 const initialState = {
     isLoading: true,
@@ -15,11 +24,7 @@ const initialState = {
             id: 3,
             name: 'Pavel'
         },
-        {
-            id: 4,
-            name: 'Ivan'
-        },
-    ],
+    ] as Array<DialogType>,
     messages: [
         {
             id: 1,
@@ -33,17 +38,19 @@ const initialState = {
             id: 3,
             message: 'Dolores qui voluptas?'
         }
-    ],
+    ] as Array<MessageType>
 }
 
-const dialogsReducer = (state = initialState, action: any) => {
+type InitialStateType = typeof initialState;
+
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_DIALOG:
             return {
                 ...state,
                 dialogs: [{...action.payload}, ...state.dialogs]
             }
-        case ADD_MESSAGE:
+        case SEND_MESSAGE:
             return {
                 ...state,
                 messages: [{...action.payload}, ...state.messages]

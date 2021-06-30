@@ -15,7 +15,10 @@ export type CopyToClipboardType = {
 export type MyAccountType = {
     myProfile: object,
     profile: {
-        fullName: string
+        fullName: string,
+        photos: {
+            large: string
+        }
     },
     logOut: () => void
 }
@@ -40,7 +43,7 @@ export type MessageInputType = {
 }
 
 export type LoginType = {
-    signIn: (profile: object, setSubmitting: Function) => void,
+    signIn: (profile: object, setSubmitting: Function, resetForm: Function) => void,
     errorText: string,
     isValidAuth: boolean,
     captchaUrl: string

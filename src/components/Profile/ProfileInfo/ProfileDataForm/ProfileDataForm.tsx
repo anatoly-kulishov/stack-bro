@@ -1,25 +1,17 @@
 import React from 'react';
 import {Formik, Form} from 'formik';
-import {Alert, Button, Checkbox} from "antd";
+import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
-import TextArea from "antd/es/input/TextArea";
 
 const ProfileDataForm: React.FC<any> = props => {
     const {onSubmit, isValid, errorText, profile} = props;
     const {fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts} = profile;
+    const {TextArea} = Input
 
     return (
         <Formik
-            initialValues={
-                {
-                    fullName,
-                    lookingForAJob,
-                    lookingForAJobDescription,
-                    aboutMe,
-                    contacts
-                }
-            }
+            initialValues={{fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts}}
             onSubmit={(values, {setSubmitting}) => {
                 console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting);
@@ -85,7 +77,7 @@ const ProfileDataForm: React.FC<any> = props => {
                         })}
                     </div>
                     <div className="validate-box text-center mb-3">
-                        {!isValid && errorText && <Alert message={errorText} type="error" />}
+                        {!isValid && errorText && <Alert message={errorText} type="error"/>}
                     </div>
                     <Button htmlType="submit"
                             size="large"

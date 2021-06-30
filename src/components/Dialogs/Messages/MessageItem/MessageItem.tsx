@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './MessageItem.module.scss';
-import {MessageItemType} from "../../../../types";
+import {MessageItemType} from "../../../../types/types";
 
 const MessageItem: React.FC<MessageItemType> = props => {
     const {id, message} = props;

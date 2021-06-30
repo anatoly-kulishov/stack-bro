@@ -1,16 +1,18 @@
 import Cookies from 'js-cookie'
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
-import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../types";
+import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
 
 /**
  * Authorize on the service
  * @param profile
  * @param setSubmitting
+ * @param resetForm
  */
-export const signIn = (profile: object, setSubmitting: Function) => (dispatch: Function) => {
+export const signIn = (profile: object, setSubmitting: Function, resetForm: Function) => (dispatch: Function) => {
     authAPI.postSignIn(profile).then(data => {
         if (data.resultCode === 0) {
+            resetForm();
             dispatch({
                 type: SIGN_IN,
                 userId: data.data.userId
@@ -25,7 +27,7 @@ export const signIn = (profile: object, setSubmitting: Function) => (dispatch: F
                 error: data.messages
             })
         }
-        setSubmitting(false)
+        setSubmitting(false);
     }).catch((e) => {
         console.log(e)
         setSubmitting(false)
@@ -61,7 +63,6 @@ export const logOut = () => (dispatch: Function) => {
  */
 export const getCaptchaUrl = () => (dispatch: Function) => {
     securityAPI.getCaptcha().then(data => {
-        console.log(data.url);
         dispatch(getCaptchaUrlSuccess(data.url));
     })
 }
@@ -69,7 +70,7 @@ export const getCaptchaUrl = () => (dispatch: Function) => {
 /**
  * Get New Captcha Success
  */
-export const getCaptchaUrlSuccess = (captchaUrl: any) => (dispatch: Function) => {
+export const getCaptchaUrlSuccess = (captchaUrl: string | null) => (dispatch: Function) => {
     dispatch({
         type: GET_CAPTCHA_URL_SUCCESS,
         payload: captchaUrl

@@ -12,5 +12,5 @@ export const getIsLoading = (state: any) => state.users.isLoading;
 export const getUsers = createSelector(
     [getUsersSelector],
     (users: []) => {
-        return users.filter((el: any) => el)
+        return users.filter((el: object) => el)
     })

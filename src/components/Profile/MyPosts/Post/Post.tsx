@@ -3,7 +3,7 @@ import {Comment, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
 // import styles from './Post.module.scss';
-import {PostType} from "../../../../types";
+import {PostType} from "../../../../types/types";
 import {NavLink} from "react-router-dom";
 
 

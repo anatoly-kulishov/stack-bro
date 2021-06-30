@@ -3,10 +3,9 @@ import {Input} from 'antd';
 import {Formik} from 'formik';
 import * as Yup from "yup";
 import {Alert, Button} from 'antd';
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {MyPostsType} from "../../../types";
+import {MyPostsType} from "../../../types/types";
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -15,9 +14,11 @@ const messagesSchema = Yup.object().shape({
         .required('Required'),
 });
 
+
 const MyPosts: React.FC<MyPostsType> = props => {
     const {posts, onAddPost, profile} = props;
     const {TextArea} = Input;
+    const {ErrorBoundary} = Alert;
     let postsElements = posts.map(p => <Post key={p.id} profile={profile} message={p.message}
                                              likesCount={p.likesCount}/>);
 

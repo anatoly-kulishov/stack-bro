@@ -1,17 +1,19 @@
-import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../types";
+import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
 import Cookies from 'js-cookie';
 
 const initialState = {
     isLoading: true,
     isValid: true,
     error: null,
-    isAuth: Cookies.get('token'),
+    isAuth: Boolean(Cookies.get('token')),
     userId: null,
     myProfile: [],
     captchaUrl: null // if null, then captcha is not required
 }
 
-const authReducer = (state = initialState, action: any) => {
+type InitialStateType = typeof initialState;
+
+const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SIGN_IN:
             return {

@@ -1,4 +1,9 @@
-import {ADD_DIALOG, ADD_MESSAGE} from "../types";
+import {ADD_DIALOG, SEND_MESSAGE} from "../store-types";
+
+export const actions = {
+    addDialog: (newDialog: object) => ({type: ADD_DIALOG, newDialog} as const),
+    sendMessage: (newMessageBody: string) => ({type: SEND_MESSAGE, newMessageBody} as const)
+}
 
 /**
  * Add new dialog
@@ -13,11 +18,11 @@ export const addDialog = (dialog: object) => (dispatch: Function) => {
 
 /**
  * Add new Message
- * @param message
+ * @param newMessageBody
  */
-export const addMessage = (message: object) => (dispatch: Function) => {
+export const sendMessage = (newMessageBody: object) => (dispatch: Function) => {
     dispatch({
-        type: ADD_MESSAGE,
-        payload: message
+        type: SEND_MESSAGE,
+        payload: newMessageBody
     })
 }

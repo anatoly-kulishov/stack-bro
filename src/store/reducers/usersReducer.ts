@@ -4,18 +4,20 @@ import {
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
     TOGGLE_IS_FOLLOWING_PROGRESS
-} from "../types";
+} from "../store-types";
 
 const initialState = {
     isLoading: true,
-    followingInProgress: [],
-    users: [],
+    followingInProgress: [] as object[],
+    users: [] as any[],
     pageSize: 12,
     totalUsersCount: 0,
     currentPage: 1
 }
 
-const usersReducer = (state = initialState, action: any) => {
+type InitialStateType = typeof initialState;
+
+const usersReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_USERS:
             return {
@@ -39,7 +41,7 @@ const usersReducer = (state = initialState, action: any) => {
         case TOGGLE_FOLLOW_UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map((user: any) => {
+                users: state.users.map((user: { id: number, followed: boolean }) => {
                     if (user.id === action.userId) {
                         return {...user, followed: !user.followed}
                     }
@@ -51,7 +53,7 @@ const usersReducer = (state = initialState, action: any) => {
                 ...state,
                 followingInProgress: action.followingInProgress
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter((id: number) => id !== action.userId),
+                    : state.followingInProgress.filter((id: object) => (id !== action.userId)),
             }
         default:
             return state;

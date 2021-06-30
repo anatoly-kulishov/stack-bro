@@ -1,11 +1,13 @@
-import {INITIALIZED_SUCCESS} from "../types";
+import {INITIALIZED_SUCCESS} from "../store-types";
 
 const initialState = {
     initialized: false,
-    globalErrors: null // Todo: Catch All Errors width alert
+    globalErrors: null as string | null // Todo: Catch All Errors width alert
 }
 
-const appReducer = (state = initialState, action: any) => {
+export type InitialStateType = typeof initialState;
+
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {

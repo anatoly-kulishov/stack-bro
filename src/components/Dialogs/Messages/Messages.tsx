@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
-import {MessagesType} from "../../../types";
+import {MessagesType} from "../../../types/types";
 
 const Messages: React.FC<MessagesType> = props => {
     const {messages} = props;

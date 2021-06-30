@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Spin} from "antd";
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
+import {Spin, Alert} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
@@ -8,6 +7,7 @@ import no_photo from './no_photo.png'
 const ProfilePhoto: React.FC<any> = props => {
     const {savePhoto, profile, isLoading} = props;
     const [profilePhoto, setProfilePhoto] = useState();
+    const {ErrorBoundary} = Alert;
 
     useEffect(() => {
         setProfilePhoto(profile?.photos?.large)

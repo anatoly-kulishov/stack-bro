@@ -1,4 +1,5 @@
 export type FieldValidatorType = (value: string) => string | undefined;
+
 /**
  * Required
  * @param value

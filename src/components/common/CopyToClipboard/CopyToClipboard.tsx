@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from "./copy-icon.svg";
-import {CopyToClipboardType} from "../../../types";
+import {CopyToClipboardType} from "../../../types/types";
 
 const CopyToClipboard: React.FC<CopyToClipboardType> = props => {
     const {onDoubleClickHandler, customStyles, children = '', copy = true, placeholder = "No Data"} = props;
