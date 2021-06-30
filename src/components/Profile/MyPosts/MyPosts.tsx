@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {MyPostsType} from "../../../types/types";
+import {MyPostsPropsType} from "../../../types/PropsTypes";
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -15,7 +15,7 @@ const messagesSchema = Yup.object().shape({
 });
 
 
-const MyPosts: React.FC<MyPostsType> = props => {
+const MyPosts: React.FC<MyPostsPropsType> = props => {
     const {posts, onAddPost, profile} = props;
     const {TextArea} = Input;
     const {ErrorBoundary} = Alert;

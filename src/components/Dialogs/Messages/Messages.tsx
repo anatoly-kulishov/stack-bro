@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
-import {MessagesType} from "../../../types/types";
+import {MessagesPropsType} from "../../../types/PropsTypes";
 
-const Messages: React.FC<MessagesType> = props => {
+const Messages: React.FC<MessagesPropsType> = props => {
     const {messages} = props;
-    let yourMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
-    let foreignMessagesElements = messages.map((m: any) => <MessageItem key={m.id} id={m.id} message={m.message}/>);
+    let yourMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
+    let foreignMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
 
     return (
         <div className={styles.messages}>

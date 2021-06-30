@@ -5,13 +5,13 @@ import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
-import {AppType} from "./types/types";
+import {AppPropsType} from "./types/PropsTypes";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
 
-class App extends React.Component<AppType> {
+class App extends React.Component<AppPropsType> {
 
     componentDidMount() {
         this.props.initializeApp();

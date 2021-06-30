@@ -1,13 +1,10 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './DialogItem.module.scss';
+import {DialogItemPropsType} from "../../../../types/PropsTypes";
 
-type IDialogItem = {
-    id: number | string,
-    name: string,
-}
-
-const DialogItem: React.FC<IDialogItem> = ({id, name}) => {
+const DialogItem: React.FC<DialogItemPropsType> = props => {
+    const {id, name} = props;
     return (
         <li className={styles.listItem} key={id}>
             <NavLink to={`/dialogs/${id}`} activeClassName={styles.current}>

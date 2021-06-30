@@ -3,8 +3,9 @@ import {Formik, Form} from 'formik';
 import {Button} from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
 import styles from './FileField.module.scss'
+import {FileFieldPropsType} from "../../../types/PropsTypes";
 
-const FileField: React.FC<any> = props => {
+const FileField: React.FC<FileFieldPropsType> = props => {
     const {save} = props;
 
     return (
@@ -16,7 +17,8 @@ const FileField: React.FC<any> = props => {
             }}>
             {({handleSubmit, setFieldValue, values, isSubmitting}) => (
                 <Form onSubmit={handleSubmit}>
-                    <label className={styles.label} htmlFor="file"><span className="mr-2">Update photo</span><UploadOutlined/></label>
+                    <label className={styles.label} htmlFor="file"><span
+                        className="mr-2">Update photo</span><UploadOutlined/></label>
                     <input name="file" type="file" id="file" className='d-none' onChange={(event: any) => {
                         setFieldValue("file", event.currentTarget.files[0])
                     }}/>

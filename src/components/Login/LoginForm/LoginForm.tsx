@@ -5,9 +5,9 @@ import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
 import CustomField from "../../common/CustomField";
 import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
-import {FormType} from "../../../types/types";
+import {FormPropsType} from "../../../types/PropsTypes";
 
-const LoginForm: React.FC<FormType> = props => {
+const LoginForm: React.FC<FormPropsType> = props => {
     const {onSubmit, isValid, errorText, captchaUrl} = props;
     return (
         <Formik

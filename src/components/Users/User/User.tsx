@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
-import {UserType} from "../../../types/types";
+import {UserPropsType} from "../../../types/PropsTypes";
 import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
 
-const User: React.FC<UserType> = props => {
+const User: React.FC<UserPropsType> = props => {
     const {user, userFollow, userUnfollow, isLoading} = props;
     const {Meta} = Card;
 

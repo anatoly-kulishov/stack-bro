@@ -1,10 +1,12 @@
-export type AppType = {
+import FileField from "../components/common/FileField";
+
+export type AppPropsType = {
     isAuth: boolean | null,
     initialized: boolean | null,
     initializeApp: Function
 }
 
-export type CopyToClipboardType = {
+export type CopyToClipboardPropsType = {
     children: string,
     customStyles: any,
     copy: boolean,
@@ -12,7 +14,7 @@ export type CopyToClipboardType = {
     onDoubleClickHandler: () => void
 }
 
-export type MyAccountType = {
+export type MyAccountPropsType = {
     myProfile: object,
     profile: {
         fullName: string,
@@ -23,40 +25,43 @@ export type MyAccountType = {
     logOut: () => void
 }
 
-export type MyAccountSubMenuType = {
+export type MyAccountSubMenuPropsType = {
     logOut: () => void
 }
 
-export type MessagesType = {
-    messages: Array<object>
+export type MessagesPropsType = {
+    messages: [{
+        id: number,
+        message: string
+    }]
 }
 
-export type MessageItemType = {
+export type MessageItemPropsType = {
     id: number,
     message: string
 }
 
-export type MessageInputType = {
+export type MessageInputPropsType = {
     message: string,
     setMessage: (symbol: string) => void,
     onAddMessage: () => void
 }
 
-export type LoginType = {
+export type LoginPropsType = {
     signIn: (profile: object, setSubmitting: Function, resetForm: Function) => void,
     errorText: string,
     isValidAuth: boolean,
     captchaUrl: string
 }
 
-export type FormType = {
+export type FormPropsType = {
     onSubmit: Function,
     errorText: string,
     isValid: boolean,
     captchaUrl?: string
 }
 
-export type ProfileType = {
+export type ProfilePropsType = {
     profile: { fullName: string },
     myProfile: object,
     isLoading: boolean,
@@ -66,7 +71,7 @@ export type ProfileType = {
     saveProfile: Function
 }
 
-export type ProfileInfoType = {
+export type ProfileInfoPropsType = {
     profile: { fullName: string },
     myProfile: object,
     isLoading: boolean,
@@ -76,7 +81,7 @@ export type ProfileInfoType = {
     errorText?: string | null
 }
 
-export type MyPostsType = {
+export type MyPostsPropsType = {
     posts: Array<{
         id: number,
         message: string,
@@ -86,13 +91,13 @@ export type MyPostsType = {
     profile: { fullName: string, photos: { large: string, small: string } }
 }
 
-export type PostType = {
+export type PostPropsType = {
     message: string,
     likesCount: number,
     profile: { fullName: string, photos: { large: string, small: string } }
 }
 
-export type UsersType = {
+export type UsersPropsType = {
     users: Array<{
         id: number,
         name: string,
@@ -112,7 +117,7 @@ export type UsersType = {
     followingInProgress: [number]
 }
 
-export type UserType = {
+export type UserPropsType = {
     user: {
         id: number,
         name: string,
@@ -127,21 +132,37 @@ export type UserType = {
     followingInProgress: [number]
 }
 
-export type GoBackType = {
-    title?: string,
+export type GoBackPropsType = {
+    title?: string | undefined,
     history: { goBack: Function }
 }
 
-export type ProfileStatusType = {
+export type ProfileStatusPropsType = {
     getStatus: (userId: number) => void,
     updateStatus: (status: string) => void,
     profile: { fullName: string },
     status: string,
 }
 
-export type PaginatorType = {
+export type PaginatorPropsType = {
     currentPage: number,
     totalUsersCount: number,
     pageSize: number,
     setCurrentPage: (pageNumber: number) => void
+}
+
+export type FileFieldPropsType = {
+    save: (file: File | null, setSubmitting: Function) => void
+}
+
+export type DialogListPropsType = {
+    dialogs: [{
+        id: number,
+        name: string
+    }]
+}
+
+export type DialogItemPropsType = {
+    id: number | string,
+    name: string,
 }

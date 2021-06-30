@@ -2,7 +2,7 @@ import React from 'react';
 import {useLocation, useHistory} from "react-router-dom";
 import styles from "./NoMatch.module.scss";
 
-const NoMatch = () => {
+const NoMatch: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
 

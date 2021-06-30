@@ -2,9 +2,9 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {Menu} from 'antd';
 import {LogoutOutlined, SettingOutlined, QuestionCircleOutlined} from '@ant-design/icons';
-import {MyAccountSubMenuType} from "../../../../types/types";
+import {MyAccountSubMenuPropsType} from "../../../../types/PropsTypes";
 
-const SubMenu: React.FC<MyAccountSubMenuType> = props => {
+const SubMenu: React.FC<MyAccountSubMenuPropsType> = props => {
     const {logOut} = props;
     return (
         <Menu>

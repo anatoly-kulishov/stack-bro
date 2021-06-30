@@ -2,9 +2,9 @@ import React from 'react';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
-import {ProfileType} from "../../types/types";
+import {ProfilePropsType} from "../../types/PropsTypes";
 
-const Profile: React.FC<ProfileType> = props => {
+const Profile: React.FC<ProfilePropsType> = props => {
     // const {match} = props;
     // const currentUserId = match?.params.userId;
     // useEffect(() => {

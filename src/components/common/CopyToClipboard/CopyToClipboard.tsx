@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from "./copy-icon.svg";
-import {CopyToClipboardType} from "../../../types/types";
+import {CopyToClipboardPropsType} from "../../../types/PropsTypes";
 
-const CopyToClipboard: React.FC<CopyToClipboardType> = props => {
+const CopyToClipboard: React.FC<CopyToClipboardPropsType> = props => {
     const {onDoubleClickHandler, customStyles, children = '', copy = true, placeholder = "No Data"} = props;
-    const [copySuccess] = useState<any>(children);
+    const [copySuccess] = useState<string>(children);
 
     const copyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text).then(() => {
