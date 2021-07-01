@@ -2,10 +2,8 @@ import React, {createElement, useState, memo} from 'react';
 import {Comment, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
-// import styles from './Post.module.scss';
 import {PostPropsType} from "../../../../types/PropsTypes";
 import {NavLink} from "react-router-dom";
-
 
 const Post: React.FC<PostPropsType> = props => {
     const {message, likesCount, profile} = props;
@@ -49,7 +47,7 @@ const Post: React.FC<PostPropsType> = props => {
             avatar={
                 <Avatar
                     src={profile?.photos && profile?.photos.large}
-                    alt={profile?.fullName}/>
+                    alt={profile?.fullName ? profile?.fullName : ''}/>
             }
             content={
                 <p>

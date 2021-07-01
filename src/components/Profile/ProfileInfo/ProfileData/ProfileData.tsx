@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from "./ProfileData.module.scss";
 import Contact from "./Contact";
+import {ProfileDataPropsType} from "../../../../types/PropsTypes";
 
-const ProfileData: React.FC<any> = props => {
+const ProfileData: React.FC<ProfileDataPropsType> = props => {
     const {profile} = props;
     const {lookingForAJob, lookingForAJobDescription, contacts, aboutMe} = profile;
 
@@ -23,11 +24,11 @@ const ProfileData: React.FC<any> = props => {
                     <div className={styles.label}>About Me:</div>
                     <div className={styles.desc}>{aboutMe && aboutMe}</div>
                 </div>
-                {contacts && Object.keys(contacts).map((key, num) => (
+                {contacts && Object.keys(contacts).map((key: string, num: number) => (
                         <Contact key={num}
                                  logic={true}
                                  title={key}
-                                 value={contacts[key]}/>
+                                 value={contacts.key}/>
                     )
                 )}
             </div>

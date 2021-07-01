@@ -5,7 +5,6 @@ import ProfilePhoto from './ProfilePhoto';
 import {ProfilePropsType} from "../../types/PropsTypes";
 
 const Profile: React.FC<ProfilePropsType> = props => {
-    // const {match} = props;
     // const currentUserId = match?.params.userId;
     // useEffect(() => {
     //     console.log(currentUserId)

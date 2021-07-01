@@ -3,13 +3,13 @@ import {Alert} from "antd";
 import {ApiTwoTone, EditTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
-import ProfileData from "./ProfileData";
+import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
 import {ProfileInfoPropsType} from "../../../types/PropsTypes";
 
 const ProfileInfo: React.FC<ProfileInfoPropsType> = props => {
     const {profile, saveProfile, errorText} = props;
-    const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState<boolean>(false);
     const {ErrorBoundary} = Alert;
 
     const onSubmit = () => {
@@ -36,7 +36,7 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = props => {
                     }
                 </div>
                 {!editMode
-                    ? <ProfileData/>
+                    ? <ProfileData profile={profile}/>
                     : <ProfileDataForm profile={profile} onSubmit={onSubmit} errorText={errorText}/>
                 }
             </ErrorBoundary>

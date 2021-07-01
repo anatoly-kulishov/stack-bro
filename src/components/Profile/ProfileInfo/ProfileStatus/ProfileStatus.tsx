@@ -4,7 +4,7 @@ import CopyToClipboard from "../../../common/CopyToClipboard";
 
 const ProfileStatus: React.FC<any> = props => {
     const {profile, status} = props;
-    const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
+    const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
     const updateStatusHandler = () => {

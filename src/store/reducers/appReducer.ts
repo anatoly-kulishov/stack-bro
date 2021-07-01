@@ -1,4 +1,6 @@
 import {INITIALIZED_SUCCESS} from "../store-types";
+import {InferActionsTypes} from "./rootReducer";
+import {actions} from "../actions/appActions";
 
 const initialState = {
     initialized: false,
@@ -6,8 +8,9 @@ const initialState = {
 }
 
 export type InitialStateType = typeof initialState;
+type ActionsType = InferActionsTypes<typeof actions>;
 
-const appReducer = (state = initialState, action: any): InitialStateType => {
+const appReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {

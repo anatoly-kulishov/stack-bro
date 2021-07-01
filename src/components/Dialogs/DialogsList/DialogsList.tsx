@@ -8,7 +8,7 @@ const DialogsList: React.FC<DialogListPropsType> = props => {
     return (
         <div className={styles.dialogs}>
             <ul className={styles.dialogsList}>
-                {dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>)}
+                {dialogs.map((d) => <DialogItem key={d.id} id={d.id} name={d.name}/>)}
             </ul>
         </div>
     );

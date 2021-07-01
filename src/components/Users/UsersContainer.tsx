@@ -15,17 +15,9 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../store/selectors/users-selectors";
+import {AppStateType} from "../../store/reducers/rootReducer";
 
-// const mapStateToProps = (state: any) => ({
-//     users: state.users.users,
-//     isLoading: state.users.isLoading,
-//     pageSize: state.users.pageSize,
-//     totalUsersCount: state.users.totalUsersCount,
-//     currentPage: state.users.currentPage,
-//     followingInProgress: state.users.followingInProgress
-// })
-
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppStateType) => ({
     users: getUsers(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),

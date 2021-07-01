@@ -1,4 +1,5 @@
-import FileField from "../components/common/FileField";
+import {ProfileType, UserType} from "./Types";
+import ProfileData from "../components/Profile/ProfileInfo/ProfileData/ProfileData";
 
 export type AppPropsType = {
     isAuth: boolean | null,
@@ -16,12 +17,7 @@ export type CopyToClipboardPropsType = {
 
 export type MyAccountPropsType = {
     myProfile: object,
-    profile: {
-        fullName: string,
-        photos: {
-            large: string
-        }
-    },
+    profile: ProfileType,
     logOut: () => void
 }
 
@@ -48,7 +44,7 @@ export type MessageInputPropsType = {
 }
 
 export type LoginPropsType = {
-    signIn: (profile: object, setSubmitting: Function, resetForm: Function) => void,
+    signIn: (profile: ProfileType, setSubmitting: Function, resetForm: Function) => void,
     errorText: string,
     isValidAuth: boolean,
     captchaUrl: string
@@ -56,29 +52,31 @@ export type LoginPropsType = {
 
 export type FormPropsType = {
     onSubmit: Function,
-    errorText: string,
-    isValid: boolean,
-    captchaUrl?: string
+    errorText: string | null | undefined,
+    isValid?: boolean | null | undefined,
+    captchaUrl?: string | null | undefined
 }
 
 export type ProfilePropsType = {
-    profile: { fullName: string },
+    profile: ProfileType,
     myProfile: object,
     isLoading: boolean,
     match: object,
     location: object,
     history: object,
-    saveProfile: Function
+    saveProfile: () => Promise<any>,
+    savePhoto: () => void
 }
 
 export type ProfileInfoPropsType = {
-    profile: { fullName: string },
+    profile: ProfileType,
     myProfile: object,
     isLoading: boolean,
-    history: object,
     match: object,
-    saveProfile: Function,
-    errorText?: string | null
+    history: object,
+    errorText?: string | null,
+    saveProfile: () => Promise<any>,
+    savePhoto: () => void
 }
 
 export type MyPostsPropsType = {
@@ -88,23 +86,17 @@ export type MyPostsPropsType = {
         likesCount: number
     }>
     onAddPost: (message: string) => void,
-    profile: { fullName: string, photos: { large: string, small: string } }
+    profile: ProfileType
 }
 
 export type PostPropsType = {
     message: string,
     likesCount: number,
-    profile: { fullName: string, photos: { large: string, small: string } }
+    profile: ProfileType
 }
 
 export type UsersPropsType = {
-    users: Array<{
-        id: number,
-        name: string,
-        photos: { small: string, large: string },
-        status: string,
-        followed: boolean,
-    }>,
+    users: Array<UserType>,
     isLoading: boolean,
     pageSize: number,
     totalUsersCount: number,
@@ -118,13 +110,7 @@ export type UsersPropsType = {
 }
 
 export type UserPropsType = {
-    user: {
-        id: number,
-        name: string,
-        photos: { small: string, large: string },
-        status: string,
-        followed: boolean
-    },
+    user: UserType,
     isLoading: boolean,
     userFollow: (userId: number) => void,
     userUnfollow: (userId: number) => void,
@@ -140,7 +126,7 @@ export type GoBackPropsType = {
 export type ProfileStatusPropsType = {
     getStatus: (userId: number) => void,
     updateStatus: (status: string) => void,
-    profile: { fullName: string },
+    profile: ProfileType,
     status: string,
 }
 
@@ -165,4 +151,25 @@ export type DialogListPropsType = {
 export type DialogItemPropsType = {
     id: number | string,
     name: string,
+}
+
+export type ProfilePhotoPropsType = {
+    profile: ProfileType,
+    isLoading: boolean | null,
+    saveProfile: () => Promise<any>,
+    savePhoto: () => void
+}
+
+export type ProfileDataFormForm = {
+    profile: ProfileType
+}
+
+export type ProfileDataPropsType = {
+    profile: ProfileType
+}
+
+export type ContactPropsType = {
+    logic: boolean,
+    title: string,
+    value: any
 }

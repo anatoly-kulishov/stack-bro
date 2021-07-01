@@ -3,8 +3,9 @@ import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
+import {FormPropsType, ProfileDataFormForm} from "../../../../types/PropsTypes";
 
-const ProfileDataForm: React.FC<any> = props => {
+const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => {
     const {onSubmit, isValid, errorText, profile} = props;
     const {fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts} = profile;
     const {TextArea} = Input
@@ -35,7 +36,7 @@ const ProfileDataForm: React.FC<any> = props => {
                             <label className="mr-2" htmlFor="lookingForAJob">Looking for a job</label>
                             <Checkbox id="lookingForAJob"
                                       name='lookingForAJob'
-                                      checked={values.lookingForAJob}
+                                      checked={values.lookingForAJob ? values.lookingForAJob : false}
                                       onChange={handleChange}/>
                         </div>
                     </div>
@@ -44,7 +45,7 @@ const ProfileDataForm: React.FC<any> = props => {
                         <TextArea rows={2}
                                   id="lookingForAJobDescription"
                                   name="lookingForAJobDescription"
-                                  value={values.lookingForAJobDescription}
+                                  value={values.lookingForAJobDescription ? values.lookingForAJobDescription : ''}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                   required/>
@@ -54,13 +55,13 @@ const ProfileDataForm: React.FC<any> = props => {
                         <TextArea rows={2}
                                   id="aboutMe"
                                   name="aboutMe"
-                                  value={values.aboutMe}
+                                  value={values.aboutMe ? values.aboutMe : ''}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                   required/>
                     </div>
                     <div>
-                        {Object.keys(contacts).map(key => {
+                        {Object.keys(contacts).map((key: string) => {
                             return (
                                 <div className="form-row" key={key}>
                                     <label htmlFor={key}>{key}</label>

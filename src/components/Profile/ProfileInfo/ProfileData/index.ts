@@ -1,3 +1,3 @@
-import ProfileDescription from "./ProfileDataContainer";
+import ProfileData from "./ProfileData";
 
-export default ProfileDescription;
+export default ProfileData;

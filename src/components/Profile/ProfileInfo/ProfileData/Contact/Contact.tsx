@@ -1,8 +1,9 @@
 import React, {memo} from 'react';
 import styles from "./Contact.module.scss";
+import {ContactPropsType} from "../../../../../types/PropsTypes";
 
-const Contact: React.FC<any> = props => {
-    const {logic, title = '', value = ''} = props;
+const Contact: React.FC<ContactPropsType> = props => {
+    const {logic, title = '', value} = props;
     if (logic) {
         return (
             <div className={styles.row}>

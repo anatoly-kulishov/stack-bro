@@ -1,4 +1,5 @@
 import React, {lazy} from 'react';
+import {Redirect} from "react-router-dom";
 import {withSuspense} from "../hoc/withSuspense";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
@@ -6,7 +7,6 @@ import Users from "../components/Users";
 import News from "../components/News";
 import Settings from "../components/Settings";
 import Sandbox from "../components/Sandbox";
-import {Redirect} from "react-router-dom";
 
 const Dialogs = lazy(() => import("../components/Dialogs"));
 const Help = lazy(() => import("../components/Help"));

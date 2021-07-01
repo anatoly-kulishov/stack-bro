@@ -3,10 +3,11 @@ import {Spin, Alert} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
+import {ProfilePhotoPropsType} from "../../../types/PropsTypes";
 
-const ProfilePhoto: React.FC<any> = props => {
+const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
     const {savePhoto, profile, isLoading} = props;
-    const [profilePhoto, setProfilePhoto] = useState();
+    const [profilePhoto, setProfilePhoto] = useState<string | null>();
     const {ErrorBoundary} = Alert;
 
     useEffect(() => {
