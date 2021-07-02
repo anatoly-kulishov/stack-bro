@@ -1,3 +1,3 @@
-import MyPostsContainer from "./MyPostsContainer";
+import MyPosts from "./MyPostsContainer";
 
-export default MyPostsContainer;
+export default MyPosts;

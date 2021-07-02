@@ -1,6 +1,6 @@
-import {INITIALIZED_SUCCESS} from "../store-types";
-import {InferActionsTypes} from "./rootReducer";
-import {actions} from "../actions/appActions";
+import {INITIALIZED_SUCCESS} from "../../store-types";
+import {InferActionsTypes} from "../rootReducer";
+import {actions} from "../../actions/appActions";
 
 const initialState = {
     initialized: false,

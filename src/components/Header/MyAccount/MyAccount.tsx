@@ -8,6 +8,8 @@ import {MyAccountPropsType} from "../../../types/PropsTypes";
 const MyAccount: React.FC<MyAccountPropsType> = props => {
     const {logOut, profile} = props;
 
+    console.log(profile)
+
     return (
         <div className={`${styles.wrapper} no-border`}>
             <Dropdown overlay={<SubMenu logOut={logOut}/>}>

@@ -9,7 +9,6 @@ const mapStateToProps = (state: AppStateType) => ({
     captchaUrl: state.auth.captchaUrl,
 })
 
-// @ts-ignore
 const LoginContainer = connect(mapStateToProps, {signIn})(Login);
 
 export default LoginContainer;

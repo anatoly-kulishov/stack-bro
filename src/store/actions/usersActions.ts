@@ -7,6 +7,11 @@ import {
 } from "../store-types";
 import usersAPI from "../../api/usersAPI";
 
+// export type InitialState = typeof initialState;
+// export type FilterType = typeof initialState.filter;
+// type ActionsTypes = InferActionsTypes<typeof actions>;
+// type ThunkType = BaseThunkType<ActionsTypes>;
+
 /**
  * Returns all (or only filtered by name with term parameter) users splitted by page
  * @param requestPage
@@ -22,27 +27,33 @@ export const setUsers = (requestPage: number, pageSize: number) => (dispatch: Fu
     }).catch((e) => console.error(e));
 }
 
+type SetCurrentPageActionType = {
+    type: typeof SET_CURRENT_PAGE,
+    currentPage: number
+}
+
 /**
  * Set current page
  * @param pageNumber
  */
-export const setCurrentPage = (pageNumber: number) => (dispatch: Function) => {
-    dispatch({
-        type: SET_CURRENT_PAGE,
-        currentPage: pageNumber
-    })
+export const setCurrentPage = (pageNumber: number): SetCurrentPageActionType => ({
+    type: SET_CURRENT_PAGE,
+    currentPage: pageNumber
+})
+
+type SetTotalUserCountActionType = {
+    type: typeof SET_TOTAL_USERS_COUNT,
+    totalUserCount: number
 }
 
 /**
  * Set total user count
  * @param totalUserCount
  */
-export const setTotalUserCount = (totalUserCount: number) => (dispatch: Function) => {
-    dispatch({
-        type: SET_TOTAL_USERS_COUNT,
-        totalUserCount: totalUserCount
-    })
-}
+export const setTotalUserCount = (totalUserCount: number): SetTotalUserCountActionType => ({
+    type: SET_TOTAL_USERS_COUNT,
+    totalUserCount: totalUserCount
+})
 
 /**
  * Get following status current user
@@ -90,15 +101,19 @@ export const userUnfollow = (userId: number) => (dispatch: Function) => {
     }).catch((e) => console.error(e))
 }
 
+type ToggleFollowingProgressActionType = {
+    type: typeof TOGGLE_IS_FOLLOWING_PROGRESS,
+    followingInProgress: boolean,
+    userId: number
+}
+
 /**
  * Toggle Following Progress
  * @param followingInProgress
  * @param userId
  */
-export const toggleFollowingProgress = (followingInProgress: boolean, userId: number) => (dispatch: Function) => {
-    dispatch({
-        type: TOGGLE_IS_FOLLOWING_PROGRESS,
-        followingInProgress,
-        userId
-    })
-}
+export const toggleFollowingProgress = (followingInProgress: boolean, userId: number): ToggleFollowingProgressActionType => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    followingInProgress,
+    userId
+})

@@ -8,7 +8,6 @@ const mapStateToProps = (state: AppStateType) => ({
     profile: state.profile.profile,
 })
 
-// @ts-ignore
 const MyAccountContainer = connect(mapStateToProps, {logOut})(MyAccount);
 
 export default MyAccountContainer;

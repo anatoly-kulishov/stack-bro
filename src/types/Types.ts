@@ -1,6 +1,6 @@
 export type ProfileType = {
     userId: number | null,
-    lookingForAJob: boolean | null,
+    lookingForAJob: boolean,
     lookingForAJobDescription: string | null,
     fullName: string | null,
     aboutMe: string | null,

@@ -4,8 +4,8 @@ import {
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
     TOGGLE_IS_FOLLOWING_PROGRESS
-} from "../store-types";
-import {UserType} from "../../types/Types";
+} from "../../store-types";
+import {UserType} from "../../../types/Types";
 
 const initialState = {
     isLoading: true,

@@ -1,7 +1,7 @@
 import React from 'react';
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
+import MyPosts from "./MyPosts";
 import {ProfilePropsType} from "../../types/PropsTypes";
 
 const Profile: React.FC<ProfilePropsType> = props => {
@@ -22,7 +22,7 @@ const Profile: React.FC<ProfilePropsType> = props => {
             </div>
             <div className="row">
                 <div className="col-12">
-                    <MyPostsContainer/>
+                    <MyPosts/>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import {ProfileType, UserType} from "./Types";
-import ProfileData from "../components/Profile/ProfileInfo/ProfileData/ProfileData";
+import {DialogType, MessageType} from "../store/reducers/dialogsReducer/dialogsReducer";
 
 export type AppPropsType = {
     isAuth: boolean | null,
@@ -16,8 +16,8 @@ export type CopyToClipboardPropsType = {
 }
 
 export type MyAccountPropsType = {
-    myProfile: object,
-    profile: ProfileType,
+    profile: any,
+    myProfile: any,
     logOut: () => void
 }
 
@@ -26,10 +26,7 @@ export type MyAccountSubMenuPropsType = {
 }
 
 export type MessagesPropsType = {
-    messages: [{
-        id: number,
-        message: string
-    }]
+    messages: MessageType[]
 }
 
 export type MessageItemPropsType = {
@@ -45,9 +42,9 @@ export type MessageInputPropsType = {
 
 export type LoginPropsType = {
     signIn: (profile: ProfileType, setSubmitting: Function, resetForm: Function) => void,
-    errorText: string,
+    errorText: string | null,
     isValidAuth: boolean,
-    captchaUrl: string
+    captchaUrl: string | null
 }
 
 export type FormPropsType = {
@@ -142,10 +139,7 @@ export type FileFieldPropsType = {
 }
 
 export type DialogListPropsType = {
-    dialogs: [{
-        id: number,
-        name: string
-    }]
+    dialogs: DialogType[]
 }
 
 export type DialogItemPropsType = {

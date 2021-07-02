@@ -6,7 +6,6 @@ const mapStateToProps = (state: AppStateType) => ({
     dialogs: state.dialogs.dialogs
 })
 
-// @ts-ignore
 const DialogsListContainer = connect(mapStateToProps)(DialogsList);
 
 export default DialogsListContainer;

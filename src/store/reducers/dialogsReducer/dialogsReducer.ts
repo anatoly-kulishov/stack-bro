@@ -1,11 +1,12 @@
-import {ADD_DIALOG, SEND_MESSAGE} from "../store-types";
+import {ADD_DIALOG, SEND_MESSAGE} from "../../store-types";
 
-type DialogType = {
-    id: number
+export type DialogType = {
+    id: number,
     name: string
 }
-type MessageType = {
-    id: number
+
+export type MessageType = {
+    id: number,
     message: string
 }
 
