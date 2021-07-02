@@ -1,5 +1,6 @@
 import {ProfileType, UserType} from "./Types";
 import {DialogType, MessageType} from "../store/reducers/dialogsReducer/dialogsReducer";
+import {ProfileActionType} from "../store/actions/authActions";
 
 export type AppPropsType = {
     isAuth: boolean | null,
@@ -41,7 +42,7 @@ export type MessageInputPropsType = {
 }
 
 export type LoginPropsType = {
-    signIn: (profile: ProfileType, setSubmitting: Function, resetForm: Function) => void,
+    signIn: (profile: ProfileActionType, setSubmitting: Function, resetForm: Function) => void,
     errorText: string | null,
     isValidAuth: boolean,
     captchaUrl: string | null

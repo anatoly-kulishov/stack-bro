@@ -1,3 +1,18 @@
+export enum ResultCodes {
+    Success = 0,
+    Error = 1
+}
+
+export enum ResultCodesForCaptcha {
+    CaptchaIsRequired = 10
+}
+
+export type BaseResponseType = {
+    resultCode: ResultCodes,
+    messages: Array<string>
+    data: {}
+}
+
 export type ProfileType = {
     userId: number | null,
     lookingForAJob: boolean,
