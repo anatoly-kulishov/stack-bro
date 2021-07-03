@@ -9,7 +9,7 @@ import {
 } from "../store-types";
 import profileAPI from "../../api/profileAPI";
 import {AppStateType} from "../reducers/rootReducer";
-import {ResultCodes} from "../../types/Types";
+import {ResultCodes} from "../../types/GeneralTypes";
 
 export const actions = {}
 

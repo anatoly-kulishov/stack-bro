@@ -5,7 +5,7 @@ import {AppStateType} from "../reducers/rootReducer";
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
-import {ResultCodes, ResultCodesForCaptcha} from "../../types/Types";
+import {ResultCodes, ResultCodesForCaptcha} from "../../types/GeneralTypes";
 
 type ThunkType = ThunkAction<void, AppStateType, unknown, Action>;
 // export type ProfileActionsTypes = null;

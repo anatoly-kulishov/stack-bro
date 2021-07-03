@@ -6,6 +6,8 @@ import {LoginPropsType} from "../../types/PropsTypes";
 const Login: React.FC<LoginPropsType> = props => {
     const {signIn, isValidAuth, errorText, captchaUrl} = props;
 
+    console.log(errorText)
+
     return (
         <section>
             <div className={styles.loginBox}>

@@ -1,4 +1,4 @@
-import {ProfileType, UserType} from "./Types";
+import {ProfileType, UserType} from "./GeneralTypes";
 import {DialogType, MessageType} from "../store/reducers/dialogsReducer/dialogsReducer";
 import {ProfileActionType} from "../store/actions/authActions";
 
@@ -51,8 +51,8 @@ export type LoginPropsType = {
 export type FormPropsType = {
     onSubmit: Function,
     errorText: string | null | undefined,
-    isValid?: boolean | null | undefined,
-    captchaUrl?: string | null | undefined
+    isValid?: boolean | null,
+    captchaUrl?: string | null
 }
 
 export type ProfilePropsType = {

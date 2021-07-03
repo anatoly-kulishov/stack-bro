@@ -1,6 +1,6 @@
 import {authInstance} from "./instances";
 import {ProfileActionType} from "../store/actions/authActions";
-import {BaseResponseType, ResultCodes, ResultCodesForCaptcha} from "../types/Types";
+import {BaseResponseType, ResultCodes, ResultCodesForCaptcha} from "../types/GeneralTypes";
 
 type GetAuthMeApiType = {
     data: {

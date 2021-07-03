@@ -9,7 +9,7 @@ import {
 } from "../store-types";
 import usersAPI from "../../api/usersAPI";
 import {AppStateType} from "../reducers/rootReducer";
-import {ResultCodes} from "../../types/Types";
+import {ResultCodes} from "../../types/GeneralTypes";
 
 // export type InitialState = typeof initialState;
 // export type FilterType = typeof initialState.filter;

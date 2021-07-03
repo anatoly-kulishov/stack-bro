@@ -1,5 +1,5 @@
 import {baseInstance} from "./instances";
-import {BaseResponseType, ProfileType, ResultCodes} from "../types/Types";
+import {BaseResponseType, ProfileType, ResultCodes} from "../types/GeneralTypes";
 
 type GetStatusApiType = {
     resultCode: ResultCodes,
