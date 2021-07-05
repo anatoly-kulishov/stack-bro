@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'antd';
+import {Button, Checkbox} from 'antd';
 import {LoginOutlined} from "@ant-design/icons";
 import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
@@ -11,7 +11,7 @@ const LoginForm: React.FC<FormPropsType> = props => {
     const {onSubmit, isValid, errorText, captchaUrl} = props;
     return (
         <Formik
-            initialValues={{email: '', password: '', captcha: ''}}
+            initialValues={{email: '', password: '', captcha: '', rememberMe: false}}
             onSubmit={(values, {setSubmitting, resetForm}) => {
                 // console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting, resetForm);
@@ -51,7 +51,8 @@ const LoginForm: React.FC<FormPropsType> = props => {
                             autoComplete="on"
                             errormessage={errors.password && touched.password && errors.password}/>
                     </div>
-                    <div className="validate-box text-center mb-3">
+                    <Checkbox name='rememberMe'>Remember me</Checkbox>
+                    <div className="validate-box text-center mt-3 mb-3">
                         {!isValid && <div className="validate-warning">{errorText}</div>}
                     </div>
                     <Button htmlType="submit"
