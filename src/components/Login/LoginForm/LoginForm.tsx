@@ -23,7 +23,7 @@ const LoginForm: React.FC<FormPropsType> = props => {
               }) => (
                 <Form onSubmit={handleSubmit} className={styles.form}>
                     <div className="form-row">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email Address</label>
                         <CustomField
                             className={`form-control`}
                             id="email"
@@ -32,7 +32,7 @@ const LoginForm: React.FC<FormPropsType> = props => {
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            placeholder="Email"
+                            placeholder="Your email"
                             validate={validateEmail}
                             errormessage={errors.email && touched.email && errors.email}/>
                     </div>
@@ -46,15 +46,17 @@ const LoginForm: React.FC<FormPropsType> = props => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.password}
-                            placeholder="Password"
+                            placeholder="Your password"
                             validate={validatePassword}
                             autoComplete="on"
                             errormessage={errors.password && touched.password && errors.password}/>
                     </div>
-                    <Checkbox name='rememberMe'>Remember me</Checkbox>
-                    <div className="validate-box text-center mt-3 mb-3">
-                        {!isValid && <div className="validate-warning">{errorText}</div>}
+                    <div className="mb-3">
+                        <Checkbox name='rememberMe' onChange={handleChange}>Remember me</Checkbox>
                     </div>
+                    {!isValid && <div className="validate-box text-center mt-3 mb-3">
+                        <div className="validate-warning">{errorText}</div>
+                    </div>}
                     <Button htmlType="submit"
                             icon={<LoginOutlined/>}
                             size="large" ghost
@@ -70,8 +72,12 @@ const LoginForm: React.FC<FormPropsType> = props => {
                                          placeholder="Symbols from image"/>
                         </div>
                     )}
-                    <div className="mt-3 text-center">
-                        <div>Forgotten password?</div>
+                    <div className="mt-3">
+                        <Button type="link"
+                                href="https://social-network.samuraijs.com/signUp"
+                                block>
+                            Create New Account
+                        </Button>
                     </div>
                 </Form>
             )}

@@ -21,7 +21,8 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
                 isAuth: true,
                 isLoading: false,
                 isValid: true,
-                userId: action.userId
+                userId: action.userId,
+                captchaUrl: null
             }
         case LOG_OUT:
             return {

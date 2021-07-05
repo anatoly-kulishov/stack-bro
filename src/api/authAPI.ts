@@ -22,10 +22,11 @@ type PostSignInApiType = {
 
 const authAPI = {
     postSignIn: (profile: ProfileActionType) => {
+        console.log(profile)
         return authInstance.post<PostSignInApiType>("/auth/login", {
             email: profile.email,
             password: profile.password,
-            rememberMe: true,
+            rememberMe: profile.rememberMe,
             captcha: profile.captcha
         }).then(res => res.data)
     },
