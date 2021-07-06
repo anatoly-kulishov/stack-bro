@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Checkbox} from 'antd';
+import {Alert, Button, Checkbox} from 'antd';
 import {LoginOutlined} from "@ant-design/icons";
 import {Formik, Form} from 'formik';
 import styles from './LoginForm.module.scss';
@@ -54,9 +54,12 @@ const LoginForm: React.FC<FormPropsType> = props => {
                     <div className="mb-3">
                         <Checkbox name='rememberMe' onChange={handleChange}>Remember me</Checkbox>
                     </div>
-                    {!isValid && <div className="validate-box text-center mt-3 mb-3">
-                        <div className="validate-warning">{errorText}</div>
-                    </div>}
+
+                    {!isValid && (
+                        <div className="validate-box text-center mt-3 mb-3">
+                            <Alert message={errorText} type="error"/>
+                        </div>
+                    )}
                     <Button htmlType="submit"
                             icon={<LoginOutlined/>}
                             size="large" ghost
