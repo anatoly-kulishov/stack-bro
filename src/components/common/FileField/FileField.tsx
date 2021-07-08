@@ -3,7 +3,10 @@ import {Formik, Form} from 'formik';
 import {Button} from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
 import styles from './FileField.module.scss'
-import {FileFieldPropsType} from "../../../types/PropsTypes";
+
+type FileFieldPropsType = {
+    save: (file: File | null, setSubmitting: Function) => void
+}
 
 const FileField: React.FC<FileFieldPropsType> = props => {
     const {save} = props;

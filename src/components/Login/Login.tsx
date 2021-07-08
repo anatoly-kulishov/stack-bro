@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './Login.module.scss';
 import LoginForm from "./LoginForm/LoginForm";
-import {LoginPropsType} from "../../types/PropsTypes";
+import {ProfileActionType} from "../../store/actions/authActions";
+
+type LoginPropsType = {
+    signIn: (profile: ProfileActionType, setSubmitting: Function, resetForm: Function) => void,
+    errorText: string | null,
+    isValidAuth: boolean,
+    captchaUrl: string | null
+}
 
 const Login: React.FC<LoginPropsType> = props => {
     const {signIn, isValidAuth, errorText, captchaUrl} = props;

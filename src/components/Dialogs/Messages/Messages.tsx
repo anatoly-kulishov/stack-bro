@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
-import {MessagesPropsType} from "../../../types/PropsTypes";
+import {MessageType} from "../../../store/reducers/dialogsReducer/dialogsReducer";
+
+type MessagesPropsType = {
+    messages: MessageType[]
+}
 
 const Messages: React.FC<MessagesPropsType> = props => {
     const {messages} = props;

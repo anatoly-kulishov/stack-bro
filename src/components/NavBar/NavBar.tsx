@@ -11,11 +11,9 @@ import {
 
 const NavBar: React.FC = () => {
     const {Sider} = Layout;
-
     const onSelectNavKey = (key: number) => {
         sessionStorage.setItem('nav_key', String(key));
     }
-
     const navKey: string = sessionStorage.getItem('nav_key') || '1';
 
     return (

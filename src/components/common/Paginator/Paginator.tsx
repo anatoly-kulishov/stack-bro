@@ -1,6 +1,12 @@
 import React from 'react';
 import {Pagination} from "antd";
-import {PaginatorPropsType} from "../../../types/PropsTypes";
+
+type PaginatorPropsType = {
+    currentPage: number,
+    totalUsersCount: number,
+    pageSize: number,
+    setCurrentPage: (pageNumber: number) => void
+}
 
 const Paginator: React.FC<PaginatorPropsType> = props => {
     const {currentPage, totalUsersCount, pageSize, setCurrentPage} = props;

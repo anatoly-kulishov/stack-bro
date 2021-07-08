@@ -1,7 +1,11 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './DialogItem.module.scss';
-import {DialogItemPropsType} from "../../../../types/PropsTypes";
+
+type DialogItemPropsType = {
+    id: number | string,
+    name: string
+}
 
 const DialogItem: React.FC<DialogItemPropsType> = props => {
     const {id, name} = props;

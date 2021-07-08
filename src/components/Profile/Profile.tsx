@@ -2,7 +2,18 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
-import {ProfilePropsType} from "../../types/PropsTypes";
+import {ProfileType} from "../../types/GeneralTypes";
+
+export type ProfilePropsType = {
+    profile: ProfileType,
+    myProfile: object,
+    isLoading: boolean,
+    match: object,
+    location: object,
+    history: object,
+    saveProfile: () => Promise<any>,
+    savePhoto: () => void
+}
 
 const Profile: React.FC<ProfilePropsType> = props => {
     // const currentUserId = match?.params.userId;

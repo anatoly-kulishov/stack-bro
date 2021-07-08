@@ -13,7 +13,6 @@ const LoginForm: React.FC<FormPropsType> = props => {
         <Formik
             initialValues={{email: '', password: '', captcha: '', rememberMe: false}}
             onSubmit={(values, {setSubmitting, resetForm}) => {
-                // console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting, resetForm);
                 values.captcha = '';
             }}>
@@ -54,7 +53,6 @@ const LoginForm: React.FC<FormPropsType> = props => {
                     <div className="mb-3">
                         <Checkbox name='rememberMe' onChange={handleChange}>Remember me</Checkbox>
                     </div>
-
                     {!isValid && (
                         <div className="validate-box text-center mt-3 mb-3">
                             <Alert message={errorText} type="error"/>
@@ -70,7 +68,7 @@ const LoginForm: React.FC<FormPropsType> = props => {
                     {captchaUrl && <div className={styles.captchaBox}><img src={captchaUrl} alt=""/></div>}
                     {captchaUrl && (
                         <div className={styles.captchaInputBox}>
-                            <CustomField className={`form-control`}
+                            <CustomField className='form-control'
                                          name="captcha"
                                          placeholder="Symbols from image"/>
                         </div>

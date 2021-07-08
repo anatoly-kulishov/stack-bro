@@ -3,7 +3,14 @@ import {Spin, Alert} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
-import {ProfilePhotoPropsType} from "../../../types/PropsTypes";
+import {ProfileType} from "../../../types/GeneralTypes";
+
+export type ProfilePhotoPropsType = {
+    profile: ProfileType,
+    isLoading: boolean | null,
+    saveProfile: () => Promise<any>,
+    savePhoto: () => void
+}
 
 const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
     const {savePhoto, profile, isLoading} = props;

@@ -3,7 +3,9 @@ import styles from './Dialogs.module.scss';
 import DialogsListContainer from "./DialogsList/DialogsListContainer";
 import MessagesContainer from "./Messages/MessagesContainer";
 
-const Dialogs: React.FC = () => {
+type DialogsPropsType = {}
+
+const Dialogs: React.FC<DialogsPropsType> = () => {
     return (
         <section className={styles.dialogs}>
             <DialogsListContainer/>
