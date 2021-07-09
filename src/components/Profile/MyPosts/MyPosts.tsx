@@ -5,7 +5,13 @@ import * as Yup from "yup";
 import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {MyPostsPropsType} from "../../../types/PropsTypes";
+import {PostType, ProfileType} from "../../../types/GeneralTypes";
+
+type MyPostsPropsType = {
+    profile: ProfileType,
+    posts: Array<PostType>,
+    onAddPost: (message: string) => void
+}
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -14,14 +20,12 @@ const messagesSchema = Yup.object().shape({
         .required('Required'),
 });
 
-
 const MyPosts: React.FC<MyPostsPropsType> = props => {
     const {posts, onAddPost, profile} = props;
     const {TextArea} = Input;
     const {ErrorBoundary} = Alert;
-    let postsElements = posts.map(p => <Post key={p.id} profile={profile} message={p.message}
-                                             likesCount={p.likesCount}/>);
-
+    const postsElements = posts.map(p => <Post key={p.id} profile={profile} message={p.message}
+                                               likesCount={p.likesCount}/>);
     return (
         <div className={`${styles.myPosts} default-box`}>
             <ErrorBoundary>

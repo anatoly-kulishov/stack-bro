@@ -1,10 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
+import {ProfileType} from "../../../../types/GeneralTypes";
 
-const ProfileStatus: React.FC<any> = props => {
+type ProfileStatusPropsType = {
+    profile: ProfileType,
+    status: string | null,
+    myProfileId: number | null,
+    getStatus: (userId: number) => void,
+    updateStatus: (status: string) => void
+}
+
+const ProfileStatus: React.FC<ProfileStatusPropsType> = props => {
     const {profile, status} = props;
-    const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
+    const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
     const updateStatusHandler = () => {
@@ -17,7 +26,7 @@ const ProfileStatus: React.FC<any> = props => {
     // }, [getStatus, status, profile, myProfileId])
 
     useEffect(() => {
-        setCurrentStatus(profile?.userId || status)
+        setCurrentStatus(profile.userId || status)
     }, [status, profile])
 
     return (
@@ -37,8 +46,7 @@ const ProfileStatus: React.FC<any> = props => {
                        onChange={(e) => setCurrentStatus(e.target.value)}
                        onBlur={() => updateStatusHandler()}
                        autoFocus
-                       placeholder="Set status"
-                />
+                       placeholder="Set status"/>
             )}
         </div>
     )

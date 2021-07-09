@@ -1,9 +1,15 @@
 import React, {createElement, useState, memo} from 'react';
 import {Comment, Tooltip, Avatar} from 'antd';
+import {NavLink} from "react-router-dom";
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
-import {PostPropsType} from "../../../../types/PropsTypes";
-import {NavLink} from "react-router-dom";
+import {ProfileType} from "../../../../types/GeneralTypes";
+
+export type PostPropsType = {
+    profile: ProfileType
+    message: string | null,
+    likesCount: number,
+}
 
 const Post: React.FC<PostPropsType> = props => {
     const {message, likesCount, profile} = props;

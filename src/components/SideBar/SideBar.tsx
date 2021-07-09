@@ -4,7 +4,6 @@ import moment from 'moment';
 import styles from "./SideBar.module.scss"
 
 const SideBar: React.FC = () => {
-    // const {} = props;
     const currentTime = moment().format('L');
 
     return (

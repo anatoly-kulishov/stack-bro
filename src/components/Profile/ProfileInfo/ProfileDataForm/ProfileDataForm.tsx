@@ -3,7 +3,12 @@ import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
-import {FormPropsType, ProfileDataFormForm} from "../../../../types/PropsTypes";
+import {FormPropsType} from "../../../../types/PropsTypes";
+import {ProfileType} from "../../../../types/GeneralTypes";
+
+type ProfileDataFormForm = {
+    profile: ProfileType
+}
 
 const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => {
     const {onSubmit, isValid, errorText, profile} = props;

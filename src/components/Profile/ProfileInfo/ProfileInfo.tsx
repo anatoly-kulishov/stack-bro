@@ -5,9 +5,9 @@ import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
-import {ProfileInfoPropsType} from "../../../types/PropsTypes";
+import {ProfilePropsType} from "../Profile";
 
-const ProfileInfo: React.FC<ProfileInfoPropsType> = props => {
+const ProfileInfo: React.FC<ProfilePropsType> = props => {
     const {profile, saveProfile, errorText} = props;
     const [editMode, setEditMode] = useState<boolean>(false);
     const {ErrorBoundary} = Alert;

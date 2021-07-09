@@ -13,33 +13,6 @@ export type FormPropsType = {
     captchaUrl?: string | null
 }
 
-export type ProfileInfoPropsType = {
-    profile: ProfileType,
-    myProfile: object,
-    isLoading: boolean,
-    match: object,
-    history: object,
-    errorText?: string | null,
-    saveProfile: () => Promise<any>,
-    savePhoto: () => void
-}
-
-export type MyPostsPropsType = {
-    posts: Array<{
-        id: number,
-        message: string,
-        likesCount: number
-    }>
-    onAddPost: (message: string) => void,
-    profile: ProfileType
-}
-
-export type PostPropsType = {
-    message: string,
-    likesCount: number,
-    profile: ProfileType
-}
-
 export type UsersPropsType = {
     users: Array<UserType>,
     isLoading: boolean,
@@ -71,18 +44,4 @@ export type ProfileStatusPropsType = {
 }
 export type FileFieldPropsType = {
     save: (file: File | null, setSubmitting: Function) => void
-}
-
-export type ProfileDataFormForm = {
-    profile: ProfileType
-}
-
-export type ProfileDataPropsType = {
-    profile: ProfileType
-}
-
-export type ContactPropsType = {
-    logic: boolean,
-    title: string,
-    value: any
 }

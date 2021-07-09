@@ -5,7 +5,7 @@ import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
 import {ProfileType} from "../../../types/GeneralTypes";
 
-export type ProfilePhotoPropsType = {
+type ProfilePhotoPropsType = {
     profile: ProfileType,
     isLoading: boolean | null,
     saveProfile: () => Promise<any>,

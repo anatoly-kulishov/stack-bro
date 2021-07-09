@@ -36,10 +36,22 @@ export type ProfileType = {
     }
 }
 
+export type MyProfileType = {
+    id: number,
+    email: string | null,
+    login: string | null
+}
+
 export type UserType = {
     id: number,
     name: string,
     photos: { small: string, large: string },
     status: string,
     followed: boolean,
+}
+
+export type PostType = {
+    id: number,
+    message: string,
+    likesCount: number
 }

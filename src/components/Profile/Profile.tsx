@@ -2,17 +2,18 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
-import {ProfileType} from "../../types/GeneralTypes";
+import {MyProfileType, ProfileType} from "../../types/GeneralTypes";
 
 export type ProfilePropsType = {
     profile: ProfileType,
-    myProfile: object,
+    myProfile: MyProfileType,
     isLoading: boolean,
-    match: object,
-    location: object,
-    history: object,
+    errorText: string | null,
     saveProfile: () => Promise<any>,
     savePhoto: () => void
+    match: object,
+    location: object,
+    history: object
 }
 
 const Profile: React.FC<ProfilePropsType> = props => {
@@ -20,7 +21,6 @@ const Profile: React.FC<ProfilePropsType> = props => {
     // useEffect(() => {
     //     console.log(currentUserId)
     // }, [currentUserId])
-
     return (
         <div>
             <div className="row">

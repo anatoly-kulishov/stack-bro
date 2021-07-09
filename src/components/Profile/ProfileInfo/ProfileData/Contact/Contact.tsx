@@ -1,6 +1,11 @@
 import React, {memo} from 'react';
 import styles from "./Contact.module.scss";
-import {ContactPropsType} from "../../../../../types/PropsTypes";
+
+type ContactPropsType = {
+    logic: boolean,
+    title: string | null,
+    value: string | null | undefined
+}
 
 const Contact: React.FC<ContactPropsType> = props => {
     const {logic, title = '', value} = props;
