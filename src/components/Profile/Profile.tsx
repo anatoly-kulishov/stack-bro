@@ -2,14 +2,15 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
-import {MyProfileType, ProfileType} from "../../types/GeneralTypes";
+import {MyProfileType, ProfileType} from "../../types/general-types";
+import {Nullable} from "../../types/generics-types";
 
 export type ProfilePropsType = {
     profile: ProfileType,
     myProfile: MyProfileType,
     isLoading: boolean,
-    errorText: string | null,
-    saveProfile: () => Promise<any>,
+    errorText: Nullable<string>,
+    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<any>,
     savePhoto: () => void
     match: object,
     location: object,

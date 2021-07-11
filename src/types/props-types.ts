@@ -1,4 +1,4 @@
-import {ProfileType, UserType} from "./GeneralTypes";
+import {ProfileType, UserType} from "./general-types";
 
 export type AppPropsType = {
     isAuth: boolean | null,

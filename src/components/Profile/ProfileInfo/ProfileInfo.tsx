@@ -12,11 +12,11 @@ const ProfileInfo: React.FC<ProfilePropsType> = props => {
     const [editMode, setEditMode] = useState<boolean>(false);
     const {ErrorBoundary} = Alert;
 
-    const onSubmit = () => {
-        saveProfile().then(() => {
-            setEditMode(false);
-        }).catch((e: string) => console.log(e))
-    }
+    // useEffect(() => {
+    //     if (Object.keys(profile)) {
+    //         setEditMode(false);
+    //     }
+    // }, [profile])
 
     return (
         <div className={`${styles.wrapper} default-box`}>
@@ -37,7 +37,7 @@ const ProfileInfo: React.FC<ProfilePropsType> = props => {
                 </div>
                 {!editMode
                     ? <ProfileData profile={profile}/>
-                    : <ProfileDataForm profile={profile} onSubmit={onSubmit} errorText={errorText}/>
+                    : <ProfileDataForm profile={profile} onSubmit={saveProfile} errorText={errorText}/>
                 }
             </ErrorBoundary>
         </div>

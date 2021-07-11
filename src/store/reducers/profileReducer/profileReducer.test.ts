@@ -1,5 +1,5 @@
 import profileReducer from "./profileReducer";
-import {addPost, removePost} from "../../actions/profileActions";
+import {actions} from "../../actions/profileActions";
 
 let state = {
     posts: [
@@ -10,7 +10,7 @@ let state = {
 
 it('length of posts should be incremented', () => {
     // 1. Test data
-    let action = addPost({
+    let action = actions.addPost({
         id: 3,
         message: 'Unit test',
         likesCount: 0
@@ -27,7 +27,7 @@ it('length of posts should be incremented', () => {
 
 it('after deleting length of posts should be decrement', () => {
     // 1. Test data
-    let action = removePost(1);
+    let action = actions.removePost(1);
 
     // 2. Action
     // @ts-ignore
@@ -39,7 +39,7 @@ it('after deleting length of posts should be decrement', () => {
 
 it('after deleting length of posts should`be decrement if id is incorrect', () => {
     // 1. Test data
-    let action = removePost(100);
+    let action = actions.removePost(100);
 
     // 2. Action
     // @ts-ignore

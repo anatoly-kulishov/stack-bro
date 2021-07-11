@@ -5,7 +5,7 @@ import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
-import {AppPropsType} from "./types/PropsTypes";
+import {AppPropsType} from "./types/props-types";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";

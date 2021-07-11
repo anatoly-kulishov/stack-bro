@@ -1,13 +1,12 @@
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    setCurrentPage,
     setCurrentUserFollower,
-    setTotalUserCount,
     setUsers,
     userFollow,
     userUnfollow
 } from "../../store/actions/usersActions";
+import {actions} from "../../store/actions/usersActions";
 import {
     getCurrentPage,
     getFollowingInProgress, getIsLoading,
@@ -31,8 +30,8 @@ const UserContainer = connect(mapStateToProps, {
     setCurrentUserFollower,
     userFollow,
     userUnfollow,
-    setCurrentPage,
-    setTotalUserCount,
+    setCurrentPage: actions.setCurrentPage,
+    setTotalUserCount: actions.setTotalUserCount,
 })(Users);
 
 export default UserContainer;

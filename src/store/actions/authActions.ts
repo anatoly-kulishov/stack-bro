@@ -1,14 +1,16 @@
-import {Action} from "redux";
-import {ThunkAction} from "redux-thunk";
 import Cookies from 'js-cookie'
-import {AppStateType} from "../reducers/rootReducer";
+import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
-import {ResultCodes, ResultCodesForCaptcha} from "../../types/GeneralTypes";
+import {ResultCodes, ResultCodesForCaptcha} from "../../types/general-types";
 
-type ThunkType = ThunkAction<void, AppStateType, unknown, Action>;
-// export type ProfileActionsTypes = null;
+export const actions = {
+    getCaptchaUrlSuccess: (captchaUrl: string) => ({
+        type: GET_CAPTCHA_URL_SUCCESS,
+        payload: captchaUrl
+    } as const)
+}
 
 /**
  * Authorize on the service
@@ -22,8 +24,9 @@ export type ProfileActionType = {
     captcha?: string,
     rememberMe?: boolean
 }
+
 export const signIn = (profile: ProfileActionType, setSubmitting: Function, resetForm: Function): ThunkType => {
-    return (dispatch) => {
+    return async (dispatch: Function) => {
         authAPI.postSignIn(profile).then(data => {
             if (data.resultCode === ResultCodes.Success) {
                 resetForm();
@@ -53,7 +56,7 @@ export const signIn = (profile: ProfileActionType, setSubmitting: Function, rese
  * Is current user authorized
  */
 export const authMe = (): ThunkType => {
-    return (dispatch) => {
+    return async (dispatch: Function) => {
         authAPI.getAuthMe().then(data => {
             if (data.resultCode === ResultCodes.Success) {
                 dispatch({
@@ -61,7 +64,6 @@ export const authMe = (): ThunkType => {
                     payload: data.data
                 })
                 Cookies.set('token', 'f7245be5-e090-4424-a6bf-7942681a4b6d');
-                return data.data.id;
             }
         }).catch((e) => console.log(e));
     }
@@ -71,8 +73,8 @@ export const authMe = (): ThunkType => {
  * Unfollow requested user
  */
 export const logOut = (): ThunkType => {
-    return (dispatch) => {
-        authAPI.deleteLogOut().then(() => Cookies.remove('token'))
+    return async (dispatch: Function) => {
+        authAPI.deleteLogOut().then(() => Cookies.remove('token'));
         dispatch({type: LOG_OUT})
     }
 }
@@ -81,21 +83,12 @@ export const logOut = (): ThunkType => {
  * Get New Captcha
  */
 export const getCaptchaUrl = (): ThunkType => {
-    return (dispatch) => {
+    return async (dispatch: Function) => {
         securityAPI.getCaptcha().then(data => {
-            dispatch(getCaptchaUrlSuccess(data.url));
+            dispatch(actions.getCaptchaUrlSuccess(data.url));
         })
     }
 }
 
-/**
- * Get New Captcha Success
- */
-export const getCaptchaUrlSuccess = (captchaUrl: string): ThunkType => {
-    return (dispatch) => {
-        dispatch({
-            type: GET_CAPTCHA_URL_SUCCESS,
-            payload: captchaUrl
-        })
-    }
-}
+export type ActionsTypes = InferActionsTypes<typeof actions>;
+type ThunkType = BaseThunkType<any>;

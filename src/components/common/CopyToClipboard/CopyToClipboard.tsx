@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from "./copy-icon.svg";
 
@@ -42,4 +42,4 @@ const CopyToClipboard: React.FC<CopyToClipboardPropsType> = props => {
     )
 }
 
-export default CopyToClipboard;
+export default memo(CopyToClipboard);

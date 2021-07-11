@@ -3,12 +3,12 @@ import {Spin, Alert} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
-import {ProfileType} from "../../../types/GeneralTypes";
+import {ProfileType} from "../../../types/general-types";
 
 type ProfilePhotoPropsType = {
     profile: ProfileType,
     isLoading: boolean | null,
-    saveProfile: () => Promise<any>,
+    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<any>,
     savePhoto: () => void
 }
 

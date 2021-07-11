@@ -1,5 +1,5 @@
 import {baseInstance} from "./instances";
-import {BaseResponseType, UserType} from "../types/GeneralTypes";
+import {BaseResponseType, UserType} from "../types/general-types";
 
 type RequestUsersApiType = {
     items: Array<UserType>
@@ -13,7 +13,7 @@ const usersAPI = {
         return baseInstance.get<RequestUsersApiType>(`users?page=${currentPage}&count=${pageSize}`).then(res => res.data)
     },
     getCurrentUserFollower: (userId: number) => {
-        return baseInstance.get<null>(`follow/${userId}`).then(res => res.data)
+        return baseInstance.get<boolean>(`follow/${userId}`).then(res => res.data)
     },
     postUserFollow: (userId: number) => {
         return baseInstance.post<BaseResponseType>(`follow/${userId}`, null).then(res => res.data)

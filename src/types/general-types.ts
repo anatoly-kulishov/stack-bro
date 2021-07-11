@@ -1,3 +1,5 @@
+import {Nullable} from "./generics-types";
+
 export enum ResultCodes {
     Success = 0,
     Error = 1
@@ -11,6 +13,17 @@ export type BaseResponseType = {
     resultCode: ResultCodes,
     messages: Array<string>
     data: {}
+}
+
+export type APIResponseType<D = {}, RC = ResultCodes> = {
+    data: D,
+    resultCode: RC,
+    messages: Array<string>
+}
+
+export type PhotosType = {
+    small: Nullable<string>,
+    large: Nullable<string>,
 }
 
 export type ProfileType = {
@@ -30,10 +43,7 @@ export type ProfileType = {
         youtube: string | null,
         mainLink: string | null,
     },
-    photos: {
-        small: string | null,
-        large: string | null
-    }
+    photos: PhotosType
 }
 
 export type MyProfileType = {

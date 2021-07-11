@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
-import {addPost} from "../../../store/actions/profileActions";
+import {actions} from "../../../store/actions/profileActions";
 
 const mapStateToProps = (state: any) => ({
     posts: state.profile.posts,
@@ -14,7 +14,7 @@ const mapToDispatchToProps = (dispatch: Function) => ({
             message,
             likesCount: 0
         }
-        dispatch(addPost(post));
+        dispatch(actions.addPost(post));
     }
 })
 

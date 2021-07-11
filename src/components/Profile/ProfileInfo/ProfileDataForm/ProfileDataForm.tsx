@@ -3,8 +3,8 @@ import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
-import {FormPropsType} from "../../../../types/PropsTypes";
-import {ProfileType} from "../../../../types/GeneralTypes";
+import {FormPropsType} from "../../../../types/props-types";
+import {ProfileType} from "../../../../types/general-types";
 
 type ProfileDataFormForm = {
     profile: ProfileType
@@ -17,7 +17,7 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
 
     return (
         <Formik
-            initialValues={{fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts}}
+            initialValues={{userId: 17461, fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts}}
             onSubmit={(values, {setSubmitting}) => {
                 console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting);

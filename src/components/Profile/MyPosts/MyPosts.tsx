@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {PostType, ProfileType} from "../../../types/GeneralTypes";
+import {PostType, ProfileType} from "../../../types/general-types";
 
 type MyPostsPropsType = {
     profile: ProfileType,

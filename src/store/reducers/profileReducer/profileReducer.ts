@@ -5,6 +5,8 @@ import {
     SET_PROFILE_STATUS,
     SET_USER_PROFILE
 } from "../../store-types";
+// import {InferActionsTypes} from "../rootReducer";
+// import {actions} from "../../actions/profileActions";
 
 const initialState = {
     isOwner: true,
@@ -16,8 +18,6 @@ const initialState = {
     profile: {},
     status: ''
 }
-
-type InitialStateType = typeof initialState;
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -69,4 +69,6 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
     }
 }
 
+export type InitialStateType = typeof initialState;
+// type ActionsType = InferActionsTypes<typeof actions>;
 export default profileReducer;

@@ -5,7 +5,7 @@ import {
     SET_TOTAL_USERS_COUNT,
     TOGGLE_IS_FOLLOWING_PROGRESS
 } from "../../store-types";
-import {UserType} from "../../../types/GeneralTypes";
+import {UserType} from "../../../types/general-types";
 
 const initialState = {
     isLoading: true,
@@ -16,9 +16,7 @@ const initialState = {
     currentPage: 1
 }
 
-type InitialState = typeof initialState;
-
-const usersReducer = (state = initialState, action: any): InitialState => {
+const usersReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_USERS:
             return {
@@ -61,4 +59,6 @@ const usersReducer = (state = initialState, action: any): InitialState => {
     }
 }
 
+export type InitialStateType = typeof initialState;
+// type ActionsType = InferActionsTypes<typeof actions>;
 export default usersReducer;

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {ProfileType} from "../../../../types/GeneralTypes";
+import {ProfileType} from "../../../../types/general-types";
 
 type ProfileStatusPropsType = {
     profile: ProfileType,

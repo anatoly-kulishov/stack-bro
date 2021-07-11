@@ -42,8 +42,6 @@ const initialState = {
     ] as Array<MessageType>
 }
 
-type InitialStateType = typeof initialState;
-
 const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_DIALOG:
@@ -61,4 +59,7 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
     }
 }
 
+
+export type InitialStateType = typeof initialState;
+// type ActionsType = InferActionsTypes<typeof actions>;
 export default dialogsReducer;

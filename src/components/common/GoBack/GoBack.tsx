@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Button} from 'antd';
 import {ArrowLeftOutlined} from "@ant-design/icons";
+import {Nullable} from "../../../types/generics-types";
 
 type GoBackPropsType = {
-    title?: string | undefined,
-    history: { goBack: Function }
+    title?: Nullable<string>,
+    history: { goBack: () => void }
 }
 
 const GoBack: React.FC<GoBackPropsType> = props => {
     const {title = 'Go Back', history} = props;
 
     return (
-        <Button onClick={() => history.goBack()} icon={<ArrowLeftOutlined/>} type="primary">{title}</Button>
+        <Button onClick={history.goBack} icon={<ArrowLeftOutlined/>} type="primary">{title}</Button>
     )
 };
 
-export default GoBack;
+export default memo(GoBack);

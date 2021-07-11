@@ -4,14 +4,12 @@ import Cookies from 'js-cookie';
 const initialState = {
     isLoading: true,
     isValid: true,
-    error: null,
     isAuth: Boolean(Cookies.get('token')),
+    error: null,
     userId: null,
     myProfile: null,
-    captchaUrl: null // if null, then captcha is not required
+    captchaUrl: null
 }
-
-export type InitialStateType = typeof initialState;
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -55,4 +53,6 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
+export type InitialStateType = typeof initialState;
+// type ActionsType = InferActionsTypes<typeof actions>;
 export default authReducer;
