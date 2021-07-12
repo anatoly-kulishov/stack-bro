@@ -7,7 +7,7 @@ import {
 } from "../store-types";
 import profileAPI from "../../api/profileAPI";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
-import {PhotosType, PostType, ProfileType, ResultCodes} from "../../types/general-types";
+import {PhotosType, PostType, ProfileType, ResultCodes} from "../../types";
 import {FormAction} from "redux-form";
 
 export const actions = {

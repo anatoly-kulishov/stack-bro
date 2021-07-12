@@ -1,5 +1,5 @@
 import {baseInstance} from "./instances";
-import {BaseResponseType, APIResponseType, ProfileType, PhotosType} from "../types/general-types";
+import {BaseResponseType, APIResponseType, ProfileType, PhotosType} from "../types";
 
 type SavePhotoResponseDataType = {
     photos: PhotosType

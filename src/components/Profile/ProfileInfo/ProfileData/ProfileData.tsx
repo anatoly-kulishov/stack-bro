@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./ProfileData.module.scss";
 import Contact from "./Contact";
-import {ProfileType} from "../../../../types/general-types";
+import {ProfileType} from "../../../../types";
 
 type ProfileDataPropsType = {
     profile: ProfileType

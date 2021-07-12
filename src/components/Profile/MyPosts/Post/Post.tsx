@@ -3,7 +3,7 @@ import {Comment, Tooltip, Avatar} from 'antd';
 import {NavLink} from "react-router-dom";
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
-import {ProfileType} from "../../../../types/general-types";
+import {ProfileType} from "../../../../types";
 
 export type PostPropsType = {
     profile: ProfileType

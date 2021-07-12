@@ -3,7 +3,21 @@ import {Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
-import {UsersPropsType} from "../../types/props-types";
+import {UserType} from "../../types";
+
+type UsersPropsType = {
+    users: Array<UserType>,
+    isLoading: boolean,
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number,
+    setUsers: (requestPage: number, pageSize: number) => void,
+    userFollow: (userId: number) => void,
+    userUnfollow: (userId: number) => void,
+    setCurrentPage: (pageNumber: number) => void,
+    setCurrentUserFollower: (userId: number) => void,
+    followingInProgress: number[]
+}
 
 const Users: React.FC<UsersPropsType> = props => {
     const {
@@ -26,7 +40,7 @@ const Users: React.FC<UsersPropsType> = props => {
                     <div className={styles.users}>
                         <div className="row">
                             {
-                                users && users.map(user => (
+                                users?.map(user => (
                                     <div key={user.id} className="col-12 col-lg-4">
                                         <User user={user}
                                               setCurrentUserFollower={setCurrentUserFollower}

@@ -1,9 +1,18 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import styles from './User.module.scss';
-import {UserPropsType} from "../../../types/props-types";
 import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
+import {UserType} from "../../../types";
+
+export type UserPropsType = {
+    user: UserType,
+    isLoading: boolean,
+    userFollow: (userId: number) => void,
+    userUnfollow: (userId: number) => void,
+    setCurrentUserFollower: (userId: number) => void,
+    followingInProgress: number[]
+}
 
 const User: React.FC<UserPropsType> = props => {
     const {user, userFollow, userUnfollow, isLoading} = props;

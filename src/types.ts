@@ -1,4 +1,11 @@
-import {Nullable} from "./generics-types";
+export type Nullable<T> = T | null;
+
+export type FormPropsType = {
+    onSubmit: Function,
+    errorText?: string | null,
+    isValid?: boolean | null,
+    captchaUrl?: string | null
+}
 
 export enum ResultCodes {
     Success = 0,

@@ -6,7 +6,7 @@ import {
     TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS,
 } from "../store-types";
 import usersAPI from "../../api/usersAPI";
-import {ResultCodes} from "../../types/general-types";
+import {ResultCodes} from "../../types";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 
 export const actions = {

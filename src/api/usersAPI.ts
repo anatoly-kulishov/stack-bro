@@ -1,5 +1,5 @@
 import {baseInstance} from "./instances";
-import {BaseResponseType, UserType} from "../types/general-types";
+import {BaseResponseType, UserType} from "../types";
 
 type RequestUsersApiType = {
     items: Array<UserType>

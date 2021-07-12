@@ -3,8 +3,7 @@ import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
-import {FormPropsType} from "../../../../types/props-types";
-import {ProfileType} from "../../../../types/general-types";
+import {FormPropsType, ProfileType} from "../../../../types";
 
 type ProfileDataFormForm = {
     profile: ProfileType

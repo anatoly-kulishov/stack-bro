@@ -5,11 +5,16 @@ import {compose} from "redux";
 import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
-import {AppPropsType} from "./types/props-types";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
+
+type AppPropsType = {
+    isAuth: boolean | null,
+    initialized: boolean | null,
+    initializeApp: Function
+}
 
 class App extends React.Component<AppPropsType> {
 

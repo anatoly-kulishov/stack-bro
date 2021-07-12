@@ -5,7 +5,7 @@ import {
     SET_TOTAL_USERS_COUNT,
     TOGGLE_IS_FOLLOWING_PROGRESS
 } from "../../store-types";
-import {UserType} from "../../../types/general-types";
+import {UserType} from "../../../types";
 
 const initialState = {
     isLoading: true,

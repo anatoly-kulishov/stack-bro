@@ -2,8 +2,8 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
-import {MyProfileType, ProfileType} from "../../types/general-types";
-import {Nullable} from "../../types/generics-types";
+import {MyProfileType, ProfileType} from "../../types";
+import {Nullable} from "../../types";
 
 export type ProfilePropsType = {
     profile: ProfileType,

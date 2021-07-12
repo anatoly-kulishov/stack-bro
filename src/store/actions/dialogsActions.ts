@@ -1,6 +1,6 @@
 import {ADD_DIALOG, SEND_MESSAGE} from "../store-types";
 import {InferActionsTypes} from "../reducers/rootReducer";
-import {Nullable} from "../../types/generics-types";
+import {Nullable} from "../../types";
 
 export const actions = {
     addDialog: (newDialog: object) => ({type: ADD_DIALOG, newDialog} as const),

@@ -18,11 +18,11 @@ import {AppStateType} from "../../store/reducers/rootReducer";
 
 const mapStateToProps = (state: AppStateType) => ({
     users: getUsers(state),
+    isLoading: getIsLoading(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
     followingInProgress: getFollowingInProgress(state),
-    isLoading: getIsLoading(state)
 })
 
 const UserContainer = connect(mapStateToProps, {

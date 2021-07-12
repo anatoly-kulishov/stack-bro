@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {ProfileType} from "../../../../types/general-types";
+import {ProfileType} from "../../../../types";
+import {Nullable} from "../../../../types";
 
 type ProfileStatusPropsType = {
     profile: ProfileType,
-    status: string | null,
-    myProfileId: number | null,
+    status: Nullable<string>,
+    myProfileId: Nullable<string>,
     getStatus: (userId: number) => void,
     updateStatus: (status: string) => void
 }

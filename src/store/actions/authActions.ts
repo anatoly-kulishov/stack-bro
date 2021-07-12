@@ -3,7 +3,7 @@ import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
-import {ResultCodes, ResultCodesForCaptcha} from "../../types/general-types";
+import {ResultCodes, ResultCodesForCaptcha} from "../../types";
 
 export const actions = {
     getCaptchaUrlSuccess: (captchaUrl: string) => ({

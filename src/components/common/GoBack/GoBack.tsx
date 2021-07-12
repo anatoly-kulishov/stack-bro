@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import {Button} from 'antd';
 import {ArrowLeftOutlined} from "@ant-design/icons";
-import {Nullable} from "../../../types/generics-types";
+import {Nullable} from "../../../types";
 
 type GoBackPropsType = {
     title?: Nullable<string>,

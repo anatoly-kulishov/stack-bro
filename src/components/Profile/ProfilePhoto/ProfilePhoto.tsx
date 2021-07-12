@@ -3,7 +3,7 @@ import {Spin, Alert} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
-import {ProfileType} from "../../../types/general-types";
+import {ProfileType} from "../../../types";
 
 type ProfilePhotoPropsType = {
     profile: ProfileType,
