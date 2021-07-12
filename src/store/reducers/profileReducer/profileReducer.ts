@@ -5,6 +5,7 @@ import {
     SET_PROFILE_STATUS,
     SET_USER_PROFILE
 } from "../../store-types";
+import {ProfileType} from "../../../types";
 // import {InferActionsTypes} from "../rootReducer";
 // import {actions} from "../../actions/profileActions";
 
@@ -15,7 +16,7 @@ const initialState = {
     error: null,
     posts: [] as object[],
     selectedProfile: {},
-    profile: {},
+    profile: {} as ProfileType,
     status: ''
 }
 

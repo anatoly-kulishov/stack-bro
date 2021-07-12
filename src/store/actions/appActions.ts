@@ -1,7 +1,6 @@
 import {INITIALIZED_SUCCESS} from "../store-types";
 import {authMe} from "./authActions";
 import {updateProfile} from "./profileActions";
-import {BaseThunkType} from "../reducers/rootReducer";
 
 export const actions = {
     initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const)
@@ -10,7 +9,7 @@ export const actions = {
 /**
  * Initialize App
  */
-export const initializeApp = (): BaseThunkType<any, any> => {
+export const initializeApp = () => {
     return (dispatch: Function) => {
         let authMePromise = dispatch(authMe());
         let setProfilePromise = dispatch(updateProfile(17461));

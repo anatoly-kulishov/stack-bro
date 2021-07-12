@@ -12,7 +12,6 @@ const MessageInputContainer: React.FC = () => {
             id: Date.now(),
             message: message,
         }
-        console.log(messageData);
         dispatch(actions.sendMessage(messageData))
         setMessage('');
     }

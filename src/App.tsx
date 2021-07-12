@@ -1,4 +1,4 @@
-import React, {StrictMode} from 'react';
+import React, {StrictMode, useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -9,46 +9,42 @@ import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
+import {AppStateType} from "./store/reducers/rootReducer";
 
-type AppPropsType = {
-    isAuth: boolean | null,
-    initialized: boolean | null,
-    initializeApp: Function
-}
+type MapPropsType = ReturnType<typeof mapStateToProps>;
+type DispatchPropsType = { initializeApp: () => void };
 
-class App extends React.Component<AppPropsType> {
+const App: React.FC<MapPropsType & DispatchPropsType> = props => {
+    const {initialized, initializeApp, isAuth} = props;
 
-    componentDidMount() {
-        this.props.initializeApp();
+    useEffect(() => {
+        initializeApp();
         window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
-    }
+        return () => {
+            window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
+        }
+    }, [initializeApp])
 
-    componentWillUnmount() {
-        window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
-    }
-
-    render() {
-        return (
-            <>
-                {!this.props.initialized && <div className="d-center"><Spin size="large"/></div>}
-                {this.props.initialized && (
-                    <div className="app">
-                        {this.props.isAuth ? <AppNavigation/> : <AuthRoutes/>}
-                    </div>
-                )}
-            </>
-        );
-    }
+    return (
+        <>
+            {!initialized && <div className="d-center"><Spin size="large"/></div>}
+            {initialized && (
+                <div className="app">
+                    {isAuth ? <AppNavigation/> : <AuthRoutes/>}
+                </div>
+            )}
+        </>
+    );
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized,
     isAuth: state.auth.isAuth
 })
 
 const AppContainer = compose<React.ComponentType>(connect(mapStateToProps, {initializeApp}))(App);
 
-const StackBroTSApp = () => {
+const StackBroTSApp: React.FC = () => {
     return (
         <StrictMode>
             <Provider store={store}>

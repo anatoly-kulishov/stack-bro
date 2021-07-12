@@ -9,7 +9,6 @@ const mapStateToProps = (state: AppStateType) => ({
     status: state.profile.status,
 })
 
-// @ts-ignore
 const HeaderContainer = connect(mapStateToProps, {getStatus, updateStatus})(ProfileStatus);
 
 export default HeaderContainer;

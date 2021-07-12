@@ -1,8 +1,9 @@
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
 import {actions} from "../../../store/actions/profileActions";
+import {AppStateType} from "../../../store/reducers/rootReducer";
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppStateType) => ({
     posts: state.profile.posts,
     profile: state.profile.profile,
 })
@@ -18,6 +19,7 @@ const mapToDispatchToProps = (dispatch: Function) => ({
     }
 })
 
+// @ts-ignore
 const MyPostsContainer = connect(mapStateToProps, mapToDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

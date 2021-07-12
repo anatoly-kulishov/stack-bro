@@ -10,7 +10,7 @@ type MessagesPropsType = {
 
 const Messages: React.FC<MessagesPropsType> = props => {
     const {messages} = props;
-    let yourMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
+    let ownMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
     let foreignMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
 
     return (
@@ -20,7 +20,7 @@ const Messages: React.FC<MessagesPropsType> = props => {
                     {foreignMessagesElements}
                 </div>
                 <div className={styles.yourMessages}>
-                    {yourMessagesElements}
+                    {ownMessagesElements}
                 </div>
             </div>
             <MessageInputContainer/>

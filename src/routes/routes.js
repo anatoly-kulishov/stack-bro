@@ -5,10 +5,10 @@ import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Users from "../components/Users";
 import News from "../components/News";
-import Settings from "../components/Settings";
+import Dialogs from "../components/Dialogs";
 import Sandbox from "../components/Sandbox";
 
-const Dialogs = lazy(() => import("../components/Dialogs"));
+const Settings = lazy(() => import("../components/Settings"));
 const Help = lazy(() => import("../components/Help"));
 
 export const authRoutes = [
@@ -36,7 +36,7 @@ export const appRoutes = [
     },
     {
         path: "/dialogs",
-        component: withSuspense(Dialogs),
+        component: <Dialogs/>,
     },
     {
         path: "/users",
@@ -48,11 +48,11 @@ export const appRoutes = [
     },
     {
         path: "/sandbox",
-        component: <Sandbox/>,
+        component: <Sandbox/>
     },
     {
         path: "/settings",
-        component: <Settings/>,
+        component: withSuspense(Settings)
     },
     {
         path: "/help",

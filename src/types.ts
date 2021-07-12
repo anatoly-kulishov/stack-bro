@@ -69,6 +69,6 @@ export type UserType = {
 
 export type PostType = {
     id: number,
-    message: string,
+    message: Nullable<string>,
     likesCount: number
 }
