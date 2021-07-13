@@ -7,8 +7,8 @@ import {ProfileType} from "../../../types";
 
 type ProfilePhotoPropsType = {
     profile: ProfileType,
-    isLoading: boolean | null,
-    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<any>,
+    isLoading: boolean,
+    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
     savePhoto: () => void
 }
 

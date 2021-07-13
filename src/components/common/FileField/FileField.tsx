@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Formik, Form} from 'formik';
 import {Button} from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
@@ -8,7 +8,7 @@ type FileFieldPropsType = {
     save: (file: File | null, setSubmitting: Function) => void
 }
 
-const FileField: React.FC<FileFieldPropsType> = props => {
+const FileField: FC<FileFieldPropsType> = props => {
     const {save} = props;
 
     return (

@@ -30,7 +30,7 @@ export const actions = {
  * @param requestPage
  * @param pageSize
  */
-export const setUsers = (requestPage: number, pageSize: number): ThunkType => {
+export const setUsers = (requestPage: number = 1, pageSize: number = 12): ThunkType => {
     return async (dispatch: Function) => {
         usersAPI.requestUsers(requestPage, pageSize).then(data => {
             dispatch({

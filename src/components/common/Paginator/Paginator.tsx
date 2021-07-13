@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Pagination} from "antd";
 
 type PaginatorPropsType = {
@@ -8,7 +8,7 @@ type PaginatorPropsType = {
     setCurrentPage: (pageNumber: number) => void
 }
 
-const Paginator: React.FC<PaginatorPropsType> = props => {
+const Paginator: FC<PaginatorPropsType> = props => {
     const {currentPage, totalUsersCount, pageSize, setCurrentPage} = props;
     let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
     let pages: number[] = [];

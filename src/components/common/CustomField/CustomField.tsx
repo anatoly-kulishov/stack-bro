@@ -1,10 +1,10 @@
-import React, {memo} from 'react';
+import React, {FC, memo} from 'react';
 import {Field} from "formik";
 import {FieldAttributes} from "formik/dist/Field";
 import {WarningTwoTone} from '@ant-design/icons';
 import styles from "./CustomField.module.scss"
 
-const CustomField: React.FC<FieldAttributes<any>> = props => {
+const CustomField: FC<FieldAttributes<any>> = props => {
     const {errormessage} = props;
     return (
         <div className={styles.fieldBox}><Field {...props} />

@@ -12,6 +12,6 @@ export const getIsLoading = (state: AppStateType) => state.users.isLoading;
 
 /*********************** Super Selectors ***********************/
 export const getUsers = createSelector(getUsersSelector,
-    (users) => {
-        return users.filter((user: object) => user)
+    (users: UserType[]) => {
+        return users.filter((user: UserType) => user)
     })

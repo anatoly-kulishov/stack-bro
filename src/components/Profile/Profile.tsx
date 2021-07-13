@@ -1,4 +1,5 @@
 import React from 'react';
+import {RouteComponentProps} from 'react-router-dom';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
@@ -10,14 +11,16 @@ export type ProfilePropsType = {
     myProfile: MyProfileType,
     isLoading: boolean,
     errorText: Nullable<string>,
-    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<any>,
+    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
     savePhoto: () => void
-    match: object,
-    location: object,
-    history: object
 }
 
-const Profile: React.FC<ProfilePropsType> = props => {
+type PathParamsType = {
+    userId: string | undefined
+}
+
+const Profile: React.FC<ProfilePropsType & RouteComponentProps<PathParamsType>> = props => {
+    // const {match} = props;
     // const currentUserId = match?.params.userId;
     // useEffect(() => {
     //     console.log(currentUserId)

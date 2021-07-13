@@ -1,3 +1,4 @@
+import {ComponentType} from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
@@ -12,7 +13,7 @@ const mapStateToProps = (state: AppStateType) => ({
     errorText: state.profile.error
 })
 
-const ProfileContainer = compose(
+const ProfileContainer = compose<ComponentType>(
     withRouter,
     connect(mapStateToProps, {savePhoto, saveProfile})
 )(Profile);

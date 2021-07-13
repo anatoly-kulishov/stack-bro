@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './MessageItem.module.scss';
 
 export type MessageItemPropsType = {
@@ -15,4 +15,4 @@ const MessageItem: React.FC<MessageItemPropsType> = props => {
     )
 }
 
-export default MessageItem;
+export default memo(MessageItem);

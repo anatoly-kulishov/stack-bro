@@ -6,7 +6,7 @@ import {Nullable} from "../../../../types";
 
 type ProfileStatusPropsType = {
     profile: ProfileType,
-    status: Nullable<string>,
+    status: string,
     myProfileId: Nullable<string>,
     getStatus: (userId: number) => void,
     updateStatus: (status: string) => void
@@ -14,7 +14,7 @@ type ProfileStatusPropsType = {
 
 const ProfileStatus: React.FC<ProfileStatusPropsType> = props => {
     const {profile, status} = props;
-    const [currentStatus, setCurrentStatus] = useState<any>(`${status}`);
+    const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
     const updateStatusHandler = () => {
@@ -27,7 +27,7 @@ const ProfileStatus: React.FC<ProfileStatusPropsType> = props => {
     // }, [getStatus, status, profile, myProfileId])
 
     useEffect(() => {
-        setCurrentStatus(profile.userId || status)
+        setCurrentStatus(status)
     }, [status, profile])
 
     return (

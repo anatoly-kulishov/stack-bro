@@ -1,6 +1,7 @@
 import {INITIALIZED_SUCCESS} from "../store-types";
 import {authMe} from "./authActions";
 import {updateProfile} from "./profileActions";
+import {setUsers} from "./usersActions";
 
 export const actions = {
     initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const)
@@ -12,8 +13,9 @@ export const actions = {
 export const initializeApp = () => {
     return (dispatch: Function) => {
         let authMePromise = dispatch(authMe());
+        let setUsersPromise = dispatch(setUsers());
         let setProfilePromise = dispatch(updateProfile(17461));
-        Promise.all([authMePromise, setProfilePromise])
+        Promise.all([authMePromise, setProfilePromise, setUsersPromise])
             .then(() => {
                 dispatch(actions.initializedSuccess());
             });

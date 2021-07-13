@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {RocketTwoTone} from '@ant-design/icons';
 import styles from './Mock.module.scss'
 
-const Mock: React.FC = () => {
+const Mock: FC = () => {
     return (
         <div className={styles.wrapper}>
             <div>

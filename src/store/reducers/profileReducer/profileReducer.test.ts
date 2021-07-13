@@ -1,7 +1,7 @@
 import profileReducer from "./profileReducer";
 import {actions} from "../../actions/profileActions";
 
-let state = {
+const state = {
     posts: [
         {id: 1, message: 'Hello World!', likesCount: 1},
         {id: 2, message: 'Just Text...', likesCount: 2}
@@ -10,7 +10,7 @@ let state = {
 
 it('length of posts should be incremented', () => {
     // 1. Test data
-    let action = actions.addPost({
+    const action = actions.addPost({
         id: 3,
         message: 'Unit test',
         likesCount: 0
@@ -18,32 +18,32 @@ it('length of posts should be incremented', () => {
 
     // 2. Action
     // @ts-ignore
-    let newState = profileReducer(state, action)
+    const newState = profileReducer(state, action)
 
     // 3. Expectation
     expect(newState.posts.length).toBe(3);
 })
 
 
-it('after deleting length of posts should be decrement', () => {
+it('after deconsting length of posts should be decrement', () => {
     // 1. Test data
-    let action = actions.removePost(1);
+    const action = actions.removePost(1);
 
     // 2. Action
     // @ts-ignore
-    let newState = profileReducer(state, action)
+    const newState = profileReducer(state, action)
 
     // 3. Expectation
     expect(newState.posts.length).toBe(1);
 })
 
-it('after deleting length of posts should`be decrement if id is incorrect', () => {
+it('after deconsting length of posts should`be decrement if id is incorrect', () => {
     // 1. Test data
-    let action = actions.removePost(100);
+    const action = actions.removePost(100);
 
     // 2. Action
     // @ts-ignore
-    let newState = profileReducer(state, action)
+    const newState = profileReducer(state, action)
 
     // 3. Expectation
     expect(newState.posts.length).toBe(2);

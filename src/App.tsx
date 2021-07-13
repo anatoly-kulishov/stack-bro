@@ -1,4 +1,4 @@
-import React, {StrictMode, useEffect} from 'react';
+import React, {FC, StrictMode, useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -14,7 +14,7 @@ import {AppStateType} from "./store/reducers/rootReducer";
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeApp: () => void };
 
-const App: React.FC<MapPropsType & DispatchPropsType> = props => {
+const App: FC<MapPropsType & DispatchPropsType> = props => {
     const {initialized, initializeApp, isAuth} = props;
 
     useEffect(() => {

@@ -8,9 +8,13 @@ import {
     FileOutlined,
     CodeSandboxOutlined
 } from '@ant-design/icons';
+import {useSelector} from "react-redux";
+import {getTotalUsersCount} from "../../store/selectors/users-selectors";
 
 const NavBar: React.FC = () => {
     const {Sider} = Layout;
+    const userCounter = useSelector<any>(state => getTotalUsersCount(state))
+
     const onSelectNavKey = (key: number) => {
         sessionStorage.setItem('nav_key', String(key));
     }
@@ -37,7 +41,7 @@ const NavBar: React.FC = () => {
                 </Menu.Item>
                 <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<TeamOutlined/>}>
                     <NavLink to="/users">
-                        Users
+                        Users <small>({userCounter})</small>
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="5" onClick={() => onSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>

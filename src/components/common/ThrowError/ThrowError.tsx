@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Button} from "antd";
 
-const ThrowError: React.FC = () => {
+const ThrowError: FC = () => {
     const [error, setError] = useState<Error>();
     const onClick = () => {
         setError(new Error('An Uncaught Error'));

@@ -12,12 +12,6 @@ const ProfileInfo: React.FC<ProfilePropsType> = props => {
     const [editMode, setEditMode] = useState<boolean>(false);
     const {ErrorBoundary} = Alert;
 
-    // useEffect(() => {
-    //     if (Object.keys(profile)) {
-    //         setEditMode(false);
-    //     }
-    // }, [profile])
-
     return (
         <div className={`${styles.wrapper} default-box`}>
             <ErrorBoundary>

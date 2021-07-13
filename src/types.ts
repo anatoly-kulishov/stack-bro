@@ -33,23 +33,25 @@ export type PhotosType = {
     large: Nullable<string>,
 }
 
+export type ContactsType = {
+    key?: Nullable<string>,
+    github: Nullable<string>,
+    vk: Nullable<string>,
+    facebook: Nullable<string>,
+    instagram: Nullable<string>,
+    twitter: Nullable<string>,
+    website: Nullable<string>,
+    youtube: Nullable<string>,
+    mainLink: Nullable<string>
+}
+
 export type ProfileType = {
     userId: number | null,
     lookingForAJob: boolean,
     lookingForAJobDescription: string | null,
     fullName: string | null,
     aboutMe: string | null,
-    contacts: {
-        key?: string | null,
-        github: string | null,
-        vk: string | null,
-        facebook: string | null,
-        instagram: string | null,
-        twitter: string | null,
-        website: string | null,
-        youtube: string | null,
-        mainLink: string | null,
-    },
+    contacts: ContactsType
     photos: PhotosType
 }
 

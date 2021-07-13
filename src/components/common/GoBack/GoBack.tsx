@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {FC, memo} from 'react';
 import {Button} from 'antd';
 import {ArrowLeftOutlined} from "@ant-design/icons";
 import {Nullable} from "../../../types";
@@ -8,7 +8,7 @@ type GoBackPropsType = {
     history: { goBack: () => void }
 }
 
-const GoBack: React.FC<GoBackPropsType> = props => {
+const GoBack: FC<GoBackPropsType> = props => {
     const {title = 'Go Back', history} = props;
 
     return (
