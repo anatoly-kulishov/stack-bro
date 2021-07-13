@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {RouteComponentProps} from 'react-router-dom';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
@@ -12,7 +12,9 @@ export type ProfilePropsType = {
     isLoading: boolean,
     errorText: Nullable<string>,
     saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
-    savePhoto: () => void
+    savePhoto: () => void,
+    updateProfile: (userId: string | undefined) => void,
+    authMe: () => void
 }
 
 type PathParamsType = {
@@ -20,11 +22,17 @@ type PathParamsType = {
 }
 
 const Profile: React.FC<ProfilePropsType & RouteComponentProps<PathParamsType>> = props => {
-    // const {match} = props;
-    // const currentUserId = match?.params.userId;
-    // useEffect(() => {
-    //     console.log(currentUserId)
-    // }, [currentUserId])
+    const {match, updateProfile} = props;
+    const currentUserId = match?.params?.userId;
+
+    useEffect(() => {
+        if (currentUserId) {
+            updateProfile(currentUserId)
+        } else {
+            updateProfile('17461')
+        }
+    }, [currentUserId, updateProfile])
+
     return (
         <div>
             <div className="row">

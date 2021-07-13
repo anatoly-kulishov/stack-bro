@@ -6,8 +6,12 @@ const initialState = {
     isValid: true,
     isAuth: Boolean(Cookies.get('token')),
     error: null,
-    userId: null,
-    myProfile: null,
+    userId: null as (number | null),
+    myProfile: {
+        id: null as (string | null),
+        login: null as (string | null),
+        email: null as (string | null)
+    } as (object | null),
     captchaUrl: null
 }
 

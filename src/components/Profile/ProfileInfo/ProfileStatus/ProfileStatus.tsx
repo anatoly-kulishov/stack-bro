@@ -7,7 +7,7 @@ import {Nullable} from "../../../../types";
 type ProfileStatusPropsType = {
     profile: ProfileType,
     status: string,
-    myProfileId: Nullable<string>,
+    myProfileId: Nullable<number>,
     getStatus: (userId: number) => void,
     updateStatus: (status: string) => void
 }
