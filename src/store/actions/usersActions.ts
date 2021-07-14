@@ -27,8 +27,8 @@ export const actions = {
 
 /**
  * Returns all (or only filtered by name with term parameter) users splitted by page
- * @param requestPage
- * @param pageSize
+ * @param:number requestPage
+ * @param:number pageSize
  */
 export const setUsers = (requestPage: number = 1, pageSize: number = 12): ThunkType => {
     return async (dispatch: Function) => {
@@ -40,11 +40,11 @@ export const setUsers = (requestPage: number = 1, pageSize: number = 12): ThunkT
             })
         }).catch((e) => console.error(e));
     }
-}
+};
 
 /**
  * Get following status current user
- * @param userId
+ * @param:number userId
  */
 export const setCurrentUserFollower = (userId: number): ThunkType => {
     return async (dispatch: Function) => {
@@ -59,7 +59,7 @@ export const setCurrentUserFollower = (userId: number): ThunkType => {
 
 /**
  * Follow to user
- * @param userId
+ * @param:number userId
  */
 export const userFollow = (userId: number): ThunkType => {
     return async (dispatch: Function) => {

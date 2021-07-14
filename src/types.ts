@@ -64,7 +64,7 @@ export type MyProfileType = {
 export type UserType = {
     id: number,
     name: string,
-    photos: { small: string, large: string },
+    photos: { small: Nullable<string>, large: Nullable<string> },
     status: string,
     followed: boolean,
 }
