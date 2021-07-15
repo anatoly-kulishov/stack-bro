@@ -1,10 +1,11 @@
 import {INITIALIZED_SUCCESS} from "../../store-types";
 import {InferActionsTypes} from "../rootReducer";
 import {actions} from "../../actions/appActions";
+import {Nullable} from "../../../types";
 
 const initialState = {
     initialized: false,
-    globalErrors: null as string | null // Todo: Catch All Errors width alert
+    globalErrors: null as Nullable<string>
 }
 
 const appReducer = (state = initialState, action: ActionsType): InitialStateType => {

@@ -1,11 +1,11 @@
 import {
-    ADD_POST, NEW_PROFILE_PHOTO_SENDS,
+    ADD_POST, GET_FOLLOWING_STATUS, NEW_PROFILE_PHOTO_SENDS,
     REMOVE_POST,
     SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS,
     SET_PROFILE_STATUS,
     SET_USER_PROFILE
 } from "../../store-types";
-import {ProfileType} from "../../../types";
+import {Nullable, ProfileType} from "../../../types";
 // import {InferActionsTypes} from "../rootReducer";
 // import {actions} from "../../actions/profileActions";
 
@@ -17,7 +17,8 @@ const initialState = {
     posts: [] as object[],
     selectedProfile: {},
     profile: {} as ProfileType,
-    status: ''
+    status: '',
+    followStatus: null as Nullable<boolean>
 }
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
@@ -32,6 +33,11 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return {
                 ...state,
                 status: action.status
+            }
+        case GET_FOLLOWING_STATUS:
+            return {
+                ...state,
+                followStatus: action.followStatus
             }
         case NEW_PROFILE_PHOTO_SENDS:
             return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./ProfileData.module.scss";
 import Contact from "./Contact";
-import {ProfileType} from "../../../../types";
+import {ContactsType, ProfileType} from "../../../../types";
 
 type ProfileDataPropsType = {
     profile: ProfileType
@@ -10,6 +10,7 @@ type ProfileDataPropsType = {
 const ProfileData: React.FC<ProfileDataPropsType> = props => {
     const {profile} = props;
     const {lookingForAJob, lookingForAJobDescription, contacts, aboutMe} = profile;
+
 
     return (
         <div className={styles.wrapper}>
@@ -28,13 +29,15 @@ const ProfileData: React.FC<ProfileDataPropsType> = props => {
                     <div className={styles.label}>About Me:</div>
                     <div className={styles.desc}>{aboutMe && aboutMe}</div>
                 </div>
-                {contacts && Object.keys(contacts).map((key: string, num: number) => (
-                        <Contact key={num}
-                                 logic={true}
-                                 title={key}
-                                 value={contacts.key}/>
-                    )
-                )}
+                {contacts && Object
+                    .keys(contacts)
+                    .map((key: string) => (
+                            <Contact key={key}
+                                     logic={true}
+                                     title={key}
+                                     value={contacts[key as keyof ContactsType]}/>
+                        )
+                    )}
             </div>
         </div>
     )

@@ -48,10 +48,11 @@ export const setUsers = (requestPage: number = 1, pageSize: number = 12): ThunkT
  */
 export const setCurrentUserFollower = (userId: number): ThunkType => {
     return async (dispatch: Function) => {
-        usersAPI.getCurrentUserFollower(userId).then(() => {
+        usersAPI.getCurrentUserFollower(userId).then(data => {
             dispatch({
                 type: GET_FOLLOWING_STATUS,
-                userId: userId
+                userId: userId,
+                followStatus: data
             })
         }).catch((e) => console.error(e))
     }
@@ -72,7 +73,7 @@ export const userFollow = (userId: number): ThunkType => {
                 })
             }
             dispatch(actions.toggleFollowingProgress(false, userId))
-        }).catch((e) => console.error(e))
+        }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
     }
 }
 
@@ -90,7 +91,7 @@ export const userUnfollow = (userId: number): ThunkType => {
                     userId: userId
                 })
             }
-        }).catch((e) => console.error(e))
+        }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
     }
 }
 

@@ -25,12 +25,17 @@ const FileField: FC<FileFieldPropsType> = props => {
                     <input name="file" type="file" id="file" className='d-none' onChange={(event: any) => {
                         setFieldValue("file", event.currentTarget.files[0])
                     }}/>
-                    <div className="mt-2">
-                        <Button htmlType="submit" block disabled={!values.file || isSubmitting}>Submit</Button>
-                    </div>
-                    <div className="mt-2">
-                        <Button htmlType="reset" block danger disabled={!values.file || isSubmitting}>Cancel</Button>
-                    </div>
+                    {values.file && (
+                        <>
+                            <div className="mt-2">
+                                <Button htmlType="submit" block disabled={!values.file || isSubmitting}>Submit</Button>
+                            </div>
+                            <div className="mt-2">
+                                <Button htmlType="reset" block danger
+                                        disabled={!values.file || isSubmitting}>Cancel</Button>
+                            </div>
+                        </>
+                    )}
                 </Form>
             )}
         </Formik>

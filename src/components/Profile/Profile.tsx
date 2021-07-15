@@ -11,10 +11,15 @@ export type ProfilePropsType = {
     myProfile: MyProfileType,
     isLoading: boolean,
     errorText: Nullable<string>,
+    followStatus: Nullable<boolean>,
     saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
     savePhoto: () => void,
     updateProfile: (userId: string | undefined) => void,
-    authMe: () => void
+    authMe: () => void,
+    userFollow: (id: number) => void,
+    userUnfollow: (id: number) => void,
+    setCurrentUserFollower: (userId: number) => void,
+    isOwner: boolean
 }
 
 type PathParamsType = {
@@ -22,16 +27,17 @@ type PathParamsType = {
 }
 
 const Profile: React.FC<ProfilePropsType & RouteComponentProps<PathParamsType>> = props => {
-    const {match, updateProfile} = props;
+    const {match, updateProfile, setCurrentUserFollower} = props;
     const currentUserId = match?.params?.userId;
 
     useEffect(() => {
         if (currentUserId) {
             updateProfile(currentUserId)
+            setCurrentUserFollower(Number(currentUserId))
         } else {
             updateProfile('17461')
         }
-    }, [currentUserId, updateProfile])
+    }, [currentUserId, setCurrentUserFollower, updateProfile])
 
     return (
         <div>

@@ -1,25 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {Spin, Alert} from "antd";
+import {Spin, Alert, Button} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
-import {ProfileType} from "../../../types";
+import {Nullable, ProfileType} from "../../../types";
 
 type ProfilePhotoPropsType = {
     profile: ProfileType,
     isLoading: boolean,
+    followStatus: Nullable<boolean>,
     saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
-    savePhoto: () => void
+    savePhoto: () => void,
+    userFollow: (id: number) => void,
+    userUnfollow: (id: number) => void,
+    isOwner: boolean
 }
 
 const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
-    const {savePhoto, profile, isLoading} = props;
-    const [profilePhoto, setProfilePhoto] = useState<string | null>();
+    const {savePhoto, profile, isLoading, userFollow, followStatus, userUnfollow, isOwner} = props;
+    const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
+    const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus)
     const {ErrorBoundary} = Alert;
 
     useEffect(() => {
         setProfilePhoto(profile?.photos?.large)
     }, [profile])
+
+    useEffect(() => {
+        setFollowState(followStatus)
+    }, [followStatus])
 
     return (
         <div className={`${styles.wrapper} default-box`}>
@@ -31,7 +40,23 @@ const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
                     )}
                 </div>
                 <div className={styles.profileActions}>
-                    <FileField save={savePhoto}/>
+                    {isOwner && (
+                        <FileField save={savePhoto}/>
+                    )}
+                    {!isOwner && !followState && (
+                        <Button onClick={() => userFollow(18310)}
+                                htmlType="button"
+                                block type="primary">
+                            Add friend
+                        </Button>
+                    )}
+                    {!isOwner && followState && (
+                        <Button onClick={() => userUnfollow(18310)}
+                                htmlType="button"
+                                block danger>
+                            Unfriend
+                        </Button>
+                    )}
                 </div>
             </ErrorBoundary>
         </div>
