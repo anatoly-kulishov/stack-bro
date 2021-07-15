@@ -3,7 +3,7 @@ import {Alert} from "antd";
 import {ApiTwoTone, EditTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
-import ProfileData from "./ProfileData/ProfileData";
+import ProfileData from "./ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
 import {ProfilePropsType} from "../Profile";
 

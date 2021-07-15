@@ -3,11 +3,11 @@ import {Comment, Tooltip, Avatar} from 'antd';
 import {NavLink} from "react-router-dom";
 import moment from 'moment';
 import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
-import {ProfileType} from "../../../../types";
+import {Nullable, ProfileType} from "../../../../types";
 
 export type PostPropsType = {
-    profile: ProfileType
-    message: string | null,
+    profile: ProfileType,
+    message: Nullable<string>,
     likesCount: number,
 }
 

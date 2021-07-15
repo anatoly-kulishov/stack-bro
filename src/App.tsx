@@ -2,7 +2,6 @@ import React, {FC, StrictMode, useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {Spin} from "antd";
 import "./App.scss";
 import store from "./store";
 import AppNavigation from "./routes/AppRoutes";
@@ -27,7 +26,6 @@ const App: FC<MapPropsType & DispatchPropsType> = props => {
 
     return (
         <>
-            {!initialized && <div className="d-center"><Spin size="large"/></div>}
             {initialized && (
                 <div className="app">
                     {isAuth ? <AppNavigation/> : <AuthRoutes/>}

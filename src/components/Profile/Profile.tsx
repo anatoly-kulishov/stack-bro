@@ -44,13 +44,12 @@ const Profile: React.FC<ProfilePropsType & RouteComponentProps<PathParamsType>> 
             <div className="row">
                 <div className="col-12 col-lg-4 pr-lg-2">
                     <ProfilePhoto {...props}/>
+                    <div className="default-box p-3 mt-3">
+                        My friends
+                    </div>
                 </div>
                 <div className="col-12 col-lg-8 pl-lg-2">
                     <ProfileInfo {...props}/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-12">
                     <MyPosts/>
                 </div>
             </div>

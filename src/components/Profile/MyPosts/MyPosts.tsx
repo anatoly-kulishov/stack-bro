@@ -45,7 +45,7 @@ const MyPosts: React.FC<MyPostsPropsType> = props => {
                         <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.title}>My posts</div>
                             <div className="row">
-                                <div className="col-lg-4">
+                                <div className="col-12">
                                     <TextArea name="message" rows={2}
                                               value={values.message}
                                               onChange={handleChange}

@@ -3,7 +3,7 @@ import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
 import CustomField from "../../../common/CustomField";
-import {FormPropsType, ProfileType} from "../../../../types";
+import {ContactsType, FormPropsType, ProfileType} from "../../../../types";
 
 type ProfileDataFormForm = {
     profile: ProfileType
@@ -14,9 +14,18 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
     const {fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts} = profile;
     const {TextArea} = Input
 
+    // console.log(profile)
+
     return (
         <Formik
-            initialValues={{userId: 17461, fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts}}
+            initialValues={{
+                userId: 17461,
+                fullName,
+                lookingForAJob,
+                lookingForAJobDescription,
+                aboutMe,
+                contacts
+            }}
             onSubmit={(values, {setSubmitting}) => {
                 console.log(JSON.stringify(values, null, 2));
                 onSubmit(values, setSubmitting);
@@ -65,21 +74,23 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
                                   required/>
                     </div>
                     <div>
-                        {Object.keys(contacts).map((key: string) => {
-                            return (
-                                <div className="form-row" key={key}>
-                                    <label htmlFor={key}>{key}</label>
-                                    <CustomField
-                                        className={`form-control ${styles.customFormControl}`}
-                                        id={`contacts.${key}`}
-                                        name={`contacts.${key}`}
-                                        type="text"
-                                        value={values.contacts.key}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}/>
-                                </div>
-                            )
-                        })}
+                        {values.contacts &&
+                        Object.keys(contacts)
+                            .map(key => {
+                                return (
+                                    <div className="form-row" key={key}>
+                                        <label htmlFor={key}>{key}</label>
+                                        <CustomField
+                                            className={`form-control ${styles.customFormControl}`}
+                                            id={`contacts.${key}`}
+                                            name={`contacts.${key}`}
+                                            type="text"
+                                            value={values?.contacts[key as keyof ContactsType]}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}/>
+                                    </div>
+                                )
+                            })}
                     </div>
                     <div className="validate-box text-center mb-3">
                         {!isValid && errorText && <Alert message={errorText} type="error"/>}

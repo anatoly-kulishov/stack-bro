@@ -15,7 +15,9 @@ const Contact: React.FC<ContactPropsType> = props => {
         return (
             <div className={styles.row}>
                 <div className={styles.label}>{title}:</div>
-                <div className={styles.desc}>{value && value}</div>
+                <a href={`${value}`} target="_blank" rel="noreferrer">
+                        <div className={styles.desc}>{value && value}</div>
+                </a>
             </div>
         )
     }
