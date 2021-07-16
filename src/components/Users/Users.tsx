@@ -4,6 +4,7 @@ import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
 import {UserType} from "../../types";
+import UsersSearchForm from "./UsersSearchForm";
 
 type UsersPropsType = {
     users: Array<UserType>,
@@ -37,6 +38,7 @@ const Users: React.FC<UsersPropsType> = props => {
             {!isLoading && (
                 <section className={styles.section}>
                     <h3 className={styles.title}>Users</h3>
+                    <UsersSearchForm/>
                     <div className={styles.users}>
                         <div className="row">
                             {

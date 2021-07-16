@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import {Layout} from "antd";
 import styles from "./Header.module.scss";
 import SearchPanel from "./SearchPanel";
@@ -7,8 +7,11 @@ import AudioPlayer from "./AudioPlayer";
 import MyAccount from "./MyAccount";
 import Logo from "./Logo";
 
-const Header: React.FC = () => {
+type HeaderPropsType = {}
+
+const Header: React.FC<HeaderPropsType> = () => {
     const {Header} = Layout;
+
     return (
         <Header className={`${styles.header} site-layout-background`}>
             <div className="container">
@@ -33,4 +36,4 @@ const Header: React.FC = () => {
     );
 }
 
-export default Header;
+export default withRouter(Header);
