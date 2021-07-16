@@ -4,10 +4,10 @@ import {
     SET_TOTAL_USERS_COUNT,
     GET_FOLLOWING_STATUS,
     TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS,
-} from "../store-types";
-import usersAPI from "../../api/usersAPI";
-import {ResultCodes} from "../../types";
-import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
+} from "../../store-types";
+import usersAPI from "../../../api/usersAPI";
+import {ResultCodes} from "../../../types";
+import {BaseThunkType, InferActionsTypes} from "../../reducers/rootReducer";
 
 export const actions = {
     toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
@@ -79,7 +79,7 @@ export const userFollow = (userId: number): ThunkType => {
 
 /**
  * Unfollow to user
- * @param userId
+ * @param:number userId
  */
 export const userUnfollow = (userId: number): ThunkType => {
     return async (dispatch: Function) => {

@@ -1,7 +1,7 @@
 import {INITIALIZED_SUCCESS} from "../store-types";
 import {authMe} from "./authActions";
 import {updateProfile} from "./profileActions";
-import {setUsers} from "./usersActions";
+import {setUsers} from "./usersActions/usersActions";
 
 export const actions = {
     initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const)

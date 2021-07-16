@@ -5,8 +5,8 @@ import {
     setUsers,
     userFollow,
     userUnfollow
-} from "../../store/actions/usersActions";
-import {actions} from "../../store/actions/usersActions";
+} from "../../store/actions/usersActions/usersActions";
+import {actions} from "../../store/actions/usersActions/usersActions";
 import {
     getCurrentPage,
     getFollowingInProgress, getIsLoading,

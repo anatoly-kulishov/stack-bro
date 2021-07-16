@@ -6,7 +6,7 @@ import {compose} from "redux";
 import {savePhoto, saveProfile, updateProfile} from "../../store/actions/profileActions";
 import {AppStateType} from "../../store/reducers/rootReducer";
 import {authMe} from "../../store/actions/authActions";
-import {setCurrentUserFollower, userFollow, userUnfollow} from "../../store/actions/usersActions";
+import {setCurrentUserFollower, userFollow, userUnfollow} from "../../store/actions/usersActions/usersActions";
 
 const mapStateToProps = (state: AppStateType) => ({
     myProfile: state.auth.myProfile,

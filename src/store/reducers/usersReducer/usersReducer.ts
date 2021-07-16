@@ -40,7 +40,7 @@ const usersReducer = (state = initialState, action: any): InitialStateType => {
         case TOGGLE_FOLLOW_UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map((user) => {
+                users: state.users.map(user => {
                     if (user.id === action.userId) {
                         return {...user, followed: !user.followed}
                     }
