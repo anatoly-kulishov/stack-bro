@@ -161,11 +161,15 @@ textarea {
 }
 
 .ant-alert {
-    font-size: 11px!important;
-    line-height: 1.1!important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
 }
 
 .ant-alert-with-description.ant-alert-no-icon {
     max-height: 350px;
     overflow: auto;
+}
+
+.w-100 {
+    width: 100% !important;
 }

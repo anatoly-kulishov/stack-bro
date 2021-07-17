@@ -12,7 +12,7 @@ import {
     getFollowingInProgress, getIsLoading,
     getPageSize,
     getTotalUsersCount,
-    getUsers
+    getUsers, getUsersFilter
 } from "../../store/selectors/users-selectors";
 import {AppStateType} from "../../store/reducers/rootReducer";
 
@@ -23,6 +23,7 @@ const mapStateToProps = (state: AppStateType) => ({
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
     followingInProgress: getFollowingInProgress(state),
+    filter: getUsersFilter(state)
 })
 
 const UserContainer = connect(mapStateToProps, {

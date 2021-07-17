@@ -13,7 +13,7 @@ export const actions = {
 export const initializeApp = () => {
     return (dispatch: Function) => {
         let authMePromise = dispatch(authMe());
-        let setUsersPromise = dispatch(setUsers());
+        let setUsersPromise = dispatch(setUsers(1, 12, {term: '', friend: false}));
         let setProfilePromise = dispatch(updateProfile(17461));
         Promise.all([authMePromise, setProfilePromise, setUsersPromise])
             .then(() => {

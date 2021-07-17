@@ -3,9 +3,9 @@ import {
     TOGGLE_FOLLOW_UNFOLLOW,
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
-    TOGGLE_IS_FOLLOWING_PROGRESS
+    TOGGLE_IS_FOLLOWING_PROGRESS, SET_USERS_FILTER
 } from "../../store-types";
-import {UserType} from "../../../types";
+import {Nullable, UserType} from "../../../types";
 
 const initialState = {
     isLoading: true,
@@ -13,7 +13,11 @@ const initialState = {
     users: [] as Array<UserType>,
     pageSize: 12,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    filter: {
+        term: '',
+        friend: null as Nullable<boolean>
+    }
 }
 
 const usersReducer = (state = initialState, action: any): InitialStateType => {
@@ -54,11 +58,17 @@ const usersReducer = (state = initialState, action: any): InitialStateType => {
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter((id: number) => (id !== action.userId)),
             }
+        case SET_USERS_FILTER:
+            return {
+                ...state,
+                filter: action.payload
+            }
         default:
             return state;
     }
 }
 
+export type FilterType = typeof initialState.filter;
 export type InitialStateType = typeof initialState;
 // type ActionsType = InferActionsTypes<typeof actions>;
 export default usersReducer;

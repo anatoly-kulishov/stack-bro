@@ -9,6 +9,7 @@ export const getTotalUsersCount = (state: AppStateType) => state.users.totalUser
 export const getCurrentPage = (state: AppStateType) => state.users.currentPage;
 export const getFollowingInProgress = (state: AppStateType) => state.users.followingInProgress;
 export const getIsLoading = (state: AppStateType) => state.users.isLoading;
+export const getUsersFilter = (state: AppStateType) => state.users.filter
 
 /*********************** Super Selectors ***********************/
 export const getUsers = createSelector(getUsersSelector,

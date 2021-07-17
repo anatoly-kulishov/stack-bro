@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Input} from "antd";
-// import styles from './UsersSearchForm.module.scss';
 
-type UsersSearchFormPropsType = {}
+type UsersSearchFormPropsType = {
+    onFilterChanged: (term: string) => void
+}
 
 const UsersSearchForm: React.FC<UsersSearchFormPropsType> = props => {
+    const {onFilterChanged} = props;
     const {Search} = Input;
-    const onSearch = (value: any) => console.log(`Search: ${value}`);
+    const onSearch = (term: string) => onFilterChanged(term);
     return (
         <div className="mt-3 mb-3">
             <Search placeholder="Search users" onSearch={onSearch} style={{width: 200}}/>
@@ -14,4 +16,4 @@ const UsersSearchForm: React.FC<UsersSearchFormPropsType> = props => {
     )
 }
 
-export default UsersSearchForm;
+export default memo(UsersSearchForm);

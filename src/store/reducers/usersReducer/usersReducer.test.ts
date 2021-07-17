@@ -39,7 +39,11 @@ beforeEach(() => {
                 status: 'status 4'
             },
         ],
-        followingInProgress: []
+        followingInProgress: [],
+        filter: {
+            term: '',
+            friend: null
+        }
     }
 })
 

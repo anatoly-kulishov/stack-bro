@@ -3,11 +3,12 @@ import {
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
     GET_FOLLOWING_STATUS,
-    TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS,
+    TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS, SET_USERS_FILTER,
 } from "../../store-types";
 import usersAPI from "../../../api/usersAPI";
 import {ResultCodes} from "../../../types";
 import {BaseThunkType, InferActionsTypes} from "../../reducers/rootReducer";
+import {FilterType} from "../../reducers/usersReducer/usersReducer";
 
 export const actions = {
     toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
@@ -22,7 +23,8 @@ export const actions = {
     setTotalUserCount: (totalUserCount: number) => ({
         type: SET_TOTAL_USERS_COUNT,
         totalUserCount: totalUserCount
-    } as const)
+    } as const),
+    setFilter: (filter: FilterType) => ({type: SET_USERS_FILTER, payload: filter} as const)
 }
 
 /**
@@ -30,9 +32,10 @@ export const actions = {
  * @param:number requestPage
  * @param:number pageSize
  */
-export const setUsers = (requestPage: number = 1, pageSize: number = 12): ThunkType => {
+export const setUsers = (requestPage: number = 1, pageSize: number = 12, filter: FilterType): ThunkType => {
     return async (dispatch: Function) => {
-        usersAPI.requestUsers(requestPage, pageSize).then(data => {
+        dispatch(actions.setFilter(filter))
+        usersAPI.requestUsers(requestPage, pageSize, filter.term, filter.friend).then(data => {
             dispatch({
                 type: SET_USERS,
                 users: data.items,
