@@ -3,21 +3,24 @@ import {Spin, Alert, Button} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
-import {Nullable, ProfileType} from "../../../types";
+import {Nullable} from "../../../types";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getProfile,
+    getProfileFollowStatus,
+    getProfileIsLoading,
+    getProfileIsOwnerStatus
+} from "../../../store/selectors/profile-selectors";
+import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
+import {savePhoto} from "../../../store/actions/profileActions";
 
-type ProfilePhotoPropsType = {
-    profile: ProfileType,
-    isLoading: boolean,
-    followStatus: Nullable<boolean>,
-    saveProfile: (formData: ProfileType, setSubmitting: Function) => Promise<ProfileType>,
-    savePhoto: () => void,
-    userFollow: (id: number) => void,
-    userUnfollow: (id: number) => void,
-    isOwner: boolean
-}
+const ProfilePhoto: React.FC = () => {
+    const dispatch = useDispatch();
+    const profile = useSelector(getProfile);
+    const followStatus = useSelector(getProfileFollowStatus);
+    const isLoading = useSelector(getProfileIsLoading);
+    const isOwner = useSelector(getProfileIsOwnerStatus);
 
-const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
-    const {savePhoto, profile, isLoading, userFollow, followStatus, userUnfollow, isOwner} = props;
     const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
     const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus)
     const {ErrorBoundary} = Alert;
@@ -30,6 +33,8 @@ const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
         setFollowState(followStatus)
     }, [followStatus])
 
+    const onSavePhoto = () => dispatch(savePhoto);
+
     return (
         <div className={`${styles.wrapper} default-box`}>
             <ErrorBoundary>
@@ -41,17 +46,17 @@ const ProfilePhoto: React.FC<ProfilePhotoPropsType> = props => {
                 </div>
                 <div className={styles.profileActions}>
                     {isOwner && (
-                        <FileField save={savePhoto}/>
+                        <FileField save={onSavePhoto}/>
                     )}
                     {!isOwner && !followState && (
-                        <Button onClick={() => userFollow(18310)}
+                        <Button onClick={() => dispatch(userFollow(18310))}
                                 htmlType="button"
                                 block type="primary">
                             Add friend
                         </Button>
                     )}
                     {!isOwner && followState && (
-                        <Button onClick={() => userUnfollow(18310)}
+                        <Button onClick={() => dispatch(userUnfollow(18310))}
                                 htmlType="button"
                                 block danger>
                             Unfriend

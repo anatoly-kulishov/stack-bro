@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
 import {Formik, Form} from 'formik';
 import {Alert, Button, Checkbox, Input} from "antd";
 import styles from './ProfileDataForm.module.scss';
@@ -13,8 +14,7 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
     const {onSubmit, isValid, errorText, profile} = props;
     const {fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts} = profile;
     const {TextArea} = Input
-
-    // console.log(profile)
+    const dispatch = useDispatch();
 
     return (
         <Formik
@@ -28,7 +28,7 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
             }}
             onSubmit={(values, {setSubmitting}) => {
                 console.log(JSON.stringify(values, null, 2));
-                onSubmit(values, setSubmitting);
+                dispatch(onSubmit(values, setSubmitting));
             }}>
             {({values, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
                 <Form onSubmit={handleSubmit} className={styles.form}>

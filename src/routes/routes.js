@@ -1,5 +1,4 @@
 import React, {lazy} from 'react';
-import {Redirect} from "react-router-dom";
 import {withSuspense} from "../hoc/withSuspense";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
@@ -26,13 +25,8 @@ export const authRoutes = [
 
 export const appRoutes = [
     {
-        path: "/",
-        exact: true,
-        component: <Redirect to="/profile"/>
-    },
-    {
         path: "/profile/:userId?",
-        component: <Profile/> // Todo
+        component: <Profile/>
     },
     {
         path: "/dialogs",

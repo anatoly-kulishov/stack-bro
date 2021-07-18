@@ -3,8 +3,8 @@ import {Field, Formik} from 'formik';
 
 type UsersSearchFormPropsType = {}
 
-const UsersFilterForm: React.FC<UsersSearchFormPropsType> = props => {
-    const {} = props;
+const UsersFilterForm: React.FC<UsersSearchFormPropsType> = () => {
+    // const {} = props;
 
     return (
         <Formik

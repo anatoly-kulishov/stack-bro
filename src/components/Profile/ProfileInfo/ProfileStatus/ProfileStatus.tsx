@@ -1,19 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {ProfileType} from "../../../../types";
-import {Nullable} from "../../../../types";
+import {useSelector} from "react-redux";
+import {getProfile, getProfileStatus} from "../../../../store/selectors/profile-selectors";
 
-type ProfileStatusPropsType = {
-    profile: ProfileType,
-    status: string,
-    myProfileId: Nullable<number>,
-    getStatus: (userId: number) => void,
-    updateStatus: (status: string) => void
-}
-
-const ProfileStatus: React.FC<ProfileStatusPropsType> = props => {
-    const {profile, status} = props;
+const ProfileStatus: React.FC = () => {
+    const profile = useSelector(getProfile);
+    const status = useSelector(getProfileStatus);
     const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -28,7 +21,7 @@ const ProfileStatus: React.FC<ProfileStatusPropsType> = props => {
 
     useEffect(() => {
         setCurrentStatus(status)
-    }, [status, profile])
+    }, [profile, status])
 
     return (
         <div className={styles.wrapper}>
