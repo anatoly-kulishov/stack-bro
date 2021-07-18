@@ -1,17 +1,14 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 import styles from './Login.module.scss';
 import LoginForm from "./LoginForm/LoginForm";
-import {ProfileActionType} from "../../store/actions/authActions";
+import {signIn} from "../../store/actions/authActions";
+import {getAuthCaptchaUrl, getAuthErrorText, getAuthIsValidAuth} from "../../store/selectors/auth-selectors";
 
-type LoginPropsType = {
-    signIn: (profile: ProfileActionType, setSubmitting: Function, resetForm: Function) => void,
-    errorText: string | null,
-    isValidAuth: boolean,
-    captchaUrl: string | null
-}
-
-const Login: React.FC<LoginPropsType> = props => {
-    const {signIn, isValidAuth, errorText, captchaUrl} = props;
+const Login: React.FC = () => {
+    const isValidAuth = useSelector(getAuthIsValidAuth);
+    const captchaUrl = useSelector(getAuthCaptchaUrl);
+    const errorText = useSelector(getAuthErrorText);
 
     return (
         <section>

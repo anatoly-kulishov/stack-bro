@@ -1,17 +1,13 @@
 import React from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {Input} from 'antd';
 import {Formik} from 'formik';
 import * as Yup from "yup";
 import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {PostType, ProfileType} from "../../../types";
-
-type MyPostsPropsType = {
-    profile: ProfileType,
-    posts: Array<PostType>,
-    onAddPost: (message: string) => void
-}
+import {actions} from "../../../store/actions/profileActions";
+import {getPosts, getProfile} from "../../../store/selectors/profile-selectors";
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -20,12 +16,25 @@ const messagesSchema = Yup.object().shape({
         .required('Required'),
 });
 
-const MyPosts: React.FC<MyPostsPropsType> = props => {
-    const {posts, onAddPost, profile} = props;
+const MyPosts: React.FC = () => {
+    const dispatch = useDispatch();
+    const profile = useSelector(getProfile);
+    const posts = useSelector(getPosts);
+
     const {TextArea} = Input;
     const {ErrorBoundary} = Alert;
-    const postsElements = posts.map(p => <Post key={p.id} profile={profile} message={p.message}
-                                               likesCount={p.likesCount}/>);
+    const postsElements = posts.map((p: any) => <Post key={p.id} profile={profile} message={p.message}
+                                                      likesCount={p.likesCount}/>);
+
+    const onAddPost = (message: string) => {
+        const post = {
+            id: Date.now(),
+            message,
+            likesCount: 0
+        }
+        dispatch(actions.addPost(post));
+    }
+
     return (
         <div className={`${styles.myPosts} default-box`}>
             <ErrorBoundary>

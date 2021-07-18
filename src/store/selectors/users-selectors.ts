@@ -8,7 +8,7 @@ export const getPageSize = (state: AppStateType) => state.users.pageSize;
 export const getTotalUsersCount = (state: AppStateType) => state.users.totalUsersCount;
 export const getCurrentPage = (state: AppStateType) => state.users.currentPage;
 export const getFollowingInProgress = (state: AppStateType) => state.users.followingInProgress;
-export const getIsLoading = (state: AppStateType) => state.users.isLoading;
+export const getUsersLoading = (state: AppStateType) => state.users.isLoading;
 export const getUsersFilter = (state: AppStateType) => state.users.filter
 
 /*********************** Super Selectors ***********************/

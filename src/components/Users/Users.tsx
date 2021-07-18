@@ -3,44 +3,35 @@ import {Alert, Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
-import {UserType} from "../../types";
 import UsersSearchForm from "./UsersSearchForm";
-import {FilterType} from "../../store/reducers/usersReducer/usersReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getCurrentPage,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getUsersLoading
+} from "../../store/selectors/users-selectors";
+import {
+    actions,
+    setUsers
+} from '../../store/actions/usersActions/usersActions';
 
-type UsersPropsType = {
-    users: Array<UserType>,
-    isLoading: boolean,
-    pageSize: number,
-    totalUsersCount: number,
-    currentPage: number,
-    setUsers: (requestPage: number, pageSize: number, filter: FilterType) => void,
-    userFollow: (userId: number) => void,
-    userUnfollow: (userId: number) => void,
-    setCurrentPage: (pageNumber: number) => void,
-    setCurrentUserFollower: (userId: number) => void,
-    followingInProgress: number[],
-    filter: FilterType
-}
-
-const Users: React.FC<UsersPropsType> = props => {
-    const {
-        users, isLoading, pageSize,
-        setCurrentUserFollower, totalUsersCount, currentPage,
-        setUsers, userFollow, userUnfollow,
-        setCurrentPage, followingInProgress,
-    } = props;
+const Users: React.FC = () => {
+    const dispatch = useDispatch();
+    const users = useSelector(getUsers)
+    const currentPage = useSelector(getCurrentPage);
+    const totalUsersCount = useSelector(getTotalUsersCount);
+    const pageSize = useSelector(getPageSize);
+    const isLoading = useSelector(getUsersLoading);
+    // const filter = useSelector(getUsersFilter);
 
     useEffect(() => {
-        setUsers(currentPage, pageSize, {term: '', friend: null}) // Todo: Debug term filter!
-    }, [setUsers, currentPage, pageSize])
+        dispatch(setUsers(currentPage, pageSize, {term: '', friend: null})) // Todo: Debug term filter!
+    }, [dispatch, currentPage, pageSize])
 
-    const onFilterChanged = (term: string = '') => {
-        setUsers(currentPage, pageSize, {term, friend: null})
-    }
-
-    const onPageChangedHandler = (p: number) => {
-        setCurrentPage(p);
-    }
+    const onFilterChanged = (term: string = '') => dispatch(setUsers(currentPage, pageSize, {term, friend: null}));
+    const onPageChangedHandler = (p: number) => dispatch(actions.setCurrentPage(p));
 
     return (
         <div className={`default-box p-3`}>
@@ -54,12 +45,7 @@ const Users: React.FC<UsersPropsType> = props => {
                             {
                                 users && users.map(user => (
                                     <div key={user.id} className="col-12 col-lg-4">
-                                        <User user={user}
-                                              setCurrentUserFollower={setCurrentUserFollower}
-                                              userFollow={userFollow}
-                                              userUnfollow={userUnfollow}
-                                              isLoading={isLoading}
-                                              followingInProgress={followingInProgress}/>
+                                        <User user={user} isLoading={isLoading}/>
                                     </div>
                                 ))
                             }

@@ -6,14 +6,17 @@ import styles from './LoginForm.module.scss';
 import CustomField from "../../common/CustomField";
 import {validateEmail, validatePassword} from "../../../utils/validators/loginValidator";
 import {FormPropsType} from "../../../types";
+import {useDispatch} from "react-redux";
 
 const LoginForm: React.FC<FormPropsType> = props => {
     const {onSubmit, isValid, errorText, captchaUrl} = props;
+    const dispatch = useDispatch();
+
     return (
         <Formik
             initialValues={{email: '', password: '', captcha: '', rememberMe: false}}
             onSubmit={(values, {setSubmitting, resetForm}) => {
-                onSubmit(values, setSubmitting, resetForm);
+                dispatch(onSubmit(values, setSubmitting, resetForm));
                 values.captcha = '';
             }}>
             {({

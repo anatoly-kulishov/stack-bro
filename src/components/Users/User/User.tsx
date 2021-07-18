@@ -4,23 +4,23 @@ import styles from './User.module.scss';
 import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
 import {UserType} from "../../../types";
+import {useDispatch} from "react-redux";
+import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
 
 export type UserPropsType = {
     user: UserType,
     isLoading: boolean,
-    userFollow: (userId: number) => void,
-    userUnfollow: (userId: number) => void,
-    setCurrentUserFollower: (userId: number) => void,
-    followingInProgress: number[]
 }
 
 const User: React.FC<UserPropsType> = props => {
-    const {user, userFollow, userUnfollow, isLoading} = props;
+    const {user, isLoading} = props;
+    const dispatch = useDispatch();
     const {Meta} = Card;
+    // const followingInProgress = useSelector(getFollowingInProgress);
 
     const followAction = (user.followed)
-        ? <MinusOutlined key="edit" onClick={() => userUnfollow(user.id)}/>
-        : <PlusOutlined key="edit" onClick={() => userFollow(user.id)}/>
+        ? <MinusOutlined key="edit" onClick={() => dispatch(userUnfollow(user.id))}/>
+        : <PlusOutlined key="edit" onClick={() => dispatch(userFollow(user.id))}/>
 
     return (
         <div key={user.id} className={styles.user}>
@@ -34,9 +34,7 @@ const User: React.FC<UserPropsType> = props => {
                 ]}>
                 <Skeleton loading={isLoading} avatar active>
                     <Meta
-                        avatar={
-                            <Avatar src={user.photos.small && user.photos.small} icon={<UserOutlined/>}/>
-                        }
+                        avatar={<Avatar src={user.photos.small && user.photos.small} icon={<UserOutlined/>}/>}
                         title={user.name}
                         description={user.status}
                     />
