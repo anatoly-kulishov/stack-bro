@@ -67,7 +67,7 @@ export const setCurrentUserFollower = (userId: number): ThunkType => {
  */
 export const userFollow = (userId: number): ThunkType => {
     return async (dispatch: Function) => {
-        dispatch(actions.toggleFollowingProgress(true, userId))
+        await dispatch(actions.toggleFollowingProgress(true, userId))
         usersAPI.postUserFollow(userId).then(data => {
             if (data.resultCode === ResultCodes.Success) {
                 dispatch({
