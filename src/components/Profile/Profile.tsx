@@ -3,10 +3,12 @@ import {RouteComponentProps, withRouter} from 'react-router-dom';
 import ProfileInfo from "./ProfileInfo";
 import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {updateProfile} from '../../store/actions/profileActions';
 import {setCurrentUserFollower} from "../../store/actions/usersActions/usersActions";
 import MyFriends from "./MyFriends/MyFriends";
+import {getOwnerId} from "../../store/selectors/auth-selectors";
+import {Nullable} from "../../types";
 
 type PathParamsType = {
     userId: string | undefined
@@ -14,17 +16,18 @@ type PathParamsType = {
 
 const Profile: React.FC<RouteComponentProps<PathParamsType>> = props => {
     const {match} = props;
-    const currentUserId = match?.params?.userId;
     const dispatch = useDispatch();
+    const currentUserId = match.params.userId;
+    const ownerId: Nullable<number> = useSelector(getOwnerId);
 
     useEffect(() => {
         if (currentUserId) {
             dispatch(updateProfile(Number(currentUserId)))
             dispatch(setCurrentUserFollower(Number(currentUserId)))
-        } else {
-            dispatch(updateProfile(17461))
+        } else if (!currentUserId && ownerId) {
+            dispatch(updateProfile(ownerId))
         }
-    }, [currentUserId, dispatch])
+    }, [currentUserId, ownerId, dispatch])
 
     return (
         <div>

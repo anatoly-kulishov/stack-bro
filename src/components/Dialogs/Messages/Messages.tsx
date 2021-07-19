@@ -10,8 +10,11 @@ type MessagesPropsType = {
 
 const Messages: React.FC<MessagesPropsType> = props => {
     const {messages} = props;
-    let ownMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
-    let foreignMessagesElements = messages.map(m => <MessageItem key={m.id} id={m.id} message={m.message}/>);
+
+    console.log(messages);
+
+    let ownMessagesElements = messages.map(m => (m.owner) && <MessageItem key={m.id} id={String(m.id)} message={m.message}/>);
+    let foreignMessagesElements = messages.map(m => (!m.owner) &&  <MessageItem key={m.id} id={String(m.id)} message={m.message}/>);
 
     return (
         <div className={styles.messages}>

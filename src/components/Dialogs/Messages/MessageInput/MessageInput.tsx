@@ -21,6 +21,7 @@ const MessageInput: React.FC<MessageInputPropsType> = props => {
                    type="text"
                    name="message"
                    value={message}
+                   required
                    onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
                    placeholder="Type message here..."/>
             <button type="submit" className={styles.submitButton}>

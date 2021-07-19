@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import {Alert, Button} from 'antd';
 import styles from './MyPosts.module.scss';
 import Post from "./Post";
-import {actions} from "../../../store/actions/profileActions";
+import {profileActions} from "../../../store/actions/profileActions";
 import {getPosts, getProfile} from "../../../store/selectors/profile-selectors";
 
 const messagesSchema = Yup.object().shape({
@@ -32,7 +32,7 @@ const MyPosts: React.FC = () => {
             message,
             likesCount: 0
         }
-        dispatch(actions.addPost(post));
+        dispatch(profileActions.addPost(post));
     }
 
     return (

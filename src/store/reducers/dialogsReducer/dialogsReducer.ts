@@ -7,7 +7,8 @@ export type DialogType = {
 
 export type MessageType = {
     id: number,
-    message: string
+    message: string,
+    owner: boolean
 }
 
 const initialState = {
@@ -15,29 +16,37 @@ const initialState = {
     dialogs: [
         {
             id: 1,
-            name: 'Anatoly'
+            name: 'IT-KAMASUTRA'
         },
         {
             id: 2,
-            name: 'Sergei'
+            name: 'HTML Academy'
         },
         {
             id: 3,
-            name: 'Pavel'
+            name: 'IT BEARD'
         },
     ] as Array<DialogType>,
     messages: [
         {
             id: 1,
-            message: 'Impedit neque qui voluptas?'
+            message: 'I’m sorry but you suffer from a terminal illness and have only 10 to live.?',
+            owner: false
         },
         {
             id: 2,
-            message: 'A consectetur dolores?'
+            message: 'Nine..',
+            owner: false
         },
         {
             id: 3,
-            message: 'Dolores qui voluptas?'
+            message: 'What?!',
+            owner: true
+        },
+        {
+            id: 4,
+            message: 'Eight..',
+            owner: false
         }
     ] as Array<MessageType>
 }
@@ -52,7 +61,7 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
         case SEND_MESSAGE:
             return {
                 ...state,
-                messages: [{...action.payload}, ...state.messages]
+                messages: [...state.messages, {...action.payload}]
             }
         default:
             return state

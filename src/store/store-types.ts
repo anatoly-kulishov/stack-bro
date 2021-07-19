@@ -9,13 +9,15 @@ export const AUTH_NOT_VALID: string = 'SB/AUTH/NOT_VALID';
 export const GET_CAPTCHA_URL_SUCCESS: string = 'SB/AUTH/GET_CAPTCHA_URL';
 
 /******************** PROFILE TYPES ********************/
-export const SET_USER_PROFILE: string = 'SB/PROFILE/SET_USER';
+export const SET_USER_PROFILE: string = 'SB/PROFILE/SET_USER_PROFILE';
+export const SET_OWNER_PROFILE: string = 'SB/PROFILE/SET_OWNER_PROFILE';
 export const SET_PROFILE_STATUS: string = 'SB/PROFILE/SET_STATUS';
 export const GET_FOLLOWING_STATUS: string = 'SB/PROFILE/GET_FOLLOWING_STATUS';
 export const NEW_PROFILE_PHOTO_SENDS: string = 'SB/PROFILE/NEW_PHOTO_SENDS';
 export const SAVE_PHOTO_SUCCESS: string = 'SB/PROFILE/SAVE_PHOTO_SUCCESS';
 export const SAVE_PROFILE_SUCCESS: string = 'SB/PROFILE/SAVE_PROFILE_SUCCESS';
 export const SAVE_PROFILE_FAILED: string = 'SB/PROFILE/SAVE_PROFILE_FAILED';
+export const SHOW_PROFILE_LOADER: string = 'SB/PROFILE/SHOW_PROFILE_LOADER';
 
 /******************** USERS TYPES ********************/
 export const SET_USERS: string = 'SB/USERS/SET_USERS';

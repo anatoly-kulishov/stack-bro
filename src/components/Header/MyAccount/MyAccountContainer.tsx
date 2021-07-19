@@ -4,7 +4,7 @@ import {logOut} from "../../../store/actions/authActions";
 import {AppStateType} from "../../../store/reducers/rootReducer";
 
 const mapStateToProps = (state: AppStateType) => ({
-    profile: state.profile.profile
+    ownerProfile: state.profile.ownerProfile
 })
 
 const MyAccountContainer = connect(mapStateToProps, {logOut})(MyAccount);

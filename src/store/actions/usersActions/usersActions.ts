@@ -31,8 +31,6 @@ export const actions = {
  * @param:number requestPage
  * @param:number pageSize
  */
-
-
 export const setUsers = (requestPage: number = 1, pageSize: number = 12, filter: FilterType): ThunkType => {
     return async (dispatch: Function) => {
         dispatch(actions.setFilter(filter))

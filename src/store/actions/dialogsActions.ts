@@ -4,9 +4,9 @@ import {Nullable} from "../../types";
 
 export const actions = {
     addDialog: (newDialog: object) => ({type: ADD_DIALOG, newDialog} as const),
-    sendMessage: (newMessageBody: { id: number, message: Nullable<string> }) => ({
+    sendMessage: (newMessageBody: { id: number, message: Nullable<string>, owner: boolean }) => ({
         type: SEND_MESSAGE,
-        newMessageBody
+        payload: newMessageBody
     } as const)
 }
 

@@ -4,6 +4,7 @@ import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
 import {ResultCodes, ResultCodesForCaptcha} from "../../types";
+import {updateOwnerProfile, updateProfile} from "./profileActions";
 
 export const actions = {
     getCaptchaUrlSuccess: (captchaUrl: string) => ({
@@ -64,6 +65,10 @@ export const authMe = (): ThunkType => {
                     payload: data.data
                 })
                 Cookies.set('token', 'f7245be5-e090-4424-a6bf-7942681a4b6d');
+                // @ts-ignore
+                dispatch(updateProfile(data.data.id))
+                // @ts-ignore
+                dispatch(updateOwnerProfile(data.data.id))
             }
         }).catch((e) => console.log(e));
     }

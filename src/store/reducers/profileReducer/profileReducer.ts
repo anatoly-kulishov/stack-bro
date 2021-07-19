@@ -1,9 +1,9 @@
 import {
     ADD_POST, GET_FOLLOWING_STATUS, NEW_PROFILE_PHOTO_SENDS,
     REMOVE_POST,
-    SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS,
+    SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS, SET_OWNER_PROFILE,
     SET_PROFILE_STATUS,
-    SET_USER_PROFILE
+    SET_USER_PROFILE, SHOW_PROFILE_LOADER
 } from "../../store-types";
 import {Nullable, ProfileType} from "../../../types";
 // import {InferActionsTypes} from "../rootReducer";
@@ -16,6 +16,7 @@ const initialState = {
     error: null,
     posts: [] as object[],
     selectedProfile: {},
+    ownerProfile: {} as ProfileType,
     profile: {} as ProfileType,
     status: '',
     followStatus: null as Nullable<boolean>
@@ -26,7 +27,13 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         case SET_USER_PROFILE:
             return {
                 ...state,
-                profile: action.profile,
+                profile: action.payload,
+                isLoading: false
+            }
+        case SET_OWNER_PROFILE:
+            return {
+                ...state,
+                ownerProfile: action.payload,
                 isLoading: false
             }
         case SET_PROFILE_STATUS:
@@ -70,6 +77,11 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                 ...state,
                 isValid: false,
                 error: action.error
+            }
+        case SHOW_PROFILE_LOADER:
+            return {
+                ...state,
+                isLoading: true
             }
         default:
             return state

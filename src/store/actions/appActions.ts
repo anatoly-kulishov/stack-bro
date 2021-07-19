@@ -1,6 +1,5 @@
 import {INITIALIZED_SUCCESS} from "../store-types";
 import {authMe} from "./authActions";
-import {updateProfile} from "./profileActions";
 import {setFriends, setUsers} from "./usersActions/usersActions";
 
 export const actions = {
@@ -15,8 +14,7 @@ export const initializeApp = () => {
         let authMePromise = dispatch(authMe());
         let setUsersPromise = dispatch(setUsers(1, 12, {term: '', friend: false}));
         let setFriendsPromise = dispatch(setFriends(1, 12))
-        let setProfilePromise = dispatch(updateProfile(17461));
-        Promise.all([authMePromise, setProfilePromise, setUsersPromise, setFriendsPromise])
+        Promise.all([authMePromise, setUsersPromise, setFriendsPromise])
             .then(() => {
                 dispatch(actions.initializedSuccess());
             });
