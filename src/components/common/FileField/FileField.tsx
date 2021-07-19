@@ -3,12 +3,14 @@ import {Formik, Form} from 'formik';
 import {Button} from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
 import styles from './FileField.module.scss'
+import {useDispatch} from "react-redux";
 
 type FileFieldPropsType = {
-    save: (file: File | null, setSubmitting: Function) => void
+    save: any
 }
 
 const FileField: FC<FileFieldPropsType> = props => {
+    const dispatch = useDispatch();
     const {save} = props;
 
     return (
@@ -16,7 +18,7 @@ const FileField: FC<FileFieldPropsType> = props => {
             initialValues={{file: null}}
             onSubmit={(values, {setSubmitting}) => {
                 setSubmitting(true)
-                save(values.file, setSubmitting)
+                dispatch(save(values.file, setSubmitting))
             }}>
             {({handleSubmit, setFieldValue, values, isSubmitting}) => (
                 <Form onSubmit={handleSubmit}>

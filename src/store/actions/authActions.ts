@@ -64,7 +64,9 @@ export const authMe = (): ThunkType => {
                     type: AUTH_ME,
                     payload: data.data
                 })
-                Cookies.set('token', 'f7245be5-e090-4424-a6bf-7942681a4b6d');
+                console.log(data)
+                // @ts-ignore
+                Cookies.set('token', String(data.data.id));
                 // @ts-ignore
                 dispatch(updateProfile(data.data.id))
                 // @ts-ignore

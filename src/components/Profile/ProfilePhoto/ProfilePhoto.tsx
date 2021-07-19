@@ -26,14 +26,12 @@ const ProfilePhoto: React.FC = () => {
     const {ErrorBoundary} = Alert;
 
     useEffect(() => {
-        setProfilePhoto(profile?.photos?.large)
+        setProfilePhoto(profile.photos?.large)
     }, [profile])
 
     useEffect(() => {
         setFollowState(followStatus)
     }, [followStatus])
-
-    const onSavePhoto = () => dispatch(savePhoto);
 
     return (
         <div className={`${styles.wrapper} default-box`}>
@@ -46,8 +44,9 @@ const ProfilePhoto: React.FC = () => {
                 </div>
                 <div className={styles.profileActions}>
                     {isOwner && (
-                        <FileField save={onSavePhoto}/>
+                        <FileField save={savePhoto}/>
                     )}
+                    {/* Todo!!! */}
                     {!isOwner && !followState && (
                         <Button onClick={() => dispatch(userFollow(18310))}
                                 htmlType="button"

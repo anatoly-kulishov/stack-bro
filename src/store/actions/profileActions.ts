@@ -9,6 +9,7 @@ import profileAPI from "../../api/profileAPI";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import {PhotosType, PostType, ProfileType, ResultCodes} from "../../types";
 import {FormAction} from "redux-form";
+import {authMe} from "./authActions";
 
 export const profileActions = {
     setProfile: (data: Array<ProfileType>) => ({
@@ -107,10 +108,12 @@ export const updateStatus = (status: string): ThunkType => {
  */
 export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
     return async (dispatch: Function) => {
+        console.log("savePhoto()")
         dispatch(profileActions.sendNewPhoto())
         profileAPI.putPhoto(file).then(data => {
             if (data.resultCode === ResultCodes.Success) {
                 dispatch(profileActions.savePhotoSuccess(data.data.photos))
+                dispatch(authMe())
             }
         }).catch((e) => console.error(e)).finally(() => setSubmitting(false))
     }
