@@ -32,7 +32,7 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
             }}>
             {({values, handleChange, handleBlur, handleSubmit, isSubmitting}) => (
                 <Form onSubmit={handleSubmit} className={styles.form}>
-                    <div className="form-row">
+                    <div className="form-row mb-3">
                         <label htmlFor="fullName">Full name</label>
                         <CustomField
                             className={`form-control ${styles.customFormControl}`}
@@ -43,9 +43,7 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
                             onChange={handleChange}
                             onBlur={handleBlur}
                             required/>
-                    </div>
-                    <div className="form-row mb-3">
-                        <div className="d-flex">
+                        <div className="d-flex mt-2">
                             <label className="mr-2" htmlFor="lookingForAJob">Looking for a job</label>
                             <Checkbox id="lookingForAJob"
                                       name='lookingForAJob'
@@ -53,16 +51,18 @@ const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => 
                                       onChange={handleChange}/>
                         </div>
                     </div>
-                    <div className="form-row">
-                        <label htmlFor="lookingForAJobDescription">My professional skills</label>
-                        <TextArea rows={2}
-                                  id="lookingForAJobDescription"
-                                  name="lookingForAJobDescription"
-                                  value={values.lookingForAJobDescription ? values.lookingForAJobDescription : ''}
-                                  onChange={handleChange}
-                                  onBlur={handleBlur}
-                                  required/>
-                    </div>
+                    {values.lookingForAJob && (
+                        <div className="form-row">
+                            <label htmlFor="lookingForAJobDescription">My professional skills</label>
+                            <TextArea rows={2}
+                                      id="lookingForAJobDescription"
+                                      name="lookingForAJobDescription"
+                                      value={values.lookingForAJobDescription ? values.lookingForAJobDescription : ''}
+                                      onChange={handleChange}
+                                      onBlur={handleBlur}
+                                      required/>
+                        </div>
+                    )}
                     <div className="form-row">
                         <label htmlFor="aboutMe">About Me</label>
                         <TextArea rows={2}

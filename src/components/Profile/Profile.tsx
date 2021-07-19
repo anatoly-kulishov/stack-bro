@@ -6,6 +6,7 @@ import MyPosts from "./MyPosts";
 import {useDispatch} from "react-redux";
 import {updateProfile} from '../../store/actions/profileActions';
 import {setCurrentUserFollower} from "../../store/actions/usersActions/usersActions";
+import MyFriends from "./MyFriends/MyFriends";
 
 type PathParamsType = {
     userId: string | undefined
@@ -30,9 +31,7 @@ const Profile: React.FC<RouteComponentProps<PathParamsType>> = props => {
             <div className="row">
                 <div className="col-12 col-lg-4 pr-lg-2">
                     <ProfilePhoto/>
-                    <div className="default-box p-3 mt-3">
-                        My friends
-                    </div>
+                    <MyFriends/>
                 </div>
                 <div className="col-12 col-lg-8 pl-lg-2">
                     <ProfileInfo/>

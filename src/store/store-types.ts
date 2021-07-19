@@ -19,6 +19,8 @@ export const SAVE_PROFILE_FAILED: string = 'SB/PROFILE/SAVE_PROFILE_FAILED';
 
 /******************** USERS TYPES ********************/
 export const SET_USERS: string = 'SB/USERS/SET_USERS';
+export const SET_USERS_SUCCESS: string = 'SB/USERS/SET_USERS_SUCCESS';
+export const SET_FRIENDS_SUCCESS: string = 'SB/USERS/SET_FRIENDS_SUCCESS';
 export const SET_TOTAL_USERS_COUNT: string = 'SB/USERS/SET_TOTAL_COUNT';
 export const SET_CURRENT_PAGE: string = 'SB/USERS/SET_CURRENT_PAGE';
 export const TOGGLE_FOLLOW_UNFOLLOW: string = 'SB/USERS/TOGGLE_FOLLOW_UNFOLLOW';

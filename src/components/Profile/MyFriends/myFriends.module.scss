@@ -1,0 +1,12 @@
+@import "../../../variables";
+
+.myFriends {
+    @include list-reset();
+    margin-top: 10px;
+
+    & > li {
+        font-weight: 500;
+        margin-bottom: 3px;
+        cursor: pointer;
+    }
+}

@@ -11,7 +11,7 @@ type ContactPropsType = {
 const Contact: React.FC<ContactPropsType> = props => {
     const {logic, title = '', value} = props;
 
-    if (logic) {
+    if (logic && value) {
         return (
             <div className={styles.row}>
                 <div className={styles.label}>{title}:</div>

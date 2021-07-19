@@ -1,9 +1,8 @@
 import {
-    SET_USERS,
     TOGGLE_FOLLOW_UNFOLLOW,
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
-    TOGGLE_IS_FOLLOWING_PROGRESS, SET_USERS_FILTER
+    TOGGLE_IS_FOLLOWING_PROGRESS, SET_USERS_FILTER, SET_USERS_SUCCESS, SET_FRIENDS_SUCCESS
 } from "../../store-types";
 import {Nullable, UserType} from "../../../types";
 
@@ -11,8 +10,10 @@ const initialState = {
     isLoading: true,
     followingInProgress: [] as Array<number>,
     users: [] as Array<UserType>,
+    friends: [] as Array<UserType>,
     pageSize: 12,
     totalUsersCount: 0,
+    totalFriendsCount: 0,
     currentPage: 1,
     filter: {
         term: '',
@@ -22,11 +23,18 @@ const initialState = {
 
 const usersReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
-        case SET_USERS:
+        case SET_USERS_SUCCESS:
             return {
                 ...state,
                 users: action.users,
                 totalUsersCount: action.totalUsersCount,
+                isLoading: false
+            }
+        case SET_FRIENDS_SUCCESS:
+            return {
+                ...state,
+                friends: action.friends,
+                totalFriendsCount: action.totalFriendsCount,
                 isLoading: false
             }
         case SET_CURRENT_PAGE:
