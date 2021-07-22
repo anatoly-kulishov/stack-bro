@@ -2,6 +2,8 @@ import React, {FC, StrictMode, useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
+import './assets/css/bootstrap-grid.min.css';
+import 'antd/dist/antd.css';
 import "./App.scss";
 import store from "./store";
 import AppNavigation from "./routes/AppRoutes";

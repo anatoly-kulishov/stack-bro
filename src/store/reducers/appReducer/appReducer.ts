@@ -5,7 +5,8 @@ import {Nullable} from "../../../types";
 
 const initialState = {
     initialized: false,
-    globalErrors: null as Nullable<string>
+    globalErrors: null as Nullable<string>,
+    theme: 'light' as 'light' | 'dark' // TODO!!!
 }
 
 const appReducer = (state = initialState, action: ActionsType): InitialStateType => {

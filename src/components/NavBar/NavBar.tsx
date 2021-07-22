@@ -1,5 +1,5 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import React, {FC, memo} from 'react';
+import {Link} from "react-router-dom";
 import {Layout, Menu} from "antd";
 import {
     MessageOutlined,
@@ -10,10 +10,12 @@ import {
 } from '@ant-design/icons';
 import {useSelector} from "react-redux";
 import {getTotalUsersCount} from "../../store/selectors/users-selectors";
+import {getAppTheme} from "../../store/selectors/app-selectors";
 
-const NavBar: React.FC = () => {
+const NavBar: FC = () => {
     const {Sider} = Layout;
-    const userCounter = useSelector<any>(state => getTotalUsersCount(state))
+    const userCounter = useSelector(getTotalUsersCount);
+    const appTheme = useSelector(getAppTheme);
 
     const onSelectNavKey = (key: number) => {
         sessionStorage.setItem('nav_key', String(key));
@@ -23,35 +25,36 @@ const NavBar: React.FC = () => {
     return (
         <Sider collapsible width={150}>
             <Menu defaultSelectedKeys={[navKey]}
+                  theme={appTheme}
                   mode="inline">
                 <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
-                    <NavLink to="/">
+                    <Link to="/">
                         My profile
-                    </NavLink>
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="2" onClick={() => onSelectNavKey(2)} icon={<FileOutlined/>}>
-                    <NavLink to="/news">
+                    <Link to="/news">
                         News
-                    </NavLink>
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="3" onClick={() => onSelectNavKey(3)} icon={<MessageOutlined/>}>
-                    <NavLink to="/dialogs">
+                    <Link to="/dialogs">
                         Messenger
-                    </NavLink>
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<TeamOutlined/>}>
-                    <NavLink to="/users">
+                    <Link to="/users">
                         Users <small>({userCounter})</small>
-                    </NavLink>
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="5" onClick={() => onSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>
-                    <NavLink to="/sandbox">
+                    <Link to="/sandbox">
                         Sandbox
-                    </NavLink>
+                    </Link>
                 </Menu.Item>
             </Menu>
         </Sider>
     )
 }
 
-export default NavBar;
+export default memo(NavBar);
