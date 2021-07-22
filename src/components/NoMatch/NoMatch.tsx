@@ -7,7 +7,7 @@ const NoMatch: React.FC = () => {
     const history = useHistory();
 
     return (
-        <div className={styles.noMatch}>
+        <div className={`${styles.noMatch} default-box pb-2`}>
             <div className={styles.backLink} onClick={history.goBack}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
                     <g stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -18,7 +18,7 @@ const NoMatch: React.FC = () => {
                 </svg>
                 <span className={styles.backLinkTitle} onClick={history.goBack}>Back</span>
             </div>
-            <h1>No match for <i/><code>{location.pathname}</code></h1>
+            <h1 className="mt-3">No match for <i/><code>{location.pathname}</code></h1>
         </div>
     );
 }

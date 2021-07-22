@@ -17,7 +17,7 @@ const Header: React.FC<HeaderPropsType> = () => {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-6 col-md-1 col-lg-1">
-                        <NavLink to="/profile">
+                        <NavLink to="/">
                             <Logo/>
                         </NavLink>
                     </div>

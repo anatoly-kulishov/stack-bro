@@ -11,13 +11,14 @@ const initialState = {
     followingInProgress: [] as Array<number>,
     users: [] as Array<UserType>,
     friends: [] as Array<UserType>,
-    pageSize: 12,
+    pageSize: 9,
     totalUsersCount: 0,
     totalFriendsCount: 0,
     currentPage: 1,
     filter: {
         term: '',
-        friend: null as Nullable<boolean>
+        friend: null as Nullable<boolean>,
+        // page: 1 Todo!
     }
 }
 

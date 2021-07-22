@@ -1,37 +1,82 @@
 import React, {memo, useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import * as queryString from "querystring";
 import {Alert, Spin} from "antd";
 import styles from './Users.module.scss';
 import User from "./User";
 import Paginator from "../common/Paginator";
-import UsersSearchForm from "./UsersSearchForm";
-import {useDispatch, useSelector} from "react-redux";
 import {
     getCurrentPage,
     getPageSize,
     getTotalUsersCount,
-    getUsers,
+    getUsers, getUsersFilter,
     getUsersLoading
 } from "../../store/selectors/users-selectors";
 import {
-    actions,
     setUsers
 } from '../../store/actions/usersActions/usersActions';
+import {useHistory} from "react-router-dom";
+import UsersFilterForm from "./UsersFilterForm/UsersFilterForm";
+import {FilterType} from "../../store/reducers/usersReducer/usersReducer";
 
+type QueryParamsType = { term?: string, page?: string, friend?: string };
 const Users: React.FC = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const users = useSelector(getUsers)
     const currentPage = useSelector(getCurrentPage);
     const totalUsersCount = useSelector(getTotalUsersCount);
     const pageSize = useSelector(getPageSize);
     const isLoading = useSelector(getUsersLoading);
-    // const filter = useSelector(getUsersFilter);
+    const filter = useSelector(getUsersFilter);
 
     useEffect(() => {
-        dispatch(setUsers(currentPage, pageSize, {term: '', friend: null})) // Todo: Debug term filter!
-    }, [dispatch, currentPage, pageSize])
+        const parsed = queryString.parse(history.location.search.substring(1)) as QueryParamsType;
 
-    const onFilterChanged = (term: string = '') => dispatch(setUsers(currentPage, pageSize, {term, friend: null}));
-    const onPageChangedHandler = (p: number) => dispatch(actions.setCurrentPage(p));
+        let actualFilter = filter;
+        let actualPage = currentPage;
+
+        if (!!parsed.page) actualPage = Number(parsed.page);
+        if (!!parsed.term) actualFilter = {...actualFilter as any, term: parsed.term as string};
+
+        switch (parsed.friend) {
+            case 'null':
+                actualFilter = {...actualFilter, friend: null}
+                break;
+            case 'true':
+                actualFilter = {...actualFilter, friend: true}
+                break;
+            case 'false':
+                actualFilter = {...actualFilter, friend: false}
+                break;
+        }
+
+        dispatch(setUsers(actualPage, pageSize, actualFilter))
+        // eslint-disable-next-line
+    }, [dispatch])
+
+    useEffect(() => {
+        const query: QueryParamsType = {};
+
+        if (!!filter.term) query.term = filter.term;
+        if (filter.friend !== null) query.friend = String(filter.friend);
+        if (currentPage !== 1) query.page = String(currentPage);
+
+        history.push({
+            pathname: "/users",
+            search: queryString.stringify(query)
+        })
+        // eslint-disable-next-line
+    }, [filter, currentPage])
+
+    const onFilterChanged = (values: FilterType) => {
+        dispatch(setUsers(currentPage, pageSize, values));
+    }
+
+    const onPageChangedHandler = (pageNumber: number) => {
+        dispatch(setUsers(pageNumber, pageSize, filter));
+    }
 
     return (
         <div className={`default-box p-3`}>
@@ -39,7 +84,9 @@ const Users: React.FC = () => {
             {!isLoading && (
                 <section className={styles.section}>
                     <h3 className={styles.title}>Users</h3>
-                    <UsersSearchForm onFilterChanged={onFilterChanged}/>
+                    <div className="mb-3">
+                        <UsersFilterForm onFilterChanged={onFilterChanged}/>
+                    </div>
                     <div className={`${styles.users} ${!users.length && 'pb-0'}`}>
                         <div className="row">
                             {

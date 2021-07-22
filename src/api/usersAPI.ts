@@ -1,5 +1,6 @@
 import {baseInstance} from "./instances";
-import {BaseResponseType, Nullable, UserType} from "../types";
+import {BaseResponseType, UserType} from "../types";
+import {FilterType} from "../store/reducers/usersReducer/usersReducer";
 
 type RequestUsersApiType = {
     items: Array<UserType>
@@ -9,8 +10,8 @@ type RequestUsersApiType = {
 }
 
 const usersAPI = {
-    requestUsers: (currentPage: number = 1, pageSize: number = 12, term: string = '', friend: Nullable<boolean> = null) => {
-        return baseInstance.get<RequestUsersApiType>(`users?page=${currentPage}&count=${pageSize}${term ? `&term=${term}` : ''}${friend ? `&friend=${friend}` : ''}`).then(res => res.data)
+    requestUsers: (currentPage: number, pageSize: number, filter: FilterType) => {
+        return baseInstance.get<RequestUsersApiType>(`users?page=${currentPage}&count=${pageSize}${filter.term ? `&term=${filter.term}` : ''}${filter.friend ? `&friend=${filter.friend}` : ''}`).then(res => res.data)
     },
     getCurrentUserFollower: (userId: number) => {
         return baseInstance.get<boolean>(`follow/${userId}`).then(res => res.data)

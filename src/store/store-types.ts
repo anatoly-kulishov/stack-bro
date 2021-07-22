@@ -28,6 +28,7 @@ export const SET_CURRENT_PAGE: string = 'SB/USERS/SET_CURRENT_PAGE';
 export const TOGGLE_FOLLOW_UNFOLLOW: string = 'SB/USERS/TOGGLE_FOLLOW_UNFOLLOW';
 export const TOGGLE_IS_FOLLOWING_PROGRESS: string = 'SB/USERS/TOGGLE_IS_FOLLOWING_PROGRESS';
 export const SET_USERS_FILTER: string = 'SB/USERS/SET_USERS_FILTER';
+export const TOGGLE_IS_FETCHING_USERS: string = 'SB/USERS/TOGGLE_IS_FETCHING';
 
 /******************** POSTS TYPES ********************/
 export const FETCH_POSTS: string = 'SB/POSTS/FETCH_POSTS';

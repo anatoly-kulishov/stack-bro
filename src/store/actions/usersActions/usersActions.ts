@@ -2,7 +2,12 @@ import {
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
     GET_FOLLOWING_STATUS,
-    TOGGLE_FOLLOW_UNFOLLOW, TOGGLE_IS_FOLLOWING_PROGRESS, SET_USERS_FILTER, SET_USERS_SUCCESS, SET_FRIENDS_SUCCESS,
+    TOGGLE_FOLLOW_UNFOLLOW,
+    TOGGLE_IS_FOLLOWING_PROGRESS,
+    SET_USERS_FILTER,
+    SET_USERS_SUCCESS,
+    SET_FRIENDS_SUCCESS,
+    TOGGLE_IS_FETCHING_USERS,
 } from "../../store-types";
 import usersAPI from "../../../api/usersAPI";
 import {ResultCodes, UserType} from "../../../types";
@@ -23,6 +28,10 @@ export const actions = {
         type: SET_TOTAL_USERS_COUNT,
         totalUserCount: totalUserCount
     } as const),
+    toggleIsFetching: (isFetching: boolean) => ({
+        type: TOGGLE_IS_FETCHING_USERS,
+        isFetching
+    } as const),
     setFilter: (filter: FilterType) => ({type: SET_USERS_FILTER, payload: filter} as const)
 }
 
@@ -31,18 +40,22 @@ export const actions = {
  * @param:number requestPage
  * @param:number pageSize
  */
-export const setUsers = (requestPage: number = 1, pageSize: number = 12, filter: FilterType): ThunkType => {
+export const setUsers = (requestPage: number, pageSize: number = 9, filter: FilterType): ThunkType => {
     return async (dispatch: Function) => {
+        dispatch(actions.toggleIsFetching(true))
+        dispatch(actions.setCurrentPage(requestPage))
         dispatch(actions.setFilter(filter))
-        usersAPI.requestUsers(requestPage, pageSize, filter.term, filter.friend)
-            .then(data => dispatch(setUsersSuccess(data)))
-            .catch((e) => console.error(e));
+
+        const data = await usersAPI.requestUsers(requestPage, pageSize, filter)
+        dispatch(actions.toggleIsFetching(false))
+        dispatch(setUsersSuccess(data))
+        // dispatch(actions.setTotalUserCount(data.totalCount))
     }
 };
 
 export const setFriends = (requestPage: number, pageSize: number): ThunkType => {
     return async (dispatch: Function) => {
-        usersAPI.requestUsers(requestPage, pageSize, '', true)
+        usersAPI.requestUsers(requestPage, pageSize, {term: '', friend: true})
             .then(data => dispatch(setFriendsSuccess(data)))
             .catch((e) => console.error(e));
     }

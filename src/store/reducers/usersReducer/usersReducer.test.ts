@@ -1,14 +1,13 @@
 import {userFollow, userUnfollow} from "../../actions/usersActions/usersActions";
 import usersReducer, {InitialStateType} from "./usersReducer";
+import {Nullable} from "../../../types";
 
 let state: InitialStateType;
 
 beforeEach(() => {
     state = {
         isLoading: true,
-        pageSize: 12,
-        totalUsersCount: 0,
-        currentPage: 1,
+        followingInProgress: [],
         users: [
             {
                 id: 0,
@@ -39,10 +38,22 @@ beforeEach(() => {
                 status: 'status 4'
             },
         ],
-        followingInProgress: [],
+        friends: [
+            {
+                id: 0,
+                name: 'Player 1',
+                followed: false,
+                photos: {small: null, large: null},
+                status: 'status 1'
+            }
+        ],
+        pageSize: 12,
+        totalUsersCount: 0,
+        totalFriendsCount: 0,
+        currentPage: 1,
         filter: {
             term: '',
-            friend: null
+            friend: null as Nullable<boolean>
         }
     }
 })

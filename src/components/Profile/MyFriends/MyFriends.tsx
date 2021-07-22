@@ -10,7 +10,6 @@ type PathParamsType = {
 }
 
 const MyFriends: React.FC<RouteComponentProps<PathParamsType>> = props => {
-    const {location} = props;
     const friends = useSelector(getFriends);
 
     return (
@@ -20,7 +19,7 @@ const MyFriends: React.FC<RouteComponentProps<PathParamsType>> = props => {
                 <ul className={classes.myFriends}>
                     {friends.map(friend => (
                         <li key={friend.id}>
-                            <NavLink to={`${location.pathname}/${friend.id}`}>
+                            <NavLink to={`/${friend.id}`}>
                                 {friend.name}
                             </NavLink>
                         </li>

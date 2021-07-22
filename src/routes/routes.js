@@ -6,7 +6,6 @@ import Users from "../components/Users";
 import News from "../components/News";
 import Dialogs from "../components/Dialogs";
 import Sandbox from "../components/Sandbox";
-import {Redirect} from "react-router-dom";
 
 const Settings = lazy(() => import("../components/Settings"));
 const Help = lazy(() => import("../components/Help"));
@@ -26,36 +25,38 @@ export const authRoutes = [
 
 export const appRoutes = [
     {
-        path: "/",
-        exact: true,
-        component: <Redirect to="/profile"/>
-    },
-    {
-        path: "/profile/:userId?",
-        component: <Profile/>
-    },
-    {
-        path: "/dialogs",
-        component: <Dialogs/>,
-    },
-    {
         path: "/users",
+        exact: true,
         component: <Users/>,
     },
     {
         path: "/news",
+        exact: true,
         component: <News/>,
     },
     {
-        path: "/sandbox",
-        component: <Sandbox/>
-    },
-    {
         path: "/settings",
+        exact: true,
         component: withSuspense(Settings)
     },
     {
         path: "/help",
+        exact: true,
         component: withSuspense(Help),
     },
+    {
+        path: "/sandbox",
+        exact: true,
+        component: <Sandbox/>
+    },
+    {
+        path: "/dialogs/:id?",
+        exact: true,
+        component: <Dialogs/>,
+    },
+    {
+        path: "/:userId?",
+        exact: true,
+        component: <Profile/>
+    }
 ];

@@ -27,7 +27,7 @@ const User: React.FC<UserPropsType> = props => {
             <Card
                 style={{width: 300, marginTop: 16}}
                 actions={[
-                    <NavLink to={`profile/${user.id}`}>
+                    <NavLink to={`/${user.id}`}>
                         <EyeOutlined/>
                     </NavLink>,
                     followAction

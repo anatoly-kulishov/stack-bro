@@ -15,7 +15,7 @@ const Paginator: FC<PaginatorPropsType> = props => {
     for (let i: number = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    const onChange = (p: number) => onPageChanged(p);
+    const onChange = (pageNumber: number) => onPageChanged(pageNumber);
     return <Pagination defaultCurrent={currentPage} total={pages.length} onChange={onChange}
                        disabled={totalUsersCount === 0}/>
 

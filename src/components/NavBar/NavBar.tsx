@@ -25,7 +25,7 @@ const NavBar: React.FC = () => {
             <Menu defaultSelectedKeys={[navKey]}
                   mode="inline">
                 <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
-                    <NavLink to="/profile">
+                    <NavLink to="/">
                         My profile
                     </NavLink>
                 </Menu.Item>

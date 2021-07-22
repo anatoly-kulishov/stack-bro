@@ -1,16 +1,17 @@
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../../store-types";
 import Cookies from 'js-cookie';
+import {Nullable} from "../../../types";
 
 const initialState = {
     isLoading: true,
     isValid: true,
     isAuth: Boolean(Cookies.get('token')),
     error: null,
-    userId: null as (number | null),
+    userId: null as (Nullable<number>),
     myProfile: {
-        id: null as (string | null),
-        login: null as (string | null),
-        email: null as (string | null)
+        id: null as (Nullable<string>),
+        login: null as (Nullable<string>),
+        email: null as (Nullable<string>)
     } as (object | null),
     captchaUrl: null
 }

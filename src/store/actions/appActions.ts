@@ -12,8 +12,8 @@ export const actions = {
 export const initializeApp = () => {
     return (dispatch: Function) => {
         let authMePromise = dispatch(authMe());
-        let setUsersPromise = dispatch(setUsers(1, 12, {term: '', friend: false}));
-        let setFriendsPromise = dispatch(setFriends(1, 12))
+        let setUsersPromise = dispatch(setUsers(1, 9, {term: '', friend: false}));
+        let setFriendsPromise = dispatch(setFriends(1, 9))
         Promise.all([authMePromise, setUsersPromise, setFriendsPromise])
             .then(() => {
                 dispatch(actions.initializedSuccess());
