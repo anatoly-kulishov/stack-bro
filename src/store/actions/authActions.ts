@@ -3,7 +3,7 @@ import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
-import {ResultCodes, ResultCodesForCaptcha} from "../../types";
+import {Nullable, ResultCodes, ResultCodesForCaptcha} from "../../types";
 import {updateOwnerProfile, updateProfile} from "./profileActions";
 
 export const actions = {
@@ -26,11 +26,11 @@ export type ProfileActionType = {
     rememberMe?: boolean
 }
 
-export const signIn = (profile: ProfileActionType, setSubmitting: Function, resetForm: Function): ThunkType => {
+export const signIn = (profile: ProfileActionType, setSubmitting: Nullable<Function> = null, resetForm: Nullable<Function> = null): ThunkType => {
     return async (dispatch: Function) => {
         authAPI.postSignIn(profile).then(data => {
             if (data.resultCode === ResultCodes.Success) {
-                resetForm();
+                resetForm && resetForm();
                 dispatch({
                     type: SIGN_IN,
                     userId: data.data.userId
@@ -45,10 +45,10 @@ export const signIn = (profile: ProfileActionType, setSubmitting: Function, rese
                     error: data.messages
                 })
             }
-            setSubmitting(false);
+            setSubmitting && setSubmitting(false);
         }).catch((e) => {
             console.log(e)
-            setSubmitting(false)
+            setSubmitting && setSubmitting(false)
         })
     }
 }

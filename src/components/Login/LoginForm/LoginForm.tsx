@@ -77,6 +77,19 @@ const LoginForm: React.FC<FormPropsType> = props => {
                         </div>
                     )}
                     <div className="mt-3">
+                        <Button type="dashed"
+                                block danger
+                                onClick={() => {
+                                    const values = {
+                                        email: 'rewq_gol_47@mail.ru',
+                                        password: 'rewq3511'
+                                    }
+                                    dispatch(onSubmit(values));
+                                }}>
+                            Login as guest
+                        </Button>
+                    </div>
+                    <div className="mt-3">
                         <Button type="link"
                                 href="https://social-network.samuraijs.com/signUp"
                                 block>

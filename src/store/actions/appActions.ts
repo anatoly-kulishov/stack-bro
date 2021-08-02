@@ -9,15 +9,25 @@ export const actions = {
 /**
  * Initialize App
  */
-export const initializeApp = () => {
-    return (dispatch: Function) => {
-        let authMePromise = dispatch(authMe());
-        let setUsersPromise = dispatch(setUsers(1, 9, {term: '', friend: false}));
-        let setFriendsPromise = dispatch(setFriends(1, 9))
-        Promise.all([authMePromise, setUsersPromise, setFriendsPromise])
-            .then(() => {
-                dispatch(actions.initializedSuccess());
-            });
+export const initializeApp = (isAuth: boolean) => {
+    if (isAuth) {
+        return (dispatch: Function) => {
+            const authMePromise = dispatch(authMe());
+            const setUsersPromise = dispatch(setUsers(1, 9, {term: '', friend: false}));
+            const setFriendsPromise = dispatch(setFriends(1, 9));
+            Promise.all([authMePromise, setUsersPromise, setFriendsPromise])
+                .then(() => {
+                    dispatch(actions.initializedSuccess());
+                });
+        }
+    } else {
+        return (dispatch: Function) => {
+            const authMePromise = dispatch(authMe());
+            Promise.all([authMePromise])
+                .then(() => {
+                    dispatch(actions.initializedSuccess());
+                });
+        }
     }
 }
 

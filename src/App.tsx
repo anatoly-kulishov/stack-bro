@@ -13,18 +13,18 @@ import {initializeApp} from "./store/actions/appActions";
 import {AppStateType} from "./store/reducers/rootReducer";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
-type DispatchPropsType = { initializeApp: () => void };
+type DispatchPropsType = { initializeApp: (isAuth: boolean) => void };
 
 const App: FC<MapPropsType & DispatchPropsType> = props => {
     const {initialized, initializeApp, isAuth} = props;
 
     useEffect(() => {
-        initializeApp();
+        initializeApp(isAuth);
         window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
         return () => {
             window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
         }
-    }, [initializeApp])
+    }, [initializeApp, isAuth])
 
     return (
         <>
