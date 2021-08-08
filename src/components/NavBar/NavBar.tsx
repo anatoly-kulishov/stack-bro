@@ -38,7 +38,7 @@ const NavBar: FC = () => {
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="3" onClick={() => onSelectNavKey(3)} icon={<MessageOutlined/>}>
-                    <Link to="/dialogs">
+                    <Link to="/messenger">
                         Messenger
                     </Link>
                 </Menu.Item>

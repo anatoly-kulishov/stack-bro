@@ -3,12 +3,15 @@ import {withSuspense} from "../hoc/withSuspense";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Users from "../components/Users";
-import News from "../components/News";
-import Dialogs from "../components/Dialogs";
-import Sandbox from "../components/Sandbox";
 
 const Settings = lazy(() => import("../components/Settings"));
 const Help = lazy(() => import("../components/Help"));
+
+// Lazy Pages
+const NewsPage = lazy(() => import('../components/News'));
+const MessengerPage = lazy(() => import("../pages/MessengerPage"));
+const SandBoxPage = lazy(() => import("../components/SandBox"));
+
 
 export const authRoutes = [
     {
@@ -27,12 +30,12 @@ export const appRoutes = [
     {
         path: "/users",
         exact: true,
-        component: <Users/>,
+        component: <Users/>
     },
     {
         path: "/news",
         exact: true,
-        component: <News/>,
+        component: withSuspense(NewsPage)
     },
     {
         path: "/settings",
@@ -42,17 +45,17 @@ export const appRoutes = [
     {
         path: "/help",
         exact: true,
-        component: withSuspense(Help),
+        component: withSuspense(Help)
     },
     {
         path: "/sandbox",
         exact: true,
-        component: <Sandbox/>
+        component: withSuspense(SandBoxPage)
     },
     {
-        path: "/dialogs/:id?",
+        path: "/messenger/:id?",
         exact: true,
-        component: <Dialogs/>,
+        component: withSuspense(MessengerPage)
     },
     {
         path: "/:userId?",

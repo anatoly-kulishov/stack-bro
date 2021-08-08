@@ -1,5 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import {Avatar} from "antd";
+import {UserOutlined} from '@ant-design/icons';
 import styles from './DialogItem.module.scss';
 
 type DialogItemPropsType = {
@@ -11,8 +13,12 @@ const DialogItem: React.FC<DialogItemPropsType> = props => {
     const {id, name} = props;
     return (
         <li className={styles.listItem} key={id}>
-            <NavLink to={`/dialogs/${id}`} activeClassName={styles.current}>
-                <i className={styles.dot}/><span>{name}</span>
+            <NavLink to={`/messenger/${id}`} activeClassName={styles.current}>
+                <div>
+                    <Avatar size={30} icon={<UserOutlined/>}/>
+                    <span className="ml-2">{name}</span>
+                </div>
+                <i className={styles.dot}/>
             </NavLink>
         </li>
     )

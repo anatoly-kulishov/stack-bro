@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Sandbox.module.scss';
 import Mock from "../common/Mock";
 
@@ -10,4 +10,4 @@ const Sandbox: React.FC = () => {
     );
 }
 
-export default Sandbox;
+export default memo(Sandbox);

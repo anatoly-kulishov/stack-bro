@@ -1,15 +1,11 @@
 import React, {memo} from 'react';
 import styles from './MessageItem.module.scss';
+import {ChatMessageType} from "../../../../types";
 
-export type MessageItemPropsType = {
-    id: string,
-    message: string
-}
-
-const MessageItem: React.FC<MessageItemPropsType> = props => {
-    const {id, message} = props;
+const MessageItem: React.FC<ChatMessageType> = props => {
+    const {message} = props;
     return (
-        <div className={styles.message} id={id}>
+        <div className={styles.message}>
             <small className={styles.messageBox}>{message}</small>
         </div>
     )

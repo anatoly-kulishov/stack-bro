@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Dialogs.module.scss';
 import DialogsListContainer from "./DialogsList/DialogsListContainer";
-import MessagesContainer from "./Messages/MessagesContainer";
+import Messages from "./Messages";
 
 type DialogsPropsType = {}
 
@@ -9,9 +9,9 @@ const Dialogs: React.FC<DialogsPropsType> = () => {
     return (
         <section className={styles.dialogs}>
             <DialogsListContainer/>
-            <MessagesContainer/>
+            <Messages/>
         </section>
     );
 }
 
-export default Dialogs;
+export default memo(Dialogs);

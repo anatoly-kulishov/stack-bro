@@ -1,27 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Messages.module.scss';
 import MessageItem from "./MessageItem";
 import MessageInputContainer from "./MessageInput";
-import {MessageType} from "../../../store/reducers/dialogsReducer/dialogsReducer";
+// import {ChatMessageType} from "../../../types";
 
-type MessagesPropsType = {
-    messages: MessageType[]
-}
+const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
 
-const Messages: React.FC<MessagesPropsType> = props => {
-    const {messages} = props;
+const Messages: React.FC = () => {
+    const [messages, setMessages] = useState<any>([]);
 
-    console.log(messages);
+    useEffect(() => {
+        ws.addEventListener('message', (e) => {
+            const newMessages = JSON.parse(e.data);
+            setMessages([...messages, ...newMessages])
+        })
+    }, [messages])
 
-    let ownMessagesElements = messages.map(m => (m.owner) && <MessageItem key={m.id} id={String(m.id)} message={m.message}/>);
-    let foreignMessagesElements = messages.map(m => (!m.owner) &&  <MessageItem key={m.id} id={String(m.id)} message={m.message}/>);
+    // @ts-ignore
+    const ownMessagesElements = messages.map((m: unknown, index) => <MessageItem key={index} {...m}/>);
+
+    // const foreignMessagesElements = messages.map(m => (!m.owner) &&
+    //     <MessageItem key={m.id} />);
 
     return (
         <div className={styles.messages}>
             <div className={styles.messagesList}>
-                <div className={styles.foreignMessages}>
-                    {foreignMessagesElements}
-                </div>
+                {/*<div className={styles.foreignMessages}>*/}
+                {/*    {foreignMessagesElements}*/}
+                {/*</div>*/}
                 <div className={styles.yourMessages}>
                     {ownMessagesElements}
                 </div>
