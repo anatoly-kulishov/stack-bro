@@ -4,15 +4,15 @@ import styles from './MessageInput.module.scss';
 type MessageInputPropsType = {
     message: string,
     setMessage: (symbol: string) => void,
-    onAddMessage: () => void
+    sendMessage: () => void
 }
 
 const MessageInput: React.FC<MessageInputPropsType> = props => {
-    const {message, setMessage, onAddMessage} = props;
+    const {message, setMessage, sendMessage} = props;
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        onAddMessage();
+        sendMessage();
     }
 
     return (

@@ -1,24 +1,20 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
-import {actions} from "../../../../store/actions/dialogsActions";
 import MessageInput from "./MessageInput";
+import {WSChanel} from "../Messages";
 
 const MessageInputContainer: React.FC = () => {
-    const dispatch = useDispatch();
     const [message, setMessage] = useState<string>('');
 
-    const onAddMessage = () => {
-        const messageData = {
-            id: Date.now(),
-            message: message,
-            owner: true
+    const sendMessage = () => {
+        if (!message) {
+            return;
         }
-        dispatch(actions.sendMessage(messageData))
+        WSChanel.send(message)
         setMessage('');
     }
 
     return (
-        <MessageInput message={message} setMessage={setMessage} onAddMessage={onAddMessage}/>
+        <MessageInput message={message} setMessage={setMessage} sendMessage={sendMessage}/>
     )
 }
 

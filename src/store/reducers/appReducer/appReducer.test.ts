@@ -3,7 +3,8 @@ import {actions} from "../../actions/appActions";
 
 const state: InitialStateType = {
     initialized: false,
-    globalErrors: null as string | null
+    globalErrors: null as string | null,
+    theme: "light"
 }
 
 it('initialized of app should be success', () => {

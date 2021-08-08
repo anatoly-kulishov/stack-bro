@@ -1,8 +1,8 @@
 import React, {memo} from 'react';
-import styles from './MessageItem.module.scss';
+import styles from './Message.module.scss';
 import {ChatMessageType} from "../../../../types";
 
-const MessageItem: React.FC<ChatMessageType> = props => {
+const Message: React.FC<ChatMessageType> = props => {
     const {message} = props;
     return (
         <div className={styles.message}>
@@ -11,4 +11,4 @@ const MessageItem: React.FC<ChatMessageType> = props => {
     )
 }
 
-export default memo(MessageItem);
+export default memo(Message);
