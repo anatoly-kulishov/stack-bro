@@ -1,14 +1,15 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styles from './MessageInput.module.scss';
+import {WSChanel} from "../Messages";
 
-type MessageInputPropsType = {
-    message: string,
-    setMessage: (symbol: string) => void,
-    sendMessage: () => void
-}
+const MessageInput: React.FC = () => {
+    const [message, setMessage] = useState<string>('');
 
-const MessageInput: React.FC<MessageInputPropsType> = props => {
-    const {message, setMessage, sendMessage} = props;
+    const sendMessage = () => {
+        if (!message) return;
+        WSChanel.send(message)
+        setMessage('');
+    }
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

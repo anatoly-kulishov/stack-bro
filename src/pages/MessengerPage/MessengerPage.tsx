@@ -1,12 +1,8 @@
 import React from "react";
-import Dialogs from "../../components/Dialogs";
+import Chat from "../../components/Chat";
 
 const MessengerPage = () => {
-    return (
-        <>
-            <Dialogs/>
-        </>
-    )
+    return <Chat/>;
 }
 
 export default MessengerPage;

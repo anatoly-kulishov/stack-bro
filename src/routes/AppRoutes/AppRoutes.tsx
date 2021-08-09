@@ -18,7 +18,7 @@ const AppRoutes: React.FC = () => {
                         <div className="col-12 col-md-3 col-lg-2 pr-0">
                             <NavBar/>
                         </div>
-                        <div className="col-12 col-md-9 col-xl-10 mb-5">
+                        <div className="col-12 col-md-9 col-xl-10">
                             <Content>
                                 <Switch>
                                     {appRoutes.map((route: any, index: number) => (
