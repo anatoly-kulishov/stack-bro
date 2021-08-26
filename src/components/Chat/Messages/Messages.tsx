@@ -1,27 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import {useSelector} from "react-redux";
 import styles from './Messages.module.scss';
 import Message from './Message';
 import MessageInput from "./MessageInput";
-import {ChatMessageType, Nullable} from "../../../types";
+import {ChatMessageType} from "../../../types";
+import {AppStateType} from "../../../store/reducers/rootReducer";
 
-type MessagePropsType = {
-    wsChanel: Nullable<WebSocket>
-}
-
-const Messages: React.FC<MessagePropsType> = ({wsChanel}) => {
-    const [messages, setMessages] = useState<ChatMessageType[]>([]);
-
-    useEffect(() => {
-        let messageHandler = (e: MessageEvent) => {
-            const newMessages = JSON.parse(e.data);
-            setMessages(prevMessages => [...prevMessages, ...newMessages])
-        };
-        wsChanel?.addEventListener('message', messageHandler)
-        return () => {
-            wsChanel?.removeEventListener('message', messageHandler)
-        }
-    }, [wsChanel])
-
+const Messages: React.FC = () => {
+    const messages = useSelector((state: AppStateType) => state.messenger.messages);
     return (
         <div className={styles.messages}>
             <div className={styles.messagesList}>
@@ -29,7 +15,7 @@ const Messages: React.FC<MessagePropsType> = ({wsChanel}) => {
                     {messages.map((message: ChatMessageType, index: number) => <Message key={index} {...message}/>)}
                 </div>
             </div>
-            <MessageInput wsChanel={wsChanel}/>
+            <MessageInput/>
         </div>
     );
 }

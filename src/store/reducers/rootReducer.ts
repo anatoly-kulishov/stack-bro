@@ -4,12 +4,14 @@ import appReducer from "./appReducer";
 import authReducer from "./authReducer";
 import usersReducer from "./usersReducer";
 import profileReducer from "./profileReducer";
+import messengerReducer from "./messengerReducer";
 
 export const rootReducer = combineReducers({
     app: appReducer,
     auth: authReducer,
     users: usersReducer,
     profile: profileReducer,
+    messenger: messengerReducer
 })
 
 type RootReducerType = typeof rootReducer;

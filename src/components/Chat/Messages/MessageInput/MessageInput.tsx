@@ -1,35 +1,23 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
+import {useDispatch} from "react-redux";
 import styles from './MessageInput.module.scss';
-import {Nullable} from "../../../../types";
+import {sendMessage} from "../../../../store/actions/messengerActions";
 
-type MessageInputPropsType = {
-    wsChanel: Nullable<WebSocket>
-}
-
-const MessageInput: React.FC<MessageInputPropsType> = ({wsChanel}) => {
+const MessageInput: React.FC = () => {
+    const dispatch = useDispatch();
     const [message, setMessage] = useState<string>('');
-    const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
+    // const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
 
-    const sendMessage = () => {
+    const sendMessageHandler = () => {
         if (!message) return;
-        wsChanel?.send(message)
+        dispatch(sendMessage(message))
         setMessage('');
     }
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        sendMessage();
+        sendMessageHandler();
     }
-
-    useEffect(() => {
-        let openHandler = () => {
-            setReadyStatus('ready')
-        };
-        wsChanel?.addEventListener('open', openHandler)
-        return () => {
-            wsChanel?.removeEventListener('open', openHandler)
-        }
-    }, [wsChanel])
 
     return (
         <form className={styles.inputBox} onSubmit={submitHandler}>
@@ -40,7 +28,7 @@ const MessageInput: React.FC<MessageInputPropsType> = ({wsChanel}) => {
                    required
                    onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
                    placeholder="Type message here..."/>
-            <button type="submit" disabled={wsChanel === null && readyStatus === 'ready'} className={styles.submitButton}>
+            <button type="submit" className={styles.submitButton}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
                     <g stroke="#a1a1aa" strokeWidth="2" strokeLinejoin="round">
                         <path d="M21.137 11.733L3 20.466l3.359-8.733L3 3l18.137 8.733z" fill="#fff"/>

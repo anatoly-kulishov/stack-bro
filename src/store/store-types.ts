@@ -35,8 +35,5 @@ export const FETCH_POSTS: string = 'SB/POSTS/FETCH_POSTS';
 export const ADD_POST: string = 'SB/POSTS/CREATE_POST';
 export const REMOVE_POST: string = 'SB/POSTS/REMOVE_POST';
 
-/******************** DIALOGS TYPES ********************/
-export const FETCH_DIALOGS: string = 'SB/DIALOGS/FETCH_DIALOGS';
-export const ADD_DIALOG: string = 'SB/DIALOGS/ADD_DIALOG';
-export const SEND_MESSAGE: string = 'SB/DIALOGS/SEND_MESSAGE';
-export const REMOVE_DIALOG: string = 'SB/DIALOGS/REMOVE_DIALOG';
+/******************** MESSENGER TYPES ********************/
+export const MESSAGES_RECEIVED: string = 'SB/MESSENGER/MESSAGES_RECEIVED';
