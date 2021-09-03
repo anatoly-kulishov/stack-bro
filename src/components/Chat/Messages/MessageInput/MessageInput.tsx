@@ -2,11 +2,15 @@ import React, {ChangeEvent, useState} from 'react';
 import {useDispatch} from "react-redux";
 import styles from './MessageInput.module.scss';
 import {sendMessage} from "../../../../store/actions/messengerActions";
+import {StatusMessageType} from "../../../../store/reducers/messengerReducer/messengerReducer";
 
-const MessageInput: React.FC = () => {
+type MessageInputPropsType = {
+    status: StatusMessageType
+}
+
+const MessageInput: React.FC<MessageInputPropsType> = ({status}) => {
     const dispatch = useDispatch();
     const [message, setMessage] = useState<string>('');
-    // const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
 
     const sendMessageHandler = () => {
         if (!message) return;
@@ -28,7 +32,7 @@ const MessageInput: React.FC = () => {
                    required
                    onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
                    placeholder="Type message here..."/>
-            <button type="submit" className={styles.submitButton}>
+            <button type="submit" className={styles.submitButton} disabled={status !== 'ready'}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
                     <g stroke="#a1a1aa" strokeWidth="2" strokeLinejoin="round">
                         <path d="M21.137 11.733L3 20.466l3.359-8.733L3 3l18.137 8.733z" fill="#fff"/>

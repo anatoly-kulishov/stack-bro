@@ -37,3 +37,4 @@ export const REMOVE_POST: string = 'SB/POSTS/REMOVE_POST';
 
 /******************** MESSENGER TYPES ********************/
 export const MESSAGES_RECEIVED: string = 'SB/MESSENGER/MESSAGES_RECEIVED';
+export const MESSAGES_STATUS_CHANGED: string = 'SB/MESSENGER/STATUS_CHANGED';

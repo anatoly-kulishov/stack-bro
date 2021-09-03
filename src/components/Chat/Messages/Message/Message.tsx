@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {Avatar} from "antd";
 import {UserOutlined} from "@ant-design/icons";
 import styles from './Message.module.scss';
-import {ChatMessageType} from "../../../../types";
 import {useSelector} from "react-redux";
 import {getOwnerId} from "../../../../store/selectors/auth-selectors";
+import {ChatMessageType} from "../../../../types";
 
 const Message: React.FC<ChatMessageType> = props => {
     const {message, photo, userId, userName} = props;

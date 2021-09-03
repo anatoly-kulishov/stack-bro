@@ -25,4 +25,9 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+    &:disabled {
+        cursor: no-drop;
+        opacity: .4;
+    }
 }
