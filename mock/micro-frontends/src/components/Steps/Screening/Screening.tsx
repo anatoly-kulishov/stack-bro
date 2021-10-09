@@ -2,7 +2,7 @@ import React from 'react';
 import warningIcon from "../../../assets/icons/warning-circle-icon.svg";
 import {Button} from "@wavea/ui-kit";
 import {GlobalStoreFolders, openScreeningModalGAC} from "../../../globalStoreUtils";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 import './Screening.scss'
 
 const Screening = () => {

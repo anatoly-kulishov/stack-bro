@@ -1,6 +1,6 @@
 import {compose, createStore} from "redux";
 import reducers from "./reducers";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

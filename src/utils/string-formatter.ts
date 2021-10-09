@@ -1,56 +1,53 @@
 import trim from 'lodash/trim'
+import {Nullable} from "../types";
 
-export const trimStringToTenChar = (str) => {
-    try {
-        return trim(str).substr(0, 12) + '...';
-    } catch (error) {
-        console.log('error in trim');
-    }
+export const trimStringToTenChar = (str: string) => {
+  try {
+    return trim(str).substr(0, 12) + '...';
+  } catch (error) {
+    console.log('error in trim');
+  }
 }
 
-export const getFileType = (str) => {
-    try {
-        if (str) {
-            const lastIndexOfDot = `${str}`.lastIndexOf('.');
-            const fileTypeString = `${str}`.substr(lastIndexOfDot + 1, `${str}`.length);
-            return fileTypeString;
-        } else return ''
+export const getFileType = (str: string) => {
+  try {
+    if (str) {
+      const lastIndexOfDot = `${str}`.lastIndexOf('.');
+      const fileTypeString = `${str}`.substr(lastIndexOfDot + 1, `${str}`.length);
+      return fileTypeString;
+    } else return ''
 
-    } catch (error) {
-        console.log('error in getting file str')
-    }
+  } catch (error) {
+    console.log('error in getting file str')
+  }
 }
 
-export function getRealTextWidthPx(str, fontSettings = null) {
-    // Checking an input data
-    if (typeof str !== "string" || typeof fontSettings !== "string") {
-        return 0;
-    }
+export function getRealTextWidthPx(str: string, fontSettings: Nullable<string> = null) {
+  // Checking an input data
+  if (fontSettings === null) {
+    return 0;
+  }
 
-    // Variables
-    const canvasCtx = document.createElement("canvas").getContext("2d");
+  // Variables
+  const canvasCtx = document.createElement("canvas").getContext("2d");
 
-    let textMetrics;
+  let textMetrics;
 
-    // Checking an exception
-    if (canvasCtx === null) {
-        return 0;
-    }
+  // Checking an exception
+  if (canvasCtx === null) {
+    return 0;
+  }
 
-    // Set a new font settings
-    canvasCtx.font = fontSettings;
+  // Set a new font settings
+  canvasCtx.font = fontSettings;
 
-    // Getting a text metrics
-    textMetrics = canvasCtx.measureText(str);
+  // Getting a text metrics
+  textMetrics = canvasCtx.measureText(str);
 
-    // Return a result
-    return textMetrics.width;
+  // Return a result
+  return textMetrics.width;
 }
 
-export function getTruncTextByMaxLen(str, maxLen = 0) {
-    if (typeof str !== "string" || typeof maxLen !== "number") {
-        return "";
-    }
-
-    return str.length > maxLen ? `${str.substring(0, maxLen)}...` : str;
+export function getTruncTextByMaxLen(str: string, maxLen: number = 0) {
+  return str.length > maxLen ? `${str.substring(0, maxLen)}...` : str;
 }

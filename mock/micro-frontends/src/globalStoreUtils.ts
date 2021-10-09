@@ -1,4 +1,4 @@
-import {IAction} from "redux-micro-frontend";
+import {IAction} from "redux-micro-frontends";
 import {UserStepEnum} from "./state/types";
 
 export enum GlobalStoreFolders {

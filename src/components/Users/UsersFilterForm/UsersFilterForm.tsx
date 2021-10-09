@@ -19,6 +19,7 @@ type FormType = {
 
 const UsersFilterForm: FC<UsersSearchFormPropsType> = props => {
     const {onFilterChanged} = props;
+
     const filter = useSelector(getUsersFilter);
     const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         const filter: FilterType = {
@@ -45,13 +46,18 @@ const UsersFilterForm: FC<UsersSearchFormPropsType> = props => {
                                 placeholder="Search users"
                                 style={{width: 200}}/>
                         </div>
+                        {/*<div className="ml-2">*/}
+                        {/*    <Select  defaultValue="false" style={{width: 150}} onChange={handleChange}>*/}
+                        {/*        <Option value="true">Only followed</Option>*/}
+                        {/*        <Option value="false">Only unfollowed</Option>*/}
+                        {/*    </Select>*/}
+                        {/*</div>*/}
                         <div className="ml-2">
                             <Field
                                 as='select'
                                 name="friend"
                                 style={{width: 150}}
                                 onChange={handleChange}>
-                                {/*<option value="null">All</option>*/}
                                 <option value="true">Only followed</option>
                                 <option value="false">Only unfollowed</option>
                             </Field>

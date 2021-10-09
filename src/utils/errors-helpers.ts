@@ -1,6 +1,6 @@
 /**
  * Check All Unhandled Errors
- * @param reason
+ * @param:<PromiseRejectionEvent> reason
  */
 export const catchAllUnhandledErrors = (reason: PromiseRejectionEvent) => {
     window.alert('Some error occurred');

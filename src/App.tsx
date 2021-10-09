@@ -8,7 +8,7 @@ import "./App.scss";
 import store from "./store";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
-import {catchAllUnhandledErrors} from "./utils/helpers/errors-helpers";
+import {catchAllUnhandledErrors} from "./utils/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
 import {AppStateType} from "./store/reducers/rootReducer";
 

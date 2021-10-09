@@ -3,11 +3,8 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {rootReducer} from "./reducers/rootReducer";
 
-const middleware = [thunk];
-
+export * as actionCreators from './action-creators';
 export default createStore(
     rootReducer,
-    composeWithDevTools(
-        applyMiddleware(...middleware)
-    )
+    composeWithDevTools(applyMiddleware(thunk))
 )

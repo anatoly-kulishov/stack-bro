@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Button} from "@wavea/ui-kit";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 import {GlobalStoreFolders, openAccountSetupModalGAC} from "../../../globalStoreUtils";
 
 const AccountSetup:FC = () => {

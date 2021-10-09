@@ -1,6 +1,6 @@
 import React from 'react';
 import {GlobalStoreFolders, openIdentityAuthModalGAC} from "../../../globalStoreUtils";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 import {Button} from "@wavea/ui-kit";
 
 const IdentityAuth = () => {

@@ -1,0 +1,1 @@
+export const MY_POST_BUTTON: string = 'Add Post';

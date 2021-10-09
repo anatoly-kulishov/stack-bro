@@ -65,6 +65,29 @@ $selection-color: inherit;
 $scrollbar-box-color: inherit;
 $scrollbar-color: #1890ff;
 
+// Colors
+
+$white: #ffffff;
+
+$grey_100: #F2F2F2;
+$grey_200: #E2E2E2;
+$grey_300: #E9E9E9;
+$grey_400: #C4C4C4;
+$grey_500: #5B5B5B;
+$grey_600: rgba(51, 51, 51, 0.3);
+$grey_650: rgba(51, 51, 51, 0.5);
+$grey_700: #333333;
+
+$blue_200: rgba(69, 66, 210, 0.1);
+$blue_300: rgba(69, 66, 210, 0.3);
+$blue_400: rgba(69, 66, 210, 0.5);
+$blue_500: #4542D2;
+$blue_600: #3A3892;
+
+$pink_200: #FFE8F1;
+$red_600: #FB375B;
+
+
 // Mixins
 @mixin font($family, $url, $weight, $style, $display: swap) {
     font-family: $family;

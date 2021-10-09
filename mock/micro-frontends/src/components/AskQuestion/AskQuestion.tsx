@@ -1,7 +1,7 @@
 import React from 'react';
 import './AskQuestion.scss';
 import {Button} from "@wavea/ui-kit";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 import {GlobalStoreFolders, openChatWidgetGAC} from "../../globalStoreUtils";
 
 interface IAskQuestionProps {

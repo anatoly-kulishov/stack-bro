@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
-import {GlobalStore} from 'redux-micro-frontend';
+import {GlobalStore} from 'redux-micro-frontends';
 import { composeWithDevTools} from "redux-devtools-extension";
 import { createBrowserHistory } from 'history';
 import createRootReducer from "./reducers";

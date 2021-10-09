@@ -1,5 +1,5 @@
 import axios from "axios";
-import {_apiBase, API_KEY} from "../constants";
+import {_apiBase, API_KEY} from "../constants/api";
 
 export const authInstance = axios.create({
     withCredentials: true,
@@ -13,4 +13,3 @@ export const baseInstance = axios.create({
         "API-KEY": API_KEY
     }
 });
-

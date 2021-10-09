@@ -8,6 +8,7 @@ import styles from './MyPosts.module.scss';
 import Post from "./Post";
 import {profileActions} from "../../../store/actions/profileActions";
 import {getPosts, getProfile} from "../../../store/selectors/profile-selectors";
+import {MY_POST_BUTTON} from "../../../constants/buttons";
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -62,14 +63,14 @@ const MyPosts: React.FC = () => {
                                 </div>
                                 <div className="col-12">
                                     <div className={`${styles.row} mt-3`}>
-                                        <Button type="primary" htmlType="submit" disabled={isSubmitting}>Add
-                                            Post</Button>
+                                        <Button type="primary" htmlType="submit" disabled={isSubmitting}>
+                                            {MY_POST_BUTTON}
+                                        </Button>
                                         {
                                             errors.message && touched.message &&
                                             <Alert style={{marginLeft: 15}}
                                                    message={errors.message}
-                                                   type="warning" showIcon
-                                            />
+                                                   type="warning" showIcon/>
                                         }
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { GlobalStore } from "redux-micro-frontend";
+import { GlobalStore } from "redux-micro-frontends";
 import { UserStepEnum } from "../../../state/types";
 import { GlobalStoreFolders, setStepGAC } from "../../../globalStoreUtils";
 

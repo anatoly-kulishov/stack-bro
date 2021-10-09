@@ -1,2 +1,2 @@
-export const MIN_PASS_LENGTH = 8;
-export const MIN_SEARCH_LENGTH = 3;
+export const MIN_PASS_LENGTH: number = 8;
+export const MIN_SEARCH_LENGTH: number = 3;

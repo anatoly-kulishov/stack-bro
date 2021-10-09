@@ -1,10 +1,5 @@
-import {SetFilterOptionsAction} from "../actions";
-import {ActionType} from "../action-types";
-import {FilterState} from "../reducers/filterReducer";
-
-export const setFilterOptions = (values: FilterState): SetFilterOptionsAction => {
-    return {
-        type: ActionType.SET_FILTER_OPTIONS,
-        payload: values
-    }
-};
+export * from "./app-actions-creators";
+export * from "./auth-actions-creators";
+export * from "./profile-action-creators";
+export * from "./users-actions-creators";
+export * from "./messenger-actions-creators";

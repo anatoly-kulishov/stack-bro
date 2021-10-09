@@ -9,7 +9,7 @@ import {
     GlobalStoreInterface,
     openPreScreeningModalGAC,
 } from "../../globalStoreUtils";
-import {GlobalStore} from "redux-micro-frontend";
+import {GlobalStore} from "redux-micro-frontends";
 import UserProfile from "../UserProfile/UserProfile";
 import { Auth } from 'aws-amplify';
 

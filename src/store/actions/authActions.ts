@@ -13,12 +13,7 @@ export const actions = {
     } as const)
 }
 
-/**
- * Authorize on the service
- * @param profile
- * @param setSubmitting
- * @param resetForm
- */
+
 export type ProfileActionType = {
     email: string,
     password: string,
@@ -26,6 +21,12 @@ export type ProfileActionType = {
     rememberMe?: boolean
 }
 
+/**
+ * Authorize on the service
+ * @param profile
+ * @param setSubmitting
+ * @param resetForm
+ */
 export const signIn = (profile: ProfileActionType, setSubmitting: Nullable<Function> = null, resetForm: Nullable<Function> = null): ThunkType => {
     return async (dispatch: Function) => {
         authAPI.postSignIn(profile).then(data => {
