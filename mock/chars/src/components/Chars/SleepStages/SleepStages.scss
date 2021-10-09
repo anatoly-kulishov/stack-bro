@@ -1,0 +1,21 @@
+@use "../../../assets/styles/variables" as *;
+
+.sleep-stages-chart .recharts-yAxis.yAxis .recharts-cartesian-axis-ticks {
+    text-transform: capitalize;
+}
+
+.sleep-stages-chart line {
+    stroke: #E2E2E2;
+}
+
+.sleep-stages-chart .recharts-xAxis .recharts-cartesian-axis-ticks .recharts-layer .text {
+    transform: translate(-3.5%, 0);
+}
+
+.sleep-stages-chart .recharts-xAxis .recharts-cartesian-axis-ticks .recharts-layer:first-child .text {
+    transform: translate(-1%, 0);
+}
+
+.sleep-stages-chart .recharts-xAxis .recharts-cartesian-axis-ticks .recharts-layer:last-child .text {
+    transform: translate(-6.5%, 0);
+}

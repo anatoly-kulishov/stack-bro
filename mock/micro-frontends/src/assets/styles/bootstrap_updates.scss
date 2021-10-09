@@ -1,0 +1,22 @@
+$grid-gutter-width: 24px;
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 1025px,
+        xl: 1224px,
+        xxl: 1440px
+);
+
+$container-max-widths: (
+        sm: 768px,
+        md: 1025px,
+        lg: 1248px
+) !default;
+
+/*after move import bootstrap to index.tsx*/
+
+.container {
+  max-width: 1248px;
+}

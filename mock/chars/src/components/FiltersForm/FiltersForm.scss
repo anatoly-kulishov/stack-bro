@@ -1,0 +1,61 @@
+.filters {
+    //position: sticky;
+    //top: 0;
+    //z-index: 10;
+
+    background-color: #ffffff;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.filters-head {
+    padding: 30px 40px;
+}
+
+.filters-body {
+    border-top: 1px dashed #E2E2E2;
+
+    .column {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        padding: 16px 0;
+    }
+
+    .border-r {
+        border-right: 1px dashed #E2E2E2;
+
+    }
+
+    .border-l {
+        border-left: 1px dashed #E2E2E2;
+    }
+
+    .btn-group {
+        margin: 0 auto;
+
+        .btn {
+            min-width: 207px;
+            max-height: 45px;
+            font-size: 15px;
+        }
+    }
+}
+
+.filters-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+
+    .row-group-checkbox .custom-checkbox {
+        margin-right: 24px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.datePicker {
+    margin-right: 50px;
+}

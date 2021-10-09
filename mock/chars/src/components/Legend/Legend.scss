@@ -1,0 +1,39 @@
+@use "src/assets/styles/variables" as *;
+
+.legend {
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: -0.02em;
+
+    @media(max-width: 1600px) {
+        font-size: 9px;
+        letter-spacing: -0.05em;
+    }
+
+    &__item {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        margin-left: 16px;
+        color: $grey_700;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        .dot {
+            display: block;
+            width: 8px;
+            height: 8px;
+            margin-right: 5px;
+            border-radius: 50%;
+            background-color: $grey_100;
+
+        }
+    }
+}

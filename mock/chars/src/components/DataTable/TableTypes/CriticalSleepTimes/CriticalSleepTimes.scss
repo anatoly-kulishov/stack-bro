@@ -1,0 +1,6 @@
+@use "../../../../assets/styles/variables" as *;
+
+.table-frame .table.critical-sleep-times tfoot tr > td:not(:first-child),
+.table-frame .table.critical-sleep-times tbody tr > td:not(:first-child) {
+    padding: 5px 20px;
+}
