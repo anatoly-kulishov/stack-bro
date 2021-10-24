@@ -3,17 +3,16 @@ import {withSuspense} from "../hoc/withSuspense";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Users from "../components/Users";
-
-const Settings = lazy(() => import("../components/Settings"));
-const Help = lazy(() => import("../components/Help"));
+import {IRouteType} from "../types";
 
 // Lazy Pages
+const Settings = lazy(() => import("../components/Settings"));
+const Help = lazy(() => import("../components/Help"));
 const NewsPage = lazy(() => import('../components/News'));
 const MessengerPage = lazy(() => import("../pages/MessengerPage"));
 const SandBoxPage = lazy(() => import("../components/SandBox"));
 
-
-export const authRoutes = [
+export const publicRoutes: IRouteType[] = [
     {
         path: "/",
         exact: true,
@@ -26,7 +25,7 @@ export const authRoutes = [
     }
 ];
 
-export const appRoutes = [
+export const privateRoutes: IRouteType[] = [
     {
         path: "/users",
         exact: true,

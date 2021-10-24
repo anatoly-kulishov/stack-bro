@@ -1,4 +1,4 @@
-export type Nullable<T> = T | null;
+export type Nullable<T> = T | null
 
 export type FormPropsType = {
     onSubmit: Function,
@@ -11,6 +11,8 @@ export enum ResultCodes {
     Success = 0,
     Error = 1
 }
+
+export type ColorThemes = 'light' | 'dark'
 
 export enum ResultCodesForCaptcha {
     CaptchaIsRequired = 10
@@ -57,8 +59,8 @@ export type ProfileType = {
 
 export type MyProfileType = {
     id: number,
-    email: string | null,
-    login: string | null
+    email: Nullable<string>,
+    login: Nullable<string>
 }
 
 export type UserType = {
@@ -80,4 +82,10 @@ export type ChatMessageType = {
     photo: string
     userId: number,
     userName: string
+}
+
+export type IRouteType = {
+    path: string;
+    component: React.ComponentType | JSX.Element;
+    exact?: boolean;
 }

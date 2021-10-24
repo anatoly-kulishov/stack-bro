@@ -14,5 +14,12 @@
 
     line-height: inherit !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: $x-color-white !important;
+}
+
+.lightHeader {
+    background-color: $palette-light-theme-color;
+}
+
+.darkHeader {
+    background-color: $palette-dark-theme-color;
 }

@@ -9,9 +9,7 @@ type FriendPropsType = {
     data: UserType
 }
 
-const Friend: React.FC<FriendPropsType> = props => {
-    const {data} = props;
-
+const Friend: React.FC<FriendPropsType> = ({data}) => {
     return (
         <li>
             <Link to={`/${data.id}`}>

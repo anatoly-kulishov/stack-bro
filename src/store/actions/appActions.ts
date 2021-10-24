@@ -1,9 +1,11 @@
-import {INITIALIZED_SUCCESS} from "../store-types";
+import {CHANGE_THEME, INITIALIZED_SUCCESS} from "../store-types";
 import {authMe} from "./authActions";
 import {setFriends, setUsers} from "./usersActions/usersActions";
+import {ColorThemes} from "../../types";
 
 export const actions = {
-    initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const)
+    initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const),
+    changeThemeSuccess: (theme: ColorThemes) => ({type: CHANGE_THEME, payload: theme})
 }
 
 /**
@@ -31,9 +33,15 @@ export const initializeApp = (isAuth: boolean) => {
     }
 }
 
+export const changeTheme = (theme: ColorThemes) => {
+    return (dispatch: Function) => {
+        dispatch(actions.changeThemeSuccess(theme))
+    }
+}
+
 /**
  * Copy on click
- * @param text
+ * @param:string text
  */
 export function copy(text: string) {
     return async () => {

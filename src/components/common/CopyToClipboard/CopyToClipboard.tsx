@@ -4,7 +4,7 @@ import copyIcon from "./copy-icon.svg";
 
 type CopyToClipboardPropsType = {
     children: any,
-    customStyles: any,
+    customStyles: { readonly [key: string]: string },
     copy: boolean,
     placeholder: string,
     onDoubleClickHandler: () => void
@@ -26,14 +26,14 @@ const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
     }
 
     return (
-        <div className={`${styles.wrapper} ${customStyles?.statusBar}`}
+        <div className={`${styles.wrapper} ${customStyles.statusBar}`}
              onDoubleClick={(e) => doubleClickHandler(e)}>
             {copy && (
                 <span className={styles.copyButton}
-                      style={{backgroundImage: 'url(' + copyIcon + ')'}}
+                      style={{backgroundImage: `url('${copyIcon}')'`}}
                       onClick={() => copyToClipboard(copySuccess)}/>
             )}
-            <div className={`${styles.textBox} ${customStyles?.statusTextBox}`}>
+            <div className={`${styles.textBox} ${customStyles.statusTextBox}`}>
                 {children
                     ? children
                     : <span className={styles.emptyBox}>{placeholder}</span>}

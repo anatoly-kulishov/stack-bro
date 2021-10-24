@@ -16,7 +16,7 @@ const Post: React.FC<PostPropsType> = props => {
 
     let [likes, setLikes] = useState(likesCount);
     let [dislikes, setDislikes] = useState(0);
-    const [action, setAction] = useState<any>(null);
+    const [action, setAction] = useState<Nullable<string>>(null);
 
     const like = () => {
         setLikes(++likes);

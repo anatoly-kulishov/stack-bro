@@ -141,4 +141,4 @@ export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
 }
 
 export type ActionsTypes = InferActionsTypes<typeof profileActions>;
-type ThunkType = BaseThunkType<ActionsTypes | FormAction>;
+export type ThunkType = BaseThunkType<ActionsTypes | FormAction>;

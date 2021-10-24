@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch, Redirect} from "react-router-dom";
-import {authRoutes} from "../routes";
+import {publicRoutes} from "../routes";
 import styles from "./AuthRoutes.module.scss";
 
 const AuthRoutes: React.FC = () => {
@@ -8,7 +8,7 @@ const AuthRoutes: React.FC = () => {
         <div className={styles.auth}>
             <div>
                 <Switch>
-                    {authRoutes.map((route: any, index: number) => (
+                    {publicRoutes.map((route: any, index: number) => (
                         <Route
                             key={index}
                             path={route.path}

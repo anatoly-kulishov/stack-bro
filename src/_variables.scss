@@ -1,4 +1,4 @@
-// Variables for file path
+// Paths
 $url-fonts: "./assets/fonts"; //	    #{$url-fonts}
 $url-img: "./assets/images"; // 	   #{$url-images}
 
@@ -7,6 +7,33 @@ $url-img: "./assets/images"; // 	   #{$url-images}
 @function rem($px) {
     @return ($px / 16) +rem;
 }
+
+// Colors
+$white: #ffffff;
+
+$grey_100: #F2F2F2;
+$grey_150: #F7F7F7;
+$grey_200: #E2E2E2;
+$grey_300: #E9E9E9;
+$grey_400: #C4C4C4;
+$grey_450: #adadad;
+$grey_500: #5B5B5B;
+$grey_550: #5c5c5c;
+$grey_600: rgba(51, 51, 51, 0.3);
+$grey_650: rgba(51, 51, 51, 0.5);
+$grey_700: #333333;
+
+$blue_200: rgba(69, 66, 210, 0.1);
+$blue_300: rgba(69, 66, 210, 0.3);
+$blue_400: rgba(69, 66, 210, 0.5);
+$blue_500: #4542D2;
+$blue_600: #3A3892;
+
+$pink_200: #FFE8F1;
+$red_600: #FB375B;
+
+$shadow_1: 0px 16px 32px rgba(0, 0, 0, 0.07);
+$shadow_2: 0px 4px 32px rgba(0, 0, 0, 0.08);
 
 // Internal Variables
 $x-color-green: #22C55E;
@@ -20,13 +47,20 @@ $x-danger-color: #EF4444;
 $x-danger-bg-color: #FEE2E2;
 $x-warning-color: #EA580C;
 $x-warning-bg-color: #FED7AA;
-$x-black-color: #2F3B45;
+$x-color-black: #2F3B45;
+$x-color-black-2: #001529;
 
 // Global Variables
 $palette-primary: #1890ff;
 $palette-secondary: #fff;
 $palette-bg-color: $x-color-grey;
 $palette-border: $x-color-grey-2;
+
+// Light Theme
+$palette-light-theme-color: $x-color-white;
+
+// Dark Theme
+$palette-dark-theme-color: $x-color-black-2;
 
 // Typography Variables
 $primary_font: 'Roboto';
@@ -47,7 +81,7 @@ $font-size-base: rem(16);
 $line-height-base: 1.5;
 $font-weight-base: 400;
 
-$primary-text-color: $x-black-color;
+$primary-text-color: $x-color-black;
 $palette-link-color: $x-color-green;
 
 // Variables for media
@@ -64,29 +98,6 @@ $selection-bg: #DCFCE7;
 $selection-color: inherit;
 $scrollbar-box-color: inherit;
 $scrollbar-color: #1890ff;
-
-// Colors
-
-$white: #ffffff;
-
-$grey_100: #F2F2F2;
-$grey_200: #E2E2E2;
-$grey_300: #E9E9E9;
-$grey_400: #C4C4C4;
-$grey_500: #5B5B5B;
-$grey_600: rgba(51, 51, 51, 0.3);
-$grey_650: rgba(51, 51, 51, 0.5);
-$grey_700: #333333;
-
-$blue_200: rgba(69, 66, 210, 0.1);
-$blue_300: rgba(69, 66, 210, 0.3);
-$blue_400: rgba(69, 66, 210, 0.5);
-$blue_500: #4542D2;
-$blue_600: #3A3892;
-
-$pink_200: #FFE8F1;
-$red_600: #FB375B;
-
 
 // Mixins
 @mixin font($family, $url, $weight, $style, $display: swap) {

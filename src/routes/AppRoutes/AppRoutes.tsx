@@ -1,7 +1,8 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import {appRoutes} from "../routes";
 import {Layout} from 'antd';
+import {privateRoutes} from "../routes";
+import {IRouteType} from "../../types";
 import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -21,7 +22,7 @@ const AppRoutes: React.FC = () => {
                         <div className="col-12 col-md-9 col-xl-10">
                             <Content>
                                 <Switch>
-                                    {appRoutes.map((route: any, index: number) => (
+                                    {privateRoutes.map((route: IRouteType, index: number) => (
                                         <Route
                                             key={index}
                                             path={route.path}

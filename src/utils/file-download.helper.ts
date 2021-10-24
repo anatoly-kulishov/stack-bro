@@ -1,12 +1,12 @@
-const getFileFormData = (file) => {
+const getFileFormData = (file: File) => {
     const formData = new FormData();
     formData.append("file", file, file.name);
     return formData;
 };
 
-const downloadFile = async (file, fileTitle, fileType) => {
+const downloadFile = async (file: File, fileTitle: string, fileType: string) => {
     const tagLink = document.createElement('a');
-    const url = window.URL.createObjectURL(new Blob([file], { type: fileType }));
+    const url = window.URL.createObjectURL(new Blob([file], {type: fileType}));
     tagLink.href = url;
     tagLink.download = fileTitle;
     document.body.appendChild(tagLink);
@@ -14,4 +14,4 @@ const downloadFile = async (file, fileTitle, fileType) => {
     document.body.removeChild(tagLink);
 };
 
-export { getFileFormData, downloadFile };
+export {getFileFormData, downloadFile};

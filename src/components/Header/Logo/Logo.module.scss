@@ -12,6 +12,7 @@
     height: 30px;
     transition: all .1s ease;
     animation: spin 3s linear infinite;
+    cursor: pointer;
 
     &:active {
         top: 1px

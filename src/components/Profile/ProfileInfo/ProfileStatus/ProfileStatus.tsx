@@ -26,21 +26,23 @@ const ProfileStatus: React.FC = () => {
     return (
         <div className={styles.wrapper}>
             {!editMode && (
-                <CopyToClipboard customStyles={styles}
-                                 copy={false}
-                                 onDoubleClickHandler={() => setEditMode(!editMode)}
-                                 placeholder="Set status">
+                <CopyToClipboard
+                    copy={false}
+                    customStyles={styles}
+                    onDoubleClickHandler={() => setEditMode(!editMode)}
+                    placeholder="Set status">
                     {currentStatus}
                 </CopyToClipboard>
             )}
             {editMode && (
-                <input type="text"
-                       className={`${styles.statusInput} form-control`}
-                       value={currentStatus}
-                       onChange={(e) => setCurrentStatus(e.target.value)}
-                       onBlur={() => updateStatusHandler()}
-                       autoFocus
-                       placeholder="Set status"/>
+                <input
+                    type="text"
+                    className={`${styles.statusInput} form-control`}
+                    value={currentStatus}
+                    onChange={(e) => setCurrentStatus(e.target.value)}
+                    onBlur={() => updateStatusHandler()}
+                    autoFocus
+                    placeholder="Set status"/>
             )}
         </div>
     )

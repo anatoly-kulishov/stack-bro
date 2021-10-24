@@ -5,17 +5,19 @@ import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import classes from "./myFriends.module.scss"
 import {getFriends} from "../../../store/selectors/users-selectors";
 import Friend from "./Friend/Friend";
+import {getAppTheme} from "../../../store/selectors/app-selectors";
 
 type PathParamsType = {
     userId: string | undefined
 }
 
-const MyFriends: React.FC<RouteComponentProps<PathParamsType>> = props => {
+const MyFriends: React.FC<RouteComponentProps<PathParamsType>> = () => {
     const friends = useSelector(getFriends);
+    const appTheme = useSelector(getAppTheme);
 
     return (
         <ErrorBoundary>
-            <div className="default-box p-3 mt-3">
+            <div className={`default-box default-box--${appTheme} p-3 mt-3`}>
                 <div className={classes.boxTitle}>Friends ({friends.length})</div>
                 <ul className={classes.myFriends}>
                     {friends.map(friend => (

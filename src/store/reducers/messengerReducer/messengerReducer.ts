@@ -4,13 +4,10 @@ import {v1} from "uuid";
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
-// export type ChatMessageType = ChatMessageAPIType | { id: any };
-
 const initialState = {
     messages: [] as ChatMessageType[],
     status: 'pending' as StatusMessageType
 }
-
 
 const messengerReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {

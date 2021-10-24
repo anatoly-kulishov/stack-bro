@@ -1,5 +1,6 @@
 /******************** APP TYPES *****************/
 export const INITIALIZED_SUCCESS: string = 'APP/INITIALIZED_SUCCESS';
+export const CHANGE_THEME: string = 'APP/CHANGE_THEME';
 
 /******************** AUTH TYPES *****************/
 export const SIGN_IN: string = 'SB/AUTH/SIGN_IN';

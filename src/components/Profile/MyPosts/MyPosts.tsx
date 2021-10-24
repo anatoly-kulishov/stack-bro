@@ -9,6 +9,7 @@ import Post from "./Post";
 import {profileActions} from "../../../store/actions/profileActions";
 import {getPosts, getProfile} from "../../../store/selectors/profile-selectors";
 import {MY_POST_BUTTON} from "../../../constants/buttons";
+import {getAppTheme} from "../../../store/selectors/app-selectors";
 
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
@@ -21,11 +22,13 @@ const MyPosts: React.FC = () => {
     const dispatch = useDispatch();
     const profile = useSelector(getProfile);
     const posts = useSelector(getPosts);
+    const appTheme = useSelector(getAppTheme);
 
     const {TextArea} = Input;
     const {ErrorBoundary} = Alert;
-    const postsElements = posts.map((p: any) => <Post key={p.id} profile={profile} message={p.message}
-                                                      likesCount={p.likesCount}/>);
+    const postsElements = posts.map((p: any) => (
+        <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount}/>)
+    )
 
     const onAddPost = (message: string) => {
         const post = {
@@ -37,7 +40,7 @@ const MyPosts: React.FC = () => {
     }
 
     return (
-        <div className={`${styles.myPosts} default-box`}>
+        <div className={`${styles.myPosts} default-box default-box--${appTheme}`}>
             <ErrorBoundary>
                 <Formik
                     initialValues={{message: ''}}

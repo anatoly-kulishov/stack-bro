@@ -1,24 +1,26 @@
 import React, {FC} from 'react';
+import {useDispatch} from "react-redux";
 import {Formik, Form} from 'formik';
 import {Button} from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
 import styles from './FileField.module.scss'
-import {useDispatch} from "react-redux";
+import {ThunkType} from "../../../store/actions/profileActions";
 
 type FileFieldPropsType = {
-    save: any
+    save: (file: File, setSubmitting: Function) => ThunkType
 }
 
-const FileField: FC<FileFieldPropsType> = props => {
+const FileField: FC<FileFieldPropsType> = ({save}) => {
     const dispatch = useDispatch();
-    const {save} = props;
 
     return (
         <Formik
             initialValues={{file: null}}
             onSubmit={(values, {setSubmitting}) => {
-                setSubmitting(true)
-                dispatch(save(values.file, setSubmitting))
+                setSubmitting(true);
+                if (values.file) {
+                    dispatch(save(values.file, setSubmitting))
+                }
             }}>
             {({handleSubmit, setFieldValue, values, isSubmitting}) => (
                 <Form onSubmit={handleSubmit}>

@@ -8,15 +8,17 @@ import ProfileData from "./ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
 import {getProfile, getProfileErrorText} from "../../../store/selectors/profile-selectors";
 import {saveProfile} from "../../../store/actions/profileActions";
+import {getAppTheme} from "../../../store/selectors/app-selectors";
 
 const ProfileInfo: React.FC = () => {
     const profile = useSelector(getProfile);
     const errorText = useSelector(getProfileErrorText);
+    const appTheme = useSelector(getAppTheme);
     const [editMode, setEditMode] = useState<boolean>(false);
     const {ErrorBoundary} = Alert;
 
     return (
-        <div className={`${styles.wrapper} default-box`}>
+        <div className={`${styles.wrapper} default-box default-box--${appTheme}`}>
             <ErrorBoundary>
                 <div className={styles.profileHead}>
                     <div className="d-flex justify-content-between align-items-center">

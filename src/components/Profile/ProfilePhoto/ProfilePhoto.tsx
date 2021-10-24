@@ -13,6 +13,7 @@ import {
 } from "../../../store/selectors/profile-selectors";
 import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
 import {savePhoto} from "../../../store/actions/profileActions";
+import {getAppTheme} from "../../../store/selectors/app-selectors";
 
 const ProfilePhoto: React.FC = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ProfilePhoto: React.FC = () => {
     const followStatus = useSelector(getProfileFollowStatus);
     const isLoading = useSelector(getProfileIsLoading);
     const isOwner = useSelector(getProfileIsOwnerStatus);
+    const appTheme = useSelector(getAppTheme);
 
     const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
     const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus)
@@ -34,7 +36,7 @@ const ProfilePhoto: React.FC = () => {
     }, [followStatus])
 
     return (
-        <div className={`${styles.wrapper} default-box`}>
+        <div className={`${styles.wrapper} default-box default-box--${appTheme}`}>
             <ErrorBoundary>
                 <div className={styles.profilePhoto}>
                     {isLoading && <div className={styles.spinBox}><Spin size="large"/></div>}

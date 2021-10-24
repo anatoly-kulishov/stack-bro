@@ -1,20 +1,26 @@
-import {INITIALIZED_SUCCESS} from "../../store-types";
-import {InferActionsTypes} from "../rootReducer";
-import {actions} from "../../actions/appActions";
-import {Nullable} from "../../../types";
+import {CHANGE_THEME, INITIALIZED_SUCCESS} from "../../store-types";
+// import {InferActionsTypes} from "../rootReducer";
+// import {actions} from "../../actions/appActions";
+import {ColorThemes, Nullable} from "../../../types";
+import {COLOR_THEME} from "../../../constants/localStorage";
 
 const initialState = {
     initialized: false,
     globalErrors: null as Nullable<string>,
-    theme: 'light' as 'light' | 'dark' // TODO!!!
+    theme: (localStorage.getItem(COLOR_THEME) || 'light') as ColorThemes
 }
 
-const appReducer = (state = initialState, action: ActionsType): InitialStateType => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
                 ...state,
                 initialized: true,
+            }
+        case CHANGE_THEME:
+            return {
+                ...state,
+                theme: action.payload
             }
         default:
             return state
@@ -22,5 +28,5 @@ const appReducer = (state = initialState, action: ActionsType): InitialStateType
 }
 
 export type InitialStateType = typeof initialState;
-type ActionsType = InferActionsTypes<typeof actions>;
+// type ActionsType = InferActionsTypes<typeof actions>;
 export default appReducer;

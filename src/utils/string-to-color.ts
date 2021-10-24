@@ -10,3 +10,4 @@ export const stringToColor = (str: string) => {
   }
   return colour;
 }
+
