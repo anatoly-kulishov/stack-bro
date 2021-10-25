@@ -4,7 +4,7 @@ import styles from './Mock.module.scss'
 
 const Mock: FC = () => {
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper}`}>
             <div>
                 <div>
                     <strong className="mr-2">WE'RE COMING SOON</strong><RocketTwoTone style={{fontSize: '40px'}}/>

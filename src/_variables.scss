@@ -47,8 +47,10 @@ $x-danger-color: #EF4444;
 $x-danger-bg-color: #FEE2E2;
 $x-warning-color: #EA580C;
 $x-warning-bg-color: #FED7AA;
+
 $x-color-black: #2F3B45;
 $x-color-black-2: #001529;
+$x-color-black-3: #0d1117;  ;
 
 // Global Variables
 $palette-primary: #1890ff;
@@ -57,10 +59,11 @@ $palette-bg-color: $x-color-grey;
 $palette-border: $x-color-grey-2;
 
 // Light Theme
-$palette-light-theme-color: $x-color-white;
+$light-theme-bg-color: $x-color-white;
 
 // Dark Theme
-$palette-dark-theme-color: $x-color-black-2;
+$dark-theme-bg-color: $x-color-black-3;
+$dark-theme-border-color: #30363d;
 
 // Typography Variables
 $primary_font: 'Roboto';

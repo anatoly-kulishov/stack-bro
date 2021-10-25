@@ -1,10 +1,14 @@
 import React, {memo} from 'react';
-import styles from './Sandbox.module.scss';
+import {useSelector} from "react-redux";
+// import styles from './Sandbox.module.scss';
 import Mock from "../common/Mock";
+import {getAppTheme} from "../../store/selectors/app-selectors";
 
 const Sandbox: React.FC = () => {
+    const appTheme = useSelector(getAppTheme);
+
     return (
-        <section className={`${styles.wrapper} default-box`}>
+        <section className={`default-box default-box--${appTheme}`}>
             <Mock/>
         </section>
     );

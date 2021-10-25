@@ -26,6 +26,7 @@ const NavBar: FC = () => {
         <Sider collapsible width={150}>
             <Menu defaultSelectedKeys={[navKey]}
                   theme={appTheme}
+                  className={`default-box--${appTheme}`}
                   mode="inline">
                 <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
                     <Link to="/">
