@@ -1,11 +1,13 @@
 // Paths
+@use "sass:math";
+
 $url-fonts: "./assets/fonts"; //	    #{$url-fonts}
 $url-img: "./assets/images"; // 	   #{$url-images}
 
 // Functions
 // ---------
 @function rem($px) {
-    @return ($px / 16) +rem;
+    @return math.div($px, 16) +rem;
 }
 
 // Colors
