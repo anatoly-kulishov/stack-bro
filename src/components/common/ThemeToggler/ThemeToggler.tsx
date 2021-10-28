@@ -15,7 +15,7 @@ const ThemeToggler: FC<any> = ({children}) => {
         dispatch(changeTheme(payload));
     }
 
-    return <span onClick={onChangeTheme}>{children}</span>
+    return <span onTouchStartCapture={onChangeTheme} onDoubleClick={onChangeTheme}>{children}</span>
 };
 
 export default memo(ThemeToggler);

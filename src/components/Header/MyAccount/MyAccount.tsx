@@ -1,28 +1,25 @@
 import React, {PropsWithChildren} from 'react';
-import {useSelector} from "react-redux";
 import {Avatar, Dropdown, Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import styles from "./MyAccount.module.scss";
 import SubMenu from "./SubMenu";
-import {ProfileType} from "../../../types";
-import {getAppTheme} from "../../../store/selectors/app-selectors";
-import {isLightTheme} from "../../../utils/boolean-helpers";
+import {ColorThemes, ProfileType} from "../../../types";
+import {isDarkTheme} from "../../../utils/boolean-helpers";
 
 type MyAccountPropsType = {
-    ownerProfile: PropsWithChildren<ProfileType>,
+    theme: ColorThemes
+    ownerProfile: PropsWithChildren<ProfileType>
     logOut: () => void
 }
 
-const MyAccount: React.FC<MyAccountPropsType> = ({logOut, ownerProfile}) => {
-    const appTheme = useSelector(getAppTheme);
-
+const MyAccount: React.FC<MyAccountPropsType> = ({logOut, theme, ownerProfile}) => {
     return (
-        <div className={`${styles.wrapper} no-border`}>
-            <Dropdown overlay={<SubMenu logOut={logOut} appTheme={appTheme}/>}>
+        <div className={`${styles.wrapper} ${isDarkTheme(theme) ? styles.wrapperDarkTheme : ''} no-border`}>
+            <Dropdown overlay={<SubMenu logOut={logOut} appTheme={theme}/>}>
                 <Button style={{
                     height: 40,
                     backgroundColor: 'transparent',
-                    color: isLightTheme(appTheme) ? '#000' : '#fff'
+                    color: isDarkTheme(theme) ? '#fff' : '#000'
                 }}>
                     <div className={styles.inner}>
                         <span className={`${styles.login} mr-2`}>{ownerProfile.fullName}</span>

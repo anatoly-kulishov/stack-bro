@@ -4,6 +4,11 @@
     display: flex;
     align-items: center;
     height: 100%;
+
+    & > span {
+        display: flex;
+        margin-right: 6px;
+    }
 }
 
 .logo {
@@ -17,6 +22,15 @@
     &:active {
         top: 1px
     }
+}
+
+.companyName {
+    font-size: 18px;
+    transition: all .4s ease-in-out;
+}
+
+.companyNameDarkTheme {
+    color: $x-color-white;
 }
 
 @keyframes spin {

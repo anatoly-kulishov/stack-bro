@@ -16,7 +16,7 @@ const AppRoutes: React.FC = () => {
             <Layout className="site-layout">
                 <div className="container">
                     <div className="row mt-3">
-                        <div className="col-12 col-md-3 col-lg-2 pr-0">
+                        <div className="col-12 d-none d-lg-block col-md-3 col-lg-2 pr-0">
                             <NavBar/>
                         </div>
                         <div className="col-12 col-md-9 col-xl-10">

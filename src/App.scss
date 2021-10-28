@@ -175,7 +175,6 @@ textarea {
 
 
 // Theme Colors
-
 .app--dark .ant-layout {
     background-color: #010409;
 }
@@ -195,7 +194,7 @@ textarea {
         background-color: $x-color-white;
 
         h1, h2, h3, h4, h5, h6,
-        label, small{
+        label, small {
             color: $x-color-black;
         }
     }
@@ -206,7 +205,7 @@ textarea {
         border-color: #30363d;
 
         h1, h2, h3, h4, h5, h6,
-        label, small{
+        label, small {
             color: $x-color-white;
         }
     }
