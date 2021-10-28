@@ -18,6 +18,7 @@ import {
 import {useHistory} from "react-router-dom";
 import UsersFilterForm from "./UsersFilterForm/UsersFilterForm";
 import {FilterType} from "../../store/reducers/usersReducer/usersReducer";
+import {getAppTheme} from "../../store/selectors/app-selectors";
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 const Users: React.FC = () => {
@@ -30,6 +31,7 @@ const Users: React.FC = () => {
     const pageSize = useSelector(getPageSize);
     const isLoading = useSelector(getUsersLoading);
     const filter = useSelector(getUsersFilter);
+    const appTheme = useSelector(getAppTheme);
 
     useEffect(() => {
         const parsed = queryString.parse(history.location.search.substring(1)) as QueryParamsType;
@@ -79,7 +81,7 @@ const Users: React.FC = () => {
     }
 
     return (
-        <div className={`default-box p-3`}>
+        <div className={`default-box default-box--${appTheme} p-3`}>
             {isLoading && <div className="spin-box"><Spin size="large"/></div>}
             {!isLoading && (
                 <section className={styles.section}>

@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {useSelector} from "react-redux";
 import {getProfile, getProfileStatus} from "../../../../store/selectors/profile-selectors";
+import {getAppTheme} from "../../../../store/selectors/app-selectors";
 
 const ProfileStatus: React.FC = () => {
     const profile = useSelector(getProfile);
     const status = useSelector(getProfileStatus);
+    const appTheme = useSelector(getAppTheme);
     const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -29,6 +31,7 @@ const ProfileStatus: React.FC = () => {
                 <CopyToClipboard
                     copy={false}
                     customStyles={styles}
+                    appTheme={appTheme}
                     onDoubleClickHandler={() => setEditMode(!editMode)}
                     placeholder="Set status">
                     {currentStatus}

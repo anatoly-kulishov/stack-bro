@@ -1,16 +1,16 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {Menu} from 'antd';
+import {Menu, MenuTheme} from 'antd';
 import {LogoutOutlined, SettingOutlined, QuestionCircleOutlined} from '@ant-design/icons';
 
 type MyAccountSubMenuPropsType = {
+    appTheme: MenuTheme;
     logOut: () => void
 }
 
-const SubMenu: React.FC<MyAccountSubMenuPropsType> = props => {
-    const {logOut} = props;
+const SubMenu: React.FC<MyAccountSubMenuPropsType> = ({logOut, appTheme}) => {
     return (
-        <Menu>
+        <Menu theme={appTheme}>
             <Menu.Item key="1" icon={<SettingOutlined/>}>
                 <NavLink to="/settings">
                     Settings

@@ -1,0 +1,95 @@
+/**
+ *  Chat List Area
+ */
+.chatListArea {
+    overflow: auto;
+
+    width: 100%;
+    height: calc(100% - 56px);
+
+    font-size: 0.75rem;
+}
+
+.chatItem {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: auto;
+    padding: 16px 16px 16px 16px;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.chatItemActive {
+    border-radius: var(--CVB_BODY_BORDER_RADIUS);
+    background-color: var(--CVB_ACTIVE_ITEM_COLOR);
+}
+
+.chatInfoArea {
+    padding-left: 8px;
+    width: calc(100% - 4rem);
+    height: auto;
+}
+
+.chatInfoTopArea {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 20px;
+    margin: 0 0 3px 0;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatInfoBottomArea {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 20px;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatName {
+    font-weight: 700;
+}
+
+.chatDate {
+    color: var(--CVB_USER_MAIL_COLOR);
+}
+
+.chatMessage {
+    overflow: hidden;
+
+    max-width: 75%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: var(--SHADE_OF_GREY_4);
+}
+
+.chatCounter {
+    display: flex;
+    flex-direction: row;
+
+    width: 1.25rem;
+    height: 1.25rem;
+
+    color: var(--DEFAULT_WHITE);
+    border-radius: 50%;
+    background-color: var(--SHADE_OF_BLUE_2);
+
+    justify-content: center;
+    align-items: center;
+}

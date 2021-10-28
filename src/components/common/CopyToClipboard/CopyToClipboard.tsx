@@ -1,17 +1,19 @@
 import React, {FC, memo, useState} from 'react';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from "./copy-icon.svg";
+import {isDarkTheme} from "../../../utils/boolean-helpers";
 
 type CopyToClipboardPropsType = {
     children: any,
     customStyles: { readonly [key: string]: string },
     copy: boolean,
     placeholder: string,
+    appTheme: string,
     onDoubleClickHandler: () => void
 }
 
 const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
-    const {onDoubleClickHandler, customStyles, children = '', copy = true, placeholder = "No Data"} = props;
+    const {onDoubleClickHandler, customStyles, appTheme, children = '', copy = true, placeholder = "No Data"} = props;
     const [copySuccess] = useState<string>(children);
 
     const copyToClipboard = (text: string) => {
@@ -33,7 +35,7 @@ const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
                       style={{backgroundImage: `url('${copyIcon}')'`}}
                       onClick={() => copyToClipboard(copySuccess)}/>
             )}
-            <div className={`${styles.textBox} ${customStyles.statusTextBox}`}>
+            <div className={`${styles.textBox} ${customStyles.statusTextBox} ${isDarkTheme(appTheme) && customStyles.statusTextBoxDarkTheme}`}>
                 {children
                     ? children
                     : <span className={styles.emptyBox}>{placeholder}</span>}

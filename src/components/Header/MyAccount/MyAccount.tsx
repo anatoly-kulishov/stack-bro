@@ -18,7 +18,7 @@ const MyAccount: React.FC<MyAccountPropsType> = ({logOut, ownerProfile}) => {
 
     return (
         <div className={`${styles.wrapper} no-border`}>
-            <Dropdown overlay={<SubMenu logOut={logOut}/>}>
+            <Dropdown overlay={<SubMenu logOut={logOut} appTheme={appTheme}/>}>
                 <Button style={{
                     height: 40,
                     backgroundColor: 'transparent',
