@@ -1,0 +1,31 @@
+/**
+ *  Component Styles
+ */
+.container {
+    position: relative;
+
+    min-height: 100vh;
+
+    background: transparent
+        linear-gradient(
+            298deg,
+            var(--SHADE_OF_PURPLE_3) 0%,
+            var(--SHADE_OF_PURPLE_3) 22%,
+            var(--SHADE_OF_GREY_7) 90%,
+            var(--SHADE_OF_PURPLE_3) 100%
+        )
+        0 0 no-repeat padding-box;
+}
+
+.body,
+.body::before,
+.body::after {
+    position: relative;
+    z-index: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 77px);
+
+    border: 0;
+}
