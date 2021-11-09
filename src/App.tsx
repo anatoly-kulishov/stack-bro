@@ -44,7 +44,7 @@ const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
 
-const AppContainer = compose<React.ComponentType>(connect(mapStateToProps, {initializeApp}))(App);
+const AppContainer = compose<any>(connect(mapStateToProps, {initializeApp}))(App);
 
 const StackBroTSApp: React.FC = () => {
     return (
