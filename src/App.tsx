@@ -16,8 +16,7 @@ import {getAppTheme} from "./store/selectors/app-selectors";
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeApp: (isAuth: boolean) => void };
 
-const App: FC<MapPropsType & DispatchPropsType> = props => {
-    const {initialized, initializeApp, isAuth} = props;
+const App: FC<MapPropsType & DispatchPropsType> = ({initialized, initializeApp, isAuth}) => {
     const appTheme = useSelector(getAppTheme);
 
     useEffect(() => {

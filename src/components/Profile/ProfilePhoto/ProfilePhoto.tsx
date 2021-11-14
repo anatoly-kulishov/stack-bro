@@ -1,31 +1,34 @@
 import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 import {Spin, Alert, Button} from "antd";
 import styles from './ProfilePhoto.module.scss';
 import FileField from "../../common/FileField";
 import no_photo from './no_photo.png'
 import {Nullable} from "../../../types";
-import {useDispatch, useSelector} from "react-redux";
 import {
     getProfile,
     getProfileFollowStatus,
     getProfileIsLoading,
-    getProfileIsOwnerStatus
 } from "../../../store/selectors/profile-selectors";
 import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
 import {savePhoto} from "../../../store/actions/profileActions";
 import {getAppTheme} from "../../../store/selectors/app-selectors";
 
+const {ErrorBoundary} = Alert;
+
 const ProfilePhoto: React.FC = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const profile = useSelector(getProfile);
     const followStatus = useSelector(getProfileFollowStatus);
     const isLoading = useSelector(getProfileIsLoading);
-    const isOwner = useSelector(getProfileIsOwnerStatus);
     const appTheme = useSelector(getAppTheme);
 
     const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
     const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus)
-    const {ErrorBoundary} = Alert;
+    const isOwnerProfile = history.location.pathname === '/';
+    const userId = Number(history.location.pathname?.substr(1));
 
     useEffect(() => {
         setProfilePhoto(profile.photos?.large)
@@ -34,6 +37,14 @@ const ProfilePhoto: React.FC = () => {
     useEffect(() => {
         setFollowState(followStatus)
     }, [followStatus])
+
+    const follow = () => {
+        dispatch(userFollow(userId))
+    }
+
+    const unfollow = () => {
+        dispatch(userUnfollow(userId))
+    }
 
     return (
         <div className={`${styles.wrapper} default-box default-box--${appTheme}`}>
@@ -45,19 +56,18 @@ const ProfilePhoto: React.FC = () => {
                     )}
                 </div>
                 <div className={styles.profileActions}>
-                    {isOwner && (
+                    {isOwnerProfile && (
                         <FileField save={savePhoto}/>
                     )}
-                    {/* Todo!!! */}
-                    {!isOwner && !followState && (
-                        <Button onClick={() => dispatch(userFollow(18310))}
+                    {!isOwnerProfile && !followState && (
+                        <Button onClick={follow}
                                 htmlType="button"
                                 block type="primary">
                             Add friend
                         </Button>
                     )}
-                    {!isOwner && followState && (
-                        <Button onClick={() => dispatch(userUnfollow(18310))}
+                    {!isOwnerProfile && followState && (
+                        <Button onClick={unfollow}
                                 htmlType="button"
                                 block danger>
                             Unfriend

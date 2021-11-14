@@ -10,12 +10,17 @@ import {getProfile, getProfileErrorText} from "../../../store/selectors/profile-
 import {saveProfile} from "../../../store/actions/profileActions";
 import {getAppTheme} from "../../../store/selectors/app-selectors";
 
+const {ErrorBoundary} = Alert;
+
 const ProfileInfo: React.FC = () => {
     const profile = useSelector(getProfile);
     const errorText = useSelector(getProfileErrorText);
     const appTheme = useSelector(getAppTheme);
     const [editMode, setEditMode] = useState<boolean>(false);
-    const {ErrorBoundary} = Alert;
+
+    const setEditModeHandler = () => {
+        setEditMode(!editMode)
+    }
 
     return (
         <div className={`${styles.wrapper} default-box default-box--${appTheme}`}>
@@ -30,8 +35,8 @@ const ProfileInfo: React.FC = () => {
                 </div>
                 <div className="d-flex justify-content-end mt-3 mb-2">
                     {editMode
-                        ? <CloseCircleTwoTone onClick={() => setEditMode(!editMode)}/>
-                        : <EditTwoTone onClick={() => setEditMode(!editMode)}/>
+                        ? <CloseCircleTwoTone onClick={setEditModeHandler}/>
+                        : <EditTwoTone onClick={setEditModeHandler}/>
                     }
                 </div>
                 {!editMode

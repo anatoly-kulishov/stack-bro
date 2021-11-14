@@ -1,7 +1,7 @@
-import React, {memo, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import styles from './Chat.module.scss';
 import Messages from "./Messages";
-import {useDispatch, useSelector} from "react-redux";
 import {startMessagesListening, stopMessagesListening} from "../../store/actions/messengerActions";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 
@@ -23,4 +23,4 @@ const Chat: React.FC = () => {
     );
 }
 
-export default memo(Chat);
+export default Chat;

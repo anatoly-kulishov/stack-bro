@@ -17,7 +17,7 @@ const NavBar: FC = () => {
     const userCounter = useSelector(getTotalUsersCount);
     const appTheme = useSelector(getAppTheme);
 
-    const onSelectNavKey = (key: number) => {
+    const createSelectNavKey = (key: number) => () => {
         sessionStorage.setItem('nav_key', String(key));
     }
     const navKey: string = sessionStorage.getItem('nav_key') || '1';
@@ -28,27 +28,27 @@ const NavBar: FC = () => {
                   theme={appTheme}
                   className={`default-box--${appTheme}`}
                   mode="inline">
-                <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined/>}>
+                <Menu.Item key="1" onClick={createSelectNavKey(1)} icon={<UserOutlined/>}>
                     <Link to="/">
                         My profile
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="2" onClick={() => onSelectNavKey(2)} icon={<FileOutlined/>}>
+                <Menu.Item key="2" onClick={createSelectNavKey(2)} icon={<FileOutlined/>}>
                     <Link to="/news">
                         News
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="3" onClick={() => onSelectNavKey(3)} icon={<MessageOutlined/>}>
+                <Menu.Item key="3" onClick={createSelectNavKey(3)} icon={<MessageOutlined/>}>
                     <Link to="/messenger">
                         Messenger
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<TeamOutlined/>}>
+                <Menu.Item key="4" onClick={createSelectNavKey(4)} icon={<TeamOutlined/>}>
                     <Link to="/users">
                         Users <small>({userCounter})</small>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="5" onClick={() => onSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>
+                <Menu.Item key="5" onClick={createSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>
                     <Link to="/sandbox">
                         Sandbox
                     </Link>

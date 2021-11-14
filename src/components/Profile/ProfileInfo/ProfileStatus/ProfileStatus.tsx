@@ -17,6 +17,10 @@ const ProfileStatus: React.FC = () => {
         // updateStatus(currentStatus)
     }
 
+    const setEditModeHandler = () => {
+        setEditMode(!editMode)
+    }
+
     // useEffect(() => {
     //     getStatus(myProfileId)
     // }, [getStatus, status, profile, myProfileId])
@@ -32,7 +36,7 @@ const ProfileStatus: React.FC = () => {
                     copy={false}
                     customStyles={styles}
                     appTheme={appTheme}
-                    onDoubleClickHandler={() => setEditMode(!editMode)}
+                    onDoubleClickHandler={setEditModeHandler}
                     placeholder="Set status">
                     {currentStatus}
                 </CopyToClipboard>
@@ -43,7 +47,7 @@ const ProfileStatus: React.FC = () => {
                     className={`${styles.statusInput} form-control`}
                     value={currentStatus}
                     onChange={(e) => setCurrentStatus(e.target.value)}
-                    onBlur={() => updateStatusHandler()}
+                    onBlur={updateStatusHandler}
                     autoFocus
                     placeholder="Set status"/>
             )}

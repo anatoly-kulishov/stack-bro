@@ -21,7 +21,7 @@ const SubMenu: React.FC<MyAccountSubMenuPropsType> = ({logOut, appTheme}) => {
                     Help
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key="3" onClick={() => logOut()} icon={<LogoutOutlined/>}>
+            <Menu.Item key="3" onClick={logOut} icon={<LogoutOutlined/>}>
                 Sign out
             </Menu.Item>
         </Menu>
