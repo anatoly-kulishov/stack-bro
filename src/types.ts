@@ -2,9 +2,9 @@ export type Nullable<T> = T | null
 
 export type FormPropsType = {
     onSubmit: Function,
-    errorText?: string | null,
-    isValid?: boolean | null,
-    captchaUrl?: string | null
+    errorText?: Nullable<string>,
+    isValid?: Nullable<boolean>,
+    captchaUrl?: Nullable<string>
 }
 
 export enum ResultCodes {
@@ -12,7 +12,7 @@ export enum ResultCodes {
     Error = 1
 }
 
-export type ColorThemes = 'light' | 'dark'
+export type ColorThemes = 'light' | 'dark';
 
 export enum ResultCodesForCaptcha {
     CaptchaIsRequired = 10
@@ -48,19 +48,13 @@ export type ContactsType = {
 }
 
 export type ProfileType = {
-    userId: number | null,
+    userId: Nullable<number>,
     lookingForAJob: boolean,
-    lookingForAJobDescription: string | null,
-    fullName: string | null,
-    aboutMe: string | null,
+    lookingForAJobDescription: Nullable<string>,
+    fullName: Nullable<string>,
+    aboutMe: Nullable<string>,
     contacts: ContactsType
     photos: PhotosType
-}
-
-export type MyProfileType = {
-    id: number,
-    email: Nullable<string>,
-    login: Nullable<string>
 }
 
 export type UserType = {

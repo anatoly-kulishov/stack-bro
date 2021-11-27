@@ -1,5 +1,6 @@
 import React, {FC, memo} from 'react';
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 import {Layout, Menu} from "antd";
 import {
     MessageOutlined,
@@ -8,12 +9,12 @@ import {
     FileOutlined,
     CodeSandboxOutlined
 } from '@ant-design/icons';
-import {useSelector} from "react-redux";
 import {getTotalUsersCount} from "../../store/selectors/users-selectors";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 
+const {Sider} = Layout;
+
 const NavBar: FC = () => {
-    const {Sider} = Layout;
     const userCounter = useSelector(getTotalUsersCount);
     const appTheme = useSelector(getAppTheme);
 
