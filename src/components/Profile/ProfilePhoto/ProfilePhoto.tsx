@@ -11,7 +11,7 @@ import {
     getProfileFollowStatus,
     getProfileIsLoading,
 } from "../../../store/selectors/profile-selectors";
-import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
+import {userFollow, userUnfollow} from "../../../store/actions/usersActions";
 import {savePhoto} from "../../../store/actions/profileActions";
 import {getAppTheme} from "../../../store/selectors/app-selectors";
 

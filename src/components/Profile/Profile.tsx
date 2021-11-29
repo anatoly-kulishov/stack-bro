@@ -5,7 +5,7 @@ import ProfilePhoto from './ProfilePhoto';
 import MyPosts from "./MyPosts";
 import {useDispatch, useSelector} from "react-redux";
 import {updateProfile} from '../../store/actions/profileActions';
-import {setCurrentUserFollower} from "../../store/actions/usersActions/usersActions";
+import {setCurrentUserFollower} from "../../store/actions/usersActions";
 import MyFriends from "./MyFriends/MyFriends";
 import {getOwnerId} from "../../store/selectors/auth-selectors";
 import {Nullable} from "../../types";

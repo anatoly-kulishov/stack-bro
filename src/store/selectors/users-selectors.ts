@@ -14,11 +14,11 @@ export const getUsersFilter = (state: AppStateType) => state.users.filter
 
 /*********************** Super Selectors ***********************/
 export const getUsers = createSelector(getUsersSelector,
-    (users: UserType[]) => {
-        return users.filter((user: UserType) => user)
-    })
+  (users: UserType[]) => {
+    return users.filter((user: UserType) => user)
+  })
 
 export const getFriends = createSelector(getFriendsSelector,
-    (users: UserType[]) => {
-        return users.filter((user: UserType) => user)
-    })
+  (users: UserType[]) => {
+    return users.filter((user: UserType) => user)
+  })

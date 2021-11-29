@@ -7,11 +7,11 @@ import profileReducer from "./profileReducer";
 import messengerReducer from "./messengerReducer";
 
 export const rootReducer = combineReducers({
-    app: appReducer,
-    auth: authReducer,
-    users: usersReducer,
-    profile: profileReducer,
-    messenger: messengerReducer
+  app: appReducer,
+  auth: authReducer,
+  users: usersReducer,
+  profile: profileReducer,
+  messenger: messengerReducer
 })
 
 export type RootReducerType = typeof rootReducer;

@@ -3,11 +3,9 @@ import {ProfileActionType} from "../store/actions/authActions";
 import {ResultCodes, ResultCodesForCaptcha, APIResponseType} from "../types";
 
 type GetAutResponseDataType = {
-  data: {
     id: number,
     email: string,
     login: string
-  }
 }
 
 type PostSignInDataType = {

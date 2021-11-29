@@ -5,7 +5,7 @@ import {Skeleton, Avatar, Card} from 'antd';
 import {MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined} from '@ant-design/icons';
 import {UserType} from "../../../types";
 import {useDispatch} from "react-redux";
-import {userFollow, userUnfollow} from "../../../store/actions/usersActions/usersActions";
+import {userFollow, userUnfollow} from "../../../store/actions/usersActions";
 
 const {Meta} = Card;
 
