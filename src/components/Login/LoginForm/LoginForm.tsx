@@ -7,6 +7,13 @@ import CustomField from "../../common/CustomField";
 import {FormPropsType} from "../../../types";
 import {useDispatch} from "react-redux";
 
+const initialValues = {
+  email: '',
+  password: '',
+  captcha: '',
+  rememberMe: false
+};
+
 const LoginForm: React.FC<FormPropsType> = ({onSubmit, isValid, errorText, captchaUrl}) => {
     const dispatch = useDispatch();
 
@@ -18,9 +25,9 @@ const LoginForm: React.FC<FormPropsType> = ({onSubmit, isValid, errorText, captc
         dispatch(onSubmit(values));
     }
 
-    return (
+  return (
         <Formik
-            initialValues={{email: '', password: '', captcha: '', rememberMe: false}}
+            initialValues={initialValues}
             onSubmit={(values, {setSubmitting, resetForm}) => {
                 dispatch(onSubmit(values, setSubmitting, resetForm));
                 values.captcha = '';

@@ -1,26 +1,34 @@
-import React, {useEffect} from 'react';
+/** Libs **/
+import React, {FC, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import styles from './Chat.module.scss';
+import classNames from "classnames";
+
+/** Components **/
 import Messages from "./Messages";
+
+/** Utils **/
 import {startMessagesListening, stopMessagesListening} from "../../store/actions/messengerActions";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 
-const Chat: React.FC = () => {
-    const dispatch = useDispatch();
-    const appTheme = useSelector(getAppTheme);
+/** Styles **/
+import styles from './Chat.module.scss';
 
-    useEffect(() => {
-        dispatch(startMessagesListening())
-        return () => {
-            dispatch(stopMessagesListening())
-        }
-    }, [dispatch])
+const Chat: FC = () => {
+  const dispatch = useDispatch();
+  const appTheme = useSelector(getAppTheme);
 
-    return (
-        <section className={`${styles.wrapper} default-box default-box--${appTheme}`}>
-            <Messages/>
-        </section>
-    );
+  useEffect(() => {
+    dispatch(startMessagesListening())
+    return function cleanup() {
+      dispatch(stopMessagesListening())
+    }
+  }, [dispatch])
+
+  return (
+    <section className={classNames(styles.wrapper, 'default-box', `default-box--${appTheme}`)}>
+      <Messages/>
+    </section>
+  );
 }
 
 export default Chat;

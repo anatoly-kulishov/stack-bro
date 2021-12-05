@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {withRouter} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Layout} from "antd";
@@ -10,7 +10,7 @@ import Logo from "./Logo";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 import {isDarkTheme, isLightTheme} from "../../utils/boolean-helpers";
 
-const Header: React.FC = () => {
+const Header: FC = () => {
     const appTheme = useSelector(getAppTheme);
 
     return (

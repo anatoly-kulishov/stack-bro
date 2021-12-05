@@ -29,7 +29,7 @@ const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
 
     return (
         <div className={`${styles.wrapper} ${customStyles.statusBar}`}
-             onDoubleClick={(e) => doubleClickHandler(e)}>
+             onDoubleClick={doubleClickHandler}>
             {copy && (
                 <span className={styles.copyButton}
                       style={{backgroundImage: `url('${copyIcon}')'`}}

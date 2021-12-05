@@ -6,16 +6,16 @@ import {changeTheme} from "../../../store/actions/appActions";
 import {COLOR_THEME} from "../../../constants/localStorage";
 
 const ThemeToggler: FC<any> = ({children}) => {
-    const dispatch = useDispatch();
-    const appTheme = useSelector(getAppTheme);
+  const dispatch = useDispatch();
+  const appTheme = useSelector(getAppTheme);
 
-    const onChangeTheme = () => {
-        const payload = isLightTheme(appTheme) ? 'dark' : 'light';
-        localStorage.setItem(COLOR_THEME, payload);
-        dispatch(changeTheme(payload));
-    }
+  const onChangeTheme = () => {
+    const payload = isLightTheme(appTheme) ? 'dark' : 'light';
+    localStorage.setItem(COLOR_THEME, payload);
+    dispatch(changeTheme(payload));
+  }
 
-    return <span onTouchStartCapture={onChangeTheme} onDoubleClick={onChangeTheme}>{children}</span>
+  return <span onTouchStartCapture={onChangeTheme} onDoubleClick={onChangeTheme}>{children}</span>
 };
 
 export default memo(ThemeToggler);

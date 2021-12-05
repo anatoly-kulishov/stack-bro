@@ -5,7 +5,7 @@ import {getAppTheme} from "../../store/selectors/app-selectors";
 
 const News: FC = () => {
   const appTheme = useSelector(getAppTheme);
-  const [news, setNews] = useState<Array<any>>([]);
+  const [news, setNews] = useState<Array<{ title: string }>>([]);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
@@ -15,7 +15,7 @@ const News: FC = () => {
 
   return (
     <section className={`default-box default-box--${appTheme}`}>
-      {news?.map((el: any) => el.title)}
+      {news?.map((el: { title: string }) => el.title)}
       <Mock/>
     </section>
   );
