@@ -7,7 +7,7 @@ import styles from './FileField.module.scss'
 import {ThunkType} from "../../../store/actions/profileActions";
 
 type FileFieldPropsType = {
-  save: (file: File, setSubmitting: Function) => ThunkType
+  save: (file: File, setSubmitting: Function) => ThunkType | void
 }
 
 const FileField: FC<FileFieldPropsType> = ({save}) => {

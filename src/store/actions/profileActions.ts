@@ -7,9 +7,10 @@ import {
 } from "../store-types";
 import profileAPI from "../../api/profileAPI";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
-import {PhotosType, PostType, ProfileType, ResultCodes} from "../../types";
+import {PhotosType, PostType, ProfileType} from "../../types";
 import {FormAction} from "redux-form";
 import {authMe} from "./authActions";
+import {ResultCodes} from "../../types/enums";
 
 export const profileActions = {
   setProfile: (data: Array<ProfileType>) => ({

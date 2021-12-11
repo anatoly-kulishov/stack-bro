@@ -3,8 +3,9 @@ import {Avatar, Dropdown, Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import styles from "./MyAccount.module.scss";
 import SubMenu from "./SubMenu";
-import {ColorThemes, ProfileType} from "../../../types";
+import {ProfileType} from "../../../types";
 import {isDarkTheme} from "../../../utils/boolean-helpers";
+import {ColorThemes} from "../../../types/enums";
 
 type MyAccountPropsType = {
     theme: ColorThemes

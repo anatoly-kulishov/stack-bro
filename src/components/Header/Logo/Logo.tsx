@@ -1,8 +1,8 @@
 import React, {memo} from 'react';
 import styles from "./Logo.module.scss";
 import ThemeToggler from "../../common/ThemeToggler";
-import {ColorThemes} from "../../../types";
 import {isDarkTheme} from "../../../utils/boolean-helpers";
+import {ColorThemes} from "../../../types/enums";
 
 type LogoPropsType = {
   theme: ColorThemes

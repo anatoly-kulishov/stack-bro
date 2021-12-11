@@ -10,9 +10,10 @@ import {
   TOGGLE_IS_FETCHING_USERS,
 } from "../store-types";
 import usersAPI from "../../api/usersAPI";
-import {ResultCodes, UserType} from "../../types";
+import {UserType} from "../../types";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import {FilterType} from "../reducers/usersReducer/usersReducer";
+import {ResultCodes} from "../../types/enums";
 
 export const actions = {
   toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({

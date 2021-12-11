@@ -1,11 +1,10 @@
 import {CHANGE_THEME, INITIALIZED_SUCCESS} from "../store-types";
 import {setFriends, setUsers} from "./usersActions";
-import {ColorThemes} from "../../types";
 import {authMe} from "./authActions";
 
 export const actions = {
   initializedSuccess: () => ({type: INITIALIZED_SUCCESS} as const),
-  changeThemeSuccess: (theme: ColorThemes) => ({type: CHANGE_THEME, payload: theme})
+  changeThemeSuccess: (theme: string) => ({type: CHANGE_THEME, payload: theme})
 }
 
 /**
@@ -33,7 +32,7 @@ export const initializeApp = (isAuth: boolean) => {
   }
 }
 
-export const changeTheme = (theme: ColorThemes) => {
+export const changeTheme = (theme: string) => {
   return (dispatch: Function) => {
     dispatch(actions.changeThemeSuccess(theme))
   }

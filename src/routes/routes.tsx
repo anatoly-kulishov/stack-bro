@@ -9,7 +9,6 @@ import {IRouteType} from "../types";
 const MessengerPage = lazy(() => import("../pages/MessengerPage"));
 const SandBoxPage = lazy(() => import("../components/SandBox"));
 const Settings = lazy(() => import("../components/Settings"));
-const NewsPage = lazy(() => import('../components/News'));
 const Help = lazy(() => import("../components/Help"));
 
 export const publicRoutes: IRouteType[] = [
@@ -30,11 +29,6 @@ export const privateRoutes: IRouteType[] = [
     path: "/users",
     exact: true,
     component: <Users/>
-  },
-  {
-    path: "/news",
-    exact: true,
-    component: withSuspense(NewsPage)
   },
   {
     path: "/settings",

@@ -3,8 +3,9 @@ import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
 import authAPI from "../../api/authAPI";
 import securityAPI from "../../api/securityAPI.ts";
 import {AUTH_ME, AUTH_NOT_VALID, GET_CAPTCHA_URL_SUCCESS, LOG_OUT, SIGN_IN} from "../store-types";
-import {Nullable, ResultCodes, ResultCodesForCaptcha} from "../../types";
+import {Nullable} from "../../types";
 import {updateOwnerProfile, updateProfile} from "./profileActions";
+import {ResultCodes, ResultCodesForCaptcha} from "../../types/enums";
 
 export const actions = {
   getCaptchaUrlSuccess: (captchaUrl: string) => ({
@@ -65,7 +66,7 @@ export const authMe = (): ThunkType => {
           type: AUTH_ME,
           payload: data.data
         })
-        console.log(data)
+        // console.log(data)
         Cookies.set('token', String(data.data.id));
         dispatch(updateProfile(data.data.id))
         dispatch(updateOwnerProfile(data.data.id))
