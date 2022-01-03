@@ -52,10 +52,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "jest": {
+    "watchPlugins": [
+      "./yourWatchPlugin"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -77,8 +82,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "@types/js-cookie": "^2.2.6",
     "@types/uuid": "^8.3.1",
-    "gh-pages": "^3.2.3"
+    "babel-jest": "^27.4.5",
+    "gh-pages": "^3.2.3",
+    "jest": "^27.4.5"
   }
 }
