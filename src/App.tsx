@@ -12,50 +12,49 @@ import {catchAllUnhandledErrors} from "./utils/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
 import {AppStateType} from "./store/reducers/rootReducer";
 import {getAppTheme} from "./store/selectors/app-selectors";
+import WithLoading from "./components/common/WithLoading/WithLoading";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeApp: (isAuth: boolean) => void };
 
 const App: FC<MapPropsType & DispatchPropsType> = props => {
-    const {initialized, initializeApp, isAuth} = props;
-    const appTheme = useSelector(getAppTheme);
+  const {initialized, initializeApp, isAuth} = props;
+  const appTheme = useSelector(getAppTheme);
 
-    useEffect(() => {
-        initializeApp(isAuth);
-        window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
-        return () => {
-            window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
-        }
-    }, [initializeApp, isAuth])
+  useEffect(() => {
+    initializeApp(isAuth);
+    window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
+    return () => {
+      window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
+    }
+  }, [initializeApp, isAuth])
 
-    return (
-        <>
-            {initialized && (
-                <div className={`app--${appTheme}`}>
-                    {isAuth ? <AppNavigation/> : <AuthRoutes/>}
-                </div>
-            )}
-        </>
-    );
+  return (
+    <WithLoading isLoading={!initialized} spinnerSize={'40px'}>
+      <div className={`app--${appTheme}`}>
+        {isAuth ? <AppNavigation/> : <AuthRoutes/>}
+      </div>
+    </WithLoading>
+  );
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    initialized: state.app.initialized,
-    isAuth: state.auth.isAuth
+  initialized: state.app.initialized,
+  isAuth: state.auth.isAuth
 })
 
 const AppContainer = compose<React.ComponentType>(connect(mapStateToProps, {initializeApp}))(App);
 
 const StackBroTSApp: React.FC = () => {
-    return (
-        <StrictMode>
-            <Provider store={store}>
-                <Router>
-                    <AppContainer/>
-                </Router>
-            </Provider>
-        </StrictMode>
-    )
+  return (
+    <StrictMode>
+      <Provider store={store}>
+        <Router>
+          <AppContainer/>
+        </Router>
+      </Provider>
+    </StrictMode>
+  )
 }
 
 export default StackBroTSApp;
