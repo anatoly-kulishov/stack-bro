@@ -4,7 +4,7 @@ import copyIcon from "./copy-icon.svg";
 import {isDarkTheme} from "../../../utils/boolean-helpers";
 
 type CopyToClipboardPropsType = {
-    children: any,
+    children: string,
     customStyles: { readonly [key: string]: string },
     copy: boolean,
     placeholder: string,
@@ -16,7 +16,7 @@ const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
     const {onDoubleClickHandler, customStyles, appTheme, children = '', copy = true, placeholder = "No Data"} = props;
     const [copySuccess] = useState<string>(children);
 
-    const copyToClipboard = (text: string) => {
+    const createCopyToClipboard = (text: string) => () => {
         navigator.clipboard.writeText(text).then(() => {
             console.log(`copy(${text})`)
         })
@@ -29,11 +29,11 @@ const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
 
     return (
         <div className={`${styles.wrapper} ${customStyles.statusBar}`}
-             onDoubleClick={(e) => doubleClickHandler(e)}>
+             onDoubleClick={doubleClickHandler}>
             {copy && (
                 <span className={styles.copyButton}
                       style={{backgroundImage: `url('${copyIcon}')'`}}
-                      onClick={() => copyToClipboard(copySuccess)}/>
+                      onClick={createCopyToClipboard(copySuccess)}/>
             )}
             <div className={`${styles.textBox} ${customStyles.statusTextBox} ${isDarkTheme(appTheme) && customStyles.statusTextBoxDarkTheme}`}>
                 {children

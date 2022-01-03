@@ -14,7 +14,7 @@ import {
 } from "../../store/selectors/users-selectors";
 import {
     setUsers
-} from '../../store/actions/usersActions/usersActions';
+} from '../../store/actions/usersActions';
 import {useHistory} from "react-router-dom";
 import UsersFilterForm from "./UsersFilterForm/UsersFilterForm";
 import {FilterType} from "../../store/reducers/usersReducer/usersReducer";

@@ -13,7 +13,7 @@
     padding: 5px 0 !important;
 
     line-height: inherit !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e7e8ec;
 }
 
 .lightHeader {
@@ -21,5 +21,6 @@
 }
 
 .darkHeader {
-    background-color: $dark-theme-bg-color;
+    background-color: $dark-theme-bg-color!important;
+    border-color: #30363d;
 }

@@ -1,2 +1,7 @@
-export const isLightTheme = (appTheme: string) => (appTheme === 'light');
-export const isDarkTheme = (appTheme: string) => (appTheme === 'dark');
+const isLightTheme = (appTheme: string) => (appTheme === 'light');
+const isDarkTheme = (appTheme: string) => (appTheme === 'dark');
+
+export {
+  isLightTheme,
+  isDarkTheme
+}

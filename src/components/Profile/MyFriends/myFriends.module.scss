@@ -14,6 +14,12 @@
     & > li {
         max-width: 66px;
     }
+
+    @media(max-width: $xl) {
+        & > li {
+            max-width: 52px;
+        }
+    }
 }
 
 .boxTitle {
