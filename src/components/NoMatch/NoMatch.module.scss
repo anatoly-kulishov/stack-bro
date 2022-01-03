@@ -1,0 +1,15 @@
+@import "../../variables";
+
+.noMatch {
+    padding: 15px;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.backLinkTitle {
+    color: $palette-link-color;
+}

@@ -1,0 +1,15 @@
+@import "../../../../../variables";
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.label {
+    text-transform:capitalize;
+}
+
+.desc {}

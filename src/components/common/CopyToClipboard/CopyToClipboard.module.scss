@@ -1,0 +1,38 @@
+@import "../../../variables";
+
+.wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.textBox {
+    width: 100%;
+    min-height: 50px;
+    padding: 6px 40px 6px 15px;
+    background-color: transparent;
+}
+
+.copyButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+
+    &:active {
+        opacity: .6;
+    }
+}
+
+.emptyBox {
+    font-size: 12px;
+    color: #bfbfbf
+}

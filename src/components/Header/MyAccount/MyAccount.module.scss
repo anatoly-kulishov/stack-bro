@@ -1,0 +1,20 @@
+@import "../../../variables";
+
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.wrapperDarkTheme .ant-menu {
+    //background-color: red!important;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    font-weight: 500;
+}
