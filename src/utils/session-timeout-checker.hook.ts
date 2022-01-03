@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import moment from 'moment';
 
 const SESSION_TIMEOUT_MINUTES: number = 15;

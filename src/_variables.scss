@@ -7,7 +7,7 @@ $url-img: "./assets/images"; // 	   #{$url-images}
 // Functions
 // ---------
 @function rem($px) {
-    @return math.div($px, 16) +rem;
+  @return math.div($px, 16) +rem;
 }
 
 // Colors
@@ -106,39 +106,39 @@ $scrollbar-color: #1890ff;
 
 // Mixins
 @mixin font($family, $url, $weight, $style, $display: swap) {
-    font-family: $family;
-    src: $url;
-    font-weight: $weight;
-    font-style: $style;
-    font-display: $display;
+  font-family: $family;
+  src: $url;
+  font-weight: $weight;
+  font-style: $style;
+  font-display: $display;
 }
 
 @mixin bg($size: cover, $position: center, $repeat: no-repeat) {
-    background-repeat: $repeat;
-    background-position: $position;
-    background-size: $size;
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
 }
 
 @mixin img-cover($fit: cover, $position: center) {
-    object-fit: $fit;
-    object-position: $position;
+  object-fit: $fit;
+  object-position: $position;
 }
 
 @mixin list-reset($margin: 0, $padding: 0) {
-    margin: $margin;
-    padding: $padding;
-    list-style: none;
+  margin: $margin;
+  padding: $padding;
+  list-style: none;
 }
 
 @mixin transition($property: all, $duration: .25s, $timing: ease) {
-    transition: $property $duration $timing;
+  transition: $property $duration $timing;
 }
 
 @mixin position($position, $z) {
-    position: $position;
-    z-index: $z;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
+  position: $position;
+  z-index: $z;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }

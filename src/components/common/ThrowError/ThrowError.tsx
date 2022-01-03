@@ -1,21 +1,23 @@
+/** Libs **/
 import React, {FC, useState} from 'react';
 import {Button} from "antd";
 
 const ThrowError: FC = () => {
-    const [error, setError] = useState<Error>();
-    const onClick = () => {
-        setError(new Error('An Uncaught Error'));
-    };
+  const [error, setError] = useState<Error>();
 
-    if (error) {
-        throw error;
-    }
+  const onClick = () => {
+    setError(new Error('An Uncaught Error'));
+  };
 
-    return (
-        <Button danger onClick={onClick}>
-            Click me to throw a error
-        </Button>
-    );
+  if (error) {
+    throw error;
+  }
+
+  return (
+    <Button danger onClick={onClick}>
+      Click me to throw a error
+    </Button>
+  );
 };
 
 export default ThrowError;

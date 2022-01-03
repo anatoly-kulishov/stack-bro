@@ -13,8 +13,7 @@ export const getFileType = (str: string) => {
   try {
     if (str) {
       const lastIndexOfDot = `${str}`.lastIndexOf('.');
-      const fileTypeString = `${str}`.substr(lastIndexOfDot + 1, `${str}`.length);
-      return fileTypeString;
+      return `${str}`.substr(lastIndexOfDot + 1, `${str}`.length);
     } else return ''
 
   } catch (error) {

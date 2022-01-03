@@ -1,20 +1,21 @@
-@import "../../../variables";
+@use "../../../variables" as *;
 
 .fieldBox {
-    position: relative;
+  position: relative;
 
-    & > * {
-        width: 100%
-    }
+  & > * {
+    width: 100%
+  }
 }
 
 .icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translate(0, -70%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -70%);
 
-    width: 15px;
-    height: 15px;
-    cursor: help;
+  width: 15px;
+  height: 15px;
+
+  cursor: help;
 }
