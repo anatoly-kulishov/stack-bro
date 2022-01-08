@@ -1,15 +1,21 @@
+/** Libs **/
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {Layout} from 'antd';
-import {privateRoutes} from "../routes";
-import {IRouteType} from "../../types";
+
+/** Components **/
 import NoMatch from "../../components/NoMatch";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 
-const AppRoutes: React.FC = () => {
-    const {Content} = Layout;
+/** Utils **/
+import {privateRoutes} from "../routes";
+import {IRouteType} from "../../types";
 
+/** Others **/
+const {Content} = Layout;
+
+const AppRoutes: React.FC = () => {
     return (
         <Layout style={{minHeight: "100vh"}}>
             <Header/>

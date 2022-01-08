@@ -20,7 +20,7 @@ type DispatchPropsType = { initializeApp: (isAuth: boolean) => void };
 const App: FC<MapPropsType & DispatchPropsType> = props => {
   const {initialized, initializeApp, isAuth} = props;
   const appTheme = useSelector(getAppTheme);
-
+  
   useEffect(() => {
     initializeApp(isAuth);
     window.addEventListener("unhandledrejection", catchAllUnhandledErrors);

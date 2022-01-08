@@ -6,14 +6,14 @@ import {
     TeamOutlined,
     UserOutlined,
     FileOutlined,
-    CodeSandboxOutlined
 } from '@ant-design/icons';
 import {useSelector} from "react-redux";
 import {getTotalUsersCount} from "../../store/selectors/users-selectors";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 
+const {Sider} = Layout;
+
 const NavBar: FC = () => {
-    const {Sider} = Layout;
     const userCounter = useSelector(getTotalUsersCount);
     const appTheme = useSelector(getAppTheme);
 
@@ -46,11 +46,6 @@ const NavBar: FC = () => {
                 <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<TeamOutlined/>}>
                     <Link to="/users">
                         Users <small>({userCounter})</small>
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="5" onClick={() => onSelectNavKey(5)} icon={<CodeSandboxOutlined/>}>
-                    <Link to="/sandbox">
-                        Sandbox
                     </Link>
                 </Menu.Item>
             </Menu>

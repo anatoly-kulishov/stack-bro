@@ -21,6 +21,7 @@ import {FilterType} from "../../store/reducers/usersReducer/usersReducer";
 import {getAppTheme} from "../../store/selectors/app-selectors";
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
+
 const Users: React.FC = () => {
     const dispatch = useDispatch();
     const history = useHistory();

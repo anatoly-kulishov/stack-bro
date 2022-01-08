@@ -1,64 +1,57 @@
+/** Libs **/
 import React, {lazy} from 'react';
+
+/** Utils **/
 import {withSuspense} from "../hoc/withSuspense";
-import Login from "../components/Login";
-import Profile from "../components/Profile";
-import Users from "../components/Users";
 import {IRouteType} from "../types";
 
-// Lazy Pages
-const NewsPage = lazy(() => import('../pages/NewsPage'));
-const Settings = lazy(() => import("../components/Settings"));
-const Help = lazy(() => import("../components/Help"));
+/** Pages **/
+import Profile from "../components/Profile";
+import LoginPage from "../pages/LoginPage";
+
+/** Lazy Pages **/
 const MessengerPage = lazy(() => import("../pages/MessengerPage"));
-const SandBoxPage = lazy(() => import("../components/SandBox"));
+const UsersPage = lazy(() => import('../pages/UsersPage'));
+const NewsPage = lazy(() => import('../pages/NewsPage'));
+const HelpPage = lazy(() => import('../pages/HelpPage'));
 
 export const publicRoutes: IRouteType[] = [
-  {
-    path: "/",
-    exact: true,
-    component: <Login/>
-  },
-  {
-    path: "/reset-password",
-    exact: true,
-    component: <div>Soon</div>
-  }
+    {
+        path: "/",
+        exact: true,
+        component: <LoginPage/>
+    },
+    {
+        path: "/reset-password",
+        exact: true,
+        component: <div>Soon</div>
+    }
 ];
 
 export const privateRoutes: IRouteType[] = [
-  {
-    path: "/users",
-    exact: true,
-    component: <Users/>
-  },
-  {
-    path: "/news",
-    exact: true,
-    component: withSuspense(NewsPage)
-  },
-  {
-    path: "/settings",
-    exact: true,
-    component: withSuspense(Settings)
-  },
-  {
-    path: "/help",
-    exact: true,
-    component: withSuspense(Help)
-  },
-  {
-    path: "/sandbox",
-    exact: true,
-    component: withSuspense(SandBoxPage)
-  },
-  {
-    path: "/messenger/:id?",
-    exact: true,
-    component: withSuspense(MessengerPage)
-  },
-  {
-    path: "/:userId?",
-    exact: true,
-    component: <Profile/>
-  }
+    {
+        path: "/users",
+        exact: true,
+        component: withSuspense(UsersPage)
+    },
+    {
+        path: "/news",
+        exact: true,
+        component: withSuspense(NewsPage)
+    },
+    {
+        path: "/help",
+        exact: true,
+        component: withSuspense(HelpPage)
+    },
+    {
+        path: "/messenger/:id?",
+        exact: true,
+        component: withSuspense(MessengerPage)
+    },
+    {
+        path: "/:userId?",
+        exact: true,
+        component: <Profile/>
+    }
 ];
