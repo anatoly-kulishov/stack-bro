@@ -25,7 +25,7 @@ const ProfileInfo: React.FC = () => {
                         <h1 className={styles.profileName}>{profile?.fullName}</h1>
                         <div className={styles.online}>online <span className="ml-1"><ApiTwoTone/></span></div>
                     </div>
-                    <ProfileStatus/>
+                    <ProfileStatus status=""/>
                     <span className={styles.status}/>
                 </div>
                 <div className="d-flex justify-content-end mt-3 mb-2">

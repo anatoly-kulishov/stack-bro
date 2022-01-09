@@ -68,7 +68,7 @@ export const passwordStrengthValidation = (password: string) => {
   return passStrengths;
 }
 
-export const scrollToGivenTop = (element: any) => {
+export const scrollToGivenTop = (element: Element) => {
   try {
     if (element) {
       element.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});

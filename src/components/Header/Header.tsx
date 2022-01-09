@@ -22,7 +22,7 @@ const Header: React.FC = () => {
                         <Logo theme={appTheme}/>
                     </div>
                     <div className="d-none d-md-block col-md-3 col-lg-3">
-                        <SearchPanel/>
+                        <SearchPanel theme={appTheme}/>
                     </div>
                     <div className="d-none d-md-block col-md-5">
                         <AudioPlayer/>

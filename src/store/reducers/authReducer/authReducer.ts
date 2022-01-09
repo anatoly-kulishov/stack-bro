@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import {Nullable} from "../../../types";
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     isValid: true,
     isAuth: Boolean(Cookies.get('token')),
     error: null,
@@ -46,7 +46,8 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
             return {
                 ...state,
                 isValid: false,
-                error: action.error
+                error: action.error,
+                isLoading: false
             }
         case GET_CAPTCHA_URL_SUCCESS:
             return {

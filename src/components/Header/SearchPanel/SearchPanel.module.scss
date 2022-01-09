@@ -1,0 +1,13 @@
+@import "../../../variables";
+
+.searchPanel {
+  width: 100%;
+}
+
+.searchPanelDarkTheme button {
+  background-color: $x-color-grey-2;
+}
+
+.searchPanelDarkTheme button:hover {
+  background-color: $x-color-grey;
+}

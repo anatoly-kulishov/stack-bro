@@ -20,11 +20,6 @@ export const publicRoutes: IRouteType[] = [
         path: "/",
         exact: true,
         component: <LoginPage/>
-    },
-    {
-        path: "/reset-password",
-        exact: true,
-        component: <div>Soon</div>
     }
 ];
 

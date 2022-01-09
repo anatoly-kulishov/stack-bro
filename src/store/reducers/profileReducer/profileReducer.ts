@@ -6,8 +6,6 @@ import {
     SET_USER_PROFILE, SHOW_PROFILE_LOADER
 } from "../../store-types";
 import {Nullable, ProfileType} from "../../../types";
-// import {InferActionsTypes} from "../rootReducer";
-// import {actions} from "../../actions/profileActions";
 
 const initialState = {
     isOwner: true,

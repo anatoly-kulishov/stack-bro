@@ -41,7 +41,7 @@ const Users: React.FC = () => {
         let actualPage = currentPage;
 
         if (!!parsed.page) actualPage = Number(parsed.page);
-        if (!!parsed.term) actualFilter = {...actualFilter as any, term: parsed.term as string};
+        if (!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string};
 
         switch (parsed.friend) {
             case 'null':

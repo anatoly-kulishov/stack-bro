@@ -11,6 +11,9 @@ import {getPosts, getProfile} from "../../../store/selectors/profile-selectors";
 import {MY_POST_BUTTON} from "../../../constants/buttons";
 import {getAppTheme} from "../../../store/selectors/app-selectors";
 
+const {TextArea} = Input;
+const {ErrorBoundary} = Alert;
+
 const messagesSchema = Yup.object().shape({
     message: Yup.string()
         .min(2, 'Too Short!')
@@ -24,9 +27,7 @@ const MyPosts: React.FC = () => {
     const posts = useSelector(getPosts);
     const appTheme = useSelector(getAppTheme);
 
-    const {TextArea} = Input;
-    const {ErrorBoundary} = Alert;
-    const postsElements = posts.map((p: any) => (
+    const postsElements = posts.map((p: any) => ( // ToDo: Fix any!
         <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount}/>)
     )
 
@@ -71,9 +72,9 @@ const MyPosts: React.FC = () => {
                                         </Button>
                                         {
                                             errors.message && touched.message &&
-                                            <Alert style={{marginLeft: 15}}
-                                                   message={errors.message}
-                                                   type="warning" showIcon/>
+                                          <Alert style={{marginLeft: 15}}
+                                                 message={errors.message}
+                                                 type="warning" showIcon/>
                                         }
                                     </div>
                                 </div>

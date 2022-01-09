@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import styles from "./ProfileStatus.module.scss";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {getProfile, getProfileStatus} from "../../../../store/selectors/profile-selectors";
+import {getProfile} from "../../../../store/selectors/profile-selectors";
 import {getAppTheme} from "../../../../store/selectors/app-selectors";
 
-const ProfileStatus: React.FC = () => {
+type ProfileStatusPropsType = {
+    status: string
+}
+
+const ProfileStatus: FC<ProfileStatusPropsType> = ({status}) => {
     const profile = useSelector(getProfile);
-    const status = useSelector(getProfileStatus);
     const appTheme = useSelector(getAppTheme);
     const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
