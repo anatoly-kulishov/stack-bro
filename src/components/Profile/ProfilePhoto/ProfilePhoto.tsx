@@ -48,7 +48,6 @@ const ProfilePhoto: React.FC = () => {
                     {isOwner && (
                         <FileField save={savePhoto}/>
                     )}
-                    {/* Todo!!! */}
                     {!isOwner && !followState && (
                         <Button onClick={() => dispatch(userFollow(18310))}
                                 htmlType="button"

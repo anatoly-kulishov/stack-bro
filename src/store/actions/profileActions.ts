@@ -3,7 +3,7 @@ import {
     REMOVE_POST,
     SAVE_PHOTO_SUCCESS,
     SET_PROFILE_STATUS,
-    SET_USER_PROFILE, SET_OWNER_PROFILE, SHOW_PROFILE_LOADER
+    SET_USER_PROFILE, SET_OWNER_PROFILE, SHOW_PROFILE_LOADER, SET_OWNER_STATUS, GET_PROFILE_STATUS
 } from "../store-types";
 import profileAPI from "../../api/profileAPI";
 import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
@@ -20,6 +20,10 @@ export const profileActions = {
         type: SET_OWNER_PROFILE,
         payload: data
     }),
+    setIsOwnerStatus: (flag: boolean) => ({
+        type: SET_OWNER_STATUS,
+        payload: flag
+    }),
     addPost: (post: PostType) => ({
         type: ADD_POST,
         payload: post
@@ -33,10 +37,10 @@ export const profileActions = {
         photos
     } as const),
     getStatus: (data: string) => ({
-        type: SET_PROFILE_STATUS,
+        type: GET_PROFILE_STATUS,
         status: data
     }),
-    updateStatus: (data: object) => ({
+    setStatus: (data: object) => ({
         type: SET_PROFILE_STATUS,
         status: data
     }),
@@ -90,12 +94,11 @@ export const getStatus = (userId: number): ThunkType => {
  * Update status for current authorized user
  * @param status
  */
-export const updateStatus = (status: string): ThunkType => {
+export const setStatus = (status: string): ThunkType => {
     return async (dispatch: Function) => {
-        profileAPI.updateStatus(status).then(data => {
+        profileAPI.setStatus(status).then(data => {
             if (data.resultCode === ResultCodes.Success) {
-                console.log(data)
-                dispatch(profileActions.updateStatus(data))
+                dispatch(profileActions.setStatus(data))
             }
         }).catch((e) => console.log(e));
     }
@@ -108,7 +111,6 @@ export const updateStatus = (status: string): ThunkType => {
  */
 export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
     return async (dispatch: Function) => {
-        console.log("savePhoto()")
         dispatch(profileActions.sendNewPhoto())
         profileAPI.putPhoto(file).then(data => {
             if (data.resultCode === ResultCodes.Success) {

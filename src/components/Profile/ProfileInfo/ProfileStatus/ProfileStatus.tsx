@@ -1,15 +1,18 @@
 import React, {FC, useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
-import styles from "./ProfileStatus.module.scss";
+import {useDispatch, useSelector} from "react-redux";
 import CopyToClipboard from "../../../common/CopyToClipboard";
 import {getProfile} from "../../../../store/selectors/profile-selectors";
 import {getAppTheme} from "../../../../store/selectors/app-selectors";
+import {setStatus} from "../../../../store/actions/profileActions";
+import styles from "./ProfileStatus.module.scss";
 
 type ProfileStatusPropsType = {
     status: string
+    isDisabled: boolean
 }
 
-const ProfileStatus: FC<ProfileStatusPropsType> = ({status}) => {
+const ProfileStatus: FC<ProfileStatusPropsType> = ({status, isDisabled}) => {
+    const dispatch = useDispatch();
     const profile = useSelector(getProfile);
     const appTheme = useSelector(getAppTheme);
     const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
@@ -17,12 +20,8 @@ const ProfileStatus: FC<ProfileStatusPropsType> = ({status}) => {
 
     const updateStatusHandler = () => {
         setEditMode(!editMode)
-        // updateStatus(currentStatus)
+        dispatch(setStatus(currentStatus))
     }
-
-    // useEffect(() => {
-    //     getStatus(myProfileId)
-    // }, [getStatus, status, profile, myProfileId])
 
     useEffect(() => {
         setCurrentStatus(status)
@@ -35,6 +34,7 @@ const ProfileStatus: FC<ProfileStatusPropsType> = ({status}) => {
                     copy={false}
                     customStyles={styles}
                     appTheme={appTheme}
+                    isDisabled={isDisabled}
                     onDoubleClickHandler={() => setEditMode(!editMode)}
                     placeholder="Set status">
                     {currentStatus}
@@ -46,7 +46,7 @@ const ProfileStatus: FC<ProfileStatusPropsType> = ({status}) => {
                     className={`${styles.statusInput} form-control`}
                     value={currentStatus}
                     onChange={(e) => setCurrentStatus(e.target.value)}
-                    onBlur={() => updateStatusHandler()}
+                    onBlur={updateStatusHandler}
                     autoFocus
                     placeholder="Set status"/>
             )}

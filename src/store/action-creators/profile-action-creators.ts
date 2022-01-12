@@ -1,15 +1,14 @@
 import {PhotosType, PostType, ProfileType} from "../../types";
 import {
-    ADD_POST, NEW_PROFILE_PHOTO_SENDS,
+    ADD_POST, GET_PROFILE_STATUS, NEW_PROFILE_PHOTO_SENDS,
     REMOVE_POST,
     SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED,
-    SET_OWNER_PROFILE,
+    SET_OWNER_PROFILE, SET_OWNER_STATUS,
     SET_PROFILE_STATUS,
     SET_USER_PROFILE,
     SHOW_PROFILE_LOADER
 } from "../store-types";
 
-// Todo: Add Action for Typing!
 export const setProfile = (data: Array<ProfileType>) => ({
     type: SET_USER_PROFILE,
     payload: data
@@ -18,6 +17,11 @@ export const setProfile = (data: Array<ProfileType>) => ({
 export const setOwnerProfile = (data: Array<ProfileType>) => ({
     type: SET_OWNER_PROFILE,
     payload: data
+})
+
+export const setOwnerStatus = (flag: boolean) => ({
+    type: SET_OWNER_STATUS,
+    payload: flag
 })
 
 export const addPost = (post: PostType) => ({
@@ -35,14 +39,14 @@ export const savePhotoSuccess = (photos: PhotosType) => ({
     photos
 })
 
-export const getStatus = (status: string) => ({
-    type: SET_PROFILE_STATUS,
+export const getStatus = (status: object) => ({
+    type: GET_PROFILE_STATUS,
     status
 })
 
-export const updateStatus = (data: object) => ({
+export const updateStatus = (status: string) => ({
     type: SET_PROFILE_STATUS,
-    status: data
+    status: status
 })
 
 export const sendNewPhoto = () => ({

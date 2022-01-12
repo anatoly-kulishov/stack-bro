@@ -1,9 +1,16 @@
 import {
-    ADD_POST, GET_FOLLOWING_STATUS, NEW_PROFILE_PHOTO_SENDS,
+    ADD_POST,
+    GET_FOLLOWING_STATUS, GET_PROFILE_STATUS,
+    NEW_PROFILE_PHOTO_SENDS,
     REMOVE_POST,
-    SAVE_PHOTO_SUCCESS, SAVE_PROFILE_FAILED, SAVE_PROFILE_SUCCESS, SET_OWNER_PROFILE,
+    SAVE_PHOTO_SUCCESS,
+    SAVE_PROFILE_FAILED,
+    SAVE_PROFILE_SUCCESS,
+    SET_OWNER_PROFILE,
+    SET_OWNER_STATUS,
     SET_PROFILE_STATUS,
-    SET_USER_PROFILE, SHOW_PROFILE_LOADER
+    SET_USER_PROFILE,
+    SHOW_PROFILE_LOADER
 } from "../../store-types";
 import {Nullable, ProfileType} from "../../../types";
 
@@ -34,10 +41,20 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                 ownerProfile: action.payload,
                 isLoading: false
             }
-        case SET_PROFILE_STATUS:
+        case SET_OWNER_STATUS:
+            return {
+                ...state,
+                isOwner: action.payload
+            }
+        case GET_PROFILE_STATUS:
             return {
                 ...state,
                 status: action.status
+            }
+        case SET_PROFILE_STATUS:
+            return {
+                ...state,
+                status: action.status.status
             }
         case GET_FOLLOWING_STATUS:
             return {

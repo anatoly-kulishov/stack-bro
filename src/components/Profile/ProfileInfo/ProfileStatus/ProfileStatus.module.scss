@@ -12,16 +12,19 @@
     line-height: 1;
 }
 
+.statusBarActive {
+    cursor: pointer!important;
+}
+
+.statusBarActive .statusTextBox:hover {
+    background-color: $x-color-grey-3;
+}
+
 .statusTextBox {
     min-height: auto !important;
     margin-top: 2px !important;
     padding: 3.5px 6px !important;
     margin-left: -4px !important;
-    cursor: pointer !important;
-
-    &:hover {
-        background-color: $x-color-grey-3;
-    }
 }
 
 .statusTextBoxDarkTheme:hover {

@@ -12,7 +12,7 @@ const profileAPI = {
   getStatus: (userId: number) => {
     return baseInstance.get<string>(`/profile/status/${userId}`).then(res => res.data)
   },
-  updateStatus: (status: string) => {
+  setStatus: (status: string) => {
     return baseInstance.put<BaseResponseType>(`/profile/status`, {status}).then(res => res.data)
   },
   putProfile: (profile: ProfileType) => {
