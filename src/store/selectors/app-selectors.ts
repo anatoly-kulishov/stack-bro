@@ -1,4 +1,3 @@
 import {AppStateType} from "../reducers/rootReducer";
 
-export const getAppTheme = (state: AppStateType) => state.app.theme;
-
+export const getAppState = (state: AppStateType) => state.app;

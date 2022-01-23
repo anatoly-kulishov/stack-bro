@@ -6,41 +6,33 @@ import styles from './ProfileInfo.module.scss';
 import ProfileStatus from "./ProfileStatus";
 import ProfileData from "./ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
-import {
-    getProfile,
-    getProfileErrorText,
-    getProfileIsOwnerStatus,
-    getProfileStatus
-} from "../../../store/selectors/profile-selectors";
+import {getProfileState} from "../../../store/selectors/profile-selectors";
 import {getStatus, saveProfile} from "../../../store/actions/profileActions";
-import {getAppTheme} from "../../../store/selectors/app-selectors";
+import {getAppState} from "../../../store/selectors/app-selectors";
 
 const {ErrorBoundary} = Alert;
 
 const ProfileInfo: FC = () => {
     const dispatch = useDispatch();
-    const profile = useSelector(getProfile);
-    const errorText = useSelector(getProfileErrorText);
-    const appTheme = useSelector(getAppTheme);
-    const isOwner = useSelector(getProfileIsOwnerStatus);
-    const profileStatus = useSelector(getProfileStatus);
+    const {profile, error, isOwner, status} = useSelector(getProfileState);
+    const {theme} = useSelector(getAppState);
     const [editMode, setEditMode] = useState<boolean>(false);
 
     useEffect(() => {
         if(profile.userId) {
             dispatch(getStatus(Number(profile.userId)))
         }
-    }, [dispatch, profile.userId, profileStatus])
+    }, [dispatch, profile.userId, status])
 
     return (
-        <div className={`${styles.wrapper} default-box default-box--${appTheme}`}>
+        <div className={`${styles.wrapper} default-box default-box--${theme}`}>
             <ErrorBoundary>
                 <div className={styles.profileHead}>
                     <div className="d-flex justify-content-between align-items-center">
                         <h1 className={styles.profileName}>{profile?.fullName}</h1>
                         <div className={styles.online}>online <span className="ml-1"><ApiTwoTone/></span></div>
                     </div>
-                    <ProfileStatus status={profileStatus} isDisabled={!isOwner}/>
+                    <ProfileStatus status={status} isDisabled={!isOwner}/>
                     <span className={styles.status}/>
                 </div>
                 {isOwner && (
@@ -54,7 +46,7 @@ const ProfileInfo: FC = () => {
                 <div>
                     {!editMode
                         ? <ProfileData profile={profile}/>
-                        : <ProfileDataForm profile={profile} onSubmit={saveProfile} errorText={errorText}/>
+                        : <ProfileDataForm profile={profile} onSubmit={saveProfile} errorText={error}/>
                     }
                 </div>
             </ErrorBoundary>

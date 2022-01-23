@@ -1,14 +1,14 @@
-import {MESSAGES_RECEIVED, MESSAGES_STATUS_CHANGED} from "../store-types";
-import {ChatMessageType} from "../../types";
 import {StatusMessageType} from "../reducers/messengerReducer/messengerReducer";
+import MessengerActionType from "../action-types/messenger-action-type";
+import {ChatMessageType} from "../../types";
 
-// Todo: Add Action for Typing!
+
 export const messagesReceived = (messages: ChatMessageType[]) => ({
-    type: MESSAGES_RECEIVED,
-    payload: messages
+  type: MessengerActionType.MESSAGES_RECEIVED,
+  payload: messages
 })
 
 export const statusChanged = (status: StatusMessageType) => ({
-    type: MESSAGES_STATUS_CHANGED,
-    payload: status
+  type: MessengerActionType.MESSAGES_STATUS_CHANGED,
+  payload: status
 })

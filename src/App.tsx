@@ -1,25 +1,32 @@
+/** Libs **/
 import React, {FC, StrictMode, useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider, useSelector} from "react-redux";
 import {compose} from "redux";
-import './assets/styles/bootstrap-grid.min.css';
-import 'antd/dist/antd.css';
-import "./App.scss";
+
+/** Components **/
+import WithLoading from "./components/common/WithLoading";
+
+/** Utils **/
 import store from "./store";
 import AppNavigation from "./routes/AppRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import {catchAllUnhandledErrors} from "./utils/errors-helpers";
 import {initializeApp} from "./store/actions/appActions";
 import {AppStateType} from "./store/reducers/rootReducer";
-import {getAppTheme} from "./store/selectors/app-selectors";
-import WithLoading from "./components/common/WithLoading/WithLoading";
+import {getAppState} from "./store/selectors/app-selectors";
+
+/** Styles **/
+import './assets/styles/bootstrap-grid.min.css';
+import 'antd/dist/antd.css';
+import "./App.scss";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeApp: (isAuth: boolean) => void };
 
 const App: FC<MapPropsType & DispatchPropsType> = props => {
   const {initialized, initializeApp, isAuth} = props;
-  const appTheme = useSelector(getAppTheme);
+  const {theme} = useSelector(getAppState);
   
   useEffect(() => {
     initializeApp(isAuth);
@@ -31,7 +38,7 @@ const App: FC<MapPropsType & DispatchPropsType> = props => {
 
   return (
     <WithLoading isLoading={!initialized} spinnerSize={'40px'}>
-      <div className={`app--${appTheme}`}>
+      <div className={`app--${theme}`}>
         {isAuth ? <AppNavigation/> : <AuthRoutes/>}
       </div>
     </WithLoading>

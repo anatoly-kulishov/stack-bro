@@ -1,37 +1,41 @@
-import React from 'react';
+/** Libs **/
+import React, {FC} from 'react';
 import {useSelector} from "react-redux";
-import styles from './Login.module.scss';
+
+/** Components **/
 import LoginForm from "./LoginForm/LoginForm";
-import {signIn} from "../../store/actions/authActions";
-import {
-    getAuthCaptchaUrl,
-    getAuthErrorText,
-    getAuthIsLoading,
-    getAuthIsValidAuth
-} from "../../store/selectors/auth-selectors";
 import WithLoading from "../common/WithLoading";
 
-const Login: React.FC = () => {
-    const isValidAuth = useSelector(getAuthIsValidAuth);
-    const captchaUrl = useSelector(getAuthCaptchaUrl);
-    const errorText = useSelector(getAuthErrorText);
-    const isLoading = useSelector(getAuthIsLoading);
+/** Utils **/
+import {signIn} from "../../store/actions/authActions";
+import {getAuthState} from "../../store/selectors/auth-selectors";
+import {getAppState} from "../../store/selectors/app-selectors";
 
-    return (
-        <section>
-            <div className={styles.loginBox}>
-                <WithLoading isLoading={isLoading} spinnerSize={'50px'}>
-                    <div className={`${styles.subtitle}`}>Log in to StackBro</div>
-                    <LoginForm
-                        onSubmit={signIn}
-                        isValid={isValidAuth}
-                        errorText={errorText}
-                        captchaUrl={captchaUrl}/>
-                </WithLoading>
+/** Constants **/
+import {SITE_TITLE} from "../../constants/general";
 
-            </div>
-        </section>
-    );
+/** Styles **/
+import styles from './Login.module.scss';
+
+const Login: FC = () => {
+  const {spinnerSize} = useSelector(getAppState);
+  const {isValid, captchaUrl, error, isLoading} = useSelector(getAuthState);
+
+  return (
+    <section>
+      <div className={styles.LoginBox}>
+        <WithLoading isLoading={isLoading} spinnerSize={spinnerSize}>
+          <div className={styles.Subtitle}>Log in to {SITE_TITLE}</div>
+          <LoginForm
+            onSubmit={signIn}
+            isValid={isValid}
+            errorText={error}
+            captchaUrl={captchaUrl}
+          />
+        </WithLoading>
+      </div>
+    </section>
+  );
 }
 
 export default Login;

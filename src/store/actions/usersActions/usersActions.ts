@@ -1,38 +1,29 @@
-import {
-    SET_CURRENT_PAGE,
-    SET_TOTAL_USERS_COUNT,
-    GET_FOLLOWING_STATUS,
-    TOGGLE_FOLLOW_UNFOLLOW,
-    TOGGLE_IS_FOLLOWING_PROGRESS,
-    SET_USERS_FILTER,
-    SET_USERS_SUCCESS,
-    SET_FRIENDS_SUCCESS,
-    TOGGLE_IS_FETCHING_USERS,
-} from "../../store-types";
-import usersAPI from "../../../api/usersAPI";
-import {ResultCodes, UserType} from "../../../types";
 import {BaseThunkType, InferActionsTypes} from "../../reducers/rootReducer";
+import ProfileActionType from "../../action-types/profile-action-type";
 import {FilterType} from "../../reducers/usersReducer/usersReducer";
+import UsersActionType from "../../action-types/users-action-type";
+import {ResultCodes, UserType} from "../../../types";
+import usersAPI from "../../../api/usersAPI";
 
 export const actions = {
-    toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
-        type: TOGGLE_IS_FOLLOWING_PROGRESS,
-        followingInProgress,
-        userId
-    } as const),
-    setCurrentPage: (pageNumber: number) => ({
-        type: SET_CURRENT_PAGE,
-        currentPage: pageNumber
-    } as const),
-    setTotalUserCount: (totalUserCount: number) => ({
-        type: SET_TOTAL_USERS_COUNT,
-        totalUserCount: totalUserCount
-    } as const),
-    toggleIsFetching: (isFetching: boolean) => ({
-        type: TOGGLE_IS_FETCHING_USERS,
-        isFetching
-    } as const),
-    setFilter: (filter: FilterType) => ({type: SET_USERS_FILTER, payload: filter} as const)
+  toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
+    type: UsersActionType.TOGGLE_IS_FOLLOWING_PROGRESS,
+    followingInProgress,
+    userId
+  } as const),
+  setCurrentPage: (pageNumber: number) => ({
+    type: UsersActionType.SET_CURRENT_PAGE,
+    currentPage: pageNumber
+  } as const),
+  setTotalUserCount: (totalUserCount: number) => ({
+    type: UsersActionType.SET_TOTAL_USERS_COUNT,
+    totalUserCount: totalUserCount
+  } as const),
+  toggleIsFetching: (isFetching: boolean) => ({
+    type: UsersActionType.TOGGLE_IS_FETCHING_USERS,
+    isFetching
+  } as const),
+  setFilter: (filter: FilterType) => ({type: UsersActionType.SET_USERS_FILTER, payload: filter} as const)
 }
 
 /**
@@ -41,45 +32,45 @@ export const actions = {
  * @param:number pageSize
  */
 export const setUsers = (requestPage: number, pageSize: number = 9, filter: FilterType): ThunkType => {
-    return async (dispatch: Function) => {
-        dispatch(actions.toggleIsFetching(true))
-        dispatch(actions.setCurrentPage(requestPage))
-        dispatch(actions.setFilter(filter))
-
-        const data = await usersAPI.requestUsers(requestPage, pageSize, filter)
-        dispatch(actions.toggleIsFetching(false))
-        dispatch(setUsersSuccess(data))
-        // dispatch(actions.setTotalUserCount(data.totalCount))
-    }
+  return async (dispatch: Function) => {
+    dispatch(actions.toggleIsFetching(true))
+    dispatch(actions.setCurrentPage(requestPage))
+    dispatch(actions.setFilter(filter))
+    
+    const data = await usersAPI.requestUsers(requestPage, pageSize, filter)
+    dispatch(actions.toggleIsFetching(false))
+    dispatch(setUsersSuccess(data))
+    // dispatch(actions.setTotalUserCount(data.totalCount))
+  }
 };
 
 export const setFriends = (requestPage: number, pageSize: number): ThunkType => {
-    return async (dispatch: Function) => {
-        usersAPI.requestUsers(requestPage, pageSize, {term: '', friend: true})
-            .then(data => dispatch(setFriendsSuccess(data)))
-            .catch((e) => console.error(e));
-    }
+  return async (dispatch: Function) => {
+    usersAPI.requestUsers(requestPage, pageSize, {term: '', friend: true})
+      .then(data => dispatch(setFriendsSuccess(data)))
+      .catch((e) => console.error(e));
+  }
 };
 
 type UsersType = {
-    items: UserType[],
-    totalCount: number
+  items: UserType[],
+  totalCount: number
 }
 
 const setUsersSuccess = (data: UsersType) => (dispatch: Function) => {
-    dispatch({
-        type: SET_USERS_SUCCESS,
-        users: data.items,
-        totalUsersCount: data.totalCount
-    })
+  dispatch({
+    type: UsersActionType.SET_USERS_SUCCESS,
+    users: data.items,
+    totalUsersCount: data.totalCount
+  })
 }
 
 const setFriendsSuccess = (data: UsersType) => (dispatch: Function) => {
-    dispatch({
-        type: SET_FRIENDS_SUCCESS,
-        friends: data.items,
-        totalFriendsCount: data.totalCount
-    })
+  dispatch({
+    type: UsersActionType.SET_FRIENDS_SUCCESS,
+    friends: data.items,
+    totalFriendsCount: data.totalCount
+  })
 }
 
 /**
@@ -87,15 +78,15 @@ const setFriendsSuccess = (data: UsersType) => (dispatch: Function) => {
  * @param:number userId
  */
 export const setCurrentUserFollower = (userId: number): ThunkType => {
-    return async (dispatch: Function) => {
-        usersAPI.getCurrentUserFollower(userId).then(data => {
-            dispatch({
-                type: GET_FOLLOWING_STATUS,
-                userId: userId,
-                followStatus: data
-            })
-        }).catch((e) => console.error(e))
-    }
+  return async (dispatch: Function) => {
+    usersAPI.getCurrentUserFollower(userId).then(data => {
+      dispatch({
+        type: ProfileActionType.GET_FOLLOWING_STATUS,
+        userId: userId,
+        followStatus: data
+      })
+    }).catch((e) => console.error(e))
+  }
 }
 
 /**
@@ -103,18 +94,18 @@ export const setCurrentUserFollower = (userId: number): ThunkType => {
  * @param:number userId
  */
 export const userFollow = (userId: number): ThunkType => {
-    return async (dispatch: Function) => {
-        await dispatch(actions.toggleFollowingProgress(true, userId))
-        usersAPI.postUserFollow(userId).then(data => {
-            if (data.resultCode === ResultCodes.Success) {
-                dispatch({
-                    type: TOGGLE_FOLLOW_UNFOLLOW,
-                    userId: userId
-                })
-            }
-            dispatch(actions.toggleFollowingProgress(false, userId))
-        }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
-    }
+  return async (dispatch: Function) => {
+    await dispatch(actions.toggleFollowingProgress(true, userId))
+    usersAPI.postUserFollow(userId).then(data => {
+      if (data.resultCode === ResultCodes.Success) {
+        dispatch({
+          type: UsersActionType.TOGGLE_FOLLOW_UNFOLLOW,
+          userId: userId
+        })
+      }
+      dispatch(actions.toggleFollowingProgress(false, userId))
+    }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
+  }
 }
 
 /**
@@ -122,17 +113,17 @@ export const userFollow = (userId: number): ThunkType => {
  * @param:number userId
  */
 export const userUnfollow = (userId: number): ThunkType => {
-    return async (dispatch: Function) => {
-        usersAPI.deleteUserUnfollow(userId).then(data => {
-            if (data.resultCode === ResultCodes.Success) {
-                dispatch(actions.toggleFollowingProgress(false, userId))
-                dispatch({
-                    type: TOGGLE_FOLLOW_UNFOLLOW,
-                    userId: userId
-                })
-            }
-        }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
-    }
+  return async (dispatch: Function) => {
+    usersAPI.deleteUserUnfollow(userId).then(data => {
+      if (data.resultCode === ResultCodes.Success) {
+        dispatch(actions.toggleFollowingProgress(false, userId))
+        dispatch({
+          type: UsersActionType.TOGGLE_FOLLOW_UNFOLLOW,
+          userId: userId
+        })
+      }
+    }).then(() => dispatch(setCurrentUserFollower(userId))).catch((e) => console.error(e))
+  }
 }
 
 export type ActionsTypes = InferActionsTypes<typeof actions>;

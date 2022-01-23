@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import CopyToClipboard from "../../../common/CopyToClipboard";
-import {getProfile} from "../../../../store/selectors/profile-selectors";
-import {getAppTheme} from "../../../../store/selectors/app-selectors";
+import {getProfileState} from "../../../../store/selectors/profile-selectors";
+import {getAppState} from "../../../../store/selectors/app-selectors";
 import {setStatus} from "../../../../store/actions/profileActions";
 import styles from "./ProfileStatus.module.scss";
 
@@ -13,8 +13,8 @@ type ProfileStatusPropsType = {
 
 const ProfileStatus: FC<ProfileStatusPropsType> = ({status, isDisabled}) => {
     const dispatch = useDispatch();
-    const profile = useSelector(getProfile);
-    const appTheme = useSelector(getAppTheme);
+    const {profile} = useSelector(getProfileState);
+    const {theme} = useSelector(getAppState);
     const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
     const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -33,7 +33,7 @@ const ProfileStatus: FC<ProfileStatusPropsType> = ({status, isDisabled}) => {
                 <CopyToClipboard
                     copy={false}
                     customStyles={styles}
-                    appTheme={appTheme}
+                    appTheme={theme}
                     isDisabled={isDisabled}
                     onDoubleClickHandler={() => setEditMode(!editMode)}
                     placeholder="Set status">

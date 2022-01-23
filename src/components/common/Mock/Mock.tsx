@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {RocketTwoTone} from '@ant-design/icons';
 
 /** Utils **/
-import {getAppTheme} from "../../../store/selectors/app-selectors";
+import {getAppState} from "../../../store/selectors/app-selectors";
 import {isDarkTheme} from "../../../utils/boolean-helpers";
 
 /** Styles & Images **/
@@ -13,10 +13,10 @@ import styles from './Mock.module.scss';
 const TITLE_FONT_SIZE: CSSProperties = {fontSize: '40px'};
 
 const Mock: FC = () => {
-  const appTheme = useSelector(getAppTheme);
+  const {theme} = useSelector(getAppState);
 
   return (
-    <div className={`${styles.wrapper} ${isDarkTheme(appTheme) ? styles.dark : styles.light}`}>
+    <div className={`${styles.wrapper} ${isDarkTheme(theme) ? styles.dark : styles.light}`}>
       <div className={styles.content}>
         <div className="mb-2">
           <strong className="mr-2">WE'RE COMING SOON</strong>

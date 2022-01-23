@@ -7,9 +7,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {updateProfile} from '../../store/actions/profileActions';
 import {setCurrentUserFollower} from "../../store/actions/usersActions/usersActions";
 import MyFriends from "./MyFriends/MyFriends";
-import {getOwnerId} from "../../store/selectors/auth-selectors";
-import {Nullable} from "../../types";
-import {getProfileIsOwnerStatus} from "../../store/selectors/profile-selectors";
+import {getAuthState} from "../../store/selectors/auth-selectors";
+import {getProfileState} from "../../store/selectors/profile-selectors";
 import {setOwnerStatus} from '../../store/action-creators';
 
 type PathParamsType = {
@@ -19,19 +18,19 @@ type PathParamsType = {
 const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({match}) => {
     const dispatch = useDispatch();
     const currentUserId = match.params.userId;
-    const ownerId: Nullable<number> = useSelector(getOwnerId);
-    const isOwner = useSelector(getProfileIsOwnerStatus);
+    const authState = useSelector(getAuthState);
+    const {isOwner} = useSelector(getProfileState);
 
     useEffect(() => {
         if (currentUserId) {
             dispatch(updateProfile(Number(currentUserId)))
             dispatch(setCurrentUserFollower(Number(currentUserId)))
             dispatch(setOwnerStatus(false))
-        } else if (!currentUserId && ownerId) {
-            dispatch(updateProfile(ownerId))
+        } else if (!currentUserId && authState.userId) {
+            dispatch(updateProfile(authState.userId))
             dispatch(setOwnerStatus(true))
         }
-    }, [currentUserId, ownerId, dispatch])
+    }, [currentUserId, authState.userId, dispatch])
 
     return (
         <div>

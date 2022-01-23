@@ -1,17 +1,17 @@
 import {Action, combineReducers} from "redux";
 import {ThunkAction} from "redux-thunk";
-import appReducer from "./appReducer";
-import authReducer from "./authReducer";
-import usersReducer from "./usersReducer";
-import profileReducer from "./profileReducer";
 import messengerReducer from "./messengerReducer";
+import profileReducer from "./profileReducer";
+import usersReducer from "./usersReducer";
+import authReducer from "./authReducer";
+import appReducer from "./appReducer";
 
 export const rootReducer = combineReducers({
-    app: appReducer,
-    auth: authReducer,
-    users: usersReducer,
-    profile: profileReducer,
-    messenger: messengerReducer
+  app: appReducer,
+  auth: authReducer,
+  users: usersReducer,
+  profile: profileReducer,
+  messenger: messengerReducer
 })
 
 export type RootReducerType = typeof rootReducer;

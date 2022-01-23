@@ -3,11 +3,11 @@ import styles from './Chat.module.scss';
 import Messages from "./Messages";
 import {useDispatch, useSelector} from "react-redux";
 import {startMessagesListening, stopMessagesListening} from "../../store/actions/messengerActions";
-import {getAppTheme} from "../../store/selectors/app-selectors";
+import {getAppState} from "../../store/selectors/app-selectors";
 
 const Chat: React.FC = () => {
     const dispatch = useDispatch();
-    const appTheme = useSelector(getAppTheme);
+    const {theme} = useSelector(getAppState);
 
     useEffect(() => {
         dispatch(startMessagesListening())
@@ -17,7 +17,7 @@ const Chat: React.FC = () => {
     }, [dispatch])
 
     return (
-        <section className={`${styles.wrapper} default-box default-box--${appTheme}`}>
+        <section className={`${styles.wrapper} default-box default-box--${theme}`}>
             <Messages/>
         </section>
     );

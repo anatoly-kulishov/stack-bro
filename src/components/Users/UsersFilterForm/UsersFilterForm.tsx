@@ -4,7 +4,7 @@ import {Button, Input} from "antd";
 import classes from "./UsersFilterForm.module.scss";
 import {FilterType} from "../../../store/reducers/usersReducer/usersReducer";
 import {useSelector} from "react-redux";
-import {getUsersFilter} from "../../../store/selectors/users-selectors";
+import {getUsersState} from "../../../store/selectors/users-selectors";
 
 type UsersSearchFormPropsType = {
     onFilterChanged: (values: FilterType) => void
@@ -20,7 +20,7 @@ type FormType = {
 const UsersFilterForm: FC<UsersSearchFormPropsType> = props => {
     const {onFilterChanged} = props;
 
-    const filter = useSelector(getUsersFilter);
+    const {filter} = useSelector(getUsersState);
     const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         const filter: FilterType = {
             term: values.term,

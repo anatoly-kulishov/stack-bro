@@ -1,1 +1,1 @@
-export const COLOR_THEME: string = 'app-color-theme';
+export const COLOR_THEME = 'app-color-theme';

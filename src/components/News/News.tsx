@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import axios, {AxiosRequestConfig} from "axios";
-import {getAppTheme} from "../../store/selectors/app-selectors";
+import {getAppState} from "../../store/selectors/app-selectors";
 import {NewsResponceType} from "../../types";
 import {Avatar, List, Skeleton} from "antd";
 
 const News: React.FC = () => {
-  const appTheme = useSelector(getAppTheme);
+  const {theme} = useSelector(getAppState);
   const [news, setNews] = useState<Array<NewsResponceType>>([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const News: React.FC = () => {
 
 
   return (
-    <section className={`default-box default-box--${appTheme}`} style={{padding: '16px'}}>
+    <section className={`default-box default-box--${theme}`} style={{padding: '16px'}}>
       <List
         className="demo-loadmore-list"
         loading={!news.length}

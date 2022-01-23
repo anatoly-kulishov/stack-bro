@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 /** Utils **/
 import {isLightTheme} from "../../../utils/boolean-helpers";
-import {getAppTheme} from "../../../store/selectors/app-selectors";
+import {getAppState} from "../../../store/selectors/app-selectors";
 import {changeTheme} from "../../../store/actions/appActions";
 import {COLOR_THEME} from "../../../constants/localStorage";
 
@@ -14,10 +14,10 @@ type ThemeTogglerPropsType = {
 
 const ThemeToggler: FC<ThemeTogglerPropsType> = ({children}) => {
   const dispatch = useDispatch();
-  const appTheme = useSelector(getAppTheme);
+  const {theme} = useSelector(getAppState);
 
   const onChangeTheme = () => {
-    const payload = isLightTheme(appTheme) ? 'dark' : 'light';
+    const payload = isLightTheme(theme) ? 'dark' : 'light';
     localStorage.setItem(COLOR_THEME, payload);
     dispatch(changeTheme(payload));
   }

@@ -4,12 +4,11 @@ import {Avatar} from "antd";
 import {UserOutlined} from "@ant-design/icons";
 import styles from './Message.module.scss';
 import {useSelector} from "react-redux";
-import {getOwnerId} from "../../../../store/selectors/auth-selectors";
+import {getAuthState} from "../../../../store/selectors/auth-selectors";
 import {ChatMessageType} from "../../../../types";
 
-const Message: React.FC<ChatMessageType> = props => {
-    const {message, photo, userId, userName} = props;
-    const ownerId = useSelector(getOwnerId);
+const Message: React.FC<ChatMessageType> = ({message, photo, userId, userName}) => {
+    const ownerUserId = useSelector(getAuthState);
 
     return (
         <div className={styles.message}>
@@ -18,7 +17,7 @@ const Message: React.FC<ChatMessageType> = props => {
             </Link>
             <div className={styles.MessageStack}>
                 <Link to={`/${userId}`}>
-                    <span className={styles.MessageStackName}>{userName} {(ownerId === userId && '...')}</span>
+                    <span className={styles.MessageStackName}>{userName} {(ownerUserId.userId === userId && '...')}</span>
                 </Link>
                 <small className={styles.messageBox}>{message}</small>
             </div>

@@ -1,6 +1,6 @@
-@import "../../variables";
+@use 'src/_variables.scss' as *;
 
-.loginBox {
+.LoginBox {
     position: relative;
     min-width: 380px;
     padding: 25px 15px 20px;
@@ -9,7 +9,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
-.subtitle {
+.Subtitle {
     margin: 0 auto 15px;
     font-size: 18px;
     text-align: center;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: 768px) {
-    .loginBox {
+    .LoginBox {
         max-width: 350px;
         min-width: auto;
         width: 100vw;

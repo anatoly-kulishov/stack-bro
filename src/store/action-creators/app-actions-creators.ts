@@ -1,6 +1,5 @@
-import {INITIALIZED_SUCCESS} from "../store-types";
+import AppActionType from "../action-types/app-action-type";
 
-// Todo: Add Action for Typing!
 export const initializedSuccess = () => ({
-    type: INITIALIZED_SUCCESS
+  type: AppActionType.INITIALIZED_SUCCESS
 })
