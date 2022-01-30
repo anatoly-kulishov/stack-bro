@@ -1,25 +1,26 @@
-import trim from 'lodash/trim'
-import {Nullable} from "../types";
+import trim from 'lodash/trim';
+
+import { Nullable } from '../types';
 
 export const trimStringToTenChar = (str: string) => {
   try {
-    return trim(str).substr(0, 12) + '...';
+    return `${trim(str).substr(0, 12)}...`;
   } catch (error) {
     console.log('error in trim');
   }
-}
+};
 
 export const getFileType = (str: string) => {
   try {
     if (str) {
       const lastIndexOfDot = `${str}`.lastIndexOf('.');
       return `${str}`.substr(lastIndexOfDot + 1, `${str}`.length);
-    } else return ''
-
+    }
+    return '';
   } catch (error) {
-    console.log('error in getting file str')
+    console.log('error in getting file str');
   }
-}
+};
 
 export function getRealTextWidthPx(str: string, fontSettings: Nullable<string> = null) {
   // Checking an input data
@@ -28,7 +29,7 @@ export function getRealTextWidthPx(str: string, fontSettings: Nullable<string> =
   }
 
   // Variables
-  const canvasCtx = document.createElement("canvas").getContext("2d");
+  const canvasCtx = document.createElement('canvas').getContext('2d');
 
   let textMetrics;
 

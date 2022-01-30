@@ -1,19 +1,19 @@
-import appReducer from "./appReducer";
-import {actions} from "../../actions/appActions";
+import appReducer from './appReducer';
+import { actions } from '../../actions/appActions';
 
 const state: any = {
   initialized: false,
   globalErrors: null as string | null,
-  theme: "light"
-}
+  theme: 'light',
+};
 
 it('initialized of app should be success', () => {
   // 1. Test data
-  let action = actions.initializedSuccess();
-  
+  const action = actions.initializedSuccess();
+
   // 2. Action
-  let newState = appReducer(state, action)
-  
+  const newState = appReducer(state, action);
+
   // 3. Expectation
   expect(newState.initialized).toBe(true);
-})
+});

@@ -1,69 +1,72 @@
-/** Libs **/
-import React, {FC, memo, useState} from 'react';
+/** Libs * */
+import React, { FC, useState } from 'react';
 
-/** Utils **/
-import {isDarkTheme} from "../../../utils/boolean-helpers";
+/** Utils * */
+import classNames from 'classnames';
 
-/** Styles & Images **/
+import { isDarkTheme } from '../../../utils/boolean-helpers';
+
+/** Styles & Images * */
 import styles from './CopyToClipboard.module.scss';
-import copyIcon from "./copy-icon.svg";
-import classNames from "classnames";
+import copyIcon from './copy-icon.svg';
 
 type CopyToClipboardPropsType = {
-    children: string,
-    customStyles: { readonly [key: string]: string },
-    copy: boolean,
-    placeholder: string,
-    appTheme: string,
-    onDoubleClickHandler: () => void
-    isDisabled: boolean
-}
+  children: string;
+  customStyles: { readonly [key: string]: string };
+  copy: boolean;
+  placeholder: string;
+  appTheme: string;
+  onDoubleClickHandler: () => void;
+  isDisabled: boolean;
+};
 
-const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
-    const {
-        onDoubleClickHandler,
-        customStyles,
-        appTheme,
-        children = '',
-        copy = true,
-        isDisabled,
-        placeholder = "No Data"
-    } = props;
-    const [copySuccess] = useState<string>(children);
+export const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
+  const {
+    onDoubleClickHandler,
+    customStyles,
+    appTheme,
+    children = '',
+    copy = true,
+    isDisabled,
+    placeholder = 'No Data',
+  } = props;
+  const [copySuccess] = useState<string>(children);
 
-    const copyToClipboard = (text: string) => {
-        navigator.clipboard.writeText(text).then(() => {
-            console.log(`copy(${text})`)
-        })
-    }
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      /* eslint-disable no-console */
+      console.log(`copy(${text})`);
+    });
+  };
 
-    const doubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-        onDoubleClickHandler()
-        event.preventDefault();
-    }
+  const doubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    onDoubleClickHandler();
+    event.preventDefault();
+  };
 
-    return (
-        <div className={classNames([styles.wrapper], [customStyles.statusBar], {
-            [customStyles.statusBarActive]: !isDisabled
-        })}
-             onDoubleClick={(e) => {
-                 !isDisabled && doubleClickHandler(e)
-             }}>
-            {copy && (
-                <span className={styles.copyButton}
-                      style={{backgroundImage: `url('${copyIcon}')'`}}
-                      onClick={() => copyToClipboard(copySuccess)}/>
-            )}
-            <div
-                className={`${styles.textBox} ${customStyles.statusTextBox} ${isDarkTheme(appTheme) && customStyles.statusTextBoxDarkTheme}`}>
-                {
-                    children
-                        ? children
-                        : <span className={styles.emptyBox}>{placeholder}</span>
-                }
-            </div>
-        </div>
-    )
-}
-
-export default memo(CopyToClipboard);
+  return (
+    <div
+      className={classNames([styles.wrapper], [customStyles.statusBar], {
+        [customStyles.statusBarActive]: !isDisabled,
+      })}
+      onDoubleClick={e => {
+        !isDisabled && doubleClickHandler(e);
+      }}
+    >
+      {copy && (
+        <span
+          className={styles.copyButton}
+          style={{ backgroundImage: `url('${copyIcon}')'` }}
+          onClick={() => copyToClipboard(copySuccess)}
+        />
+      )}
+      <div
+        className={`${styles.textBox} ${customStyles.statusTextBox} ${
+          isDarkTheme(appTheme) && customStyles.statusTextBoxDarkTheme
+        }`}
+      >
+        {children || <span className={styles.emptyBox}>{placeholder}</span>}
+      </div>
+    </div>
+  );
+};

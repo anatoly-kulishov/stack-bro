@@ -1,4 +1,4 @@
-enum UsersActionType {
+export enum UsersActionType {
   SET_USERS = 'SB/USERS/SET_USERS',
   SET_USERS_SUCCESS = 'SB/USERS/SET_USERS_SUCCESS',
   SET_FRIENDS_SUCCESS = 'SB/USERS/SET_FRIENDS_SUCCESS',
@@ -9,5 +9,3 @@ enum UsersActionType {
   SET_USERS_FILTER = 'SB/USERS/SET_USERS_FILTER',
   TOGGLE_IS_FETCHING_USERS = 'SB/USERS/TOGGLE_IS_FETCHING',
 }
-
-export default UsersActionType

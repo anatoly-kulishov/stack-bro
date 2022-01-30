@@ -1,0 +1,7 @@
+build
+static
+node_modules
+src/assets/libs
+.gitignore
+.gitlab-ci.yml
+

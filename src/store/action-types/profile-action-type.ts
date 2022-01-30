@@ -1,4 +1,4 @@
-enum ProfileActionType {
+export enum ProfileActionType {
   SET_USER_PROFILE = 'SB/PROFILE/SET_USER_PROFILE',
   SET_OWNER_PROFILE = 'SB/PROFILE/SET_OWNER_PROFILE',
   SET_OWNER_STATUS = 'SB/PROFILE/SET_OWNER_STATUS',
@@ -13,5 +13,3 @@ enum ProfileActionType {
   ADD_POST = 'SB/POSTS/CREATE_POST',
   REMOVE_POST = 'SB/POSTS/REMOVE_POST',
 }
-
-export default ProfileActionType

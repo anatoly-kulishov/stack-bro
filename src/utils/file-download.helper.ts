@@ -4,7 +4,7 @@
  */
 const getFileFormData = (file: File) => {
   const formData = new FormData();
-  formData.append("file", file, file.name);
+  formData.append('file', file, file.name);
   return formData;
 };
 
@@ -16,11 +16,11 @@ const getFileFormData = (file: File) => {
  */
 const downloadFile = async (file: File, fileTitle: string, fileType: string) => {
   const tagLink = document.createElement('a');
-  tagLink.href = window.URL.createObjectURL(new Blob([file], {type: fileType}));
+  tagLink.href = window.URL.createObjectURL(new Blob([file], { type: fileType }));
   tagLink.download = fileTitle;
   document.body.appendChild(tagLink);
   tagLink.click();
   document.body.removeChild(tagLink);
 };
 
-export {getFileFormData, downloadFile};
+export { getFileFormData, downloadFile };

@@ -1,12 +1,11 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react';
 import moment from 'moment';
 
 const SESSION_TIMEOUT_MINUTES: number = 15;
 
 function SessionTimeoutCheckerHook() {
-
   const handleSessionTimeout = () => {
-    const lastTokenAccessedTime = localStorage.getItem("lastTokenAccessedTime")
+    const lastTokenAccessedTime = localStorage.getItem('lastTokenAccessedTime');
     if (lastTokenAccessedTime) {
       const time = moment(lastTokenAccessedTime).toDate().getTime();
       const time30minsAgo = moment().subtract(SESSION_TIMEOUT_MINUTES, 'minutes').toDate().getTime();
@@ -14,20 +13,20 @@ function SessionTimeoutCheckerHook() {
         logout();
       }
     }
-  }
+  };
 
   const logout = async () => {
     try {
       // await Auth.signOut().catch(e => { })
       localStorage.clear();
       sessionStorage.clear();
-      window.location.href = "/"
+      window.location.href = '/';
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  useEffect(() => handleSessionTimeout(), [])
+  useEffect(() => handleSessionTimeout(), []);
 
   return null;
 }

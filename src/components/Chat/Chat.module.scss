@@ -1,5 +1,5 @@
-@import "../../variables";
+@use 'src/assets/styles/variables' as *;
 
 .wrapper {
-    height: calc(100vh - 100px);
+  height: calc(100vh - 100px);
 }

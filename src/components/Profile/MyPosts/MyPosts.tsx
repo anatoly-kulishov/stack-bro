@@ -1,92 +1,84 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {Input} from 'antd';
-import {Formik} from 'formik';
-import * as Yup from "yup";
-import {Alert, Button} from 'antd';
-import styles from './MyPosts.module.scss';
-import Post from "./Post";
-import {profileActions} from "../../../store/actions/profileActions";
-import {getProfileState} from "../../../store/selectors/profile-selectors";
-import {MY_POST_BUTTON} from "../../../constants/buttons";
-import {getAppState} from "../../../store/selectors/app-selectors";
+import { useDispatch, useSelector } from 'react-redux';
+import { Input, Alert, Button } from 'antd';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
-const {TextArea} = Input;
-const {ErrorBoundary} = Alert;
+import styles from './MyPosts.module.scss';
+import { Post } from './Post/Post';
+import { profileActions } from '../../../store/actions/profileActions';
+import { getProfileState } from '../../../store/selectors/profile-selectors';
+import { MY_POST_BUTTON } from '../../../constants/buttons';
+import { getAppState } from '../../../store/selectors/app-selectors';
+
+const { TextArea } = Input;
+const { ErrorBoundary } = Alert;
 
 const messagesSchema = Yup.object().shape({
-  message: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
-    .required('Required'),
+  message: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
 });
 
-const MyPosts: React.FC = () => {
+export const MyPosts: React.FC = () => {
   const dispatch = useDispatch();
-  const {profile, posts} = useSelector(getProfileState);
-  const {theme} = useSelector(getAppState);
-  
-  const postsElements = posts?.map((p: any) => ( // ToDo: Fix any!
-    <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount}/>)
-  )
-  
+  const { profile, posts } = useSelector(getProfileState);
+  const { theme } = useSelector(getAppState);
+
+  const postsElements = posts?.map(
+    (
+      p: any, // ToDo: Fix any!
+    ) => <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount} />,
+  );
+
   const onAddPost = (message: string) => {
     const post = {
       id: Date.now(),
       message,
-      likesCount: 0
-    }
+      likesCount: 0,
+    };
     dispatch(profileActions.addPost(post));
-  }
-  
+  };
+
   return (
     <div className={`${styles.myPosts} default-box default-box--${theme}`}>
       <ErrorBoundary>
         <Formik
-          initialValues={{message: ''}}
+          initialValues={{ message: '' }}
           validationSchema={messagesSchema}
-          onSubmit={(values, {setSubmitting}) => {
+          onSubmit={(values, { setSubmitting }) => {
             onAddPost(values.message);
             values.message = '';
             setSubmitting(false);
-          }}>
-          {({
-              values, errors,
-              touched, handleChange,
-              handleBlur, handleSubmit, isSubmitting
-            }) => (
+          }}
+        >
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.title}>My posts</div>
               <div className="row">
                 <div className="col-12">
-                  <TextArea name="message" rows={2}
-                            value={values.message}
-                            onChange={handleChange}
-                            onBlur={handleBlur}/>
+                  <TextArea
+                    name="message"
+                    rows={2}
+                    value={values.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
                 </div>
                 <div className="col-12">
                   <div className={`${styles.row} mt-3`}>
                     <Button type="primary" htmlType="submit" disabled={isSubmitting}>
                       {MY_POST_BUTTON}
                     </Button>
-                    {
-                      errors.message && touched.message &&
-                        <Alert style={{marginLeft: 15}}
-                               message={errors.message}
-                               type="warning" showIcon/>
-                    }
+                    {errors.message && touched.message && (
+                      <Alert style={{ marginLeft: 15 }} message={errors.message} type="warning" showIcon />
+                    )}
                   </div>
                 </div>
               </div>
             </form>
           )}
         </Formik>
-        <div className={styles.postWrapper}>
-          {postsElements}
-        </div>
+        <div className={styles.postWrapper}>{postsElements}</div>
       </ErrorBoundary>
     </div>
   );
-}
-
-export default MyPosts;
+};

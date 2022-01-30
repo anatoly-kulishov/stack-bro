@@ -1,26 +1,25 @@
-import {ChatMessageType, Nullable} from "../types";
-import {StatusMessageType} from "../store/reducers/messengerReducer/messengerReducer";
+import { ChatMessageType, Nullable } from '../types';
+import { StatusMessageType } from '../store/reducers/messengerReducer/messengerReducer';
 
 type EventsNamesType = 'messages-received' | 'status-changed';
 
 type MessagesReceivedSubscribersType = (messages: ChatMessageType[]) => void;
 type StatusChangedSubscribersType = (messages: StatusMessageType) => void;
 
-let subscribers = {
+const subscribers = {
   'messages-received': [] as MessagesReceivedSubscribersType[],
-  'status-changed': [] as StatusChangedSubscribersType[]
-}
+  'status-changed': [] as StatusChangedSubscribersType[],
+};
 
 let ws: Nullable<WebSocket> = null;
 const closeHandler = () => {
-  console.log('Close WS');
-  notifySubcribersAboutStatus('pending')
+  notifySubcribersAboutStatus('pending');
   setTimeout(createChanel, 3000);
-}
+};
 
 const messageHandler = (e: MessageEvent) => {
   const newMessages = JSON.parse(e.data);
-  subscribers['messages-received'].forEach(s => s(newMessages))
+  subscribers['messages-received'].forEach(s => s(newMessages));
 };
 
 const openHandler = () => {
@@ -29,7 +28,7 @@ const openHandler = () => {
 
 const errorHandler = () => {
   notifySubcribersAboutStatus('error');
-  console.error('Refresh page')
+  console.error('Refresh page');
 };
 
 const cleanUp = () => {
@@ -37,14 +36,14 @@ const cleanUp = () => {
   ws?.removeEventListener('message', messageHandler);
   ws?.removeEventListener('open', openHandler);
   ws?.removeEventListener('error', errorHandler);
-}
+};
 
 const notifySubcribersAboutStatus = (status: StatusMessageType) => {
-  subscribers['status-changed'].forEach(s => s(status))
-}
+  subscribers['status-changed'].forEach(s => s(status));
+};
 
 function createChanel() {
-  cleanUp()
+  cleanUp();
   ws?.close();
   ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
   notifySubcribersAboutStatus('pending');
@@ -54,7 +53,7 @@ function createChanel() {
   ws?.addEventListener('error', errorHandler);
 }
 
-const messengerAPI = {
+export const messengerAPI = {
   start() {
     createChanel();
   },
@@ -62,23 +61,21 @@ const messengerAPI = {
     subscribers['messages-received'] = [];
     subscribers['status-changed'] = [];
     cleanUp();
-    ws?.close()
+    ws?.close();
   },
   subscribe: (eventName: EventsNamesType, callback: MessagesReceivedSubscribersType | StatusChangedSubscribersType) => {
     // @ts-ignore
     subscribers[eventName].push(callback);
     return () => {
       // @ts-ignore
-      subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
-    }
+      subscribers[eventName] = subscribers[eventName].filter(s => s !== callback);
+    };
   },
   unsubscribe(eventName: EventsNamesType, callback: MessagesReceivedSubscribersType | StatusChangedSubscribersType) {
     // @ts-ignore
-    subscribers[eventName] = subscribers[eventName].filter(s => s !== callback)
+    subscribers[eventName] = subscribers[eventName].filter(s => s !== callback);
   },
   sendMessage(message: string) {
-    ws?.send(message)
-  }
-}
-
-export default messengerAPI;
+    ws?.send(message);
+  },
+};

@@ -1,11 +1,9 @@
-/** Libs **/
-import React from "react";
+/** Libs * */
+import React from 'react';
 
-/** Components **/
-import Login from "../../components/Login";
+/** Components * */
+import { Login } from '../../components/Login/Login';
 
-const LoginPage = () => {
-  return <Login/>;
-}
-
-export default LoginPage;
+export const LoginPage = () => {
+  return <Login />;
+};

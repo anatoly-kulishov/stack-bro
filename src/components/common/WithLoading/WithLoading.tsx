@@ -1,10 +1,10 @@
-/** Libs **/
-import React from "react";
+/** Libs * */
+import React from 'react';
 
-/** Components **/
-import Spinner from "../Spinner";
+/** Components * */
+import { Spinner } from '../Spinner/Spinner';
 
-/** Styles & Images **/
+/** Styles & Images * */
 import './WithLoading.scss';
 
 interface WithLoadingProps {
@@ -12,17 +12,20 @@ interface WithLoadingProps {
   spinnerSize: string;
 }
 
-const WithLoading: React.FC<WithLoadingProps> = props => {
-
-  return <>
-    {props.isLoading ?
-      <>
-        {props.children}
-        <div className="loading-overlay blurred"/>
-        <div className="spinner-centered"><Spinner size={props.spinnerSize}/></div>
-      </>
-      : props.children}
-  </>
-}
-
-export default WithLoading
+export const WithLoading: React.FC<WithLoadingProps> = ({ isLoading, spinnerSize, children }) => {
+  return (
+    <>
+      {isLoading ? (
+        <>
+          {children}
+          <div className="loading-overlay blurred" />
+          <div className="spinner-centered">
+            <Spinner size={spinnerSize} />
+          </div>
+        </>
+      ) : (
+        children
+      )}
+    </>
+  );
+};

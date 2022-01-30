@@ -1,19 +1,18 @@
 import React from 'react';
-import {Timeline} from "antd";
+import { Timeline } from 'antd';
 import moment from 'moment';
-import styles from "./SideBar.module.scss"
 
-const SideBar: React.FC = () => {
-    const currentTime = moment().format('L');
+import styles from './SideBar.module.scss';
 
-    return (
-        <div className={styles.wrapper}>
-            <Timeline>
-                <Timeline.Item>Create a services site {currentTime}</Timeline.Item>
-                <Timeline.Item>Technical testing {currentTime}</Timeline.Item>
-            </Timeline>
-        </div>
-    )
-}
+export const SideBar: React.FC = () => {
+  const currentTime = moment().format('L');
 
-export default SideBar;
+  return (
+    <div className={styles.wrapper}>
+      <Timeline>
+        <Timeline.Item>Create a services site {currentTime}</Timeline.Item>
+        <Timeline.Item>Technical testing {currentTime}</Timeline.Item>
+      </Timeline>
+    </div>
+  );
+};

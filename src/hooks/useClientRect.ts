@@ -1,20 +1,17 @@
-import {useCallback, useState} from "react";
+import { useCallback, useState } from 'react';
 
 function useClientRect() {
-    const [clientRect, setClientRect] = useState(null);
+  const [clientRect, setClientRect] = useState(null);
 
-    const ref = useCallback((elm) => {
-        if (elm === null) {
-            return;
-        }
+  const ref = useCallback(elm => {
+    if (elm === null) {
+      return;
+    }
 
-        setClientRect(elm.getBoundingClientRect());
-    }, []);
+    setClientRect(elm.getBoundingClientRect());
+  }, []);
 
-    return [
-        clientRect,
-        ref,
-    ];
+  return [clientRect, ref];
 }
 
 export default useClientRect;

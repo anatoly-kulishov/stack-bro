@@ -1,8 +1,8 @@
-/** Libs **/
-import React, {FC, useState} from 'react';
-import {Button} from "antd";
+/** Libs * */
+import React, { FC, useState } from 'react';
+import { Button } from 'antd';
 
-const ThrowError: FC = () => {
+export const ThrowError: FC = () => {
   const [error, setError] = useState<Error>();
 
   const onClick = () => {
@@ -19,5 +19,3 @@ const ThrowError: FC = () => {
     </Button>
   );
 };
-
-export default ThrowError;

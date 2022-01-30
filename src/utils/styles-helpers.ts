@@ -1,9 +1,9 @@
 const getCurrProgressColor = (currProgressVal: number) => {
   // Variables
   const COLORS_MAP = {
-    RED: "#ea5b71",
-    ORANGE: "#f8b64c",
-    GREEN: "#4c8811",
+    RED: '#ea5b71',
+    ORANGE: '#f8b64c',
+    GREEN: '#4c8811',
   };
 
   // Checking an exception
@@ -28,6 +28,4 @@ const getCurrProgressColor = (currProgressVal: number) => {
 /**
  *  Exports
  */
-export {
-  getCurrProgressColor,
-};
+export { getCurrProgressColor };

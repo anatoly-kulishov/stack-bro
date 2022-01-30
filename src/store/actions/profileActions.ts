@@ -1,54 +1,58 @@
-import {FormAction} from "redux-form";
-import {BaseThunkType, InferActionsTypes} from "../reducers/rootReducer";
-import ProfileActionType from "../action-types/profile-action-type";
-import {PhotosType, PostType, ProfileType, ResultCodes} from "../../types";
-import profileAPI from "../../api/profileAPI";
-import {authMe} from "./authActions";
+import { FormAction } from 'redux-form';
+
+import { BaseThunkType, InferActionsTypes } from '../reducers/rootReducer';
+import { ProfileActionType } from '../action-types/profile-action-type';
+import { PhotosType, PostType, ProfileType, ResultCodes } from '../../types';
+import { profileAPI } from '../../api/profileAPI';
+import { authMe } from './authActions';
 
 export const profileActions = {
   setProfile: (data: Array<ProfileType>) => ({
     type: ProfileActionType.SET_USER_PROFILE,
-    payload: data
+    payload: data,
   }),
   setOwnerProfile: (data: Array<ProfileType>) => ({
     type: ProfileActionType.SET_OWNER_PROFILE,
-    payload: data
+    payload: data,
   }),
   setIsOwnerStatus: (flag: boolean) => ({
     type: ProfileActionType.SET_OWNER_STATUS,
-    payload: flag
+    payload: flag,
   }),
-  savePhotoSuccess: (photos: PhotosType) => ({
-    type: ProfileActionType.SAVE_PHOTO_SUCCESS,
-    photos
-  } as const),
+  savePhotoSuccess: (photos: PhotosType) =>
+    ({
+      type: ProfileActionType.SAVE_PHOTO_SUCCESS,
+      photos,
+    } as const),
   getStatus: (data: string) => ({
     type: ProfileActionType.GET_PROFILE_STATUS,
-    status: data
+    status: data,
   }),
   setStatus: (data: object) => ({
     type: ProfileActionType.SET_PROFILE_STATUS,
-    status: data
+    status: data,
   }),
   sendNewPhoto: () => ({
-    type: ProfileActionType.NEW_PROFILE_PHOTO_SENDS
+    type: ProfileActionType.NEW_PROFILE_PHOTO_SENDS,
   }),
   showLoader: () => ({
-    type: ProfileActionType.SHOW_PROFILE_LOADER
+    type: ProfileActionType.SHOW_PROFILE_LOADER,
   }),
   saveProfileFailed: (data: { messages: string[] }) => ({
     type: ProfileActionType.SAVE_PROFILE_FAILED,
-    error: data.messages
+    error: data.messages,
   }),
-  addPost: (post: PostType) => ({
-    type: ProfileActionType.ADD_POST,
-    payload: post
-  } as const),
-  removePost: (postId: number) => ({
-    type: ProfileActionType.REMOVE_POST,
-    postId
-  } as const),
-}
+  addPost: (post: PostType) =>
+    ({
+      type: ProfileActionType.ADD_POST,
+      payload: post,
+    } as const),
+  removePost: (postId: number) =>
+    ({
+      type: ProfileActionType.REMOVE_POST,
+      postId,
+    } as const),
+};
 
 /**
  * Returns user profile information
@@ -57,19 +61,25 @@ export const profileActions = {
 export const updateProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
     dispatch(profileActions.showLoader());
-    profileAPI.getProfile(userId).then(data => {
-      dispatch(profileActions.setProfile(data))
-    }).catch((e) => console.log(e));
-  }
-}
+    profileAPI
+      .getProfile(userId)
+      .then(data => {
+        dispatch(profileActions.setProfile(data));
+      })
+      .catch(e => console.error(e));
+  };
+};
 
 export const updateOwnerProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
-    profileAPI.getProfile(userId).then(data => {
-      dispatch(profileActions.setOwnerProfile(data))
-    }).catch((e) => console.log(e));
-  }
-}
+    profileAPI
+      .getProfile(userId)
+      .then(data => {
+        dispatch(profileActions.setOwnerProfile(data));
+      })
+      .catch(e => console.error(e));
+  };
+};
 
 /**
  * Returns text status of requested user
@@ -77,11 +87,14 @@ export const updateOwnerProfile = (userId: number): ThunkType => {
  */
 export const getStatus = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
-    profileAPI.getStatus(userId).then(data => {
-      dispatch(profileActions.getStatus(data))
-    }).catch((e) => console.log(e));
-  }
-}
+    profileAPI
+      .getStatus(userId)
+      .then(data => {
+        dispatch(profileActions.getStatus(data));
+      })
+      .catch(e => console.error(e));
+  };
+};
 
 /**
  * Update status for current authorized user
@@ -89,13 +102,16 @@ export const getStatus = (userId: number): ThunkType => {
  */
 export const setStatus = (status: string): ThunkType => {
   return async (dispatch: Function) => {
-    profileAPI.setStatus(status).then(data => {
-      if (data.resultCode === ResultCodes.Success) {
-        dispatch(profileActions.setStatus(data))
-      }
-    }).catch((e) => console.log(e));
-  }
-}
+    profileAPI
+      .setStatus(status)
+      .then(data => {
+        if (data.resultCode === ResultCodes.Success) {
+          dispatch(profileActions.setStatus(data));
+        }
+      })
+      .catch(e => console.error(e));
+  };
+};
 
 /**
  * Save Photo
@@ -104,15 +120,19 @@ export const setStatus = (status: string): ThunkType => {
  */
 export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
   return async (dispatch: Function) => {
-    dispatch(profileActions.sendNewPhoto())
-    profileAPI.putPhoto(file).then(data => {
-      if (data.resultCode === ResultCodes.Success) {
-        dispatch(profileActions.savePhotoSuccess(data.data.photos))
-        dispatch(authMe())
-      }
-    }).catch((e) => console.error(e)).finally(() => setSubmitting(false))
-  }
-}
+    dispatch(profileActions.sendNewPhoto());
+    profileAPI
+      .putPhoto(file)
+      .then(data => {
+        if (data.resultCode === ResultCodes.Success) {
+          dispatch(profileActions.savePhotoSuccess(data.data.photos));
+          dispatch(authMe());
+        }
+      })
+      .catch(e => console.error(e))
+      .finally(() => setSubmitting(false));
+  };
+};
 
 /**
  * Save profile changes
@@ -121,19 +141,23 @@ export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
  */
 export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
   return (dispatch: Function, getState: Function) => {
-    profileAPI.putProfile(profile).then(data => {
-      const userId = getState().auth.userId;
-      if (data.resultCode === ResultCodes.Success) {
-        dispatch(updateProfile(userId))
-      } else {
-        dispatch(profileActions.saveProfileFailed(data))
-      }
-    }).catch((e) => {
-      dispatch(profileActions.saveProfileFailed(e))
-      console.log(e)
-    }).finally(() => setSubmitting(false))
-  }
-}
+    profileAPI
+      .putProfile(profile)
+      .then(data => {
+        const { userId } = getState().auth;
+        if (data.resultCode === ResultCodes.Success) {
+          dispatch(updateProfile(userId));
+        } else {
+          dispatch(profileActions.saveProfileFailed(data));
+        }
+      })
+      .catch(e => {
+        dispatch(profileActions.saveProfileFailed(e));
+        console.error(e);
+      })
+      .finally(() => setSubmitting(false));
+  };
+};
 
 export type ActionsTypes = InferActionsTypes<typeof profileActions>;
 export type ThunkType = BaseThunkType<ActionsTypes | FormAction>;

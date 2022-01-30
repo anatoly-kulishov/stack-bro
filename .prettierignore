@@ -1,0 +1,13 @@
+.husky
+**/node_modules/
+**/__snapshots__/
+**/*.scss
+package*.json
+tsconfig.json
+public
+.eslintignore
+.prettierignore
+*.svg
+*.png
+.gitignore
+.gitlab-ci.yml

@@ -3,5 +3,6 @@
  * @param:<PromiseRejectionEvent> reason
  */
 export const catchAllUnhandledErrors = (reason: PromiseRejectionEvent) => {
-  window.alert(`Some error occurred "${reason}"`);
-}
+  /* eslint-disable no-alert */
+  window.alert(`Some error occurred "${reason}"`); // ToDo: Implement search!
+};

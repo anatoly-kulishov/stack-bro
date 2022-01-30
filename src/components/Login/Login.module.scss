@@ -1,8 +1,8 @@
-@use 'src/_variables.scss' as *;
+@use '../../assets/styles/variables' as *;
 
 .LoginBox {
     position: relative;
-    min-width: 380px;
+    width: 380px;
     padding: 25px 15px 20px;
     border-radius: 8px;
     background: $x-color-white;
