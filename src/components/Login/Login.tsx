@@ -6,15 +6,11 @@ import { Alert } from 'antd';
 /** Components * */
 import { LoginForm } from './LoginForm/LoginForm';
 import { WithLoading } from '../common/WithLoading/WithLoading';
-
 /** Utils * */
 import { signIn } from '../../store/actions/authActions';
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getAppState } from '../../store/selectors/app-selectors';
-
-/** Constants * */
 import { SITE_TITLE } from '../../constants/general';
-
 /** Styles * */
 import styles from './Login.module.scss';
 

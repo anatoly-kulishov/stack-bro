@@ -5,6 +5,7 @@ import { connect, Provider, useSelector } from 'react-redux';
 import { compose } from 'redux';
 
 /** Components * */
+// eslint-disable-next-line import/order
 import { WithLoading } from './components/common/WithLoading/WithLoading';
 
 /** Utils * */

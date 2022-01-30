@@ -1,11 +1,9 @@
 /** Libs * */
 import React, { FC, useState } from 'react';
-
-/** Utils * */
 import classNames from 'classnames';
 
+/** Utils * */
 import { isDarkTheme } from '../../../utils/boolean-helpers';
-
 /** Styles & Images * */
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from './copy-icon.svg';

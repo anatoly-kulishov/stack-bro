@@ -1,13 +1,12 @@
 /** Libs * */
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form, FormikConfig, FormikHelpers } from 'formik';
+import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 /** Utils * */
 import { ThunkType } from '../../../store/actions/profileActions';
-
 /** Styles & Images * */
 import styles from './FileField.module.scss';
 
@@ -15,20 +14,20 @@ type FileFieldPropsType = {
   save: (file: File, setSubmitting: Function) => ThunkType;
 };
 
-type initialValuesType = {
+type InitialValuesType = {
   file: File | null;
 };
 
-const INITIAL_VALUES: initialValuesType = {
+const INITIAL_VALUES: InitialValuesType = {
   file: null,
 };
 
 export const FileField: FC<FileFieldPropsType> = ({ save }) => {
   const dispatch = useDispatch();
 
-  const submitHandler: FormikConfig<initialValuesType>['onSubmit'] = (
-    values: initialValuesType,
-    { setSubmitting }: FormikHelpers<initialValuesType>,
+  const submitHandler: FormikConfig<InitialValuesType>['onSubmit'] = (
+    values: InitialValuesType,
+    { setSubmitting }: FormikHelpers<InitialValuesType>,
   ) => {
     setSubmitting(true);
     if (values.file) {

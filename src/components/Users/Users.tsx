@@ -29,26 +29,25 @@ export const Users: React.FC = () => {
     let actualFilter = filter;
     let actualPage = currentPage;
 
-    if (parsed.page) actualPage = Number(parsed.page);
-    if (parsed.term) actualFilter = { ...actualFilter, term: parsed.term as string };
-
-    switch (parsed.friend) {
-      case 'null':
-        actualFilter = { ...actualFilter, friend: null };
-        break;
-      case 'true':
-        actualFilter = { ...actualFilter, friend: true };
-        break;
-      case 'false':
-        actualFilter = { ...actualFilter, friend: false };
-        break;
-      default:
-        break;
+    if (parsed.page) {
+      actualPage = Number(parsed.page);
+    }
+    if (parsed.term) {
+      actualFilter = { ...actualFilter, term: parsed.term as string };
+    }
+    if (parsed.friend === 'null') {
+      actualFilter = { ...actualFilter, friend: null };
+    }
+    if (parsed.friend === 'true') {
+      actualFilter = { ...actualFilter, friend: true };
+    }
+    if (parsed.friend === 'false') {
+      actualFilter = { ...actualFilter, friend: false };
     }
 
     dispatch(setUsers(actualPage, pageSize, actualFilter));
     // eslint-disable-next-line
-  }, [dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
     const query: QueryParamsType = {};
@@ -62,7 +61,7 @@ export const Users: React.FC = () => {
       search: stringify(query),
     });
     // eslint-disable-next-line
-  }, [filter, currentPage])
+  }, [filter, currentPage]);
 
   const onFilterChanged = (values: FilterType) => {
     dispatch(setUsers(currentPage, pageSize, values));

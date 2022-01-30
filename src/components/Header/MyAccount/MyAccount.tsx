@@ -1,10 +1,10 @@
-import React, {PropsWithChildren} from 'react';
-import {Avatar, Dropdown, Button} from 'antd';
-import {UserOutlined} from '@ant-design/icons';
+import React, { PropsWithChildren } from 'react';
+import { Avatar, Dropdown, Button } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
-import {SubMenu} from './SubMenu/SubMenu';
-import {ColorThemes, ProfileType} from '../../../types';
-import {isDarkTheme} from '../../../utils/boolean-helpers';
+import { SubMenu } from './SubMenu/SubMenu';
+import { ColorThemes, ProfileType } from '../../../types';
+import { isDarkTheme } from '../../../utils/boolean-helpers';
 import styles from './MyAccount.module.scss';
 
 type MyAccountPropsType = {
@@ -13,10 +13,10 @@ type MyAccountPropsType = {
   logOut: () => void;
 };
 
-export const MyAccount: React.FC<MyAccountPropsType> = ({logOut, theme, ownerProfile}) => {
+export const MyAccount: React.FC<MyAccountPropsType> = ({ logOut, theme, ownerProfile }) => {
   return (
     <div className={`${styles.wrapper} ${isDarkTheme(theme) ? styles.wrapperDarkTheme : ''} no-border`}>
-      <Dropdown overlay={<SubMenu logOut={logOut} appTheme={theme}/>}>
+      <Dropdown overlay={<SubMenu logOut={logOut} appTheme={theme} />}>
         <Button
           style={{
             height: 40,
@@ -26,7 +26,7 @@ export const MyAccount: React.FC<MyAccountPropsType> = ({logOut, theme, ownerPro
         >
           <div className={styles.inner}>
             <span className={`${styles.login} mr-2`}>{ownerProfile?.fullName}</span>
-            <Avatar src={ownerProfile?.photos?.large} icon={<UserOutlined/>}/>
+            <Avatar src={ownerProfile?.photos?.large} icon={<UserOutlined />} />
           </div>
         </Button>
       </Dropdown>

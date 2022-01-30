@@ -12,6 +12,7 @@ type SearchPanelPropsType = {
 };
 
 export const SearchPanel: FC<SearchPanelPropsType> = ({ theme = 'light' }) => {
+  // eslint-disable-next-line no-alert
   const onSearch = (value: string) => alert(`Search: ${value}`);
   return (
     <Search

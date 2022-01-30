@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
 
 function useResize(ref, isFullscreenView) {
   const [width, setWidth] = useState(0);
@@ -16,10 +16,10 @@ function useResize(ref, isFullscreenView) {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [ref]);
 
@@ -31,7 +31,7 @@ function useResize(ref, isFullscreenView) {
     handleResize();
   }, []);
 
-  return {width, height};
+  return { width, height };
 }
 
 export default useResize;

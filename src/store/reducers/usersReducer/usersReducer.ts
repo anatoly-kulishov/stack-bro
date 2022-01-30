@@ -3,9 +3,9 @@ import { Nullable, UserType } from '../../../types';
 
 const initialState = {
   isLoading: true,
-  followingInProgress: [] as Array<number>,
-  users: [] as Array<UserType>,
-  friends: [] as Array<UserType>,
+  followingInProgress: [] as number[],
+  users: [] as UserType[],
+  friends: [] as UserType[],
   pageSize: 9,
   totalUsersCount: 0,
   totalFriendsCount: 0,

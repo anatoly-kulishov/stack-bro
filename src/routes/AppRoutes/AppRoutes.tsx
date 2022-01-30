@@ -6,6 +6,7 @@ import { Layout } from 'antd';
 /** Components * */
 import { NoMatch } from '../../components/NoMatch/NoMatch';
 import { NavBar } from '../../components/NavBar/NavBar';
+// eslint-disable-next-line import/order
 import { Header } from '../../components/Header/Header';
 
 /** Utils * */

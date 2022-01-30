@@ -1,27 +1,27 @@
-import React, {useEffect} from 'react';
-import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import {ProfilePhoto} from './ProfilePhoto/ProfilePhoto';
-import {MyPosts} from './MyPosts/MyPosts';
-import {updateProfile} from '../../store/actions/profileActions';
-import {setCurrentUserFollower} from '../../store/actions/usersActions/usersActions';
+import { ProfileInfo } from './ProfileInfo/ProfileInfo';
+import { ProfilePhoto } from './ProfilePhoto/ProfilePhoto';
+import { MyPosts } from './MyPosts/MyPosts';
+import { updateProfile } from '../../store/actions/profileActions';
+import { setCurrentUserFollower } from '../../store/actions/usersActions/usersActions';
 import MyFriends from './MyFriends/MyFriends';
-import {getAuthState} from '../../store/selectors/auth-selectors';
-import {getProfileState} from '../../store/selectors/profile-selectors';
-import {setOwnerStatus} from '../../store/action-creators';
+import { getAuthState } from '../../store/selectors/auth-selectors';
+import { getProfileState } from '../../store/selectors/profile-selectors';
+import { setOwnerStatus } from '../../store/action-creators';
 
 type PathParamsType = {
   userId: string | undefined;
 };
 
-export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({match}) => {
+export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
   const dispatch = useDispatch();
   const currentUserId = match?.params?.userId;
   const authState = useSelector(getAuthState);
-  const {isOwner} = useSelector(getProfileState);
-  
+  const { isOwner } = useSelector(getProfileState);
+
   useEffect(() => {
     if (currentUserId) {
       dispatch(updateProfile(Number(currentUserId)));
@@ -32,23 +32,22 @@ export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({match}) 
       dispatch(setOwnerStatus(true));
     }
   }, [currentUserId, authState.userId, dispatch]);
-  
+
   return (
     <div>
       <div className="row">
         <div className="col-12 col-lg-4 pr-lg-2">
-          <ProfilePhoto/>
-          {isOwner && <MyFriends/>}
+          <ProfilePhoto />
+          {isOwner && <MyFriends />}
         </div>
         <div className="col-12 col-lg-8 pl-lg-2">
-          <ProfileInfo/>
-          {isOwner && <MyPosts/>}
+          <ProfileInfo />
+          {isOwner && <MyPosts />}
         </div>
       </div>
     </div>
   );
 };
-
 
 /* eslint-disable import/no-default-export */
 export default withRouter(Profile);

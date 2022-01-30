@@ -5,7 +5,7 @@ import { UsersActionType } from '../../action-types/users-action-type';
 import { ResultCodes, UserType } from '../../../types';
 import { usersAPI } from '../../../api/usersAPI';
 
-export const actions = {
+export const userActions = {
   toggleFollowingProgress: (followingInProgress: boolean, userId: number) =>
     ({
       type: UsersActionType.TOGGLE_IS_FOLLOWING_PROGRESS,
@@ -37,12 +37,12 @@ export const actions = {
  */
 export const setUsers = (requestPage: number, pageSize: number = 9, filter: FilterType): ThunkType => {
   return async (dispatch: Function) => {
-    dispatch(actions.toggleIsFetching(true));
-    dispatch(actions.setCurrentPage(requestPage));
-    dispatch(actions.setFilter(filter));
+    dispatch(userActions.toggleIsFetching(true));
+    dispatch(userActions.setCurrentPage(requestPage));
+    dispatch(userActions.setFilter(filter));
 
     const data = await usersAPI.requestUsers(requestPage, pageSize, filter);
-    dispatch(actions.toggleIsFetching(false));
+    dispatch(userActions.toggleIsFetching(false));
     dispatch(setUsersSuccess(data));
     // dispatch(actions.setTotalUserCount(data.totalCount))
   };
@@ -103,7 +103,7 @@ export const setCurrentUserFollower = (userId: number): ThunkType => {
  */
 export const userFollow = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
-    await dispatch(actions.toggleFollowingProgress(true, userId));
+    await dispatch(userActions.toggleFollowingProgress(true, userId));
     usersAPI
       .postUserFollow(userId)
       .then(data => {
@@ -113,7 +113,7 @@ export const userFollow = (userId: number): ThunkType => {
             userId,
           });
         }
-        dispatch(actions.toggleFollowingProgress(false, userId));
+        dispatch(userActions.toggleFollowingProgress(false, userId));
       })
       .then(() => dispatch(setCurrentUserFollower(userId)))
       .catch(e => console.error(e));
@@ -130,7 +130,7 @@ export const userUnfollow = (userId: number): ThunkType => {
       .deleteUserUnfollow(userId)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
-          dispatch(actions.toggleFollowingProgress(false, userId));
+          dispatch(userActions.toggleFollowingProgress(false, userId));
           dispatch({
             type: UsersActionType.TOGGLE_FOLLOW_UNFOLLOW,
             userId,
@@ -142,5 +142,5 @@ export const userUnfollow = (userId: number): ThunkType => {
   };
 };
 
-export type ActionsTypes = InferActionsTypes<typeof actions>;
-type ThunkType = BaseThunkType<ActionsTypes>;
+export type ActionsTypes = InferActionsTypes<typeof userActions>;
+export type ThunkType = BaseThunkType<ActionsTypes>;

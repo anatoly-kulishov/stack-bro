@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Input, Alert, Button } from 'antd';
+import { Alert, Button, Input } from 'antd';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -46,6 +46,7 @@ export const MyPosts: React.FC = () => {
           validationSchema={messagesSchema}
           onSubmit={(values, { setSubmitting }) => {
             onAddPost(values.message);
+            // eslint-disable-next-line no-param-reassign
             values.message = '';
             setSubmitting(false);
           }}

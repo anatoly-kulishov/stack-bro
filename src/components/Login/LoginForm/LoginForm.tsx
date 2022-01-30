@@ -3,20 +3,17 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
-import { Formik, Form, FormikConfig } from 'formik';
+import { Form, Formik, FormikConfig } from 'formik';
 
 /** Components * */
 import { CustomField } from '../../common/CustomField/CustomField';
-
 /** Utils * */
 import { FormPropsType } from '../../../types';
-
 /** Constants * */
 import { CREATE_NEW_ACCOUNT_BUTTON, LOGIN_AS_GUEST_BUTTON, LOGIN_BUTTON } from '../../../constants/buttons';
 import { CAPTCHA_PLACEHOLDER, EMAIL_PLACEHOLDER, PASSWORD_PLACEHOLDER } from '../../../constants/placeholders';
 import { MOCK_USER_AUTH_DATA, URL_FOR_REGISTRATION } from '../../../constants/api';
 import { REMEMBER_ME_LABEL } from '../../../constants/labels';
-
 /** Styles * */
 import styles from './LoginForm.module.scss';
 

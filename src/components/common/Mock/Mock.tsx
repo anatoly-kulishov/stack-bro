@@ -6,7 +6,6 @@ import { RocketTwoTone } from '@ant-design/icons';
 /** Utils * */
 import { getAppState } from '../../../store/selectors/app-selectors';
 import { isDarkTheme } from '../../../utils/boolean-helpers';
-
 /** Styles & Images * */
 import styles from './Mock.module.scss';
 

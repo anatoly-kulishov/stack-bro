@@ -1,13 +1,15 @@
 /** Libs * */
-import React, {lazy} from 'react';
+import React, { lazy } from 'react';
 
 /** Utils * */
-import {withSuspense} from '../hoc/withSuspense';
-import {IRouteType} from '../types';
+import { withSuspense } from '../hoc/withSuspense';
+// eslint-disable-next-line import/order
+import { IRouteType } from '../types';
 
 /** Pages * */
+/* eslint-disable import/no-named-as-default */
 import Profile from '../components/Profile/Profile';
-import {LoginPage} from '../pages/LoginPage/LoginPage';
+import { LoginPage } from '../pages/LoginPage/LoginPage';
 
 /** Lazy Pages * */
 const MessengerPage = lazy(() => import('../pages/MessengerPage/MessengerPage'));
@@ -19,7 +21,7 @@ export const publicRoutes: IRouteType[] = [
   {
     path: '/',
     exact: true,
-    component: <LoginPage/>,
+    component: <LoginPage />,
   },
 ];
 
@@ -47,6 +49,6 @@ export const privateRoutes: IRouteType[] = [
   {
     path: '/:userId?',
     exact: true,
-    component: <Profile/>,
+    component: <Profile />,
   },
 ];
