@@ -10,6 +10,7 @@ import { profileActions } from '../../../store/actions/profileActions';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { MY_POST_BUTTON } from '../../../constants/buttons';
 import { getAppState } from '../../../store/selectors/app-selectors';
+import { PostType } from '../../../types';
 
 const { TextArea } = Input;
 const { ErrorBoundary } = Alert;
@@ -23,11 +24,9 @@ export const MyPosts: React.FC = () => {
   const { profile, posts } = useSelector(getProfileState);
   const { theme } = useSelector(getAppState);
 
-  const postsElements = posts?.map(
-    (
-      p: any, // ToDo: Fix any!
-    ) => <Post key={p.id} profile={profile} message={p.message} likesCount={p.likesCount} />,
-  );
+  const postsElements = posts?.map(() => ({ id, message, likesCount }: PostType) => (
+    <Post key={id} profile={profile} message={message} likesCount={likesCount} />
+  ));
 
   const onAddPost = (message: string) => {
     const post = {

@@ -1,6 +1,6 @@
 import { authInstance } from './instances';
 import { ProfileActionType } from '../store/actions/authActions';
-import { ResultCodes, ResultCodesForCaptcha, APIResponseType } from '../types';
+import { APIResponseType, ResultCodes, ResultCodesForCaptcha } from '../types';
 
 type GetAutResponseDataType = {
   data: {
@@ -14,10 +14,12 @@ type PostSignInDataType = {
   userId: number;
 };
 
+const BASE_URL: string = '/auth';
+
 export const authAPI = {
   postSignIn: (profile: ProfileActionType) => {
     return authInstance
-      .post<APIResponseType<PostSignInDataType, ResultCodes | ResultCodesForCaptcha>>('/auth/login', {
+      .post<APIResponseType<PostSignInDataType, ResultCodes | ResultCodesForCaptcha>>(`${BASE_URL}/login`, {
         email: profile.email,
         password: profile.password,
         rememberMe: profile.rememberMe,
@@ -26,9 +28,9 @@ export const authAPI = {
       .then(res => res.data);
   },
   getAuthMe: () => {
-    return authInstance.get<APIResponseType<GetAutResponseDataType>>('/auth/me').then(res => res.data);
+    return authInstance.get<APIResponseType<GetAutResponseDataType>>(`${BASE_URL}/me`).then(res => res.data);
   },
   deleteLogOut: () => {
-    return authInstance.delete<null>('/auth/login').then(res => res.data);
+    return authInstance.delete<null>(`${BASE_URL}/login`).then(res => res.data);
   },
 };

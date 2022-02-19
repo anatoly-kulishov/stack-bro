@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import authReducer, { InitialStateType } from './authReducer';
+import { authReducer, InitialStateType } from './authReducer';
 import { logOut, signIn } from '../../actions/authActions';
 
 const state: InitialStateType = {
@@ -35,6 +35,7 @@ it('log out', () => {
 
   // 2. Action
   const newState = authReducer(state, action);
+  // eslint-disable-next-line no-console
   console.log(newState);
 
   // 3. Expectation

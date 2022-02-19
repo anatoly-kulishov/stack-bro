@@ -1,8 +1,8 @@
-/** Libs * */
+/* Libs */
 import React, { FC, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-/** Utils * */
+/* Utils */
 import { isLightTheme } from '../../../utils/boolean-helpers';
 import { getAppState } from '../../../store/selectors/app-selectors';
 import { changeTheme } from '../../../store/actions/appActions';

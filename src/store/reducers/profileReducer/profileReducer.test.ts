@@ -1,4 +1,4 @@
-import profileReducer from './profileReducer';
+import { profileReducer } from './profileReducer';
 import { profileActions } from '../../actions/profileActions';
 import { Nullable, ProfileType } from '../../../types';
 

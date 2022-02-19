@@ -1,4 +1,4 @@
-@use "../../../assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 .wrapper {
   position: relative;
@@ -36,5 +36,5 @@
 
 .emptyBox {
   font-size: 12px;
-  color: #bfbfbf
+  color: #bfbfbf; // ToDo: Add variable for it's color
 }

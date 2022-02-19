@@ -13,7 +13,7 @@ import { getProfileState } from '../../store/selectors/profile-selectors';
 import { setOwnerStatus } from '../../store/action-creators';
 
 type PathParamsType = {
-  userId: string | undefined;
+  userId?: string;
 };
 
 export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
@@ -27,7 +27,8 @@ export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({ match }
       dispatch(updateProfile(Number(currentUserId)));
       dispatch(setCurrentUserFollower(Number(currentUserId)));
       dispatch(setOwnerStatus(false));
-    } else if (!currentUserId && authState.userId) {
+    }
+    if (!currentUserId && authState.userId) {
       dispatch(updateProfile(authState.userId));
       dispatch(setOwnerStatus(true));
     }
@@ -49,5 +50,4 @@ export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({ match }
   );
 };
 
-/* eslint-disable import/no-default-export */
-export default withRouter(Profile);
+export const ProfileWithRouter = withRouter(Profile);

@@ -1,10 +1,13 @@
-import appReducer from './appReducer';
+import { AppInitialStateType, appReducer } from './appReducer';
 import { actions } from '../../actions/appActions';
+import { ColorThemes, Nullable } from '../../../types';
+import { COLOR_THEME } from '../../../constants/localStorage';
 
-const state: any = {
+const state: AppInitialStateType = {
   initialized: false,
-  globalErrors: null as string | null,
-  theme: 'light',
+  globalErrors: null as Nullable<string>,
+  theme: (localStorage.getItem(COLOR_THEME) || 'light') as ColorThemes,
+  spinnerSize: '50px',
 };
 
 it('initialized of app should be success', () => {

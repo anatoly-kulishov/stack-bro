@@ -1,39 +1,39 @@
 @use 'src/assets/styles/variables' as *;
 
 .message {
-    display: flex;
-    align-items: center;
-    padding: 6px 30px 6px 5px;
-    margin: 0 4px 5px;
+  display: flex;
+  align-items: center;
+  padding: 6px 30px 6px 5px;
+  margin: 0 4px 5px;
 
-    color: $x-color-black;
+  color: $x-color-black;
 }
 
 .messageBox {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: $x-color-grey;
-    border-radius: 4px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: $x-color-grey;
+  border-radius: 4px;
 }
 
 .MessageStack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
 }
 
 .MessageStackName {
-    display: inline-block;
-    max-width: 240px;
-    margin-bottom: 10px;
-    vertical-align: top;
+  display: inline-block;
+  max-width: 240px;
+  margin-bottom: 10px;
+  vertical-align: top;
 
-    font-weight: 700;
-    line-height: 1.23;
-    color: #2a5885;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-weight: 700;
+  line-height: 1.23;
+  color: #2a5885;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
-    overflow: hidden;
+  overflow: hidden;
 }

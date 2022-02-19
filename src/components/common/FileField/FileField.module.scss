@@ -1,13 +1,13 @@
-@use "../../../assets/styles/variables" as *;
+@use 'src/assets/styles/variables' as *;
 
 .label {
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    transition: .05s ease;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: .05s ease;
 
-    &:hover {
-        color: #40a9ff;
-    }
+  &:hover {
+    color: #40a9ff;
+  }
 }

@@ -1,10 +1,10 @@
-/** Libs * */
+/* Libs */
 import React from 'react';
 
-/** Components * */
+/* Components */
 import { Spinner } from '../Spinner/Spinner';
 
-/** Styles & Images * */
+/* Assets */
 import './WithLoading.scss';
 
 interface WithLoadingProps {

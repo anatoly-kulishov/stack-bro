@@ -1,12 +1,12 @@
-/** Libs * */
+/* Libs */
 import React, { CSSProperties, FC } from 'react';
 import { useSelector } from 'react-redux';
 import { RocketTwoTone } from '@ant-design/icons';
 
-/** Utils * */
+/* Utils */
 import { getAppState } from '../../../store/selectors/app-selectors';
 import { isDarkTheme } from '../../../utils/boolean-helpers';
-/** Styles & Images * */
+/* Assets */
 import styles from './Mock.module.scss';
 
 const TITLE_FONT_SIZE: CSSProperties = { fontSize: '40px' };

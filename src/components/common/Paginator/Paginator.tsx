@@ -1,4 +1,4 @@
-/** Libs * */
+/* Libs */
 import React, { FC } from 'react';
 import { Pagination } from 'antd';
 
@@ -14,7 +14,7 @@ export const Paginator: FC<PaginatorPropsType> = props => {
   const pagesCount: number = Math.ceil(totalUsersCount / pageSize);
   const pages: number[] = [];
 
-  /* eslint-disable no-plusplus */
+  // eslint-disable-next-line no-plusplus
   for (let i: number = 1; i <= pagesCount; i++) {
     pages.push(i);
   }

@@ -1,9 +1,12 @@
+/* Libs */
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import styles from './MessageInput.module.scss';
+/* Utils */
 import { sendMessage } from '../../../../store/actions/messengerActions';
 import { StatusMessageType } from '../../../../store/reducers/messengerReducer/messengerReducer';
+/* Assets */
+import styles from './MessageInput.module.scss';
 
 type MessageInputPropsType = {
   status: StatusMessageType;

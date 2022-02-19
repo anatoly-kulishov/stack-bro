@@ -1,5 +1,5 @@
 import { userFollow, userUnfollow } from '../../actions/usersActions/usersActions';
-import usersReducer, { InitialStateType } from './usersReducer';
+import { InitialStateType, usersReducer } from './usersReducer';
 import { Nullable } from '../../../types';
 
 let state: InitialStateType;

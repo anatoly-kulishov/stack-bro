@@ -91,34 +91,3 @@ export type IRouteType = {
   component: React.ComponentType | JSX.Element;
   exact?: boolean;
 };
-
-export type NewsResponceType = {
-  _type: string;
-  name: string;
-  url: string;
-  image: {
-    _type: string;
-    thumbnail: {
-      _type: string;
-      contentUrl: string;
-      width: number;
-      height: number;
-    };
-    isLicensed: boolean;
-  };
-  description: string;
-  provider: [
-    {
-      _type: string;
-      name: string;
-      image: {
-        _type: string;
-        thumbnail: {
-          _type: string;
-          contentUrl: string;
-        };
-      };
-    },
-  ];
-  datePublished: Date;
-};

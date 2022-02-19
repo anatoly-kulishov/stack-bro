@@ -1,17 +1,17 @@
-/** Libs * */
+/* Libs */
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Alert } from 'antd';
 
-/** Components * */
+/* Components */
 import { LoginForm } from './LoginForm/LoginForm';
 import { WithLoading } from '../common/WithLoading/WithLoading';
-/** Utils * */
+/* Utils */
 import { signIn } from '../../store/actions/authActions';
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getAppState } from '../../store/selectors/app-selectors';
 import { SITE_TITLE } from '../../constants/general';
-/** Styles * */
+/* Styles */
 import styles from './Login.module.scss';
 
 const { ErrorBoundary } = Alert;

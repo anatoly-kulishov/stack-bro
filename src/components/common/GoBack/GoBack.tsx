@@ -1,9 +1,9 @@
-/** Libs * */
+/* Libs  */
 import React, { FC } from 'react';
 import { Button } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
-/** Utils * */
+/* Utils */
 import { Nullable } from '../../../types';
 
 type GoBackPropsType = {

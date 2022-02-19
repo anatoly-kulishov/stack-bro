@@ -13,7 +13,7 @@ const subscribers = {
 
 let ws: Nullable<WebSocket> = null;
 const closeHandler = () => {
-  notifySubcribersAboutStatus('pending');
+  notifySubscribersAboutStatus('pending');
   setTimeout(createChanel, 3000);
 };
 
@@ -23,11 +23,11 @@ const messageHandler = (e: MessageEvent) => {
 };
 
 const openHandler = () => {
-  notifySubcribersAboutStatus('ready');
+  notifySubscribersAboutStatus('ready');
 };
 
 const errorHandler = () => {
-  notifySubcribersAboutStatus('error');
+  notifySubscribersAboutStatus('error');
   console.error('Refresh page');
 };
 
@@ -38,7 +38,7 @@ const cleanUp = () => {
   ws?.removeEventListener('error', errorHandler);
 };
 
-const notifySubcribersAboutStatus = (status: StatusMessageType) => {
+const notifySubscribersAboutStatus = (status: StatusMessageType) => {
   subscribers['status-changed'].forEach(s => s(status));
 };
 
@@ -46,7 +46,7 @@ function createChanel() {
   cleanUp();
   ws?.close();
   ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
-  notifySubcribersAboutStatus('pending');
+  notifySubscribersAboutStatus('pending');
   ws?.addEventListener('close', closeHandler);
   ws?.addEventListener('message', messageHandler);
   ws?.addEventListener('open', openHandler);

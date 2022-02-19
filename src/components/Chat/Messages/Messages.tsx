@@ -1,12 +1,16 @@
+/* Libs */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import styles from './Messages.module.scss';
-import { Message } from './Message/Message';
+/* Components */
 import { MessageInput } from './MessageInput/MessageInput';
+import { Message } from './Message/Message';
+/* Utils */
 import { AppStateType } from '../../../store/reducers/rootReducer';
 import { getMessengerState } from '../../../store/selectors/messenger-selectors';
 import { ChatMessageType } from '../../../types';
+/* Assets */
+import styles from './Messages.module.scss';
 
 export const Messages: React.FC = () => {
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true);

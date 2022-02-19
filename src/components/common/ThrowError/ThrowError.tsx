@@ -1,4 +1,4 @@
-/** Libs * */
+/* Libs */
 import React, { FC, useState } from 'react';
 import { Button } from 'antd';
 

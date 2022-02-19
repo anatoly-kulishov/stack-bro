@@ -1,10 +1,10 @@
-/** Libs * */
+/* Libs */
 import React from 'react';
 
-/** Components * */
+/* Components */
 import { SpinnerIcon } from '../IconsComponent/SpinnerIcon';
 
-/** Styles & Images * */
+/* Assets */
 import './Spinner.scss';
 
 type SpinnerPropsType = {
