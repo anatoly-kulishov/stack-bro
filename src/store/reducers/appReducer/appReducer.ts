@@ -8,7 +8,6 @@ const initialState = {
   initialized: false,
   globalErrors: null as Nullable<string>,
   theme: (localStorage.getItem(COLOR_THEME) || 'light') as ColorThemes,
-  spinnerSize: '50px',
 };
 
 export type AppInitialStateType = typeof initialState;

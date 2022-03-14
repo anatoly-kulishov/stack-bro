@@ -1,9 +1,5 @@
 const TIME_FORMATS = {
-  CHATS_LIST: 'MMM Do YYYY, h:mm A',
-  MESSAGES_SEPARATOR: 'MMM Do YYYY',
-  MESSAGE: 'h:mm A',
-  WEEK_DAY: 'dddd',
-  DATE_IN_MONTH: 'D MMM',
+  POST_ITEM: 'YYYY-MM-DD HH:mm:ss',
 };
 
 export { TIME_FORMATS };

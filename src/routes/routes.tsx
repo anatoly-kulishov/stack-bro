@@ -1,13 +1,10 @@
-/* Libs */
 import React, { lazy } from 'react';
 
-/* Utils */
 import { withSuspense } from '../hoc/withSuspense';
 import { IRouteType } from '../types';
-/* Pages */
 import { ProfileWithRouter } from '../components/Profile/Profile';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
-/* Lazy Pages */
+
 const MessengerPage = lazy(() => import('../pages/MessengerPage/MessengerPage'));
 const UsersPage = lazy(() => import('../pages/UsersPage/UsersPage'));
 const HelpPage = lazy(() => import('../pages/HelpPage/HelpPage'));

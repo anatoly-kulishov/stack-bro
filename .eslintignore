@@ -5,3 +5,4 @@ src/assets/libs
 .gitignore
 .gitlab-ci.yml
 
+!/src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx

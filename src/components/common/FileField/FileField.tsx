@@ -1,13 +1,10 @@
-/* Libs */
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-/* Utils */
 import { ThunkType } from '../../../store/actions/profileActions';
-/* Assets */
 import styles from './FileField.module.scss';
 
 type FileFieldPropsType = {

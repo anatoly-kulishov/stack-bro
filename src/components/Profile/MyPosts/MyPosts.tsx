@@ -4,13 +4,13 @@ import { Alert, Button, Input } from 'antd';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import styles from './MyPosts.module.scss';
 import { Post } from './Post/Post';
-import { profileActions } from '../../../store/actions/profileActions';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { MY_POST_BUTTON } from '../../../constants/buttons';
+import { profileActions } from '../../../store/actions/profileActions';
 import { getAppState } from '../../../store/selectors/app-selectors';
+import { MY_POST_BUTTON } from '../../../constants/buttons';
 import { PostType } from '../../../types';
+import styles from './MyPosts.module.scss';
 
 const { TextArea } = Input;
 const { ErrorBoundary } = Alert;
@@ -45,6 +45,7 @@ export const MyPosts: React.FC = () => {
           validationSchema={messagesSchema}
           onSubmit={(values, { setSubmitting }) => {
             onAddPost(values.message);
+            // ToDo: fix this eslint warning
             // eslint-disable-next-line no-param-reassign
             values.message = '';
             setSubmitting(false);

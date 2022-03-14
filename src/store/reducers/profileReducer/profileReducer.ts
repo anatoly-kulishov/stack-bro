@@ -1,12 +1,12 @@
 import { ProfileActionType } from '../../action-types/profile-action-type';
-import { Nullable, ProfileType } from '../../../types';
+import { Nullable, PostType, ProfileType } from '../../../types';
 
 const initialState = {
   isOwner: true,
   isLoading: true,
   isValid: true,
   error: null,
-  posts: [] as object[],
+  posts: [] as PostType[],
   selectedProfile: {},
   ownerProfile: {} as ProfileType,
   profile: {} as ProfileType,

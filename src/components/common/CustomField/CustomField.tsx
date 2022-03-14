@@ -1,9 +1,7 @@
-/* Libs */
 import React, { FC } from 'react';
 import { Field, FieldAttributes, FieldProps } from 'formik';
 import { WarningTwoTone } from '@ant-design/icons';
 
-/* Assets */
 import styles from './CustomField.module.scss';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */

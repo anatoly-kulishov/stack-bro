@@ -1,4 +1,3 @@
-/* Libs */
 import React from 'react';
 
 type SpinnerIconPropsType = {

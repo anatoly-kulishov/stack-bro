@@ -1,13 +1,9 @@
-/* Libs */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-/* Components */
 import { Messages } from './Messages/Messages';
-/* Utils */
 import { startMessagesListening, stopMessagesListening } from '../../store/actions/messengerActions';
 import { getAppState } from '../../store/selectors/app-selectors';
-/* Assets */
 import styles from './Chat.module.scss';
 
 export const Chat: React.FC = () => {
