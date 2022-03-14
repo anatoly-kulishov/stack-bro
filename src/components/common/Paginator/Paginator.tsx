@@ -1,4 +1,3 @@
-/* Libs */
 import React, { FC } from 'react';
 import { Pagination } from 'antd';
 

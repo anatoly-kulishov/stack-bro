@@ -1,32 +1,39 @@
 @use 'src/assets/styles/variables' as *;
 
 .myFriends {
-    @include list-reset();
+  @include list-reset();
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 15px;
-    max-width: 100%;
-    margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 14px;
+  max-width: 100%;
+  margin-top: 15px;
 
-    text-align: center;
+  text-align: center;
 
+  & > li {
+    max-width: 66px;
+  }
+
+  @media(max-width: $xl) {
     & > li {
-        max-width: 66px;
+      max-width: 52px;
     }
-
-    @media(max-width: $xl) {
-        & > li {
-            max-width: 52px;
-        }
-    }
+  }
 }
 
 .boxTitle {
-    font-size: 12.5px;
-    font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1;
+  font-weight: 500;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.count {
+  padding: 0 3px;
+  font-weight: 400;
+  color: $steel_gray_400;
 }

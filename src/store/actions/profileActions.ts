@@ -42,16 +42,14 @@ export const profileActions = {
     type: ProfileActionType.SAVE_PROFILE_FAILED,
     error: data.messages,
   }),
-  addPost: (post: PostType) =>
-    ({
-      type: ProfileActionType.ADD_POST,
-      payload: post,
-    } as const),
-  removePost: (postId: number) =>
-    ({
-      type: ProfileActionType.REMOVE_POST,
-      postId,
-    } as const),
+  addPost: (post: PostType) => ({
+    type: ProfileActionType.ADD_POST,
+    payload: post,
+  }),
+  removePost: (postId: number) => ({
+    type: ProfileActionType.REMOVE_POST,
+    postId,
+  }),
 };
 
 /**
@@ -70,6 +68,10 @@ export const updateProfile = (userId: number): ThunkType => {
   };
 };
 
+/**
+ * Update owner profile
+ * @param userId
+ */
 export const updateOwnerProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
     profileAPI

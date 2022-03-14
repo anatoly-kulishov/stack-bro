@@ -1,10 +1,11 @@
-import React, { createElement, useState } from 'react';
-import { Comment, Tooltip, Avatar } from 'antd';
+import React, { createElement, memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import { Avatar, Comment, Tooltip } from 'antd';
+import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
 
 import { Nullable, ProfileType } from '../../../../types';
+import { TIME_FORMATS } from '../../../../constants/time-format';
 
 export type PostPropsType = {
   profile: ProfileType;
@@ -12,7 +13,7 @@ export type PostPropsType = {
   likesCount: number;
 };
 
-export const Post: React.FC<PostPropsType> = props => {
+export const Post: React.FC<PostPropsType> = memo(props => {
   const { message, likesCount, profile } = props;
 
   const [likes, setLikes] = useState<number>(likesCount);
@@ -56,10 +57,10 @@ export const Post: React.FC<PostPropsType> = props => {
       }
       content={<p>{message}</p>}
       datetime={
-        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+        <Tooltip title={moment().format(TIME_FORMATS.POST_ITEM)}>
           <span>{moment().fromNow()}</span>
         </Tooltip>
       }
     />
   );
-};
+});

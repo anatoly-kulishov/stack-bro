@@ -1,19 +1,13 @@
-/* Libs */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 
-/* Components */
-import { NoMatch } from '../../components/NoMatch/NoMatch';
-import { NavBar } from '../../components/NavBar/NavBar';
-// eslint-disable-next-line import/order
 import { Header } from '../../components/Header/Header';
-
-/* Utils */
+import { NavBar } from '../../components/NavBar/NavBar';
+import { NoMatch } from '../../components/NoMatch/NoMatch';
 import { privateRoutes } from '../routes';
 import { IRouteType } from '../../types';
 
-/* Others */
 const { Content } = Layout;
 
 export const AppRoutes: React.FC = () => {
