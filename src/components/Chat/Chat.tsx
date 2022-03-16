@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Messages } from './Messages/Messages';
-import { startMessagesListening, stopMessagesListening } from '../../store/actions/messengerActions';
 import { getAppState } from '../../store/selectors/app-selectors';
+import { startMessagesListening, stopMessagesListening } from '../../store/actions/messengerActions';
 import styles from './Chat.module.scss';
 
-export const Chat: React.FC = () => {
+export const Chat: FC = () => {
   const dispatch = useDispatch();
   const { theme } = useSelector(getAppState);
 

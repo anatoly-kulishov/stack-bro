@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'antd';
-import { ApiTwoTone, EditTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
+import { ApiTwoTone, CloseCircleTwoTone, EditTwoTone } from '@ant-design/icons';
 
 import styles from './ProfileInfo.module.scss';
 import { ProfileStatus } from './ProfileStatus/ProfileStatus';

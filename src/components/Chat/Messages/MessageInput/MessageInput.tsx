@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { sendMessage } from '../../../../store/actions/messengerActions';
@@ -9,7 +9,7 @@ type MessageInputPropsType = {
   status: StatusMessageType;
 };
 
-export const MessageInput: React.FC<MessageInputPropsType> = ({ status }) => {
+export const MessageInput: FC<MessageInputPropsType> = ({ status }) => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState<string>('');
 
@@ -19,7 +19,7 @@ export const MessageInput: React.FC<MessageInputPropsType> = ({ status }) => {
     setMessage('');
   };
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     sendMessageHandler();
   };

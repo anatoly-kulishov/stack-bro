@@ -30,7 +30,7 @@ export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }
 
   return (
     <div className={styles.wrapper}>
-      {!editMode && (
+      {!editMode && currentStatus && (
         <CopyToClipboard
           copy={false}
           customStyles={styles}
@@ -42,7 +42,7 @@ export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }
           {currentStatus}
         </CopyToClipboard>
       )}
-      {editMode && (
+      {editMode && currentStatus && (
         <input
           type="text"
           className={`${styles.statusInput} form-control`}

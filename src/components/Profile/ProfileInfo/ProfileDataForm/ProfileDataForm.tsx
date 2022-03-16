@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
 import { Alert, Button, Checkbox, Input } from 'antd';
 
-import styles from './ProfileDataForm.module.scss';
 import { CustomField } from '../../../common/CustomField/CustomField';
 import { ContactsType, FormPropsType, ProfileType } from '../../../../types';
+import styles from './ProfileDataForm.module.scss';
 
 type ProfileDataFormForm = {
   profile: ProfileType;
 };
 
-export const ProfileDataForm: React.FC<FormPropsType & ProfileDataFormForm> = props => {
+export const ProfileDataForm: FC<FormPropsType & ProfileDataFormForm> = props => {
   const { onSubmit, isValid, errorText, profile } = props;
   const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
   const { TextArea } = Input;

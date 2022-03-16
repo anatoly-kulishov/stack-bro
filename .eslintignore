@@ -4,5 +4,7 @@ node_modules
 src/assets/libs
 .gitignore
 .gitlab-ci.yml
-
-!/src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx
+/src/react-app-env.d.ts
+/src/constants/regex.ts
+/src/service-worker.ts
+/src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx

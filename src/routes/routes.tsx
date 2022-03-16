@@ -1,9 +1,9 @@
 import React, { lazy } from 'react';
 
-import { withSuspense } from '../hoc/withSuspense';
-import { IRouteType } from '../types';
 import { ProfileWithRouter } from '../components/Profile/Profile';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
+import { withSuspense } from '../hoc/withSuspense';
+import { IRouteType } from '../types';
 
 const MessengerPage = lazy(() => import('../pages/MessengerPage/MessengerPage'));
 const UsersPage = lazy(() => import('../pages/UsersPage/UsersPage'));

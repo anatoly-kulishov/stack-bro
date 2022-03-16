@@ -1,15 +1,22 @@
 @use 'src/assets/styles/variables' as *;
 
 .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 11.5px;
+  font-weight: 500;
 }
 
 .label {
-    text-transform:capitalize;
+  text-transform: capitalize;
+  min-width: 125px;
 }
 
-.desc {}
+.desc {
+  color: $blue_650;
+}
+
+.desc:hover {
+  text-decoration: underline;
+}

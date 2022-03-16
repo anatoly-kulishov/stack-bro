@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, MenuTheme } from 'antd';
 import { LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ type MyAccountSubMenuPropsType = {
   logOut: () => void;
 };
 
-export const SubMenu: React.FC<MyAccountSubMenuPropsType> = ({ logOut, appTheme }) => {
+export const SubMenu: FC<MyAccountSubMenuPropsType> = ({ logOut, appTheme }) => {
   return (
     <Menu theme={appTheme}>
       <Menu.Item key="1" icon={<QuestionCircleOutlined />}>

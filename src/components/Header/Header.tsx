@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Layout } from 'antd';
 
@@ -10,7 +10,7 @@ import { getAppState } from '../../store/selectors/app-selectors';
 import { isDarkTheme, isLightTheme } from '../../utils/boolean-helpers';
 import { MyAccountContainer } from './MyAccount/MyAccountContainer';
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
   const { theme } = useSelector(getAppState);
 
   return (

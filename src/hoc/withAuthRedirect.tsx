@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType, FC } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -15,8 +15,8 @@ type MapPropsType = {
 
 type DispatchPropsType = {};
 
-export function withAuthRedirect<WCP>(WrappedComponent: React.ComponentType<WCP>) {
-  const RedirectComponent: React.FC<MapPropsType & DispatchPropsType> = props => {
+export function withAuthRedirect<WCP>(WrappedComponent: ComponentType<WCP>) {
+  const RedirectComponent: FC<MapPropsType & DispatchPropsType> = props => {
     const { isAuth, ...restProps } = props;
 
     if (!isAuth) return <Redirect to="/" />;

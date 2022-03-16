@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Spinner } from '../Spinner/Spinner';
 
@@ -9,7 +9,7 @@ interface WithLoadingProps {
   spinnerSize: string;
 }
 
-export const WithLoading: React.FC<WithLoadingProps> = ({ isLoading, spinnerSize, children }) => {
+export const WithLoading: FC<WithLoadingProps> = ({ isLoading, spinnerSize, children }) => {
   return (
     <>
       {isLoading ? (

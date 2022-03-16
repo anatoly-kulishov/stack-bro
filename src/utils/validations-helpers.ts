@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import trim from 'lodash/trim';
 
-import { MIN_PASS_LENGTH, MIN_SEARCH_LENGTH } from '../constants/strings';
+import { MIN_PASS_LENGTH, MIN_SEARCH_LENGTH } from '../constants/commom';
 import {
   NUMBER_CHARACTER_REGEX,
   PHONE_NUMBER_REGEX,
@@ -75,7 +75,7 @@ export const scrollToGivenTop = (element: Element) => {
       element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
   } catch (error) {
-    console.log('error in scroll');
+    console.error('error in scroll');
   }
 };
 

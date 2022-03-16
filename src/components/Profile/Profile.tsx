@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,7 +16,7 @@ type PathParamsType = {
   userId?: string;
 };
 
-export const Profile: React.FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
+export const Profile: FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
   const dispatch = useDispatch();
   const currentUserId = match?.params?.userId;
   const authState = useSelector(getAuthState);

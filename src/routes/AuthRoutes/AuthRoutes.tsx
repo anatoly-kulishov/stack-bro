@@ -1,11 +1,11 @@
-import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { publicRoutes } from '../routes';
-import styles from './AuthRoutes.module.scss';
 import { IRouteType } from '../../types';
+import styles from './AuthRoutes.module.scss';
 
-export const AuthRoutes: React.FC = () => {
+export const AuthRoutes: FC = () => {
   return (
     <div className={styles.auth}>
       <div>

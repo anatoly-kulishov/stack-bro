@@ -1,5 +1,5 @@
 /**
- * Check All Unhandled Errors
+ * Check all unhandled errors
  * @param:<PromiseRejectionEvent> reason
  */
 export const catchAllUnhandledErrors = (reason: PromiseRejectionEvent) => {

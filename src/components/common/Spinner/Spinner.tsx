@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { SpinnerIcon } from '../IconsComponent/SpinnerIcon';
 
@@ -8,7 +8,7 @@ type SpinnerPropsType = {
   size: string;
 };
 
-export const Spinner: React.FC<SpinnerPropsType> = ({ size }) => {
+export const Spinner: FC<SpinnerPropsType> = ({ size }) => {
   return (
     <div className="custom-spinner-wrapper">
       <SpinnerIcon size={size} />

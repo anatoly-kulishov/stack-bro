@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
-function useResize(ref, isFullscreenView) {
+// ToDo: Fix these any!
+export function useResize(ref: RefObject<any>, isFullscreenView: any) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
@@ -21,17 +22,18 @@ function useResize(ref, isFullscreenView) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
 
   useEffect(() => {
     handleResize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFullscreenView]);
 
   useEffect(() => {
     handleResize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { width, height };
 }
-
-export default useResize;

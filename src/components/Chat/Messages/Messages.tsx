@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { MessageInput } from './MessageInput/MessageInput';
@@ -8,7 +8,7 @@ import { getMessengerState } from '../../../store/selectors/messenger-selectors'
 import { ChatMessageType } from '../../../types';
 import styles from './Messages.module.scss';
 
-export const Messages: React.FC = () => {
+export const Messages: FC = () => {
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true);
   const messages = useSelector((state: AppStateType) => state.messenger.messages);
   const { status } = useSelector(getMessengerState);

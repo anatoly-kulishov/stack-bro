@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Skeleton, Avatar, Card } from 'antd';
-import { MinusOutlined, PlusOutlined, EyeOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Card, Skeleton } from 'antd';
+import { EyeOutlined, MinusOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 
 import { UserType } from '../../../types';
@@ -13,7 +13,7 @@ export type UserPropsType = {
   isLoading: boolean;
 };
 
-export const User: React.FC<UserPropsType> = props => {
+export const User: FC<UserPropsType> = props => {
   const { user, isLoading } = props;
   const dispatch = useDispatch();
   const { Meta } = Card;

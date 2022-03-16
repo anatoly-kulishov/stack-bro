@@ -12,7 +12,7 @@ type CopyToClipboardPropsType = {
   placeholder: string;
   appTheme: string;
   onDoubleClickHandler: () => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 };
 
 export const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
