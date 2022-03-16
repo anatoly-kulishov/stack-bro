@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './ProfileData.module.scss';
 import { Contact } from './Contact/Contact';
@@ -8,7 +8,7 @@ type ProfileDataPropsType = {
   profile: ProfileType;
 };
 
-export const ProfileData: React.FC<ProfileDataPropsType> = props => {
+export const ProfileData: FC<ProfileDataPropsType> = props => {
   const { profile } = props;
   const { lookingForAJob, lookingForAJobDescription, contacts, aboutMe } = profile;
 

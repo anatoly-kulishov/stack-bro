@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useHover() {
+export function useHover() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const eventHandlers = {
@@ -11,5 +11,3 @@ function useHover() {
 
   return [isHovered, eventHandlers];
 }
-
-export default useHover;

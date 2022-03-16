@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Button } from 'antd';
@@ -6,9 +6,12 @@ import { UploadOutlined } from '@ant-design/icons';
 
 import { ThunkType } from '../../../store/actions/profileActions';
 import styles from './FileField.module.scss';
+import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../../../utils/file-helpers';
+import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../constants/commom';
 
 type FileFieldPropsType = {
-  save: (file: File, setSubmitting: Function) => ThunkType;
+  saveHandler: (file: File, setSubmitting: Function) => ThunkType;
+  validationHandler: (errorText: string | null) => void;
 };
 
 type InitialValuesType = {
@@ -19,7 +22,7 @@ const INITIAL_VALUES: InitialValuesType = {
   file: null,
 };
 
-export const FileField: FC<FileFieldPropsType> = ({ save }) => {
+export const FileField: FC<FileFieldPropsType> = ({ saveHandler, validationHandler }) => {
   const dispatch = useDispatch();
 
   const submitHandler: FormikConfig<InitialValuesType>['onSubmit'] = (
@@ -28,15 +31,27 @@ export const FileField: FC<FileFieldPropsType> = ({ save }) => {
   ) => {
     setSubmitting(true);
     if (values.file) {
-      dispatch(save(values.file, setSubmitting));
+      dispatch(saveHandler(values.file, setSubmitting));
     }
   };
 
   const changeHandler =
-    (setFieldValue: (file: string, values: Partial<File>) => void) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (setFieldValue: (file: string, values: Partial<File>) => void) => (event: ChangeEvent<HTMLInputElement>) => {
       if (event.currentTarget.files !== null) {
         const file = event.currentTarget.files[0];
-        setFieldValue('file', file);
+        const fileFormat = file.type;
+        const fileSizeInMb = convertFileSizeToMb(file.size);
+        const isValidSizing = validateFileSize(fileSizeInMb);
+        const isValidFormat = validateFileFormat(fileFormat);
+        if (!isValidSizing) {
+          validationHandler(FILE_SIZE_LIMIT_ERROR);
+        }
+        if (!isValidFormat) {
+          validationHandler(ALLOWED_EXTENSIONS_ERROR);
+        }
+        if (isValidSizing && isValidFormat) {
+          setFieldValue('file', file);
+        }
       }
     };
 
@@ -48,7 +63,14 @@ export const FileField: FC<FileFieldPropsType> = ({ save }) => {
             <span className="mr-2">Update photo</span>
             <UploadOutlined />
           </label>
-          <input name="file" type="file" id="file" className="d-none" onChange={changeHandler(setFieldValue)} />
+          <input
+            name="file"
+            type="file"
+            id="file"
+            className="d-none"
+            accept=".jpg, .jpeg, .png"
+            onChange={changeHandler(setFieldValue)}
+          />
           {values.file && (
             <>
               <div className="mt-2">

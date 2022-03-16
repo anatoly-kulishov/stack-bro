@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './Logo.module.scss';
 import { ThemeToggler } from '../../common/ThemeToggler/ThemeToggler';
@@ -9,7 +9,7 @@ type LogoPropsType = {
   theme: ColorThemes;
 };
 
-export const Logo: React.FC<LogoPropsType> = ({ theme = 'light' }) => {
+export const Logo: FC<LogoPropsType> = ({ theme = 'light' }) => {
   return (
     <div className={styles.wrapper}>
       <ThemeToggler>

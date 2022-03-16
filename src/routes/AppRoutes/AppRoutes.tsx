@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -10,7 +10,7 @@ import { IRouteType } from '../../types';
 
 const { Content } = Layout;
 
-export const AppRoutes: React.FC = () => {
+export const AppRoutes: FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header />

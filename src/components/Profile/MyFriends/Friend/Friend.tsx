@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 
 import { UserType } from '../../../../types';
 import classes from './Friend.module.scss';
@@ -10,7 +10,7 @@ type FriendPropsType = {
   data: UserType;
 };
 
-export const Friend: React.FC<FriendPropsType> = ({ data }) => {
+export const Friend: FC<FriendPropsType> = ({ data }) => {
   return (
     <li>
       <Link to={`/${data.id}`}>

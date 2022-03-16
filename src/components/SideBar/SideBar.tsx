@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Timeline } from 'antd';
 import moment from 'moment';
 
 import styles from './SideBar.module.scss';
 
-export const SideBar: React.FC = () => {
+export const SideBar: FC = () => {
   const currentTime = moment().format('L');
 
   return (

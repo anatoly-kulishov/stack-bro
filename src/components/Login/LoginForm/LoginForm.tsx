@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
 
 import { CustomField } from '../../common/CustomField/CustomField';
-import { FormPropsType } from '../../../types';
 import { CREATE_NEW_ACCOUNT_BUTTON, LOGIN_AS_GUEST_BUTTON, LOGIN_BUTTON } from '../../../constants/buttons';
 import { CAPTCHA_PLACEHOLDER, EMAIL_PLACEHOLDER, PASSWORD_PLACEHOLDER } from '../../../constants/placeholders';
 import { MOCK_USER_AUTH_DATA, URL_FOR_REGISTRATION } from '../../../constants/api';
 import { REMEMBER_ME_LABEL } from '../../../constants/labels';
+import { FormPropsType } from '../../../types';
 import styles from './LoginForm.module.scss';
 
 const initialValues = {
@@ -21,7 +21,7 @@ const initialValues = {
 
 type ILoginFormValues = typeof initialValues;
 
-export const LoginForm: React.FC<FormPropsType> = ({ onSubmit, isValid, errorText, captchaUrl }) => {
+export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorText, captchaUrl }) => {
   const dispatch = useDispatch();
 
   const submitHandler: FormikConfig<ILoginFormValues>['onSubmit'] = (values, formikHelpers) => {

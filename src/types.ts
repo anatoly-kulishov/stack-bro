@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentType } from 'react';
 
 export type Nullable<T> = T | null;
 
@@ -59,12 +59,6 @@ export type ProfileType = {
   photos: PhotosType;
 };
 
-export type MyProfileType = {
-  id: number;
-  email: Nullable<string>;
-  login: Nullable<string>;
-};
-
 export type UserType = {
   id: number;
   name: string;
@@ -88,6 +82,6 @@ export type ChatMessageType = {
 
 export type IRouteType = {
   path: string;
-  component: React.ComponentType | JSX.Element;
+  component: ComponentType | JSX.Element;
   exact?: boolean;
 };

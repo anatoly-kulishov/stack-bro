@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './Contact.module.scss';
 import { Nullable } from '../../../../../types';
@@ -9,14 +9,14 @@ type ContactPropsType = {
   value: Nullable<string> | undefined;
 };
 
-export const Contact: React.FC<ContactPropsType> = props => {
+export const Contact: FC<ContactPropsType> = props => {
   const { logic, title = '', value } = props;
 
   if (logic && value) {
     return (
       <div className={styles.row}>
         <div className={styles.label}>{title}:</div>
-        <a href={`${value}`} target="_blank" rel="noreferrer">
+        <a href={`${value}`} target="_blank" rel="noreferrer noopener">
           <div className={styles.desc}>{value && value}</div>
         </a>
       </div>

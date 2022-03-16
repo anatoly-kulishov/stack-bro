@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert, Button, Input } from 'antd';
 import { Formik } from 'formik';
@@ -19,11 +19,12 @@ const messagesSchema = Yup.object().shape({
   message: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
 });
 
-export const MyPosts: React.FC = () => {
+export const MyPosts: FC = () => {
   const dispatch = useDispatch();
   const { profile, posts } = useSelector(getProfileState);
   const { theme } = useSelector(getAppState);
 
+  // ToDo: Fix this bug: https://trello.com/c/AW8VeAyO/13-profile-my-posts
   const postsElements = posts?.map(() => ({ id, message, likesCount }: PostType) => (
     <Post key={id} profile={profile} message={message} likesCount={likesCount} />
   ));
@@ -45,7 +46,6 @@ export const MyPosts: React.FC = () => {
           validationSchema={messagesSchema}
           onSubmit={(values, { setSubmitting }) => {
             onAddPost(values.message);
-            // ToDo: fix this eslint warning
             // eslint-disable-next-line no-param-reassign
             values.message = '';
             setSubmitting(false);

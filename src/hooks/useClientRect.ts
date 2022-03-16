@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-function useClientRect() {
+export function useClientRect() {
   const [clientRect, setClientRect] = useState(null);
 
   const ref = useCallback(elm => {
@@ -13,5 +13,3 @@ function useClientRect() {
 
   return [clientRect, ref];
 }
-
-export default useClientRect;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { parse, stringify } from 'querystring';
 import { Alert, Spin } from 'antd';
@@ -15,7 +15,7 @@ import { getAppState } from '../../store/selectors/app-selectors';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };
 
-export const Users: React.FC = () => {
+export const Users: FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 

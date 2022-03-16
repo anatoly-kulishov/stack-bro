@@ -1,4 +1,4 @@
-import React, { createElement, memo, useState } from 'react';
+import React, { createElement, FC, memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import { Avatar, Comment, Tooltip } from 'antd';
@@ -13,7 +13,7 @@ export type PostPropsType = {
   likesCount: number;
 };
 
-export const Post: React.FC<PostPropsType> = memo(props => {
+export const Post: FC<PostPropsType> = memo(props => {
   const { message, likesCount, profile } = props;
 
   const [likes, setLikes] = useState<number>(likesCount);
@@ -41,7 +41,7 @@ export const Post: React.FC<PostPropsType> = memo(props => {
     </Tooltip>,
     <Tooltip key="comment-basic-dislike" title="Dislike">
       <span onClick={dislike}>
-        {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
+        {createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
         <span className="comment-action">{dislikes}</span>
       </span>
     </Tooltip>,

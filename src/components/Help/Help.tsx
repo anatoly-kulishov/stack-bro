@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Mock } from '../common/Mock/Mock';
 import { getAppState } from '../../store/selectors/app-selectors';
 
-export const Help: React.FC = () => {
+export const Help: FC = () => {
   const { theme } = useSelector(getAppState);
 
   return (

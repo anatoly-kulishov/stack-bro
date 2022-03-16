@@ -1,41 +1,44 @@
 @use 'src/assets/styles/variables' as *;
 
 .wrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .statusBar {
-    width: 100%;
-    min-height: auto;
-    padding: 0;
-    line-height: 1;
+  width: 100%;
+  min-height: auto;
+  padding: 0;
+  line-height: 1;
 }
 
 .statusBarActive {
-    cursor: pointer!important;
+  cursor: pointer !important;
 }
 
 .statusBarActive .statusTextBox:hover {
-    background-color: $x-color-grey-3;
+  background-color: $x-color-grey-3;
 }
 
 .statusTextBox {
-    min-height: auto !important;
-    margin-top: 2px !important;
-    padding: 3.5px 6px !important;
-    margin-left: -4px !important;
+  min-height: auto !important;
+  margin-top: 2px !important;
+  padding: 3.5px 6px !important;
+  margin-left: -4px !important;
 }
 
 .statusTextBoxDarkTheme:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .statusInput {
-    width: 100%;
-    height: auto;
-    font-size: 11px;
-    line-height: 1;
-    margin-top: 2px;
-    padding: 3px 5px;
+  width: 100%;
+  height: auto;
+  font-size: 11px;
+  line-height: 1;
+  margin-top: 2px;
+  padding: 3px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

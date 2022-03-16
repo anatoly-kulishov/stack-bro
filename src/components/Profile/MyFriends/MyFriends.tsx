@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 
-import { getFriends, getUsersState } from '../../../store/selectors/users-selectors';
 import { Friend } from './Friend/Friend';
+import { getFriends, getUsersState } from '../../../store/selectors/users-selectors';
 import { getAppState } from '../../../store/selectors/app-selectors';
 import classes from './myFriends.module.scss';
 
@@ -12,7 +12,7 @@ type PathParamsType = {
   userId: string | undefined;
 };
 
-const MyFriends: React.FC<RouteComponentProps<PathParamsType>> = () => {
+const MyFriends: FC<RouteComponentProps<PathParamsType>> = () => {
   const { theme } = useSelector(getAppState);
   const { totalFriendsCount } = useSelector(getUsersState);
   const friends = useSelector(getFriends);

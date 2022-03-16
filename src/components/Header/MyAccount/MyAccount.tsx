@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import { Avatar, Dropdown, Button } from 'antd';
+import React, { FC, PropsWithChildren } from 'react';
+import { Avatar, Button, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { SubMenu } from './SubMenu/SubMenu';
@@ -13,7 +13,7 @@ type MyAccountPropsType = {
   logOut: () => void;
 };
 
-export const MyAccount: React.FC<MyAccountPropsType> = ({ logOut, theme, ownerProfile }) => {
+export const MyAccount: FC<MyAccountPropsType> = ({ logOut, theme, ownerProfile }) => {
   return (
     <div className={`${styles.wrapper} ${isDarkTheme(theme) ? styles.wrapperDarkTheme : ''} no-border`}>
       <Dropdown overlay={<SubMenu logOut={logOut} appTheme={theme} />}>
