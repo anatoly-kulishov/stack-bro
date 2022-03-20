@@ -54,7 +54,12 @@ export const ProfileInfo: FC = () => {
           {!editMode ? (
             <ProfileData profile={profile} />
           ) : (
-            <ProfileDataForm profile={profile} onSubmit={saveProfile} errorText={error} />
+            <ProfileDataForm
+              profile={profile}
+              onSubmit={saveProfile}
+              errorText={error}
+              closeEditMode={() => setEditMode(!editMode)}
+            />
           )}
         </div>
       </ErrorBoundary>

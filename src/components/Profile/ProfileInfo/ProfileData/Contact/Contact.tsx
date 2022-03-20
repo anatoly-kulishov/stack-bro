@@ -4,15 +4,15 @@ import styles from './Contact.module.scss';
 import { Nullable } from '../../../../../types';
 
 type ContactPropsType = {
-  logic: boolean;
+  isLogic: boolean;
   title: string;
   value: Nullable<string> | undefined;
 };
 
 export const Contact: FC<ContactPropsType> = props => {
-  const { logic, title = '', value } = props;
+  const { isLogic, title = '', value } = props;
 
-  if (logic && value) {
+  if (isLogic && value) {
     return (
       <div className={styles.row}>
         <div className={styles.label}>{title}:</div>

@@ -11,24 +11,27 @@ type ProfileDataFormForm = {
   profile: ProfileType;
 };
 
-export const ProfileDataForm: FC<FormPropsType & ProfileDataFormForm> = props => {
-  const { onSubmit, isValid, errorText, profile } = props;
+const { TextArea } = Input;
+
+export const ProfileDataForm: FC<FormPropsType & ProfileDataFormForm & { closeEditMode: () => void }> = props => {
+  const { onSubmit, isValid, errorText, profile, closeEditMode } = props;
   const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
-  const { TextArea } = Input;
   const dispatch = useDispatch();
+
+  const initialValues = {
+    userId: profile.userId,
+    fullName,
+    lookingForAJob,
+    lookingForAJobDescription,
+    aboutMe,
+    contacts,
+  };
 
   return (
     <Formik
-      initialValues={{
-        userId: 17461,
-        fullName,
-        lookingForAJob,
-        lookingForAJobDescription,
-        aboutMe,
-        contacts,
-      }}
+      initialValues={initialValues}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch(onSubmit(values, setSubmitting));
+        dispatch(onSubmit(values, setSubmitting, closeEditMode));
       }}
     >
       {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
