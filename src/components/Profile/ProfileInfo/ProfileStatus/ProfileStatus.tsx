@@ -32,7 +32,7 @@ export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }
     <div className={styles.wrapper}>
       {!editMode && currentStatus && (
         <CopyToClipboard
-          copy={false}
+          isCopy={false}
           customStyles={styles}
           appTheme={theme}
           isDisabled={isDisabled}

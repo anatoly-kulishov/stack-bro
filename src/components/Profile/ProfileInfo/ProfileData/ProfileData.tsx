@@ -31,7 +31,7 @@ export const ProfileData: FC<ProfileDataPropsType> = props => {
         </div>
         {contacts &&
           Object.keys(contacts).map((key: string) => (
-            <Contact key={key} logic={true} title={key} value={contacts[key as keyof ContactsType]} />
+            <Contact key={key} isLogic={true} title={key} value={contacts[key as keyof ContactsType]} />
           ))}
       </div>
     </div>

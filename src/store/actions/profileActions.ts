@@ -141,7 +141,7 @@ export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
  * @param profile
  * @param setSubmitting
  */
-export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
+export const saveProfile = (profile: ProfileType, setSubmitting: Function, closeEditMode: Function) => {
   return (dispatch: Function, getState: Function) => {
     profileAPI
       .putProfile(profile)
@@ -157,7 +157,10 @@ export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
         dispatch(profileActions.saveProfileFailed(e));
         console.error(e);
       })
-      .finally(() => setSubmitting(false));
+      .finally(() => {
+        closeEditMode();
+        setSubmitting(false);
+      });
   };
 };
 
