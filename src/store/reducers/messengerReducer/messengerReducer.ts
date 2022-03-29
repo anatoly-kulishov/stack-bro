@@ -10,6 +10,7 @@ const initialState = {
   status: 'pending' as StatusMessageType,
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const messengerReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case MessengerActionType.MESSAGES_RECEIVED:

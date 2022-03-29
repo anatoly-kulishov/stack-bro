@@ -12,7 +12,7 @@ export const CustomField: FC<FieldAttributes<any & FieldProps>> = props => {
       <Field {...props} />
       {errormessage && (
         <div title={errormessage} className={styles.icon}>
-          <WarningTwoTone twoToneColor="#dc3545" style={{ fontSize: 20 }} />
+          <WarningTwoTone twoToneColor="#dc3545" style={{ fontSize: 18 }} />
         </div>
       )}
     </div>

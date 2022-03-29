@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styles from './Logo.module.scss';
 import { ThemeToggler } from '../../common/ThemeToggler/ThemeToggler';
@@ -10,6 +11,10 @@ type LogoPropsType = {
 };
 
 export const Logo: FC<LogoPropsType> = ({ theme = 'light' }) => {
+  const history = useHistory();
+
+  const goHomeHandler = () => history.push('/');
+
   return (
     <div className={styles.wrapper}>
       <ThemeToggler>
@@ -18,6 +23,7 @@ export const Logo: FC<LogoPropsType> = ({ theme = 'light' }) => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 128 128"
           enableBackground="new 0 0 128 128"
+          onClick={goHomeHandler}
         >
           <g fill="#61DAFB">
             <circle cx="64" cy="64" r="11.4" />

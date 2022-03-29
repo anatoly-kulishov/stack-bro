@@ -35,6 +35,7 @@ export const userActions = {
  * @param:number requestPage
  * @param:number pageSize
  */
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const setUsers = (requestPage: number, pageSize: number = 9, filter: FilterType): ThunkType => {
   return async (dispatch: Function) => {
     dispatch(userActions.toggleIsFetching(true));
