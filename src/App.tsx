@@ -31,6 +31,8 @@ const App: FC<MapPropsType & DispatchPropsType> = props => {
     };
   }, [initializeAppFC, isAuth]);
 
+  // 1234
+
   return (
     <WithLoading isLoading={!initialized} spinnerSize={SPINNER_SIZE}>
       <div className={`app--${theme}`}>{isAuth ? <AppRoutes /> : <AuthRoutes />}</div>

@@ -1,15 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'antd';
-import { ApiTwoTone, CloseCircleTwoTone, EditTwoTone } from '@ant-design/icons';
+import { ApiTwoTone, EditTwoTone } from '@ant-design/icons';
 
 import styles from './ProfileInfo.module.scss';
 import { ProfileStatus } from './ProfileStatus/ProfileStatus';
 import { ProfileData } from './ProfileData/ProfileData';
-import { ProfileDataForm } from './ProfileDataForm/ProfileDataForm';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { getStatus, saveProfile } from '../../../store/actions/profileActions';
 import { getAppState } from '../../../store/selectors/app-selectors';
+import { EditProfileModal } from './EditProfileModal/EditProfileModal';
 
 const { ErrorBoundary } = Alert;
 
@@ -17,7 +17,15 @@ export const ProfileInfo: FC = () => {
   const dispatch = useDispatch();
   const { profile, error, isOwner, status } = useSelector(getProfileState);
   const { theme } = useSelector(getAppState);
-  const [editMode, setEditMode] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     if (profile.userId) {
@@ -43,24 +51,18 @@ export const ProfileInfo: FC = () => {
         </div>
         {isOwner && (
           <div className="d-flex justify-content-end mt-3 mb-2">
-            {editMode ? (
-              <CloseCircleTwoTone onClick={() => setEditMode(!editMode)} />
-            ) : (
-              <EditTwoTone onClick={() => setEditMode(!editMode)} />
-            )}
+            <EditTwoTone onClick={showModal} />
           </div>
         )}
         <div>
-          {!editMode ? (
-            <ProfileData profile={profile} />
-          ) : (
-            <ProfileDataForm
-              profile={profile}
-              onSubmit={saveProfile}
-              errorText={error}
-              closeEditMode={() => setEditMode(!editMode)}
-            />
-          )}
+          <ProfileData profile={profile} />
+          <EditProfileModal
+            profile={profile}
+            onSubmit={saveProfile}
+            errorText={error}
+            isModalVisible={isModalVisible}
+            hideModal={hideModal}
+          />
         </div>
       </ErrorBoundary>
     </div>

@@ -14,6 +14,7 @@ const initialState = {
   followStatus: null as Nullable<boolean>,
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const profileReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case ProfileActionType.SET_USER_PROFILE:

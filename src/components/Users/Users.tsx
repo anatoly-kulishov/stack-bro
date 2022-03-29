@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { parse, stringify } from 'querystring';
+import { parse, stringify } from 'query-string';
 import { Alert, Spin } from 'antd';
 import { useHistory } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import { FilterType } from '../../store/reducers/usersReducer/usersReducer';
 import { getAppState } from '../../store/selectors/app-selectors';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };
-
+// 213 21321
 export const Users: FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();

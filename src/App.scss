@@ -215,3 +215,12 @@ textarea {
   border: 1px solid #30363d;
   background-color: #161b22;
 }
+
+.EditModalWrapper .ant-modal-body {
+  padding-top: 0;
+  padding-bottom: 18px;
+}
+
+.EditModalWrapper .form-row {
+  margin: 0 0 15px;
+}

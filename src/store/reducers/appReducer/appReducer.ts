@@ -12,6 +12,7 @@ const initialState = {
 
 export type AppInitialStateType = typeof initialState;
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const appReducer = (state = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
     case AppActionType.INITIALIZED_SUCCESS:

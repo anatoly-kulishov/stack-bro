@@ -5,18 +5,19 @@ import { EyeOutlined, MinusOutlined, PlusOutlined, UserOutlined } from '@ant-des
 import { useDispatch } from 'react-redux';
 
 import { UserType } from '../../../types';
-import styles from './User.module.scss';
 import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
+import styles from './User.module.scss';
 
 export type UserPropsType = {
   user: UserType;
   isLoading: boolean;
 };
 
+const { Meta } = Card;
+
 export const User: FC<UserPropsType> = props => {
   const { user, isLoading } = props;
   const dispatch = useDispatch();
-  const { Meta } = Card;
   // const followingInProgress = useSelector(getFollowingInProgress);
 
   const followAction = user.followed ? (

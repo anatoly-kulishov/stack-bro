@@ -17,6 +17,7 @@ const initialState = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const usersReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case UsersActionType.SET_USERS_SUCCESS:
