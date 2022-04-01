@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import { Post } from './Post/Post';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { profileActions } from '../../../store/actions/profileActions';
-import { getAppState } from '../../../store/selectors/app-selectors';
 import { MY_POST_BUTTON } from '../../../constants/buttons';
 import { PostType } from '../../../types';
 import styles from './MyPosts.module.scss';
@@ -22,7 +21,6 @@ const messagesSchema = Yup.object().shape({
 export const MyPosts: FC = () => {
   const dispatch = useDispatch();
   const { profile, posts } = useSelector(getProfileState);
-  const { theme } = useSelector(getAppState);
 
   // ToDo: Fix this bug: https://trello.com/c/AW8VeAyO/13-profile-my-posts
   const postsElements = posts?.map(() => ({ id, message, likesCount }: PostType) => (
@@ -39,7 +37,7 @@ export const MyPosts: FC = () => {
   };
 
   return (
-    <div className={`${styles.myPosts} default-box default-box--${theme}`}>
+    <div className={`${styles.myPosts} default-box`}>
       <ErrorBoundary>
         <Formik
           initialValues={{ message: '' }}

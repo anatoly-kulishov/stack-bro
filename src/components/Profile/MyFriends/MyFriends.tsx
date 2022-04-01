@@ -5,7 +5,6 @@ import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 
 import { Friend } from './Friend/Friend';
 import { getFriends, getUsersState } from '../../../store/selectors/users-selectors';
-import { getAppState } from '../../../store/selectors/app-selectors';
 import classes from './myFriends.module.scss';
 
 type PathParamsType = {
@@ -13,13 +12,12 @@ type PathParamsType = {
 };
 
 const MyFriends: FC<RouteComponentProps<PathParamsType>> = () => {
-  const { theme } = useSelector(getAppState);
   const { totalFriendsCount } = useSelector(getUsersState);
   const friends = useSelector(getFriends);
 
   return (
     <ErrorBoundary>
-      <div className={`default-box default-box--${theme} pt-3 pl-3 pr-3 pb-2 mt-3`}>
+      <div className={`default-box pt-3 pl-3 pr-3 pb-2 mt-3`}>
         <div className="pb-1">
           <div className={classes.boxTitle}>
             Friends <span className={classes.count}>{totalFriendsCount}</span>

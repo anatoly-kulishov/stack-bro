@@ -6,32 +6,28 @@ import { ResultCodes, UserType } from '../../../types';
 import { usersAPI } from '../../../api/usersAPI';
 
 export const userActions = {
-  toggleFollowingProgress: (followingInProgress: boolean, userId: number) =>
-    ({
-      type: UsersActionType.TOGGLE_IS_FOLLOWING_PROGRESS,
-      followingInProgress,
-      userId,
-    } as const),
-  setCurrentPage: (pageNumber: number) =>
-    ({
-      type: UsersActionType.SET_CURRENT_PAGE,
-      currentPage: pageNumber,
-    } as const),
-  setTotalUserCount: (totalUserCount: number) =>
-    ({
-      type: UsersActionType.SET_TOTAL_USERS_COUNT,
-      totalUserCount,
-    } as const),
-  toggleIsFetching: (isFetching: boolean) =>
-    ({
-      type: UsersActionType.TOGGLE_IS_FETCHING_USERS,
-      isFetching,
-    } as const),
-  setFilter: (filter: FilterType) => ({ type: UsersActionType.SET_USERS_FILTER, payload: filter } as const),
+  toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
+    type: UsersActionType.TOGGLE_IS_FOLLOWING_PROGRESS,
+    followingInProgress,
+    userId,
+  }),
+  setCurrentPage: (pageNumber: number) => ({
+    type: UsersActionType.SET_CURRENT_PAGE,
+    currentPage: pageNumber,
+  }),
+  setTotalUserCount: (totalUserCount: number) => ({
+    type: UsersActionType.SET_TOTAL_USERS_COUNT,
+    totalUserCount,
+  }),
+  toggleIsFetching: (isFetching: boolean) => ({
+    type: UsersActionType.TOGGLE_IS_FETCHING_USERS,
+    isFetching,
+  }),
+  setFilter: (filter: FilterType) => ({ type: UsersActionType.SET_USERS_FILTER, payload: filter }),
 };
 
 /**
- * Returns all (or only filtered by name with term parameter) users splitted by page
+ * Returns all (or only filtered by name with term parameter) users separated by page
  * @param:number requestPage
  * @param:number pageSize
  */

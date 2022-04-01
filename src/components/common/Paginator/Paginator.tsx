@@ -25,6 +25,7 @@ export const Paginator: FC<PaginatorPropsType> = props => {
       total={pages.length}
       onChange={onChange}
       disabled={totalUsersCount === 0}
+      showSizeChanger={false}
     />
   );
 };

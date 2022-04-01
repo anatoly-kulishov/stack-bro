@@ -1,13 +1,12 @@
 import React, { ComponentType, FC, StrictMode, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { connect, Provider, useSelector } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 
 import { WithLoading } from './components/common/WithLoading/WithLoading';
 import { store } from './store';
 import { initializeApp } from './store/actions/appActions';
 import { AppStateType } from './store/reducers/rootReducer';
-import { getAppState } from './store/selectors/app-selectors';
 import { AppRoutes } from './routes/AppRoutes/AppRoutes';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
 import { catchAllUnhandledErrors } from './utils/errors-helpers';
@@ -20,22 +19,21 @@ type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeAppFC: (isAuth: boolean) => void };
 
 const App: FC<MapPropsType & DispatchPropsType> = props => {
-  const { initialized, isAuth, initializeAppFC } = props;
-  const { theme } = useSelector(getAppState);
+  const { initialized, isAuth, isLoading, initializeAppFC } = props;
 
   useEffect(() => {
-    initializeAppFC(isAuth);
+    if (!isLoading) {
+      initializeAppFC(isAuth);
+    }
     window.addEventListener('unhandledrejection', catchAllUnhandledErrors);
     return () => {
       window.removeEventListener('unhandledrejection', catchAllUnhandledErrors);
     };
-  }, [initializeAppFC, isAuth]);
-
-  // 1234
+  }, [initializeAppFC, isLoading, isAuth]);
 
   return (
-    <WithLoading isLoading={!initialized} spinnerSize={SPINNER_SIZE}>
-      <div className={`app--${theme}`}>{isAuth ? <AppRoutes /> : <AuthRoutes />}</div>
+    <WithLoading isLoading={!initialized || isLoading} spinnerSize={SPINNER_SIZE}>
+      {isAuth ? <AppRoutes /> : <AuthRoutes />}
     </WithLoading>
   );
 };
@@ -43,6 +41,7 @@ const App: FC<MapPropsType & DispatchPropsType> = props => {
 const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized,
   isAuth: state.auth.isAuth,
+  isLoading: state.auth.isLoading,
 });
 
 const AppContainer = compose<ComponentType>(connect(mapStateToProps, { initializeAppFC: initializeApp }))(App);

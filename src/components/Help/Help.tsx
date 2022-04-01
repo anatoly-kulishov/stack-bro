@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
 
 import { Mock } from '../common/Mock/Mock';
-import { getAppState } from '../../store/selectors/app-selectors';
 
 export const Help: FC = () => {
-  const { theme } = useSelector(getAppState);
-
   return (
-    <section className={`default-box default-box--${theme}`}>
+    <section className="default-box">
       <Mock />
     </section>
   );

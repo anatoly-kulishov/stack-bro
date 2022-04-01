@@ -3,25 +3,22 @@ import { Avatar, Button, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { SubMenu } from './SubMenu/SubMenu';
-import { ColorThemes, ProfileType } from '../../../types';
-import { isDarkTheme } from '../../../utils/boolean-helpers';
+import { ProfileType } from '../../../types';
 import styles from './MyAccount.module.scss';
 
 type MyAccountPropsType = {
-  theme: ColorThemes;
   ownerProfile: PropsWithChildren<ProfileType>;
   logOut: () => void;
 };
 
-export const MyAccount: FC<MyAccountPropsType> = ({ logOut, theme, ownerProfile }) => {
+export const MyAccount: FC<MyAccountPropsType> = ({ logOut, ownerProfile }) => {
   return (
-    <div className={`${styles.wrapper} ${isDarkTheme(theme) ? styles.wrapperDarkTheme : ''} no-border`}>
-      <Dropdown overlay={<SubMenu logOut={logOut} appTheme={theme} />}>
+    <div className={`${styles.wrapper} no-border`}>
+      <Dropdown overlay={<SubMenu logOut={logOut} />}>
         <Button
           style={{
             height: 40,
             backgroundColor: 'transparent',
-            color: isDarkTheme(theme) ? '#fff' : '#000',
           }}
         >
           <div className={styles.inner}>

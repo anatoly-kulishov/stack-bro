@@ -1,11 +1,9 @@
 import { setFriends, setUsers } from './usersActions/usersActions';
 import { AppActionType } from '../action-types/app-action-type';
-import { ColorThemes } from '../../types';
 import { authMe } from './authActions';
 
 export const actions = {
-  initializedSuccess: () => ({ type: AppActionType.INITIALIZED_SUCCESS } as const),
-  changeThemeSuccess: (theme: ColorThemes) => ({ type: AppActionType.CHANGE_THEME, payload: theme }),
+  initializedSuccess: () => ({ type: AppActionType.INITIALIZED_SUCCESS }),
 };
 
 /**
@@ -27,12 +25,6 @@ export const initializeApp = (isAuth: boolean) => {
     Promise.all([authMePromise]).then(() => {
       dispatch(actions.initializedSuccess());
     });
-  };
-};
-
-export const changeTheme = (theme: ColorThemes) => {
-  return (dispatch: Function) => {
-    dispatch(actions.changeThemeSuccess(theme));
   };
 };
 

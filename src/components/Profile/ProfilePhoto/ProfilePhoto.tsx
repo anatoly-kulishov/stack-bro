@@ -8,7 +8,6 @@ import { Nullable } from '../../../types';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
 import { savePhoto } from '../../../store/actions/profileActions';
-import { getAppState } from '../../../store/selectors/app-selectors';
 import no_photo from './no_photo.png';
 
 const { ErrorBoundary } = Alert;
@@ -16,7 +15,6 @@ const { ErrorBoundary } = Alert;
 export const ProfilePhoto: FC = () => {
   const dispatch = useDispatch();
   const { profile, isLoading, followStatus, isOwner } = useSelector(getProfileState);
-  const { theme } = useSelector(getAppState);
 
   const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
   const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus);
@@ -31,7 +29,7 @@ export const ProfilePhoto: FC = () => {
   }, [followStatus]);
 
   return (
-    <div className={`${styles.wrapper} default-box default-box--${theme}`}>
+    <div className={`${styles.wrapper} default-box`}>
       <ErrorBoundary>
         <div className={styles.profilePhoto}>
           {isLoading && (

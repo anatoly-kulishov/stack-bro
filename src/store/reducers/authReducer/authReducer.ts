@@ -6,7 +6,7 @@ import { Nullable } from '../../../types';
 const initialState = {
   isLoading: false,
   isValid: true,
-  isAuth: Boolean(Cookies.get('token')),
+  isAuth: Boolean(Cookies.get('token')) ?? false,
   error: null,
   userId: null as Nullable<number>,
   myProfile: {
@@ -29,7 +29,17 @@ export const authReducer = (state = initialState, action: any): InitialStateType
         userId: action.userId,
         captchaUrl: null,
       };
-    case AuthActionType.LOG_OUT:
+    case AuthActionType.LOG_OUT_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case AuthActionType.LOG_OUT_DENIED:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case AuthActionType.LOG_OUT_ACCEPTED:
       return {
         ...state,
         myProfile: null,

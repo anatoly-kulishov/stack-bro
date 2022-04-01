@@ -1,33 +1,39 @@
 @use 'src/assets/styles/variables' as *;
 
 .title {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .users {
-    @include list-reset();
-    padding: 0 15px 15px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  @include list-reset();
+  padding: 0 15px 15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .paginator {
-    display: flex;
-    max-width: 350px;
-    overflow: hidden;
-    margin: 25px 15px 0;
+  display: flex;
+  max-width: 350px;
+  overflow: hidden;
+  margin: 25px 15px 0;
 }
 
 .paginator > span {
-    margin: 6px;
-    font-weight: 500;
-    cursor: pointer;
+  margin: 6px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .paginator > span.activePage,
 .paginator > span:hover {
-    color: $palette-primary;
+  color: $palette-primary;
 }
 
 .paginator > span.activePage {
-    cursor: default;
+  cursor: default;
+}
+
+.PaginatorWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

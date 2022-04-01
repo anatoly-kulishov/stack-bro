@@ -11,16 +11,16 @@ import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
 import { setUsers } from '../../store/actions/usersActions/usersActions';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
 import { FilterType } from '../../store/reducers/usersReducer/usersReducer';
-import { getAppState } from '../../store/selectors/app-selectors';
+import { WithLoading } from '../common/WithLoading/WithLoading';
+import { SPINNER_SIZE } from '../../constants/general';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };
-// 213 21321
+
 export const Users: FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const users = useSelector(getUsers);
-  const { theme } = useSelector(getAppState);
   const { currentPage, totalUsersCount, pageSize, isLoading, filter } = useSelector(getUsersState);
 
   useEffect(() => {
@@ -46,8 +46,8 @@ export const Users: FC = () => {
     }
 
     dispatch(setUsers(actualPage, pageSize, actualFilter));
-    // eslint-disable-next-line
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const query: QueryParamsType = {};
@@ -60,7 +60,7 @@ export const Users: FC = () => {
       pathname: '/users',
       search: stringify(query),
     });
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, currentPage]);
 
   const onFilterChanged = (values: FilterType) => {
@@ -72,48 +72,50 @@ export const Users: FC = () => {
   };
 
   return (
-    <div className={`default-box default-box--${theme} p-3`}>
-      {isLoading && (
-        <div className="spin-box">
-          <Spin size="large" />
-        </div>
-      )}
-      {!isLoading && (
-        <section className={styles.section}>
-          <h3 className={styles.title}>Users</h3>
-          <div className="mb-3">
-            <UsersFilterForm onFilterChanged={onFilterChanged} />
+    <div className="default-box p-3">
+      <WithLoading isLoading={isLoading} spinnerSize={SPINNER_SIZE}>
+        {isLoading && (
+          <div className="spin-box">
+            <Spin size="large" />
           </div>
-          <div className={`${styles.users} ${!users.length && 'pb-0'}`}>
-            <div className="row">
-              {users &&
-                users.map(user => (
-                  <div key={user.id} className="col-12 col-lg-4">
-                    <User user={user} isLoading={isLoading} />
-                  </div>
-                ))}
-              {!users.length && (
-                <div className="w-100">
-                  <Alert
-                    message="Sorry, no results were found."
-                    description="Recommendations: Make sure all words are spelled correctly.
-                                            Try using other keywords. Try using more popular keywords."
-                    type="warning"
-                  />
-                </div>
-              )}
+        )}
+        {!isLoading && (
+          <section className={styles.section}>
+            <h3 className={styles.title}>Users</h3>
+            <div className="mb-3">
+              <UsersFilterForm onFilterChanged={onFilterChanged} />
             </div>
-          </div>
-          <div style={{ marginTop: 20 }}>
-            <Paginator
-              currentPage={currentPage}
-              totalUsersCount={totalUsersCount}
-              pageSize={pageSize}
-              onPageChanged={onPageChangedHandler}
-            />
-          </div>
-        </section>
-      )}
+            <div className={`${styles.users} ${!users.length && 'pb-0'}`}>
+              <div className="row">
+                {users &&
+                  users.map(user => (
+                    <div key={user.id} className="col-12 col-lg-4">
+                      <User user={user} isLoading={isLoading} />
+                    </div>
+                  ))}
+                {!users.length && (
+                  <div className="w-100">
+                    <Alert
+                      message="Sorry, no results were found."
+                      description="Recommendations: Make sure all words are spelled correctly.
+                                            Try using other keywords. Try using more popular keywords."
+                      type="warning"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={styles.PaginatorWrap}>
+              <Paginator
+                currentPage={currentPage}
+                totalUsersCount={totalUsersCount}
+                pageSize={pageSize}
+                onPageChanged={onPageChangedHandler}
+              />
+            </div>
+          </section>
+        )}
+      </WithLoading>
     </div>
   );
 };

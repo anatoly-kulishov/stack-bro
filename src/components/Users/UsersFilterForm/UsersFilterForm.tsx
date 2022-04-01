@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Field, Form, Formik } from 'formik';
-import { Button, Input } from 'antd';
+import { Form, Formik } from 'formik';
+import { Button, Input, Select } from 'antd';
 import { useSelector } from 'react-redux';
 
 import classes from './UsersFilterForm.module.scss';
@@ -18,27 +18,28 @@ type FormType = {
   friend: 'true' | 'false' | 'null';
 };
 
-export const UsersFilterForm: FC<UsersSearchFormPropsType> = props => {
-  const { onFilterChanged } = props;
+const { Option } = Select;
 
+export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged }) => {
   const { filter } = useSelector(getUsersState);
-  const submit = (values: FormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+
+  const initialValues = { term: filter.term, friend: String(filter.friend) as FriendFormType };
+
+  const submitHandler = (values: FormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     const filterProp: FilterType = {
       term: values.term,
       friend: values.friend === 'null' ? null : values.friend === 'true',
     };
-
     onFilterChanged(filterProp);
     setSubmitting(false);
   };
 
+  // eslint-disable-next-line no-console
+  console.log(String(filter.friend));
+
   return (
-    <Formik
-      enableReinitialize
-      initialValues={{ term: filter.term, friend: String(filter.friend) as FriendFormType }}
-      onSubmit={submit}
-    >
-      {({ values, handleChange, isSubmitting }) => (
+    <Formik enableReinitialize initialValues={initialValues} onSubmit={submitHandler}>
+      {({ values, handleChange, isSubmitting, setFieldValue }) => (
         <Form className={classes.form}>
           <div className="d-flex align-items-center mr-2">
             <div>
@@ -50,17 +51,12 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = props => {
                 style={{ width: 200 }}
               />
             </div>
-            {/* <div className="ml-2"> */}
-            {/*    <Select  defaultValue="false" style={{width: 150}} onChange={handleChange}> */}
-            {/*        <Option value="true">Only followed</Option> */}
-            {/*        <Option value="false">Only unfollowed</Option> */}
-            {/*    </Select> */}
-            {/* </div> */}
+
             <div className="ml-2">
-              <Field as="select" name="friend" style={{ width: 150 }} onChange={handleChange}>
-                <option value="true">Only followed</option>
-                <option value="false">Only unfollowed</option>
-              </Field>
+              <Select style={{ width: 150 }} onChange={value => setFieldValue('friend', value)}>
+                <Option value="false">Only unfollowed</Option>
+                <Option value="true">Only followed</Option>
+              </Select>
             </div>
           </div>
           <Button htmlType="submit" disabled={isSubmitting}>
