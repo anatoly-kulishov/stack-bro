@@ -19,11 +19,10 @@ export const profileActions = {
     type: ProfileActionType.SET_OWNER_STATUS,
     payload: flag,
   }),
-  savePhotoSuccess: (photos: PhotosType) =>
-    ({
-      type: ProfileActionType.SAVE_PHOTO_SUCCESS,
-      photos,
-    } as const),
+  savePhotoSuccess: (photos: PhotosType) => ({
+    type: ProfileActionType.SAVE_PHOTO_SUCCESS,
+    photos,
+  }),
   getStatus: (data: string) => ({
     type: ProfileActionType.GET_PROFILE_STATUS,
     status: data,

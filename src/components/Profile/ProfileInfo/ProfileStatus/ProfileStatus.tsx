@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { CopyToClipboard } from '../../../common/CopyToClipboard/CopyToClipboard';
 import { getProfileState } from '../../../../store/selectors/profile-selectors';
-import { getAppState } from '../../../../store/selectors/app-selectors';
 import { setStatus } from '../../../../store/actions/profileActions';
 import styles from './ProfileStatus.module.scss';
 
@@ -15,7 +14,7 @@ type ProfileStatusPropsType = {
 export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }) => {
   const dispatch = useDispatch();
   const { profile } = useSelector(getProfileState);
-  const { theme } = useSelector(getAppState);
+
   const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
   const [editMode, setEditMode] = useState<boolean>(false);
 
@@ -34,7 +33,6 @@ export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }
         <CopyToClipboard
           isCopy={false}
           customStyles={styles}
-          appTheme={theme}
           isDisabled={isDisabled}
           onDoubleClickHandler={() => setEditMode(!editMode)}
           placeholder="Set status"

@@ -8,11 +8,19 @@ import { securityAPI } from '../../api/securityAPI.ts';
 import { authAPI } from '../../api/authAPI';
 
 export const actions = {
-  getCaptchaUrlSuccess: (captchaUrl: string) =>
-    ({
-      type: AuthActionType.GET_CAPTCHA_URL_SUCCESS,
-      payload: captchaUrl,
-    } as const),
+  getCaptchaUrlSuccess: (captchaUrl: string) => ({
+    type: AuthActionType.GET_CAPTCHA_URL_SUCCESS,
+    payload: captchaUrl,
+  }),
+  logOutStart: () => ({
+    type: AuthActionType.LOG_OUT_START,
+  }),
+  logOutAccepted: () => ({
+    type: AuthActionType.LOG_OUT_ACCEPTED,
+  }),
+  logOutDenied: () => ({
+    type: AuthActionType.LOG_OUT_DENIED,
+  }),
 };
 
 export type ProfileActionType = {
@@ -75,11 +83,11 @@ export const authMe = (): ThunkType => {
             type: AuthActionType.AUTH_ME,
             payload: data.data,
           });
-          // @ts-ignore
+          // @ts-ignore ToDo!
           Cookies.set('token', String(data.data.id));
-          // @ts-ignore
+          // @ts-ignore ToDo!
           dispatch(updateProfile(data.data.id));
-          // @ts-ignore
+          // @ts-ignore ToDo!
           dispatch(updateOwnerProfile(data.data.id));
         }
       })
@@ -92,8 +100,14 @@ export const authMe = (): ThunkType => {
  */
 export const logOut = (): ThunkType => {
   return async (dispatch: Function) => {
-    authAPI.deleteLogOut().then(() => Cookies.remove('token'));
-    dispatch({ type: AuthActionType.LOG_OUT });
+    try {
+      dispatch(actions.logOutStart());
+      await authAPI.deleteLogOut().then(() => Cookies.remove('token'));
+      dispatch(actions.logOutAccepted());
+    } catch (e) {
+      console.error(e);
+      dispatch(actions.logOutDenied());
+    }
   };
 };
 

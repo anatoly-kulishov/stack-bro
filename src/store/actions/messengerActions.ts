@@ -7,16 +7,14 @@ import { messengerAPI } from '../../api/messangerAPI.ts';
 import { ChatMessageType } from '../../types';
 
 export const actions = {
-  messagesReceived: (messages: ChatMessageType[]) =>
-    ({
-      type: MessengerActionType.MESSAGES_RECEIVED,
-      payload: messages,
-    } as const),
-  statusChanged: (status: StatusMessageType) =>
-    ({
-      type: MessengerActionType.MESSAGES_STATUS_CHANGED,
-      payload: status,
-    } as const),
+  messagesReceived: (messages: ChatMessageType[]) => ({
+    type: MessengerActionType.MESSAGES_RECEIVED,
+    payload: messages,
+  }),
+  statusChanged: (status: StatusMessageType) => ({
+    type: MessengerActionType.MESSAGES_STATUS_CHANGED,
+    payload: status,
+  }),
 };
 
 let newMessageHandler: ((messages: ChatMessageType[]) => void) | null = null;

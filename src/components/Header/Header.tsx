@@ -1,37 +1,37 @@
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Tag } from 'antd';
+import { GithubFilled, LinkedinOutlined } from '@ant-design/icons';
 
-import styles from './Header.module.scss';
-import { SearchPanel } from './SearchPanel/SearchPanel';
+import { MyAccountContainer } from './MyAccount/MyAccountContainer';
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import { Logo } from './Logo/Logo';
-import { getAppState } from '../../store/selectors/app-selectors';
-import { isDarkTheme, isLightTheme } from '../../utils/boolean-helpers';
-import { MyAccountContainer } from './MyAccount/MyAccountContainer';
+import styles from './Header.module.scss';
 
 export const Header: FC = () => {
-  const { theme } = useSelector(getAppState);
-
   return (
-    <Layout.Header
-      className={`${styles.header} ${isLightTheme(theme) && styles.lightHeader} ${
-        isDarkTheme(theme) && styles.darkHeader
-      } site-layout-background`}
-    >
+    <Layout.Header className={`${styles.header} site-layout-background`}>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-6 col-md-1 col-lg-2">
-            <Logo theme={theme} />
+            <Logo />
           </div>
-          <div className="d-none d-md-block col-md-3 col-lg-3">
-            <SearchPanel theme={theme} />
+          <div className="d-none d-md-block col-md-3 col-lg-3 text-center">
+            <a href="https://www.linkedin.com/in/anatoliy-kulishov-845392212/" target="_blank" rel="noreferrer">
+              <Tag icon={<LinkedinOutlined />} color="#55acee">
+                LinkedIn
+              </Tag>
+            </a>
+            <a href="https://github.com/dogram99" target="_blank" rel="noreferrer">
+              <Tag icon={<GithubFilled />} color="#333" style={{ marginRight: 0 }}>
+                GitHub
+              </Tag>
+            </a>
           </div>
           <div className="d-none d-md-block col-md-5">
             <AudioPlayer />
           </div>
           <div className="col-6 col-md-3 col-lg-2">
-            <MyAccountContainer theme={theme} />
+            <MyAccountContainer />
           </div>
         </div>
       </div>
