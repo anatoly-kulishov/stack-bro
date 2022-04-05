@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Form, Formik } from 'formik';
-import { Button, Input, Select } from 'antd';
+import { Button, Checkbox, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
 import classes from './UsersFilterForm.module.scss';
@@ -11,31 +11,24 @@ type UsersSearchFormPropsType = {
   onFilterChanged: (values: FilterType) => void;
 };
 
-type FriendFormType = 'true' | 'false' | 'null';
-
 type FormType = {
   term: string;
-  friend: 'true' | 'false' | 'null';
+  friend: boolean;
 };
-
-const { Option } = Select;
 
 export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged }) => {
   const { filter } = useSelector(getUsersState);
 
-  const initialValues = { term: filter.term, friend: String(filter.friend) as FriendFormType };
+  const initialValues = { term: filter.term, friend: filter.friend };
 
   const submitHandler = (values: FormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     const filterProp: FilterType = {
       term: values.term,
-      friend: values.friend === 'null' ? null : values.friend === 'true',
+      friend: values.friend,
     };
     onFilterChanged(filterProp);
     setSubmitting(false);
   };
-
-  // eslint-disable-next-line no-console
-  console.log(String(filter.friend));
 
   return (
     <Formik enableReinitialize initialValues={initialValues} onSubmit={submitHandler}>
@@ -51,12 +44,10 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
                 style={{ width: 200 }}
               />
             </div>
-
             <div className="ml-2">
-              <Select style={{ width: 150 }} onChange={value => setFieldValue('friend', value)}>
-                <Option value="false">Only unfollowed</Option>
-                <Option value="true">Only followed</Option>
-              </Select>
+              <Checkbox checked={values.friend} onChange={value => setFieldValue('friend', value.target.checked)}>
+                My friends
+              </Checkbox>
             </div>
           </div>
           <Button htmlType="submit" disabled={isSubmitting}>

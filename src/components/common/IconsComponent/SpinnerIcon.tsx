@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
 type SpinnerIconPropsType = {
-  size: string;
+  size?: string;
 };
 
-export const SpinnerIcon: FC<SpinnerIconPropsType> = ({ size }) => {
+export const SpinnerIcon: FC<SpinnerIconPropsType> = ({ size = '24px' }) => {
   return (
     <svg className="custom-spinner" width={size} height={size} viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
       <circle

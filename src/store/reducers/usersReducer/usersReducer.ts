@@ -1,5 +1,5 @@
 import { UsersActionType } from '../../action-types/users-action-type';
-import { Nullable, UserType } from '../../../types';
+import { UserType } from '../../../types';
 
 const initialState = {
   isLoading: true,
@@ -12,7 +12,7 @@ const initialState = {
   currentPage: 1,
   filter: {
     term: '',
-    friend: null as Nullable<boolean>,
+    friend: false as boolean,
     // page: 1 Todo!
   },
 };

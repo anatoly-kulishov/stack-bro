@@ -202,3 +202,19 @@ textarea {
   align-items: center;
   justify-content: space-between;
 }
+
+.profilePostsBox .ant-comment-inner {
+  padding-bottom: 8px;
+}
+
+.profilePostsBox .ant-comment {
+  border-bottom: 1px solid $grey_300;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.profilePostsBox {
+  
+}

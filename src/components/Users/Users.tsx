@@ -36,10 +36,10 @@ export const Users: FC = () => {
       actualFilter = { ...actualFilter, term: parsed.term as string };
     }
     if (parsed.friend === 'null') {
-      actualFilter = { ...actualFilter, friend: null };
+      actualFilter = { ...actualFilter, friend: false };
     }
     if (parsed.friend === 'true') {
-      actualFilter = { ...actualFilter, friend: true };
+      actualFilter = { ...actualFilter, friend: false };
     }
     if (parsed.friend === 'false') {
       actualFilter = { ...actualFilter, friend: false };

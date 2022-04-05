@@ -1,22 +1,16 @@
 @use 'src/assets/styles/variables' as *;
 
-.inputBox {
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding: 12px;
-  box-shadow: 0 -0.5px 0 rgba(0, 0, 0, .15);
-  background-color: $x-color-grey-3;
+.profilePosts {
+  position: relative;
+  margin-top: 15px;
+  padding: 15px;
 }
 
-.input {
-  width: 100%;
-  height: calc(1.5em + .75rem + 12px);
-  padding-right: 50px;
+.textarea {
+  padding-right: 40px !important;
 }
 
-.submitButton {
+.postButton {
   position: absolute;
   top: 56%;
   right: 20px;

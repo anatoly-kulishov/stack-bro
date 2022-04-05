@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 import { ProfilePhoto } from './ProfilePhoto/ProfilePhoto';
-import { MyPosts } from './MyPosts/MyPosts';
+import { ProfilePosts } from './ProfilePosts/ProfilePosts';
 import { updateProfile } from '../../store/actions/profileActions';
 import { setCurrentUserFollower } from '../../store/actions/usersActions/usersActions';
-import MyFriends from './MyFriends/MyFriends';
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getProfileState } from '../../store/selectors/profile-selectors';
 import { setOwnerStatus } from '../../store/action-creators';
+import { PostForm } from './PostForm/PostForm';
+import MyFriends from './MyFriends/MyFriends';
 
 type PathParamsType = {
   userId?: string;
@@ -43,7 +44,8 @@ export const Profile: FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
         </div>
         <div className="col-12 col-lg-8 pl-lg-2">
           <ProfileInfo />
-          {isOwner && <MyPosts />}
+          {isOwner && <PostForm />}
+          <ProfilePosts />
         </div>
       </div>
     </div>

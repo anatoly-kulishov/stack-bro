@@ -35,7 +35,7 @@ export const Post: FC<PostPropsType> = memo(props => {
   const actions = [
     <Tooltip key="comment-basic-like" title="Like">
       <span onClick={like}>
-        {createElement(action === 'like d' ? LikeFilled : LikeOutlined)}
+        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
         <span className="comment-action">{likes}</span>
       </span>
     </Tooltip>,
@@ -45,7 +45,6 @@ export const Post: FC<PostPropsType> = memo(props => {
         <span className="comment-action">{dislikes}</span>
       </span>
     </Tooltip>,
-    <span key="comment-basic-reply-to">Reply to</span>,
   ];
 
   return (
