@@ -19,7 +19,7 @@ export const Message: FC<ChatMessageType> = ({ message, photo, userId, userName 
       <div className={styles.MessageStack}>
         <Link to={`/${userId}`}>
           <span className={styles.MessageStackName}>
-            {userName} {ownerUserId.userId === userId && '...'}
+            {userName} {ownerUserId.userId === userId && ''}
           </span>
         </Link>
         <small className={styles.messageBox}>{message}</small>

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { sendMessage } from '../../../../store/actions/messengerActions';
 import { StatusMessageType } from '../../../../store/reducers/messengerReducer/messengerReducer';
+import { SubmitIcon } from '../../../common/IconsComponent/SubmitIcon';
 import styles from './MessageInput.module.scss';
 
 type MessageInputPropsType = {
@@ -12,6 +13,7 @@ type MessageInputPropsType = {
 export const MessageInput: FC<MessageInputPropsType> = ({ status }) => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState<string>('');
+  const isDisabled = status !== 'ready';
 
   const sendMessageHandler = () => {
     if (!message) return;
@@ -34,15 +36,10 @@ export const MessageInput: FC<MessageInputPropsType> = ({ status }) => {
         required
         onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
         placeholder="Type message here..."
+        maxLength={100}
       />
-      <button type="submit" className={styles.submitButton} disabled={status !== 'ready'}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-          <g stroke="#a1a1aa" strokeWidth="2" strokeLinejoin="round">
-            <path d="M21.137 11.733L3 20.466l3.359-8.733L3 3l18.137 8.733z" fill="#fff" />
-            <path d="M21.137 11.733H6.359" strokeLinecap="round" />
-          </g>
-          <defs />
-        </svg>
+      <button type="submit" className={styles.submitButton} disabled={isDisabled}>
+        <SubmitIcon />
       </button>
     </form>
   );

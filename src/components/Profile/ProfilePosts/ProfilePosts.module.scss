@@ -1,0 +1,20 @@
+@use 'src/assets/styles/variables' as *;
+
+.profilePosts {
+  margin-top: 15px;
+  padding: 0 15px;
+}
+
+.profilePosts .ant-comment {
+  border-bottom: 1px solid $grey_300;
+}
+
+.profilePostsIsEmpty {
+  padding: 15px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-weight: 500;
+  font-size: 16px;
+}
