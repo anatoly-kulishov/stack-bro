@@ -203,11 +203,11 @@ textarea {
   justify-content: space-between;
 }
 
-.profilePostsBox .ant-comment-inner {
+.ProfilePostsBox .ant-comment-inner {
   padding-bottom: 8px;
 }
 
-.profilePostsBox .ant-comment {
+.ProfilePostsBox .ant-comment {
   border-bottom: 1px solid $grey_300;
 
   &:last-child {
@@ -215,6 +215,12 @@ textarea {
   }
 }
 
-.profilePostsBox {
-  
+.UserCardWrap .ant-skeleton-paragraph {
+  display: none;
+}
+
+.UserCardWrap .ant-card-body {
+  display: flex;
+  align-items: center;
+  height: 80px;
 }

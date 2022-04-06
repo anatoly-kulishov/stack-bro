@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Form, Formik } from 'formik';
-import { Button, Checkbox, Input } from 'antd';
+import { Checkbox, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
 import classes from './UsersFilterForm.module.scss';
@@ -45,14 +45,21 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
               />
             </div>
             <div className="ml-2">
-              <Checkbox checked={values.friend} onChange={value => setFieldValue('friend', value.target.checked)}>
+              <Checkbox
+                checked={values.friend}
+                disabled={isSubmitting}
+                onChange={value => {
+                  setFieldValue('friend', value.target.checked);
+                  onFilterChanged({
+                    term: values.term,
+                    friend: value.target.checked,
+                  });
+                }}
+              >
                 My friends
               </Checkbox>
             </div>
           </div>
-          <Button htmlType="submit" disabled={isSubmitting}>
-            Find
-          </Button>
         </Form>
       )}
     </Formik>

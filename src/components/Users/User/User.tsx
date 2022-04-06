@@ -27,9 +27,9 @@ export const User: FC<UserPropsType> = props => {
   );
 
   return (
-    <div key={user.id} className={styles.user}>
+    <div key={user.id} className={`${styles.user} UserCardWrap`}>
       <Card
-        style={{ width: 300, marginTop: 16 }}
+        className={styles.userCard}
         actions={[
           <NavLink to={`/${user.id}`} key={user.id}>
             <EyeOutlined />
@@ -41,7 +41,6 @@ export const User: FC<UserPropsType> = props => {
           <Meta
             avatar={<Avatar src={user.photos.small && user.photos.small} icon={<UserOutlined />} />}
             title={user.name}
-            description={user.status}
           />
         </Skeleton>
       </Card>
