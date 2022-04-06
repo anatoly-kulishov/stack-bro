@@ -13,7 +13,7 @@ type FriendPropsType = {
 export const Friend: FC<FriendPropsType> = ({ data }) => {
   return (
     <li>
-      <Link to={`/${data.id}`}>
+      <Link to={`/${data.id}`} title={data.name}>
         <Avatar src={data?.photos?.large} icon={<UserOutlined />} size={50} />
         <span className={classes.friendName}>{data.name}</span>
       </Link>

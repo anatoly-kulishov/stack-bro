@@ -1,27 +1,32 @@
 @use 'src/assets/styles/variables' as *;
 
 .user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 12px 0;
 
-    & > a {
-        display: grid;
-        grid-template-columns: auto 2fr;
-        align-items: center;
-        grid-gap: 12px;
-    }
+  & > a {
+    display: grid;
+    grid-template-columns: auto 2fr;
+    align-items: center;
+    grid-gap: 12px;
+  }
+}
+
+.userCard {
+  width: 100%;
+  margin-top: 16px;
 }
 
 .userPhoto {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
+  //width: 60px;
+  //height: 60px;
+  //object-fit: cover;
+  //object-position: center;
+  //border-radius: 50%;
 }
 
 .userName {
-    color: $primary-text-color
+  color: $primary-text-color
 }

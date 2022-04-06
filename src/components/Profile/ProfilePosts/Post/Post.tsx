@@ -22,12 +22,10 @@ export const Post: FC<PostPropsType> = memo(props => {
 
   const like = () => {
     setLikes(prevValue => prevValue + 1);
-    setDislikes(dislikes);
     setAction('liked');
   };
 
   const dislike = () => {
-    setLikes(likes);
     setDislikes(prevValue => prevValue + 1);
     setAction('disliked');
   };

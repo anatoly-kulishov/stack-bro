@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { parse, stringify } from 'query-string';
-import { Alert, Spin } from 'antd';
+import { Alert } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import styles from './Users.module.scss';
@@ -11,8 +11,6 @@ import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
 import { setUsers } from '../../store/actions/usersActions/usersActions';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
 import { FilterType } from '../../store/reducers/usersReducer/usersReducer';
-import { WithLoading } from '../common/WithLoading/WithLoading';
-import { SPINNER_SIZE } from '../../constants/general';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };
 
@@ -73,49 +71,40 @@ export const Users: FC = () => {
 
   return (
     <div className="default-box p-3">
-      <WithLoading isLoading={isLoading} spinnerSize={SPINNER_SIZE}>
-        {isLoading && (
-          <div className="spin-box">
-            <Spin size="large" />
-          </div>
-        )}
-        {!isLoading && (
-          <section className={styles.section}>
-            <h3 className={styles.title}>Users</h3>
-            <div className="mb-3">
-              <UsersFilterForm onFilterChanged={onFilterChanged} />
-            </div>
-            <div className={`${styles.users} ${!users.length && 'pb-0'}`}>
-              <div className="row">
-                {users &&
-                  users.map(user => (
-                    <div key={user.id} className="col-12 col-lg-4">
-                      <User user={user} isLoading={isLoading} />
-                    </div>
-                  ))}
-                {!users.length && (
-                  <div className="w-100">
-                    <Alert
-                      message="Sorry, no results were found."
-                      description="Recommendations: Make sure all words are spelled correctly.
+      <section className={styles.section}>
+        <h3 className={styles.title}>Users</h3>
+        <div className="mb-3">
+          <UsersFilterForm onFilterChanged={onFilterChanged} />
+        </div>
+        <div className={`${styles.users} ${!users.length && 'pb-0'}`}>
+          <div className="row">
+            {users &&
+              users.map(user => (
+                <div key={user.id} className="col-12 col-lg-4">
+                  <User user={user} isLoading={isLoading} />
+                </div>
+              ))}
+            {!users.length && (
+              <div className="w-100">
+                <Alert
+                  message="Sorry, no results were found."
+                  description="Recommendations: Make sure all words are spelled correctly.
                                             Try using other keywords. Try using more popular keywords."
-                      type="warning"
-                    />
-                  </div>
-                )}
+                  type="warning"
+                />
               </div>
-            </div>
-            <div className={styles.PaginatorWrap}>
-              <Paginator
-                currentPage={currentPage}
-                totalUsersCount={totalUsersCount}
-                pageSize={pageSize}
-                onPageChanged={onPageChangedHandler}
-              />
-            </div>
-          </section>
-        )}
-      </WithLoading>
+            )}
+          </div>
+        </div>
+        <div className={styles.PaginatorWrap}>
+          <Paginator
+            currentPage={currentPage}
+            totalUsersCount={totalUsersCount}
+            pageSize={pageSize}
+            onPageChanged={onPageChangedHandler}
+          />
+        </div>
+      </section>
     </div>
   );
 };
