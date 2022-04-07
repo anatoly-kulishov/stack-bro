@@ -1,24 +1,20 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Button, Spin } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { Alert, Spin } from 'antd';
+import { useSelector } from 'react-redux';
 
 import styles from './ProfilePhoto.module.scss';
-import { FileField } from '../../common/FileField/FileField';
 import { Nullable } from '../../../types';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
-import { savePhoto } from '../../../store/actions/profileActions';
 import no_photo from './no_photo.png';
+import { ProfileActions } from '../ProfileActions/ProfileActions';
 
 const { ErrorBoundary } = Alert;
 
 export const ProfilePhoto: FC = () => {
-  const dispatch = useDispatch();
-  const { profile, isLoading, followStatus, isOwner } = useSelector(getProfileState);
+  const { profile, isLoading, followStatus } = useSelector(getProfileState);
 
   const [profilePhoto, setProfilePhoto] = useState<Nullable<string>>();
   const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus);
-  const [errorText, setErrorText] = useState<Nullable<string>>(null);
 
   useEffect(() => {
     setProfilePhoto(profile.photos?.large);
@@ -39,20 +35,7 @@ export const ProfilePhoto: FC = () => {
           )}
           {!isLoading && <img src={profilePhoto || no_photo} alt="" />}
         </div>
-        <div className={styles.profileActions}>
-          {isOwner && <FileField saveHandler={savePhoto} validationHandler={setErrorText} />}
-          {errorText && <div className={styles.errorText}>{errorText}</div>}
-          {!isOwner && !followState && (
-            <Button onClick={() => dispatch(userFollow(18310))} htmlType="button" block type="primary">
-              Add friend
-            </Button>
-          )}
-          {!isOwner && followState && (
-            <Button onClick={() => dispatch(userUnfollow(18310))} htmlType="button" block danger>
-              Unfriend
-            </Button>
-          )}
-        </div>
+        <ProfileActions followState={followState} setFollowState={setFollowState} />
       </ErrorBoundary>
     </div>
   );

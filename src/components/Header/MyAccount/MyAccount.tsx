@@ -22,7 +22,7 @@ export const MyAccount: FC<MyAccountPropsType> = ({ logOut, ownerProfile }) => {
           }}
         >
           <div className={styles.inner}>
-            <span className={`${styles.login} mr-2`}>{ownerProfile?.fullName}</span>
+            <span className={styles.login}>{ownerProfile?.fullName}</span>
             <Avatar src={ownerProfile?.photos?.large} icon={<UserOutlined />} />
           </div>
         </Button>

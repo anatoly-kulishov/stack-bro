@@ -19,16 +19,18 @@ type PathParamsType = {
 
 export const Profile: FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
   const dispatch = useDispatch();
-  const currentUserId = match?.params?.userId;
   const authState = useSelector(getAuthState);
   const { isOwner } = useSelector(getProfileState);
+  const currentUserId = match?.params?.userId;
 
   useEffect(() => {
+    // ToDo: Refactoring!
     if (currentUserId) {
       dispatch(updateProfile(Number(currentUserId)));
       dispatch(setCurrentUserFollower(Number(currentUserId)));
       dispatch(setOwnerStatus(false));
     }
+    // ToDo: Refactoring!
     if (!currentUserId && authState.userId) {
       dispatch(updateProfile(authState.userId));
       dispatch(setOwnerStatus(true));

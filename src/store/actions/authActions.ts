@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 
 import { BaseThunkType, InferActionsTypes } from '../reducers/rootReducer';
 import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../types';
-import { updateOwnerProfile, updateProfile } from './profileActions';
+import { updateOwnerProfile } from './profileActions';
 import { AuthActionType } from '../action-types/auth-action-type';
 import { securityAPI } from '../../api/securityAPI.ts';
 import { authAPI } from '../../api/authAPI';
@@ -83,11 +83,7 @@ export const authMe = (): ThunkType => {
             type: AuthActionType.AUTH_ME,
             payload: data.data,
           });
-          // @ts-ignore ToDo!
           Cookies.set('token', String(data.data.id));
-          // @ts-ignore ToDo!
-          dispatch(updateProfile(data.data.id));
-          // @ts-ignore ToDo!
           dispatch(updateOwnerProfile(data.data.id));
         }
       })
