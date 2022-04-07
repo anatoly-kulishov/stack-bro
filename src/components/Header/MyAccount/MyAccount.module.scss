@@ -1,16 +1,17 @@
 @use 'src/assets/styles/variables' as *;
 
 .wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .inner {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .login {
-    font-weight: 500;
+  font-weight: 500;
+  margin-right: 8px;
 }

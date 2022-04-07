@@ -14,8 +14,6 @@ export enum ResultCodes {
   Error = 1,
 }
 
-export type ColorThemes = 'light' | 'dark';
-
 export enum ResultCodesForCaptcha {
   CaptchaIsRequired = 10,
 }

@@ -75,9 +75,7 @@ export const updateOwnerProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
     profileAPI
       .getProfile(userId)
-      .then(data => {
-        dispatch(profileActions.setOwnerProfile(data));
-      })
+      .then(data => dispatch(profileActions.setOwnerProfile(data)))
       .catch(e => console.error(e));
   };
 };

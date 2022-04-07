@@ -113,6 +113,7 @@ export const userFollow = (userId: number): ThunkType => {
         dispatch(userActions.toggleFollowingProgress(false, userId));
       })
       .then(() => dispatch(setCurrentUserFollower(userId)))
+      .then(() => dispatch(setFriends(1, 9)))
       .catch(e => console.error(e));
   };
 };
@@ -135,6 +136,7 @@ export const userUnfollow = (userId: number): ThunkType => {
         }
       })
       .then(() => dispatch(setCurrentUserFollower(userId)))
+      .then(() => dispatch(setFriends(1, 9)))
       .catch(e => console.error(e));
   };
 };
