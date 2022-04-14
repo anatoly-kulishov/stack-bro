@@ -1,15 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Button } from 'antd';
+import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import styles from './ProfileActions.module.scss';
 import { FileField } from '../../common/FileField/FileField';
-import { Nullable } from '../../../types';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
 import { savePhoto } from '../../../store/actions/profileActions';
-
-const { ErrorBoundary } = Alert;
+import { Nullable } from '../../../types';
+import styles from './ProfileActions.module.scss';
 
 type ProfileActionsPropsType = {
   followState: Nullable<boolean>;
@@ -38,21 +36,19 @@ export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFo
   };
 
   return (
-    <ErrorBoundary>
-      <div className={styles.profileActions}>
-        {isOwner && <FileField saveHandler={savePhoto} validationHandler={setErrorText} />}
-        {errorText && <div className={styles.errorText}>{errorText}</div>}
-        {!isOwner && !followState && (
-          <Button onClick={followHandler} htmlType="button" block type="primary" disabled={!profile.userId}>
-            Add friend
-          </Button>
-        )}
-        {!isOwner && followState && (
-          <Button onClick={unfollowHandler} htmlType="button" block danger disabled={!profile.userId}>
-            Unfriend
-          </Button>
-        )}
-      </div>
-    </ErrorBoundary>
+    <div className={styles.profileActions}>
+      {isOwner && <FileField saveHandler={savePhoto} validationHandler={setErrorText} />}
+      {errorText && <div className={styles.errorText}>{errorText}</div>}
+      {!isOwner && !followState && (
+        <Button onClick={followHandler} htmlType="button" block type="primary" disabled={!profile.userId}>
+          Add friend
+        </Button>
+      )}
+      {!isOwner && followState && (
+        <Button onClick={unfollowHandler} htmlType="button" block danger disabled={!profile.userId}>
+          Unfriend
+        </Button>
+      )}
+    </div>
   );
 };

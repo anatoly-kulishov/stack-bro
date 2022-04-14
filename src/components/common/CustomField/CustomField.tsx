@@ -4,7 +4,6 @@ import { WarningTwoTone } from '@ant-design/icons';
 
 import styles from './CustomField.module.scss';
 
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const CustomField: FC<FieldAttributes<any & FieldProps>> = props => {
   const { errormessage } = props;
   return (

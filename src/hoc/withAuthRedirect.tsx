@@ -1,5 +1,5 @@
-import React, { ComponentType, FC } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { AppStateType } from '../store/reducers/rootReducer';
@@ -15,11 +15,15 @@ type MapPropsType = {
 
 type DispatchPropsType = {};
 
-export function withAuthRedirect<WCP>(WrappedComponent: ComponentType<WCP>) {
+export function withAuthRedirect<WCP>(
+  WrappedComponent: React.ExoticComponent<React.ComponentPropsWithRef<() => JSX.Element>> & {
+    readonly _result: () => JSX.Element;
+  },
+) {
   const RedirectComponent: FC<MapPropsType & DispatchPropsType> = props => {
     const { isAuth, ...restProps } = props;
 
-    if (!isAuth) return <Redirect to="/" />;
+    if (!isAuth) return <Navigate to="/" />;
 
     return <WrappedComponent {...(restProps as WCP)} />;
   };

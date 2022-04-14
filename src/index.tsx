@@ -1,11 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { StackBroTSApp } from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { reportWebVitals } from './reportWebVitals';
 
-ReactDOM.render(<StackBroTSApp />, document.getElementById('root'));
+// 👇️ IMPORTANT: use correct ID of your root element
+// this is the ID of the div in your index.html file
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement!);
+
+// 👇️ if you use TypeScript, add non-null (!) assertion operator
+// const root = createRoot(rootElement!);
+
+root.render(<StackBroTSApp />);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

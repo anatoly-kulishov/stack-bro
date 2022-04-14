@@ -33,8 +33,8 @@ export const Messages: FC = () => {
     <div className={styles.messages}>
       <div className={styles.messagesList} onScroll={scrollHandler}>
         <div className={styles.yourMessages}>
-          {messages.map((message: ChatMessageType, index: number) => (
-            <Message key={index} {...message} />
+          {messages.map((message: ChatMessageType) => (
+            <Message key={message.id} {...message} />
           ))}
           <div ref={messagesAnchorRef} />
         </div>

@@ -1,23 +1,23 @@
 import React, { FC } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './NoMatch.module.scss';
 
 export const NoMatch: FC = () => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className={`${styles.noMatch} default-box pb-2`}>
-      <div className={styles.backLink} onClick={history.goBack}>
+      <div className={styles.backLink} onClick={() => navigate(-1)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-          <g stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <g stroke="#1890ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M6 11.996h12" />
             <path d="M12 18l-6-6 6-6" />
           </g>
           <defs />
         </svg>
-        <span className={styles.backLinkTitle} onClick={history.goBack}>
+        <span className={styles.backLinkTitle} onClick={() => navigate(-1)}>
           Back
         </span>
       </div>

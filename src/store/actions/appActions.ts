@@ -36,7 +36,7 @@ export function copy(text: string) {
   return async () => {
     navigator.clipboard.writeText(text).then(() => {
       // eslint-disable-next-line no-console
-      console.log(`copy(${text})`);
+      console.info(`copy(${text})`);
     });
   };
 }

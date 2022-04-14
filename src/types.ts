@@ -1,5 +1,3 @@
-import { ComponentType } from 'react';
-
 export type Nullable<T> = T | null;
 
 export type FormPropsType = {
@@ -72,6 +70,7 @@ export type PostType = {
 };
 
 export type ChatMessageType = {
+  id: string | number;
   message: string;
   photo: string;
   userId: number;
@@ -80,6 +79,5 @@ export type ChatMessageType = {
 
 export type IRouteType = {
   path: string;
-  component: ComponentType | JSX.Element;
-  exact?: boolean;
+  element: JSX.Element;
 };

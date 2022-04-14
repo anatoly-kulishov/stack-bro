@@ -1,4 +1,4 @@
-import React, { ComponentType, FC, StrictMode, useEffect } from 'react';
+import React, { FC, StrictMode, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
@@ -9,7 +9,7 @@ import { initializeApp } from './store/actions/appActions';
 import { AppStateType } from './store/reducers/rootReducer';
 import { AppRoutes } from './routes/AppRoutes/AppRoutes';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
-import { catchAllUnhandledErrors } from './utils/errors-helpers';
+import { catchAllUnhandledErrors } from './utils/errors-helpers/errors-helpers';
 import { SPINNER_SIZE } from './constants/general';
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';
@@ -44,7 +44,7 @@ const mapStateToProps = (state: AppStateType) => ({
   isLoading: state.auth.isLoading,
 });
 
-const AppContainer = compose<ComponentType>(connect(mapStateToProps, { initializeAppFC: initializeApp }))(App);
+const AppContainer = compose<any>(connect(mapStateToProps, { initializeAppFC: initializeApp }))(App);
 
 export const StackBroTSApp: FC = () => {
   return (

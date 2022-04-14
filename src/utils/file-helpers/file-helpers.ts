@@ -1,11 +1,11 @@
+import { FILE_SIZE_LIMIT } from '../../constants/commom';
+import { ALLOWED_EXTENSIONS } from '../../constants/regex';
+
 /**
  * Get file format
  * @param file
  */
-import { FILE_SIZE_LIMIT } from '../constants/commom';
-import { ALLOWED_EXTENSIONS } from '../constants/regex';
-
-export const getFileFormData = (file: File) => {
+export const getFileFormData = (file: File): FormData => {
   const formData = new FormData();
   formData.append('file', file, file.name);
   return formData;
@@ -47,6 +47,6 @@ export const validateFileSize = (fileSize: number, maxFileSizeInMb: number = FIL
  * Validate file format
  * @param fileFormat
  */
-export const validateFileFormat = (fileFormat: string): boolean => {
-  return !!fileFormat.match(ALLOWED_EXTENSIONS);
+export const validateFileFormat = (fileFormat: string, allowedExtensions: RegExp = ALLOWED_EXTENSIONS): boolean => {
+  return !!fileFormat.match(allowedExtensions);
 };

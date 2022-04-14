@@ -45,7 +45,7 @@ export function register(config?: Config) {
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
           // eslint-disable-next-line no-console
-          console.log(
+          console.info(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://cra.link/PWA',
           );
@@ -75,7 +75,7 @@ function registerValidSW(swUrl: string, config?: Config) {
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
               // eslint-disable-next-line no-console
-              console.log(
+              console.info(
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://cra.link/PWA.',
               );
