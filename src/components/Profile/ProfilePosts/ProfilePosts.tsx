@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { Alert, Empty } from 'antd';
+import { Empty } from 'antd';
 
 import { Post } from './Post/Post';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { PostType } from '../../../types';
 import styles from './ProfilePosts.module.scss';
-
-const { ErrorBoundary } = Alert;
 
 export const ProfilePosts: FC = () => {
   const { profile, posts } = useSelector(getProfileState);
@@ -17,18 +15,16 @@ export const ProfilePosts: FC = () => {
   ));
 
   return (
-    <ErrorBoundary>
-      <div className={`${styles.profilePosts} default-box profilePostsBox`}>
-        <div>
-          {postsElements.length ? (
-            postsElements
-          ) : (
-            <div className={styles.profilePostsIsEmpty}>
-              <Empty description="There are no posts here yet" />
-            </div>
-          )}
-        </div>
+    <div className={`${styles.profilePosts} default-box profilePostsBox`}>
+      <div>
+        {postsElements.length ? (
+          postsElements
+        ) : (
+          <div className={styles.profilePostsIsEmpty}>
+            <Empty description="There are no posts here yet" />
+          </div>
+        )}
       </div>
-    </ErrorBoundary>
+    </div>
   );
 };

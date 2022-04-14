@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'antd';
 
+import { MessengerPage } from '../../pages/MessengerPage/MessengerPage';
+import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
+import { UsersPage } from '../../pages/UsersPage/UsersPage';
+import { HelpPage } from '../../pages/HelpPage/HelpPage';
+import { NoMatch } from '../../components/NoMatch/NoMatch';
 import { Header } from '../../components/Header/Header';
 import { NavBar } from '../../components/NavBar/NavBar';
-import { NoMatch } from '../../components/NoMatch/NoMatch';
-import { privateRoutes } from '../routes';
-import { IRouteType } from '../../types';
 
 const { Content } = Layout;
 
@@ -22,16 +24,15 @@ export const AppRoutes: FC = () => {
             </div>
             <div className="col-12 col-md-9 col-xl-10">
               <Content>
-                <Switch>
-                  {privateRoutes.map((route: IRouteType, index: number) => (
-                    <Route key={index} path={route.path} exact={route.exact}>
-                      {route.component}
-                    </Route>
-                  ))}
-                  <Route path="*">
-                    <NoMatch />
+                <Routes>
+                  <Route path="/" element={<ProfilePage />}>
+                    <Route path=":userId" element={<ProfilePage />} />
                   </Route>
-                </Switch>
+                  <Route path="messenger" element={<MessengerPage />} />
+                  <Route path="users" element={<UsersPage />} />
+                  <Route path="help" element={<HelpPage />} />
+                  <Route path="*" element={<NoMatch />} />
+                </Routes>
               </Content>
             </div>
           </div>

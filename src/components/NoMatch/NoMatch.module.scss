@@ -1,15 +1,15 @@
 @use 'src/assets/styles/variables' as *;
 
 .noMatch {
-    padding: 15px;
+  padding: 15px;
 }
 
 .backLink {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .backLinkTitle {
-    color: $palette-link-color;
+  color: $palette-primary;
 }

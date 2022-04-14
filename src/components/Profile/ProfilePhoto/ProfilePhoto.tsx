@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Spin } from 'antd';
+import { Spin } from 'antd';
 import { useSelector } from 'react-redux';
 
 import styles from './ProfilePhoto.module.scss';
@@ -7,8 +7,6 @@ import { Nullable } from '../../../types';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import no_photo from './no_photo.png';
 import { ProfileActions } from '../ProfileActions/ProfileActions';
-
-const { ErrorBoundary } = Alert;
 
 export const ProfilePhoto: FC = () => {
   const { profile, isLoading, followStatus } = useSelector(getProfileState);
@@ -26,17 +24,15 @@ export const ProfilePhoto: FC = () => {
 
   return (
     <div className={`${styles.wrapper} default-box`}>
-      <ErrorBoundary>
-        <div className={styles.profilePhoto}>
-          {isLoading && (
-            <div className={styles.spinBox}>
-              <Spin size="large" />
-            </div>
-          )}
-          {!isLoading && <img src={profilePhoto || no_photo} alt="" />}
-        </div>
-        <ProfileActions followState={followState} setFollowState={setFollowState} />
-      </ErrorBoundary>
+      <div className={styles.profilePhoto}>
+        {isLoading && (
+          <div className={styles.spinBox}>
+            <Spin size="large" />
+          </div>
+        )}
+        {!isLoading && <img src={profilePhoto || no_photo} alt="" />}
+      </div>
+      <ProfileActions followState={followState} setFollowState={setFollowState} />
     </div>
   );
 };

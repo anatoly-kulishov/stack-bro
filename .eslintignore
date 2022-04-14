@@ -8,3 +8,4 @@ src/assets/libs
 /src/constants/regex.ts
 /src/service-worker.ts
 /src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx
+/config-overrides.js

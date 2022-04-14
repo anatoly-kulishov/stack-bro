@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Logo.module.scss';
 
 type LogoPropsType = {};
 
 export const Logo: FC<LogoPropsType> = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const goHomeHandler = () => history.push('/');
+  const goHomeHandler = () => navigate('/');
 
   return (
     <div className={styles.wrapper}>

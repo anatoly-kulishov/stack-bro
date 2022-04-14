@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { parse, stringify } from 'query-string';
+import { stringify } from 'query-string';
 import { Alert } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Users.module.scss';
 import { User } from './User/User';
@@ -16,13 +16,19 @@ type QueryParamsType = { term?: string; page?: string; friend?: string };
 
 export const Users: FC = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const users = useSelector(getUsers);
   const { currentPage, totalUsersCount, pageSize, isLoading, filter } = useSelector(getUsersState);
 
   useEffect(() => {
-    const parsed = parse(history.location.search.substring(1)) as QueryParamsType;
+    const parsed = {
+      page: 0,
+      term: '',
+      friend: 'false',
+    };
+    // TODO: Fix this ^^
+    // parse(history.location.search.substring(1)) as QueryParamsType;
 
     let actualFilter = filter;
     let actualPage = currentPage;
@@ -54,7 +60,7 @@ export const Users: FC = () => {
     if (filter.friend !== null) query.friend = String(filter.friend);
     if (currentPage !== 1) query.page = String(currentPage);
 
-    history.push({
+    navigate({
       pathname: '/users',
       search: stringify(query),
     });

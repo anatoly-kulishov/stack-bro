@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 import { ProfilePhoto } from './ProfilePhoto/ProfilePhoto';
@@ -11,17 +11,15 @@ import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getProfileState } from '../../store/selectors/profile-selectors';
 import { setOwnerStatus } from '../../store/action-creators';
 import { PostForm } from './PostForm/PostForm';
-import MyFriends from './MyFriends/MyFriends';
+import { MyFriends } from './MyFriends/MyFriends';
 
-type PathParamsType = {
-  userId?: string;
-};
-
-export const Profile: FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
+export const Profile: FC = () => {
   const dispatch = useDispatch();
+  const params = useParams();
+
   const authState = useSelector(getAuthState);
   const { isOwner } = useSelector(getProfileState);
-  const currentUserId = match?.params?.userId;
+  const currentUserId = params.userId;
 
   useEffect(() => {
     // ToDo: Refactoring!
@@ -53,5 +51,3 @@ export const Profile: FC<RouteComponentProps<PathParamsType>> = ({ match }) => {
     </div>
   );
 };
-
-export const ProfileWithRouter = withRouter(Profile);

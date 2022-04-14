@@ -73,3 +73,8 @@ declare module '*.mp3' {
   const src: string;
   export default src;
 }
+
+declare module '*.docx' {
+  const src: File;
+  export default src;
+}
