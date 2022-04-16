@@ -16,7 +16,7 @@ export const Login: FC = () => {
       <div className={styles.LoginBox}>
         <WithLoading isLoading={isLoading} spinnerSize={SPINNER_SIZE}>
           <div className={styles.Subtitle}>Log in to {SITE_TITLE}</div>
-          <LoginForm onSubmit={signIn} isValid={isValid} errorText={error} captchaUrl={captchaUrl} />
+          <LoginForm onSubmit={signIn} isValid={isValid} errorsText={error} captchaUrl={captchaUrl} />
         </WithLoading>
       </div>
     </section>

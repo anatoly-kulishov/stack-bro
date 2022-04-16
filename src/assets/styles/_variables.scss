@@ -2,7 +2,7 @@
 @use "sass:math";
 
 $url-fonts: "./assets/fonts"; //	    #{$url-fonts}
-$url-img: "./assets/images"; // 	   #{$url-images}
+$url-img: "./assets/images"; // 	   #{$url-img}
 
 // Functions
 // ---------
@@ -17,6 +17,7 @@ $grey_100: #F2F2F2;
 $grey_150: #F7F7F7;
 $grey_200: #E2E2E2;
 $grey_300: #E9E9E9;
+$grey_350: #f0f2f5;
 $grey_400: #C4C4C4;
 $grey_450: #adadad;
 $grey_500: #5B5B5B;
@@ -65,10 +66,6 @@ $palette-border: $x-color-grey-2;
 
 // Light Theme
 $light-theme-bg-color: $x-color-white;
-
-// Dark Theme
-$dark-theme-bg-color: $x-color-black-3;
-$dark-theme-border-color: #30363d;
 
 // Typography Variables
 $primary_font: 'Roboto';

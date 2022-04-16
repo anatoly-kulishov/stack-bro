@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
@@ -7,6 +7,7 @@ import { Form, Formik, FormikConfig } from 'formik';
 import { CustomField } from '../../common/CustomField/CustomField';
 import { CREATE_NEW_ACCOUNT_BUTTON, LOGIN_AS_GUEST_BUTTON, LOGIN_BUTTON } from '../../../constants/buttons';
 import { CAPTCHA_PLACEHOLDER, EMAIL_PLACEHOLDER, PASSWORD_PLACEHOLDER } from '../../../constants/placeholders';
+import { addCommasToStringsInArray } from '../../../utils/array-helpers/array-strings-helpers';
 import { MOCK_USER_AUTH_DATA, URL_FOR_REGISTRATION } from '../../../constants/api';
 import { REMEMBER_ME_LABEL } from '../../../constants/labels';
 import { FormPropsType } from '../../../types';
@@ -21,15 +22,28 @@ const initialValues = {
 
 type ILoginFormValues = typeof initialValues;
 
-export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorText, captchaUrl }) => {
+export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, captchaUrl }) => {
   const dispatch = useDispatch();
+  const [isGuest, setIsGuest] = useState<boolean>(false);
+  const setGuestStatusHandler = () => setIsGuest(true);
 
   const submitHandler: FormikConfig<ILoginFormValues>['onSubmit'] = (values, formikHelpers) => {
-    dispatch(onSubmit(values, formikHelpers.setSubmitting, formikHelpers.resetForm));
-  };
-
-  const logInAsGuestHandler = () => {
-    dispatch(onSubmit(MOCK_USER_AUTH_DATA));
+    if (isGuest) {
+      dispatch(
+        onSubmit(
+          {
+            email: MOCK_USER_AUTH_DATA.email,
+            password: MOCK_USER_AUTH_DATA.password,
+            captcha: values.captcha,
+            rememberMe: values.rememberMe,
+          },
+          formikHelpers.setSubmitting,
+          formikHelpers.resetForm,
+        ),
+      );
+    } else {
+      dispatch(onSubmit(values, formikHelpers.setSubmitting, formikHelpers.resetForm));
+    }
   };
 
   return (
@@ -72,7 +86,7 @@ export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorText, cap
           </div>
           {!isValid && (
             <div className="validate-box text-center mt-3 mb-3">
-              <Alert message={errorText} type="error" />
+              <Alert message={errorsText && addCommasToStringsInArray(errorsText)} type="error" />
             </div>
           )}
           <Button
@@ -97,7 +111,7 @@ export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorText, cap
             </>
           )}
           <div className="mt-3">
-            <Button type="primary" icon={<UserOutlined />} block onClick={logInAsGuestHandler}>
+            <Button type="primary" htmlType="submit" icon={<UserOutlined />} block onClick={setGuestStatusHandler}>
               {LOGIN_AS_GUEST_BUTTON}
             </Button>
           </div>

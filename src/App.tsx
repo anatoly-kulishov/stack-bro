@@ -1,6 +1,6 @@
 import React, { FC, StrictMode, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { connect, Provider } from 'react-redux';
+import { connect, Provider, useSelector } from 'react-redux';
 import { compose } from 'redux';
 
 import { WithLoading } from './components/common/WithLoading/WithLoading';
@@ -14,12 +14,14 @@ import { SPINNER_SIZE } from './constants/general';
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
+import { getAppState } from './store/selectors/app-selectors';
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeAppFC: (isAuth: boolean) => void };
 
 const App: FC<MapPropsType & DispatchPropsType> = props => {
   const { initialized, isAuth, isLoading, initializeAppFC } = props;
+  const { globalErrors } = useSelector(getAppState);
 
   useEffect(() => {
     if (!isLoading) {
@@ -30,6 +32,11 @@ const App: FC<MapPropsType & DispatchPropsType> = props => {
       window.removeEventListener('unhandledrejection', catchAllUnhandledErrors);
     };
   }, [initializeAppFC, isLoading, isAuth]);
+
+  if (globalErrors) {
+    // TODO: Add ERROR-PAGE!
+    return <div>{globalErrors}</div>;
+  }
 
   return (
     <WithLoading isLoading={!initialized || isLoading} spinnerSize={SPINNER_SIZE}>

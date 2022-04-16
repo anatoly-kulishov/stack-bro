@@ -2,7 +2,7 @@ export type Nullable<T> = T | null;
 
 export type FormPropsType = {
   onSubmit: Function;
-  errorText?: string | null;
+  errorsText?: string[] | null;
   isValid?: boolean | null;
   captchaUrl?: string | null;
 };

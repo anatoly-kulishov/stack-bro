@@ -1,10 +1,14 @@
 @use 'src/assets/styles/variables' as *;
 
+$url-img: "../../../src/assets/images/";
+$bgColor: $grey_350;
+
 .auth {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f0f2f5;
   overflow: hidden;
+  background-color: $bgColor;
+  background-image: url(#{$url-img}/bg-pattern.jpg);
 }
