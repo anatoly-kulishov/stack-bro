@@ -1,0 +1,22 @@
+@use 'src/assets/styles/variables' as *;
+
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.wrapper {
+  max-width: 300px;
+  text-align: center
+}
+
+.title {
+  font-size: $font_size_middle;
+}
+
+.description {
+  font-size: $font_size_middle - 10;
+}
