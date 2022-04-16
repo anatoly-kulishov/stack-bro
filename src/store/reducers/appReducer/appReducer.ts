@@ -18,6 +18,12 @@ export const appReducer = (state = initialState, action: ActionsType): InitialSt
         ...state,
         initialized: true,
       };
+    case AppActionType.INITIALIZED_FAILED:
+      return {
+        ...state,
+        initialized: false,
+        globalErrors: 'INITIALIZED_FAILED',
+      };
     default:
       return state;
   }

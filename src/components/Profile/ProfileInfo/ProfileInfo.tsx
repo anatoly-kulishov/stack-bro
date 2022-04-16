@@ -54,7 +54,7 @@ export const ProfileInfo: FC = () => {
         <EditProfileModal
           profile={profile}
           onSubmit={saveProfile}
-          errorText={error}
+          errorsText={error}
           isModalVisible={isModalVisible}
           hideModal={hideModal}
         />

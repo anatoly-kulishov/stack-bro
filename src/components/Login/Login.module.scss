@@ -1,27 +1,27 @@
 @use '../../assets/styles/variables' as *;
 
 .LoginBox {
-    position: relative;
-    width: 380px;
-    padding: 25px 15px 20px;
-    border-radius: 8px;
-    background: $x-color-white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  position: relative;
+  width: 380px;
+  padding: 20px 15px 15px;
+  border-radius: 8px;
+  background: $x-color-white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
 .Subtitle {
-    margin: 0 auto 15px;
-    font-size: 18px;
-    text-align: center;
-    color: $palette-primary;
-    user-select: none;
+  margin: 0 auto 15px;
+  font-size: 18px;
+  text-align: center;
+  color: $palette-primary;
+  user-select: none;
 }
 
 @media (max-width: 768px) {
-    .LoginBox {
-        max-width: 350px;
-        min-width: auto;
-        width: 100vw;
-        padding: 25px;
-    }
+  .LoginBox {
+    max-width: 350px;
+    min-width: auto;
+    width: 100vw;
+    padding: 25px;
+  }
 }

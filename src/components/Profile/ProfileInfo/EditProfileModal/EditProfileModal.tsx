@@ -18,7 +18,7 @@ const { TextArea } = Input;
 const { TabPane } = Tabs;
 
 export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType> = props => {
-  const { onSubmit, errorText, profile, isModalVisible, hideModal } = props;
+  const { onSubmit, errorsText, profile, isModalVisible, hideModal } = props;
   const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
   const dispatch = useDispatch();
 
@@ -145,7 +145,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
             </Tabs>
             <div className={styles.modalFooter}>
               <div className="validate-box text-center mb-3">
-                {errorText && <Alert message={errorText} type="error" />}
+                {errorsText && <Alert message={errorsText} type="error" />}
               </div>
               <div className="d-flex justify-content-end">
                 <Button htmlType="button" size="large" className="mr-2" onClick={cancelHandler(resetForm)}>
