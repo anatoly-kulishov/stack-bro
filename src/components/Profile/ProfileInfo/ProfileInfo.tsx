@@ -12,22 +12,16 @@ import styles from './ProfileInfo.module.scss';
 export const ProfileInfo: FC = () => {
   const dispatch = useDispatch();
   const { profile, error, isOwner, status } = useSelector(getProfileState);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const hideModal = () => {
-    setIsModalVisible(false);
-  };
+  const showModal = () => setIsModalVisible(true);
+  const hideModal = () => setIsModalVisible(false);
 
   useEffect(() => {
     if (profile.userId) {
       dispatch(getStatus(Number(profile.userId)));
     }
-  }, [dispatch, profile.userId, status]);
+  }, [dispatch, profile.userId]);
 
   return (
     <div className={`${styles.wrapper} default-box`}>

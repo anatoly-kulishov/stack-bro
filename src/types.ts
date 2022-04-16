@@ -12,6 +12,12 @@ export enum ResultCodes {
   Error = 1,
 }
 
+export enum StatusMessageTypeEnum {
+  PENDING = 'pending',
+  READY = 'ready',
+  ERROR = 'error',
+}
+
 export enum ResultCodesForCaptcha {
   CaptchaIsRequired = 10,
 }

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -12,7 +12,7 @@ import { NavBar } from '../../components/NavBar/NavBar';
 
 const { Content } = Layout;
 
-export const AppRoutes: FC = () => {
+export const AppRoutes: FC = memo(() => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header />
@@ -40,4 +40,4 @@ export const AppRoutes: FC = () => {
       </Layout>
     </Layout>
   );
-};
+});

@@ -16,8 +16,7 @@ import { MyFriends } from './MyFriends/MyFriends';
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
-
-  const authState = useSelector(getAuthState);
+  const { userId } = useSelector(getAuthState);
   const { isOwner } = useSelector(getProfileState);
   const currentUserId = params.userId;
 
@@ -28,12 +27,12 @@ export const Profile: FC = () => {
       dispatch(setCurrentUserFollower(Number(currentUserId)));
       dispatch(setOwnerStatus(false));
     }
-    // ToDo: Refactoring!
-    if (!currentUserId && authState.userId) {
-      dispatch(updateProfile(authState.userId));
+    // ToDo: Refactoring! profile.hasOwnProperty('userId')
+    if (!currentUserId && userId) {
+      dispatch(updateProfile(userId));
       dispatch(setOwnerStatus(true));
     }
-  }, [currentUserId, authState.userId, dispatch]);
+  }, [currentUserId, userId, dispatch]);
 
   return (
     <div>
