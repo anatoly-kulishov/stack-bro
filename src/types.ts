@@ -83,7 +83,10 @@ export type ChatMessageType = {
   userName: string;
 };
 
-export type IRouteType = {
-  path: string;
-  element: JSX.Element;
-};
+export enum AppRoutesEnum {
+  HOME = '/',
+  USERS = 'users',
+  SOME_USER = ':userId',
+  MESSENGER = 'messenger',
+  HELP = 'help',
+}
