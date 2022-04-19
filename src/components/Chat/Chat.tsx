@@ -1,6 +1,5 @@
 import React, { FC, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 
 import { startMessagesListening, stopMessagesListening } from '../../store/actions/messengerActions';
 import { getMessengerState } from '../../store/selectors/messenger-selectors';
@@ -26,9 +25,7 @@ export const Chat: FC = memo(() => {
   return (
     <WithLoading isLoading={socketIsReady} spinnerSize={SPINNER_SIZE}>
       <section className={`${styles.wrapper} default-box`}>
-        <ErrorBoundary>
-          <Messages />
-        </ErrorBoundary>
+        <Messages />
       </section>
     </WithLoading>
   );

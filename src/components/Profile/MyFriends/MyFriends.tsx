@@ -1,15 +1,11 @@
 import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Friend } from './Friend/Friend';
 import { getFriends, getUsersState } from '../../../store/selectors/users-selectors';
+import { Friend } from './Friend/Friend';
 import classes from './myFriends.module.scss';
 
-// type PathParamsType = {
-//   userId: string | undefined;
-// };
-
-export const MyFriends: FC<any> = memo(() => {
+export const MyFriends: FC = memo(() => {
   const { totalFriendsCount } = useSelector(getUsersState);
   const friends = useSelector(getFriends);
 

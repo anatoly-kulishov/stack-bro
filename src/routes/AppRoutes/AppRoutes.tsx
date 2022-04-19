@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -13,7 +13,7 @@ import { AppRoutesEnum } from '../../types';
 
 const { Content } = Layout;
 
-export const AppRoutes: FC = memo(() => {
+export const AppRoutes: FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header />
@@ -41,4 +41,4 @@ export const AppRoutes: FC = memo(() => {
       </Layout>
     </Layout>
   );
-});
+};
