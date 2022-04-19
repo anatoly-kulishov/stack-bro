@@ -142,3 +142,17 @@ $scrollbar-color: #1890ff;
   top: 0;
   bottom: 0;
 }
+
+// Functions
+@function invert($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) + 180);
+  @return mix($inverse, $color, $amount);
+}
+
+@function sum($numbers...) {
+  $sum: 0;
+  @each $number in $numbers {
+    $sum: $sum + $number;
+  }
+  @return $sum;
+}

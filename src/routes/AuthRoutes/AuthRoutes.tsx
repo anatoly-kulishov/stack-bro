@@ -11,7 +11,7 @@ export const AuthRoutes: FC = () => {
       <div>
         <Routes>
           <Route path={AppRoutesEnum.HOME} element={<LoginPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to={AppRoutesEnum.HOME} />} />
         </Routes>
       </div>
     </div>
