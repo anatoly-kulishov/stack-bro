@@ -1,5 +1,5 @@
-import { ProfileActionType } from '../action-types/profile-action-type';
 import { PhotosType, PostType, ProfileType } from '../../types';
+import { ProfileActionType } from '../action-types';
 
 export const setProfile = (data: Array<ProfileType>) => ({
   type: ProfileActionType.SET_USER_PROFILE,

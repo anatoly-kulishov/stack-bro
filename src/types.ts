@@ -90,3 +90,14 @@ export enum AppRoutesEnum {
   MESSENGER = 'messenger',
   HELP = 'help',
 }
+
+export type UsersType = {
+  items: UserType[];
+  totalCount: number;
+};
+
+export type FilterType = {
+  term: any;
+  friend: any;
+  pages?: any;
+};

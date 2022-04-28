@@ -1,3 +1,3 @@
-import { AppStateType } from '../reducers/rootReducer';
+import { AppStateType } from '../reducers';
 
 export const getMessengerState = (state: AppStateType) => state.messenger;

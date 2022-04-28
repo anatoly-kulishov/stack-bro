@@ -2,20 +2,20 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 import { ProfilePhoto } from './ProfilePhoto/ProfilePhoto';
 import { ProfilePosts } from './ProfilePosts/ProfilePosts';
-import { updateProfile } from '../../store/actions/profileActions';
-import { setCurrentUserFollower } from '../../store/actions/usersActions/usersActions';
+import { ProfileInfo } from './ProfileInfo/ProfileInfo';
+import { MyFriends } from './MyFriends/MyFriends';
+import { PostForm } from './PostForm/PostForm';
+import { useActions } from '../../store';
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getProfileState } from '../../store/selectors/profile-selectors';
-import { setOwnerStatus } from '../../store/action-creators';
-import { PostForm } from './PostForm/PostForm';
-import { MyFriends } from './MyFriends/MyFriends';
+import { updateProfile } from '../../store/actions_old/profileActions';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
+  const { setCurrentUserFollower, setOwnerStatus } = useActions();
   const { userId } = useSelector(getAuthState);
   const { isOwner } = useSelector(getProfileState);
   const currentUserId = params.userId;
@@ -24,15 +24,15 @@ export const Profile: FC = () => {
     // ToDo: Refactoring!
     if (currentUserId) {
       dispatch(updateProfile(Number(currentUserId)));
-      dispatch(setCurrentUserFollower(Number(currentUserId)));
-      dispatch(setOwnerStatus(false));
+      setCurrentUserFollower(Number(currentUserId));
+      setOwnerStatus(false);
     }
     // ToDo: Refactoring! profile.hasOwnProperty('userId')
     if (!currentUserId && userId) {
       dispatch(updateProfile(userId));
-      dispatch(setOwnerStatus(true));
+      setOwnerStatus(true);
     }
-  }, [currentUserId, userId, dispatch]);
+  }, [currentUserId, userId]);
 
   return (
     <div>

@@ -1,7 +1,8 @@
-import { AppActionType } from '../../action-types/app-action-type';
+import produce from 'immer';
+
 import { Nullable } from '../../../types';
-import { InferActionsTypes } from '../rootReducer';
-import { actions } from '../../actions/appActions';
+import { AppActions } from '../../actions/app-actions/app-actions';
+import { AppActionType } from '../../action-types';
 
 const initialState = {
   initialized: false,
@@ -10,24 +11,16 @@ const initialState = {
 
 export type AppInitialStateType = typeof initialState;
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-export const appReducer = (state = initialState, action: ActionsType): InitialStateType => {
-  switch (action.type) {
+export const appReducer = produce((state: AppInitialStateType, action: AppActions): AppInitialStateType => {
+  switch (action?.type) {
     case AppActionType.INITIALIZED_SUCCESS:
-      return {
-        ...state,
-        initialized: true,
-      };
+      state.initialized = true;
+      return state;
     case AppActionType.INITIALIZED_FAILED:
-      return {
-        ...state,
-        initialized: false,
-        globalErrors: 'INITIALIZED_FAILED',
-      };
+      state.initialized = false;
+      state.globalErrors = 'INITIALIZED_FAILED';
+      return state;
     default:
       return state;
   }
-};
-
-export type InitialStateType = typeof initialState;
-type ActionsType = InferActionsTypes<typeof actions>;
+}, initialState);

@@ -1,7 +1,9 @@
 import { v1 } from 'uuid';
 
 import { MessengerActionType } from '../../action-types/messenger-action-type';
+import { actions } from '../../actions_old/messengerActions';
 import { ChatMessageType } from '../../../types';
+import { InferActionsTypes } from '../index';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
@@ -10,8 +12,7 @@ const initialState = {
   status: 'pending' as StatusMessageType,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-export const messengerReducer = (state = initialState, action: any): InitialStateType => {
+export const messengerReducer = (state = initialState, action: ActionsType | any): InitialStateType => {
   switch (action.type) {
     case MessengerActionType.MESSAGES_RECEIVED:
       return {
@@ -35,4 +36,4 @@ export const messengerReducer = (state = initialState, action: any): InitialStat
 };
 
 export type InitialStateType = typeof initialState;
-// type ActionsType = InferActionsTypes<typeof actions>;
+type ActionsType = InferActionsTypes<typeof actions>;

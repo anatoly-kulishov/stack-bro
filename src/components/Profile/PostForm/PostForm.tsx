@@ -4,8 +4,8 @@ import { Input } from 'antd';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { profileActions } from '../../../store/actions/profileActions';
 import { SubmitIcon } from '../../common/IconsComponent/SubmitIcon';
+import { actions } from '../../../store/actions_old/profileActions';
 import styles from './PostForm.module.scss';
 
 const { TextArea } = Input;
@@ -23,7 +23,7 @@ export const PostForm: FC = () => {
       message,
       likesCount: 0,
     };
-    dispatch(profileActions.addPost(post));
+    dispatch(actions.addPost(post));
   };
 
   return (

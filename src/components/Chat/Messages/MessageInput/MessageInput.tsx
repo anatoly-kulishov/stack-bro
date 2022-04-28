@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { sendMessage } from '../../../../store/actions/messengerActions';
+import { sendMessage } from '../../../../store/actions_old/messengerActions';
 import { StatusMessageType } from '../../../../store/reducers/messengerReducer/messengerReducer';
 import { SubmitIcon } from '../../../common/IconsComponent/SubmitIcon';
 import styles from './MessageInput.module.scss';

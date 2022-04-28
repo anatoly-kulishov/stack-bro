@@ -4,8 +4,8 @@ import { Checkbox, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
 import classes from './UsersFilterForm.module.scss';
-import { FilterType } from '../../../store/reducers/usersReducer/usersReducer';
 import { getUsersState } from '../../../store/selectors/users-selectors';
+import { FilterType } from '../../../types';
 
 type UsersSearchFormPropsType = {
   onFilterChanged: (values: FilterType) => void;
@@ -19,7 +19,7 @@ type FormType = {
 export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged }) => {
   const { filter } = useSelector(getUsersState);
 
-  const initialValues = { term: filter.term, friend: filter.friend };
+  const initialValues = { term: filter?.term, friend: filter?.friend };
 
   const submitHandler = (values: FormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     const filterProp: FilterType = {

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { MessageInput } from './MessageInput/MessageInput';
 import { Message } from './Message/Message';
-import { AppStateType } from '../../../store/reducers/rootReducer';
+import { AppStateType } from '../../../store';
 import { getMessengerState } from '../../../store/selectors/messenger-selectors';
 import { ChatMessageType } from '../../../types';
 import styles from './Messages.module.scss';

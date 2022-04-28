@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { LoginForm } from './LoginForm/LoginForm';
-import { WithLoading } from '../common/WithLoading/WithLoading';
-import { signIn } from '../../store/actions/authActions';
 import { getAuthState } from '../../store/selectors/auth-selectors';
+import { WithLoading } from '../common/WithLoading/WithLoading';
 import { SITE_TITLE, SPINNER_SIZE } from '../../constants/general';
+import { LoginForm } from './LoginForm/LoginForm';
+import { useActions } from '../../store';
 import styles from './Login.module.scss';
 
 export const Login: FC = () => {
   const { isValid, captchaUrl, error, isLoading } = useSelector(getAuthState);
+  const { signIn } = useActions();
 
   return (
     <section>

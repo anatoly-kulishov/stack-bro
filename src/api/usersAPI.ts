@@ -1,6 +1,5 @@
 import { baseInstance } from './instances';
-import { BaseResponseType, UserType } from '../types';
-import { FilterType } from '../store/reducers/usersReducer/usersReducer';
+import { BaseResponseType, FilterType, UserType } from '../types';
 
 type RequestUsersApiType = {
   items: Array<UserType>;

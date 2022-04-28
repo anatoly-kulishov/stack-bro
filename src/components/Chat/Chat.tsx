@@ -1,7 +1,7 @@
 import React, { FC, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { startMessagesListening, stopMessagesListening } from '../../store/actions/messengerActions';
+import { startMessagesListening, stopMessagesListening } from '../../store/actions_old/messengerActions';
 import { getMessengerState } from '../../store/selectors/messenger-selectors';
 import { WithLoading } from '../common/WithLoading/WithLoading';
 import { SPINNER_SIZE } from '../../constants/general';

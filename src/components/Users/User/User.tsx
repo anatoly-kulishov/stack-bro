@@ -2,11 +2,10 @@ import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Avatar, Card, Skeleton } from 'antd';
 import { EyeOutlined, MinusOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
 
 import { UserType } from '../../../types';
-import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
 import styles from './User.module.scss';
+import { useActions } from '../../../store';
 
 export type UserPropsType = {
   user: UserType;
@@ -15,15 +14,14 @@ export type UserPropsType = {
 
 const { Meta } = Card;
 
-export const User: FC<UserPropsType> = props => {
-  const { user, isLoading } = props;
-  const dispatch = useDispatch();
+export const User: FC<UserPropsType> = ({ user, isLoading }) => {
+  const { userFollow, userUnfollow } = useActions();
   // const followingInProgress = useSelector(getFollowingInProgress);
 
   const followAction = user.followed ? (
-    <MinusOutlined key="edit" onClick={() => dispatch(userUnfollow(user.id))} />
+    <MinusOutlined key="edit" onClick={() => userUnfollow(user.id)} />
   ) : (
-    <PlusOutlined key="edit" onClick={() => dispatch(userFollow(user.id))} />
+    <PlusOutlined key="edit" onClick={() => userFollow(user.id)} />
   );
 
   return (

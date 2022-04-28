@@ -1,16 +1,18 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ApiTwoTone, EditTwoTone } from '@ant-design/icons';
 
+import { useActions } from '../../../store';
 import { ProfileStatus } from './ProfileStatus/ProfileStatus';
 import { ProfileData } from './ProfileData/ProfileData';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { getStatus, saveProfile } from '../../../store/actions/profileActions';
+import { saveProfile } from '../../../store/actions_old/profileActions';
 import { EditProfileModal } from './EditProfileModal/EditProfileModal';
 import styles from './ProfileInfo.module.scss';
 
 export const ProfileInfo: FC = () => {
-  const dispatch = useDispatch();
+  const { getStatus } = useActions();
+
   const { profile, error, isOwner, status } = useSelector(getProfileState);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -19,9 +21,9 @@ export const ProfileInfo: FC = () => {
 
   useEffect(() => {
     if (profile.userId) {
-      dispatch(getStatus(Number(profile.userId)));
+      getStatus(Number(profile.userId));
     }
-  }, [dispatch, profile.userId]);
+  }, [profile.userId]);
 
   return (
     <div className={`${styles.wrapper} default-box`}>

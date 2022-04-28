@@ -1,5 +1,8 @@
-import { UsersActionType } from '../../action-types/users-action-type';
+import produce from 'immer';
+
 import { UserType } from '../../../types';
+import { UsersActionType } from '../../action-types';
+import { UsersAction } from '../../actions/users-actions/users-actions';
 
 const initialState = {
   isLoading: true,
@@ -13,66 +16,49 @@ const initialState = {
   filter: {
     term: '',
     friend: false as boolean,
-    // page: 1 Todo!
+    // page: 1 Todo: Fix the problem with pages!
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-export const usersReducer = (state = initialState, action: any): InitialStateType => {
+export type UsersInitialStateType = typeof initialState;
+
+export const usersReducer = produce((state: UsersInitialStateType, action: UsersAction): UsersInitialStateType => {
   switch (action.type) {
     case UsersActionType.SET_USERS_SUCCESS:
-      return {
-        ...state,
-        users: action.users,
-        totalUsersCount: action.totalUsersCount,
-        isLoading: false,
-      };
+      state.users = action.users;
+      state.totalUsersCount = action.totalUsersCount;
+      state.isLoading = false;
+      return state;
     case UsersActionType.SET_FRIENDS_SUCCESS:
-      return {
-        ...state,
-        friends: action.friends,
-        totalFriendsCount: action.totalFriendsCount,
-        isLoading: false,
-      };
+      state.friends = action.friends;
+      state.totalFriendsCount = action.totalFriendsCount;
+      state.isLoading = false;
+      return state;
     case UsersActionType.SET_CURRENT_PAGE:
-      return {
-        ...state,
-        currentPage: action.currentPage,
-        isLoading: true,
-      };
+      state.currentPage = action.currentPage;
+      state.isLoading = true;
+      return state;
     case UsersActionType.SET_TOTAL_USERS_COUNT:
-      return {
-        ...state,
-        totalUsersCount: action.totalUserCount,
-        isLoading: true,
-      };
+      state.totalUsersCount = action.totalUserCount;
+      state.isLoading = true;
+      return state;
     case UsersActionType.TOGGLE_FOLLOW_UNFOLLOW:
-      return {
-        ...state,
-        users: state.users.map(user => {
-          if (user.id === action.userId) {
-            return { ...user, followed: !user.followed };
-          }
-          return user;
-        }),
-      };
+      state.users = state.users.map(user => {
+        if (user.id === action.userId) {
+          return { ...user, followed: !user.followed };
+        }
+        return user;
+      });
+      return state;
     case UsersActionType.TOGGLE_IS_FOLLOWING_PROGRESS:
-      return {
-        ...state,
-        followingInProgress: action.followingInProgress
-          ? [...state.followingInProgress, action.userId]
-          : state.followingInProgress.filter((id: number) => id !== action.userId),
-      };
+      state.followingInProgress = action.followingInProgress
+        ? [...state.followingInProgress, action.userId]
+        : state.followingInProgress.filter(id => id !== action.userId);
+      return state;
     case UsersActionType.SET_USERS_FILTER:
-      return {
-        ...state,
-        filter: action.payload,
-      };
+      state.filter = action.filter;
+      return state;
     default:
       return state;
   }
-};
-
-export type FilterType = typeof initialState.filter;
-export type InitialStateType = typeof initialState;
-// type ActionsType = InferActionsTypes<typeof actions>;
+}, initialState);

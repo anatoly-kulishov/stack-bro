@@ -18,22 +18,22 @@ describe('boolean-helpers', () => {
     fileTxtFormat = fileTxt.type;
   });
 
-  test('Get file format', () => {
+  test('getFileFormData()', () => {
     expect(getFileFormData(filePng)).toMatchObject({});
     expect(getFileFormData(filePng)).not.toMatchObject({ example: null });
   });
 
-  test('Convert file size in MB', () => {
+  test('convertFileSizeToMb()', () => {
     expect(convertFileSizeToMb(filePngSize)).toBe(fileSizeInMb);
     expect(convertFileSizeToMb(filePngSize)).not.toBe(fileSizeInMb - 1);
   });
 
-  test('Validate file size', () => {
+  test('validateFileSize()', () => {
     expect(validateFileSize(convertFileSizeToMb(filePngSize), 1)).toBeTruthy();
     expect(validateFileSize(convertFileSizeToMb(filePngSize), 0)).toBeFalsy();
   });
 
-  test('Validate file format', () => {
+  test('validateFileFormat()', () => {
     expect(validateFileFormat(filePngFormat, ALLOWED_EXTENSIONS)).toBeTruthy();
     expect(validateFileFormat(fileTxtFormat, ALLOWED_EXTENSIONS)).toBeFalsy();
   });

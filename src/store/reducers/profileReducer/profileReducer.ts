@@ -1,5 +1,7 @@
 import { ProfileActionType } from '../../action-types/profile-action-type';
 import { Nullable, PostType, ProfileType } from '../../../types';
+import { actions } from '../../actions_old/profileActions';
+import { InferActionsTypes } from '../index';
 
 const initialState = {
   isOwner: true,
@@ -14,8 +16,7 @@ const initialState = {
   followStatus: null as Nullable<boolean>,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-export const profileReducer = (state = initialState, action: any): InitialStateType => {
+export const profileReducer = (state = initialState, action: ActionsType | any): InitialStateType => {
   switch (action.type) {
     case ProfileActionType.SET_USER_PROFILE:
       return {
@@ -92,4 +93,4 @@ export const profileReducer = (state = initialState, action: any): InitialStateT
 };
 
 export type InitialStateType = typeof initialState;
-// type ActionsType = InferActionsTypes<typeof actions>;
+type ActionsType = InferActionsTypes<typeof actions>;

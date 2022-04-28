@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Button } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { FileField } from '../../common/FileField/FileField';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { userFollow, userUnfollow } from '../../../store/actions/usersActions/usersActions';
-import { savePhoto } from '../../../store/actions/profileActions';
+import { savePhoto } from '../../../store/actions_old/profileActions';
+import { FileField } from '../../common/FileField/FileField';
+import { useActions } from '../../../store';
 import { Nullable } from '../../../types';
 import styles from './ProfileActions.module.scss';
 
@@ -15,7 +15,7 @@ type ProfileActionsPropsType = {
 };
 
 export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFollowState }) => {
-  const dispatch = useDispatch();
+  const { userUnfollow, userFollow } = useActions();
   const { profile, followStatus, isOwner } = useSelector(getProfileState);
   const [errorText, setErrorText] = useState<Nullable<string>>(null);
 
@@ -25,13 +25,13 @@ export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFo
 
   const followHandler = () => {
     if (profile.userId) {
-      dispatch(userFollow(profile.userId));
+      userFollow(profile.userId);
     }
   };
 
   const unfollowHandler = () => {
     if (profile.userId) {
-      dispatch(userUnfollow(profile.userId));
+      userUnfollow(profile.userId);
     }
   };
 

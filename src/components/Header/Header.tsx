@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { Layout, Tag } from 'antd';
 import { GithubFilled, LinkedinOutlined } from '@ant-design/icons';
 
-import { MyAccountContainer } from './MyAccount/MyAccountContainer';
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
+import { MyAccount } from './MyAccount/MyAccount';
 import { Logo } from './Logo/Logo';
 import styles from './Header.module.scss';
 
@@ -31,7 +31,7 @@ export const Header: FC = () => {
             <AudioPlayer />
           </div>
           <div className="col-6 col-md-3 col-lg-2">
-            <MyAccountContainer />
+            <MyAccount />
           </div>
         </div>
       </div>

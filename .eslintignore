@@ -1,6 +1,7 @@
 build
 static
 node_modules
+.eslintrc.js
 src/assets/libs
 .gitignore
 .gitlab-ci.yml

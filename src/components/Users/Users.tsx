@@ -1,22 +1,22 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { stringify } from 'query-string';
 import { Alert } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
-import styles from './Users.module.scss';
 import { User } from './User/User';
 import { Paginator } from '../common/Paginator/Paginator';
 import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
-import { setUsers } from '../../store/actions/usersActions/usersActions';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
-import { FilterType } from '../../store/reducers/usersReducer/usersReducer';
+import { AppRoutesEnum, FilterType } from '../../types';
+import { useActions } from '../../store';
+import styles from './Users.module.scss';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };
 
 export const Users: FC = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { setUsers } = useActions();
 
   const users = useSelector(getUsers);
   const { currentPage, totalUsersCount, pageSize, isLoading, filter } = useSelector(getUsersState);
@@ -27,8 +27,6 @@ export const Users: FC = () => {
       term: '',
       friend: 'false',
     };
-    // TODO: Fix this ^^
-    // parse(history.location.search.substring(1)) as QueryParamsType;
 
     let actualFilter = filter;
     let actualPage = currentPage;
@@ -37,42 +35,37 @@ export const Users: FC = () => {
       actualPage = Number(parsed.page);
     }
     if (parsed.term) {
-      actualFilter = { ...actualFilter, term: parsed.term as string };
+      actualFilter = { ...actualFilter, term: parsed?.term as string };
     }
-    if (parsed.friend === 'null') {
-      actualFilter = { ...actualFilter, friend: false };
+    if (parsed.friend) {
+      actualFilter = { ...actualFilter, friend: filter?.friend };
     }
-    if (parsed.friend === 'true') {
-      actualFilter = { ...actualFilter, friend: false };
+    if (!parsed.friend) {
+      actualFilter = { ...actualFilter, friend: filter?.friend };
     }
-    if (parsed.friend === 'false') {
-      actualFilter = { ...actualFilter, friend: false };
-    }
-
-    dispatch(setUsers(actualPage, pageSize, actualFilter));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setUsers(actualPage, pageSize, actualFilter);
+  }, [currentPage, filter]);
 
   useEffect(() => {
     const query: QueryParamsType = {};
 
-    if (filter.term) query.term = filter.term;
-    if (filter.friend !== null) query.friend = String(filter.friend);
+    if (filter?.term) query.term = filter.term;
+    if (filter?.friend !== null) query.friend = String(filter?.friend);
     if (currentPage !== 1) query.page = String(currentPage);
 
     navigate({
-      pathname: '/users',
+      pathname: `/${AppRoutesEnum.USERS}`,
       search: stringify(query),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, currentPage]);
 
   const onFilterChanged = (values: FilterType) => {
-    dispatch(setUsers(currentPage, pageSize, values));
+    setUsers(currentPage, pageSize, values);
   };
 
   const onPageChangedHandler = (pageNumber: number) => {
-    dispatch(setUsers(pageNumber, pageSize, filter));
+    setUsers(pageNumber, pageSize, filter);
   };
 
   return (

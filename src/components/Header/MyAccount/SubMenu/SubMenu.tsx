@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
 import { LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
-type MyAccountSubMenuPropsType = {
-  logOut: () => void;
-};
+import { useActions } from '../../../../store';
 
-export const SubMenu: FC<MyAccountSubMenuPropsType> = ({ logOut }) => {
+export const SubMenu: FC = () => {
+  const { logOut } = useActions();
+
   return (
     <Menu>
       <Menu.Item key="1" icon={<QuestionCircleOutlined />}>

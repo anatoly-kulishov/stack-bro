@@ -1,12 +1,12 @@
 import { FormAction } from 'redux-form';
 
-import { BaseThunkType, InferActionsTypes } from '../reducers/rootReducer';
 import { ProfileActionType } from '../action-types/profile-action-type';
 import { PhotosType, PostType, ProfileType, ResultCodes } from '../../types';
+import { BaseThunkType, InferActionsTypes } from '../reducers';
 import { profileAPI } from '../../api/profileAPI';
-import { authMe } from './authActions';
+import { authMe } from '../action-creators';
 
-export const profileActions = {
+export const actions = {
   setProfile: (data: Array<ProfileType>) => ({
     type: ProfileActionType.SET_USER_PROFILE,
     payload: data,
@@ -57,11 +57,11 @@ export const profileActions = {
  */
 export const updateProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
-    dispatch(profileActions.showLoader());
+    dispatch(actions.showLoader());
     profileAPI
       .getProfile(userId)
       .then(data => {
-        dispatch(profileActions.setProfile(data));
+        dispatch(actions.setProfile(data));
       })
       .catch(e => console.error(e));
   };
@@ -75,7 +75,7 @@ export const updateOwnerProfile = (userId: number): ThunkType => {
   return async (dispatch: Function) => {
     profileAPI
       .getProfile(userId)
-      .then(data => dispatch(profileActions.setOwnerProfile(data)))
+      .then(data => dispatch(actions.setOwnerProfile(data)))
       .catch(e => console.error(e));
   };
 };
@@ -89,7 +89,7 @@ export const getStatus = (userId: number): ThunkType => {
     profileAPI
       .getStatus(userId)
       .then(data => {
-        dispatch(profileActions.getStatus(data));
+        dispatch(actions.getStatus(data));
       })
       .catch(e => console.error(e));
   };
@@ -105,7 +105,7 @@ export const setStatus = (status: string): ThunkType => {
       .setStatus(status)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
-          dispatch(profileActions.setStatus(data));
+          dispatch(actions.setStatus(data));
         }
       })
       .catch(e => console.error(e));
@@ -119,12 +119,12 @@ export const setStatus = (status: string): ThunkType => {
  */
 export const savePhoto = (file: File, setSubmitting: Function): ThunkType => {
   return async (dispatch: Function) => {
-    dispatch(profileActions.sendNewPhoto());
+    dispatch(actions.sendNewPhoto());
     profileAPI
       .putPhoto(file)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
-          dispatch(profileActions.savePhotoSuccess(data.data.photos));
+          dispatch(actions.savePhotoSuccess(data.data.photos));
           dispatch(authMe());
         }
       })
@@ -147,11 +147,11 @@ export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
         if (data.resultCode === ResultCodes.Success) {
           dispatch(updateProfile(userId));
         } else {
-          dispatch(profileActions.saveProfileFailed(data));
+          dispatch(actions.saveProfileFailed(data));
         }
       })
       .catch(e => {
-        dispatch(profileActions.saveProfileFailed(e));
+        dispatch(actions.saveProfileFailed(e));
         console.error(e);
       })
       .finally(() => {
@@ -160,5 +160,5 @@ export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
   };
 };
 
-export type ActionsTypes = InferActionsTypes<typeof profileActions>;
+export type ActionsTypes = InferActionsTypes<typeof actions>;
 export type ThunkType = BaseThunkType<ActionsTypes | FormAction>;
