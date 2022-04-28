@@ -6,23 +6,24 @@ import { WithLoading } from './components/common/WithLoading/WithLoading';
 import { getAuthState } from './store/selectors/auth-selectors';
 import { getAppState } from './store/selectors/app-selectors';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
-import { initializeApp } from './store/actions/appActions';
 import { AppRoutes } from './routes/AppRoutes/AppRoutes';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { SPINNER_SIZE } from './constants/general';
+import { useActions } from './store';
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
 
 export const App: FC = () => {
   const dispatch = useDispatch();
-  const { initialized, globalErrors } = useSelector(getAppState);
+  const { initializeApp } = useActions();
   const { isAuth, isLoading } = useSelector(getAuthState);
+  const { initialized, globalErrors } = useSelector(getAppState);
   const isAppReady = !initialized || isLoading;
 
   useEffect(() => {
     if (!isLoading) {
-      dispatch(initializeApp(isAuth));
+      initializeApp(isAuth);
     }
   }, [isLoading, isAuth, dispatch]);
 

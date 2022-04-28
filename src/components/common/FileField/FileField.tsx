@@ -4,7 +4,7 @@ import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-import { ThunkType } from '../../../store/actions/profileActions';
+import { ThunkType } from '../../../store/actions_old/profileActions';
 import styles from './FileField.module.scss';
 import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../../../utils/file-helpers/file-helpers';
 import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../constants/commom';

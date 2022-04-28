@@ -1,14 +1,13 @@
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
 
-import { CustomField } from '../../common/CustomField/CustomField';
 import { CREATE_NEW_ACCOUNT_BUTTON, LOGIN_AS_GUEST_BUTTON, LOGIN_BUTTON } from '../../../constants/buttons';
 import { CAPTCHA_PLACEHOLDER, EMAIL_PLACEHOLDER, PASSWORD_PLACEHOLDER } from '../../../constants/placeholders';
 import { addCommasToStringsInArray } from '../../../utils/array-helpers/array-strings-helpers';
 import { MOCK_USER_AUTH_DATA, URL_FOR_REGISTRATION } from '../../../constants/api';
+import { CustomField } from '../../common/CustomField/CustomField';
 import { REMEMBER_ME_LABEL } from '../../../constants/labels';
 import { FormPropsType } from '../../../types';
 import styles from './LoginForm.module.scss';
@@ -23,26 +22,23 @@ const initialValues = {
 type ILoginFormValues = typeof initialValues;
 
 export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, captchaUrl }) => {
-  const dispatch = useDispatch();
   const [isGuest, setIsGuest] = useState<boolean>(false);
   const setGuestStatusHandler = () => setIsGuest(true);
 
   const submitHandler: FormikConfig<ILoginFormValues>['onSubmit'] = (values, formikHelpers) => {
     if (isGuest) {
-      dispatch(
-        onSubmit(
-          {
-            email: MOCK_USER_AUTH_DATA.email,
-            password: MOCK_USER_AUTH_DATA.password,
-            captcha: values.captcha,
-            rememberMe: values.rememberMe,
-          },
-          formikHelpers.setSubmitting,
-          formikHelpers.resetForm,
-        ),
+      onSubmit(
+        {
+          email: MOCK_USER_AUTH_DATA.email,
+          password: MOCK_USER_AUTH_DATA.password,
+          captcha: values.captcha,
+          rememberMe: values.rememberMe,
+        },
+        formikHelpers.setSubmitting,
+        formikHelpers.resetForm,
       );
     } else {
-      dispatch(onSubmit(values, formikHelpers.setSubmitting, formikHelpers.resetForm));
+      onSubmit(values, formikHelpers.setSubmitting, formikHelpers.resetForm);
     }
   };
 

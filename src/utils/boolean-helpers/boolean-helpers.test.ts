@@ -1,8 +1,11 @@
 import { isDarkTheme, isLightTheme } from './boolean-helpers';
 
 describe('boolean-helpers', () => {
-  test('Check theme color', () => {
+  test('isLightTheme()', () => {
     expect(isLightTheme('light')).toBe(true);
+  });
+
+  test('isDarkTheme()', () => {
     expect(isDarkTheme('dark')).toBe(true);
   });
 });

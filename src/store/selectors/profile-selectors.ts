@@ -1,3 +1,3 @@
-import { AppStateType } from '../reducers/rootReducer';
+import { AppStateType } from '../reducers';
 
 export const getProfileState = (state: AppStateType) => state.profile;

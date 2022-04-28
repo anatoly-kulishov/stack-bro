@@ -7,7 +7,7 @@ import { usersReducer } from './usersReducer/usersReducer';
 import { authReducer } from './authReducer/authReducer';
 import { appReducer } from './appReducer/appReducer';
 
-export const rootReducer = combineReducers({
+export const reducers = combineReducers({
   app: appReducer,
   auth: authReducer,
   users: usersReducer,
@@ -15,7 +15,7 @@ export const rootReducer = combineReducers({
   messenger: messengerReducer,
 });
 
-export type RootReducerType = typeof rootReducer;
+export type RootReducerType = typeof reducers;
 
 export type AppStateType = ReturnType<RootReducerType>;
 export type InferActionsTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;

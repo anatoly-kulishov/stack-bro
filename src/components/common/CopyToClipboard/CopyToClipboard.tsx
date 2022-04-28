@@ -26,7 +26,6 @@ export const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
-      /* eslint-disable no-console */
       console.info(`copy(${text})`);
     });
   };

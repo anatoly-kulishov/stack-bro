@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { CopyToClipboard } from '../../../common/CopyToClipboard/CopyToClipboard';
 import { getProfileState } from '../../../../store/selectors/profile-selectors';
-import { setStatus } from '../../../../store/actions/profileActions';
+import { useActions } from '../../../../store';
 import styles from './ProfileStatus.module.scss';
 
 type ProfileStatusPropsType = {
@@ -12,15 +12,15 @@ type ProfileStatusPropsType = {
 };
 
 export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }) => {
-  const dispatch = useDispatch();
   const { profile } = useSelector(getProfileState);
+  const { setStatus } = useActions();
 
   const [currentStatus, setCurrentStatus] = useState<string>(`${status}`);
   const [editMode, setEditMode] = useState<boolean>(false);
 
   const updateStatusHandler = () => {
     setEditMode(!editMode);
-    dispatch(setStatus(currentStatus));
+    setStatus(currentStatus);
   };
 
   useEffect(() => {

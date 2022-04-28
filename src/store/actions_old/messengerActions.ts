@@ -1,10 +1,10 @@
 import { Dispatch } from 'redux';
 
 import { StatusMessageType } from '../reducers/messengerReducer/messengerReducer';
-import { BaseThunkType, InferActionsTypes } from '../reducers/rootReducer';
-import { MessengerActionType } from '../action-types/messenger-action-type';
 import { messengerAPI } from '../../api/messangerAPI.ts';
 import { ChatMessageType } from '../../types';
+import { BaseThunkType, InferActionsTypes } from '../reducers';
+import { MessengerActionType } from '../action-types';
 
 export const actions = {
   messagesReceived: (messages: ChatMessageType[]) => ({

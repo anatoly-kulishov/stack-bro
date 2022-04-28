@@ -1,7 +1,9 @@
 import Cookies from 'js-cookie';
+import produce from 'immer';
 
-import { AuthActionType } from '../../action-types/auth-action-type';
 import { Nullable } from '../../../types';
+import { AuthActions } from '../../actions/auth-actions/auth-actions';
+import { AuthActionType } from '../../action-types';
 
 const initialState = {
   isLoading: false,
@@ -17,59 +19,43 @@ const initialState = {
   captchaUrl: null,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-export const authReducer = (state = initialState, action: any): InitialStateType => {
+export type AuthInitialStateType = typeof initialState;
+
+export const authReducer = produce((state: AuthInitialStateType, action: AuthActions): AuthInitialStateType => {
   switch (action.type) {
     case AuthActionType.SIGN_IN:
-      return {
-        ...state,
-        isAuth: true,
-        isLoading: false,
-        isValid: true,
-        userId: action.userId,
-        captchaUrl: null,
-      };
+      state.isAuth = true;
+      state.isLoading = false;
+      state.isValid = true;
+      state.userId = action.userId;
+      state.captchaUrl = null;
+      return state;
     case AuthActionType.LOG_OUT_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
+      state.isLoading = true;
+      return state;
     case AuthActionType.LOG_OUT_DENIED:
-      return {
-        ...state,
-        isLoading: false,
-      };
+      state.isLoading = false;
+      return state;
     case AuthActionType.LOG_OUT_ACCEPTED:
-      return {
-        ...state,
-        myProfile: null,
-        isAuth: false,
-        isLoading: false,
-      };
+      state.myProfile = null;
+      state.isAuth = false;
+      state.isLoading = false;
+      return state;
     case AuthActionType.AUTH_ME:
-      return {
-        ...state,
-        myProfile: action.payload,
-        userId: action.payload.id,
-        isAuth: true,
-        isLoading: false,
-      };
+      state.myProfile = action.payload;
+      state.userId = action.payload.id;
+      state.isAuth = true;
+      state.isLoading = false;
+      return state;
     case AuthActionType.AUTH_NOT_VALID:
-      return {
-        ...state,
-        isValid: false,
-        error: action.error,
-        isLoading: false,
-      };
+      state.isValid = false;
+      state.error = action.error;
+      state.isLoading = false;
+      return state;
     case AuthActionType.GET_CAPTCHA_URL_SUCCESS:
-      return {
-        ...state,
-        captchaUrl: action.payload,
-      };
+      state.captchaUrl = action.payload;
+      return state;
     default:
       return state;
   }
-};
-
-export type InitialStateType = typeof initialState;
-// type ActionsType = InferActionsTypes<typeof actions>;
+}, initialState);

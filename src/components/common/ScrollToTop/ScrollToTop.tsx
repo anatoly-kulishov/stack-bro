@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 interface IScrollToTop {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

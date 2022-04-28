@@ -126,5 +126,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/button-has-type': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'default-param-last': 'off',
+    '@typescript-eslint/default-param-last': ['warn'],
   },
 };

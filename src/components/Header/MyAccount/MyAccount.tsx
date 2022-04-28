@@ -1,20 +1,17 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 import { Avatar, Button, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { SubMenu } from './SubMenu/SubMenu';
-import { ProfileType } from '../../../types';
 import styles from './MyAccount.module.scss';
+import { useSelector } from 'react-redux';
+import { getProfileState } from '../../../store/selectors/profile-selectors';
 
-type MyAccountPropsType = {
-  ownerProfile: PropsWithChildren<ProfileType>;
-  logOut: () => void;
-};
-
-export const MyAccount: FC<MyAccountPropsType> = ({ logOut, ownerProfile }) => {
+export const MyAccount: FC = () => {
+  const { ownerProfile } = useSelector(getProfileState);
   return (
     <div className={`${styles.wrapper} no-border`}>
-      <Dropdown overlay={<SubMenu logOut={logOut} />}>
+      <Dropdown overlay={<SubMenu />}>
         <Button
           style={{
             height: 40,
