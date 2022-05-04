@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Button } from 'antd';
 
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { savePhoto } from '../../../store/actions_old/profileActions';
 import { FileField } from '../../common/FileField/FileField';
 import { useActions } from '../../../store';
 import { Nullable } from '../../../types';
@@ -15,7 +14,7 @@ type ProfileActionsPropsType = {
 };
 
 export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFollowState }) => {
-  const { userUnfollow, userFollow } = useActions();
+  const { userUnfollow, userFollow, savePhoto } = useActions();
   const { profile, followStatus, isOwner } = useSelector(getProfileState);
   const [errorText, setErrorText] = useState<Nullable<string>>(null);
 

@@ -47,7 +47,7 @@ export interface ToggleIsFetching {
   type: UsersActionType.TOGGLE_IS_FETCHING_USERS;
 }
 
-export type UsersAction =
+export type UsersActions =
   | SetUsers
   | SetUsersSuccess
   | SetFriendsSuccess

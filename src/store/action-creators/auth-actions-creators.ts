@@ -1,11 +1,10 @@
 import Cookies from 'js-cookie';
 
 import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../types';
+import { updateOwnerProfile } from './profile-action-creators';
 import { securityAPI } from '../../api/securityAPI.ts';
-import { authAPI } from '../../api/authAPI';
-import { BaseThunkType, InferActionsTypes } from '../reducers';
 import { AuthActionType } from '../action-types';
-import { updateOwnerProfile } from '../actions_old/profileActions';
+import { authAPI } from '../../api/authAPI';
 
 export const authActions = {
   getCaptchaUrlSuccess: (captchaUrl: string) => ({
@@ -40,7 +39,7 @@ export const signIn = (
   profile: ProfileActionType,
   setSubmitting: Nullable<Function> = null,
   resetForm: Nullable<Function> = null,
-): ThunkType => {
+) => {
   return async (dispatch: Function) => {
     authAPI
       .postSignIn(profile)
@@ -73,7 +72,7 @@ export const signIn = (
 /**
  * Is current user authorized
  */
-export const authMe = (): ThunkType => {
+export const authMe = () => {
   return async (dispatch: Function) => {
     authAPI
       .getAuthMe()
@@ -94,7 +93,7 @@ export const authMe = (): ThunkType => {
 /**
  * Unfollow requested user
  */
-export const logOut = (): ThunkType => {
+export const logOut = () => {
   return async (dispatch: Function) => {
     try {
       dispatch(authActions.logOutStart());
@@ -110,13 +109,10 @@ export const logOut = (): ThunkType => {
 /**
  * Get New Captcha
  */
-export const getCaptchaUrl = (): ThunkType => {
+export const getCaptchaUrl = () => {
   return async (dispatch: Function) => {
     securityAPI.getCaptcha().then(data => {
       dispatch(authActions.getCaptchaUrlSuccess(data.url));
     });
   };
 };
-
-export type ActionsTypes = InferActionsTypes<typeof authActions>;
-type ThunkType = BaseThunkType<any>;

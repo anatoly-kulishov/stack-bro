@@ -2,7 +2,7 @@ import produce from 'immer';
 
 import { UserType } from '../../../types';
 import { UsersActionType } from '../../action-types';
-import { UsersAction } from '../../actions/users-actions/users-actions';
+import { UsersActions } from '../../actions/users-actions/users-actions';
 
 const initialState = {
   isLoading: true,
@@ -22,7 +22,7 @@ const initialState = {
 
 export type UsersInitialStateType = typeof initialState;
 
-export const usersReducer = produce((state: UsersInitialStateType, action: UsersAction): UsersInitialStateType => {
+export const usersReducer = produce((state: UsersInitialStateType, action: UsersActions): UsersInitialStateType => {
   switch (action.type) {
     case UsersActionType.SET_USERS_SUCCESS:
       state.users = action.users;

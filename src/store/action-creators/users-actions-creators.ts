@@ -1,6 +1,9 @@
+import { Dispatch } from 'react';
+
 import { ProfileActionType, UsersActionType } from '../action-types';
 import { FilterType, ResultCodes, UsersType } from '../../types';
 import { usersAPI } from '../../api/usersAPI';
+import { UsersActions } from '../actions/users-actions/users-actions';
 
 export const usersActions = {
   toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
@@ -33,7 +36,6 @@ export const setUsers = (requestPage: number, pageSize: number, filter: FilterTy
     dispatch(usersActions.toggleIsFetching(true));
     dispatch(usersActions.setCurrentPage(requestPage));
     dispatch(usersActions.setFilter(filter));
-
     const data = await usersAPI.requestUsers(requestPage, pageSize, filter);
     dispatch(usersActions.toggleIsFetching(false));
     dispatch(setUsersSuccess(data));
@@ -49,7 +51,7 @@ export const setFriends = (requestPage: number, pageSize: number) => {
   };
 };
 
-const setUsersSuccess = (data: UsersType) => (dispatch: Function) => {
+const setUsersSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>) => {
   dispatch({
     type: UsersActionType.SET_USERS_SUCCESS,
     users: data.items,
@@ -57,7 +59,7 @@ const setUsersSuccess = (data: UsersType) => (dispatch: Function) => {
   });
 };
 
-const setFriendsSuccess = (data: UsersType) => (dispatch: Function) => {
+const setFriendsSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>) => {
   dispatch({
     type: UsersActionType.SET_FRIENDS_SUCCESS,
     friends: data.items,

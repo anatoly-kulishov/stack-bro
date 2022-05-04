@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Avatar, Button, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
+import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { SubMenu } from './SubMenu/SubMenu';
 import styles from './MyAccount.module.scss';
-import { useSelector } from 'react-redux';
-import { getProfileState } from '../../../store/selectors/profile-selectors';
 
 export const MyAccount: FC = () => {
   const { ownerProfile } = useSelector(getProfileState);

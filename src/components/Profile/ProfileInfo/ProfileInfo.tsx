@@ -6,12 +6,11 @@ import { useActions } from '../../../store';
 import { ProfileStatus } from './ProfileStatus/ProfileStatus';
 import { ProfileData } from './ProfileData/ProfileData';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { saveProfile } from '../../../store/actions_old/profileActions';
 import { EditProfileModal } from './EditProfileModal/EditProfileModal';
 import styles from './ProfileInfo.module.scss';
 
 export const ProfileInfo: FC = () => {
-  const { getStatus } = useActions();
+  const { getStatus, saveProfile } = useActions();
 
   const { profile, error, isOwner, status } = useSelector(getProfileState);
   const [isModalVisible, setIsModalVisible] = useState(false);
