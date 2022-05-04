@@ -45,4 +45,3 @@
 //   expect(dispatchMock).toHaveBeenNthCalledWith(2, userUnfollow(1));
 //   expect(dispatchMock).toHaveBeenNthCalledWith(3, actions.toggleFollowingProgress(false, 1));
 // });
-export {};

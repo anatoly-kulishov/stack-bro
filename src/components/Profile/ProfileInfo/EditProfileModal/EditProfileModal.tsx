@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Alert, Button, Checkbox, Input, Modal, Tabs } from 'antd';
 import * as Yup from 'yup';
@@ -20,7 +19,6 @@ const { TabPane } = Tabs;
 export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType> = props => {
   const { onSubmit, errorsText, profile, isModalVisible, hideModal } = props;
   const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
-  const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Please enter your full name'),
@@ -50,7 +48,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
     values: typeof initialValues,
     { setSubmitting }: FormikHelpers<typeof initialValues>,
   ) => {
-    dispatch(onSubmit(values, setSubmitting));
+    onSubmit(values, setSubmitting);
     hideModal();
   };
 

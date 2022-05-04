@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { Input } from 'antd';
 import { Formik } from 'formik';
+import { Input } from 'antd';
 import * as Yup from 'yup';
 
 import { SubmitIcon } from '../../common/IconsComponent/SubmitIcon';
-import { actions } from '../../../store/actions_old/profileActions';
+import { profileActions } from '../../../store/action-creators';
 import styles from './PostForm.module.scss';
 
 const { TextArea } = Input;
@@ -23,7 +23,7 @@ export const PostForm: FC = () => {
       message,
       likesCount: 0,
     };
-    dispatch(actions.addPost(post));
+    dispatch(profileActions.addPost(post));
   };
 
   return (

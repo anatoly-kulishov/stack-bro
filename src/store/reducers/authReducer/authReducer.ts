@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import produce from 'immer';
 
-import { Nullable } from '../../../types';
 import { AuthActions } from '../../actions/auth-actions/auth-actions';
 import { AuthActionType } from '../../action-types';
+import { Nullable } from '../../../types';
 
 const initialState = {
   isLoading: false,

@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { sendMessage } from '../../../../store/actions_old/messengerActions';
 import { StatusMessageType } from '../../../../store/reducers/messengerReducer/messengerReducer';
 import { SubmitIcon } from '../../../common/IconsComponent/SubmitIcon';
+import { useActions } from '../../../../store';
 import styles from './MessageInput.module.scss';
 
 type MessageInputPropsType = {
@@ -11,13 +10,13 @@ type MessageInputPropsType = {
 };
 
 export const MessageInput: FC<MessageInputPropsType> = ({ status }) => {
-  const dispatch = useDispatch();
+  const { sendMessage } = useActions();
   const [message, setMessage] = useState<string>('');
   const isDisabled = status !== 'ready';
 
   const sendMessageHandler = () => {
     if (!message) return;
-    dispatch(sendMessage(message));
+    sendMessage(message);
     setMessage('');
   };
 

@@ -1,9 +1,9 @@
+import produce from 'immer';
 import { v1 } from 'uuid';
 
-import { MessengerActionType } from '../../action-types/messenger-action-type';
-import { actions } from '../../actions_old/messengerActions';
+import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
+import { MessengerActionType } from '../../action-types';
 import { ChatMessageType } from '../../../types';
-import { InferActionsTypes } from '../index';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
@@ -12,28 +12,28 @@ const initialState = {
   status: 'pending' as StatusMessageType,
 };
 
-export const messengerReducer = (state = initialState, action: ActionsType | any): InitialStateType => {
-  switch (action.type) {
-    case MessengerActionType.MESSAGES_RECEIVED:
-      return {
-        ...state,
-        messages: [
-          ...state.messages,
-          ...action.payload.map((m: any) => ({
-            ...m,
-            id: v1(),
-          })),
-        ].filter((m, index, arr) => index >= arr.length - 100),
-      };
-    case MessengerActionType.MESSAGES_STATUS_CHANGED:
-      return {
-        ...state,
-        status: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+export type MessengerInitialStateType = typeof initialState;
 
-export type InitialStateType = typeof initialState;
-type ActionsType = InferActionsTypes<typeof actions>;
+export const messengerReducer = produce(
+  (state: MessengerInitialStateType, action: MessengerActions): MessengerInitialStateType => {
+    switch (action.type) {
+      case MessengerActionType.MESSAGES_RECEIVED:
+        return {
+          ...state,
+          messages: [
+            ...state.messages,
+            ...action.payload.map((m: any) => ({
+              ...m,
+              id: v1(),
+            })),
+          ].filter((m, index, arr) => index >= arr.length - 100),
+        };
+      case MessengerActionType.MESSAGES_STATUS_CHANGED:
+        state.status = action.payload;
+        return state;
+      default:
+        return state;
+    }
+  },
+  initialState,
+);

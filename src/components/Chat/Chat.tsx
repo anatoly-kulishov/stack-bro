@@ -1,23 +1,23 @@
 import React, { FC, memo, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { startMessagesListening, stopMessagesListening } from '../../store/actions_old/messengerActions';
 import { getMessengerState } from '../../store/selectors/messenger-selectors';
 import { WithLoading } from '../common/WithLoading/WithLoading';
 import { SPINNER_SIZE } from '../../constants/general';
 import { StatusMessageTypeEnum } from '../../types';
 import { Messages } from './Messages/Messages';
+import { useActions } from '../../store';
 import styles from './Chat.module.scss';
 
 export const Chat: FC = memo(() => {
-  const dispatch = useDispatch();
+  const { startMessagesListening, stopMessagesListening } = useActions();
   const { status } = useSelector(getMessengerState);
   const socketIsReady = status !== StatusMessageTypeEnum.READY;
 
   useEffect(() => {
-    dispatch(startMessagesListening());
+    startMessagesListening();
     return () => {
-      dispatch(stopMessagesListening());
+      stopMessagesListening();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

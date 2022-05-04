@@ -10,12 +10,12 @@ import { PostForm } from './PostForm/PostForm';
 import { useActions } from '../../store';
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { getProfileState } from '../../store/selectors/profile-selectors';
-import { updateProfile } from '../../store/actions_old/profileActions';
+import { profileActions } from '../../store/action-creators';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const { setCurrentUserFollower, setOwnerStatus } = useActions();
+  const { setCurrentUserFollower, updateProfile } = useActions();
   const { userId } = useSelector(getAuthState);
   const { isOwner } = useSelector(getProfileState);
   const currentUserId = params.userId;
@@ -23,16 +23,16 @@ export const Profile: FC = () => {
   useEffect(() => {
     // ToDo: Refactoring!
     if (currentUserId) {
-      dispatch(updateProfile(Number(currentUserId)));
+      updateProfile(Number(currentUserId));
       setCurrentUserFollower(Number(currentUserId));
-      setOwnerStatus(false);
+      dispatch(profileActions.setOwnerStatus(false));
     }
     // ToDo: Refactoring! profile.hasOwnProperty('userId')
     if (!currentUserId && userId) {
-      dispatch(updateProfile(userId));
-      setOwnerStatus(true);
+      updateProfile(userId);
+      dispatch(profileActions.setOwnerStatus(true));
     }
-  }, [currentUserId, userId]);
+  }, [currentUserId, userId, dispatch]);
 
   return (
     <div>
