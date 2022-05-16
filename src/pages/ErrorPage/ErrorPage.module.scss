@@ -9,8 +9,11 @@
 }
 
 .wrapper {
-  max-width: 300px;
-  text-align: center
+  max-width: 400px;
+  padding: 30px 40px;
+  text-align: center;
+  background-color: $white;
+  border-radius: 5px;
 }
 
 .title {
@@ -19,4 +22,8 @@
 
 .description {
   font-size: $font_size_middle - 10;
+}
+
+.refreshButton {
+  cursor: pointer;
 }
