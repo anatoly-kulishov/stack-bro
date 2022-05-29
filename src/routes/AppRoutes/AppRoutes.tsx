@@ -4,9 +4,10 @@ import { Layout } from 'antd';
 
 import { MessengerPage } from '../../pages/MessengerPage/MessengerPage';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
+import { GamePage } from '../../pages/GamePage/GamePage';
 import { UsersPage } from '../../pages/UsersPage/UsersPage';
-import { HelpPage } from '../../pages/HelpPage/HelpPage';
 import { NoMatch } from '../../components/NoMatch/NoMatch';
+import { HelpPage } from '../../pages/HelpPage/HelpPage';
 import { Header } from '../../components/Header/Header';
 import { NavBar } from '../../components/NavBar/NavBar';
 import { AppRoutesEnum } from '../../types';
@@ -32,6 +33,7 @@ export const AppRoutes: FC = () => {
                   <Route path={AppRoutesEnum.MESSENGER} element={<MessengerPage />} />
                   <Route path={AppRoutesEnum.USERS} element={<UsersPage />} />
                   <Route path={AppRoutesEnum.HELP} element={<HelpPage />} />
+                  <Route path={AppRoutesEnum.GAME} element={<GamePage />} />
                   <Route path="*" element={<NoMatch />} />
                 </Routes>
               </Content>

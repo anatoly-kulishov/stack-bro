@@ -1,11 +1,11 @@
 import React, { createElement, FC, memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import moment from 'moment';
 import { Avatar, Comment, Tooltip } from 'antd';
 import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
+import { format } from 'date-fns';
 
-import { Nullable, ProfileType } from '../../../../types';
 import { TIME_FORMATS } from '../../../../constants/time-format';
+import { Nullable, ProfileType } from '../../../../types';
 
 export type PostPropsType = {
   profile: ProfileType;
@@ -45,6 +45,8 @@ export const Post: FC<PostPropsType> = memo(props => {
     </Tooltip>,
   ];
 
+  // format(Date.now(), TIME_FORMATS.POST_ITEM)
+
   return (
     <Comment
       actions={actions}
@@ -54,8 +56,8 @@ export const Post: FC<PostPropsType> = memo(props => {
       }
       content={<p>{message}</p>}
       datetime={
-        <Tooltip title={moment().format(TIME_FORMATS.POST_ITEM)}>
-          <span>{moment().fromNow()}</span>
+        <Tooltip title={format(new Date(), TIME_FORMATS.POST_ITEM_FULL)}>
+          <span>{format(new Date(), TIME_FORMATS.POST_ITEM)}</span>
         </Tooltip>
       }
     />

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
-import { MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
 import { getUsersState } from '../../store/selectors/users-selectors';
 import { AppRoutesEnum } from '../../types';
@@ -32,6 +32,9 @@ export const NavBar: FC = () => {
               Users <Badge count={totalUsersCount} style={{ backgroundColor: '#1890ff' }} />
             </div>
           </Link>
+        </Menu.Item>
+        <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<AndroidOutlined />}>
+          <Link to={AppRoutesEnum.GAME}>Game</Link>
         </Menu.Item>
       </Menu>
     </Sider>
