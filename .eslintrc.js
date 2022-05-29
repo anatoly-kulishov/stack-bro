@@ -128,5 +128,6 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'default-param-last': 'off',
     '@typescript-eslint/default-param-last': ['warn'],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
 };

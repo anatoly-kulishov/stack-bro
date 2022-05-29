@@ -90,6 +90,7 @@ export enum AppRoutesEnum {
   SOME_USER = ':userId',
   MESSENGER = 'messenger',
   HELP = 'help',
+  GAME = 'game',
 }
 
 export type UsersType = {
