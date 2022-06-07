@@ -1,40 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SimpleTests 1 1`] = `
-<div
-  data-testid="spinner"
->
-  <div
-    class="loading-overlay blurred"
-  />
-  <div
-    class="spinner-centered"
-  >
-    <div
-      class="custom-spinner-wrapper"
-    >
-      <svg
-        class="custom-spinner"
-        height="40px"
-        viewBox="0 0 66 66"
-        width="40px"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          class="custom-spinner-path"
-          cx="33"
-          cy="33"
-          fill="none"
-          r="30"
-          stroke-linecap="round"
-          stroke-width="6"
-        />
-      </svg>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`WithLoading spinner is displayed and dimensions converge 1`] = `
 <div
   data-testid="spinner"
