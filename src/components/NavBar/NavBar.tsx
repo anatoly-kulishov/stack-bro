@@ -9,34 +9,58 @@ import { AppRoutesEnum } from '../../types';
 
 const { Sider } = Layout;
 
+const renderMenuItems = (totalUsersCount: number) => {
+  const onSelectNavKey = (key: string) => {
+    sessionStorage.setItem('nav_key', key);
+  };
+
+  return [
+    {
+      key: 'MyProfile',
+      icon: <UserOutlined />,
+      label: <Link to={AppRoutesEnum.HOME}>My profile</Link>,
+      onClick: () => onSelectNavKey('MyProfile'),
+    },
+    {
+      key: 'Messenger',
+      icon: <MessageOutlined />,
+      label: <Link to={AppRoutesEnum.MESSENGER}>Messenger</Link>,
+      onClick: () => onSelectNavKey('Messenger'),
+    },
+    {
+      key: 'Users',
+      icon: <TeamOutlined />,
+      label: (
+        <Link to={AppRoutesEnum.USERS}>
+          <div className="NavBarRow">
+            Users <Badge count={totalUsersCount} style={{ backgroundColor: '#1890ff' }} />
+          </div>
+        </Link>
+      ),
+      onClick: () => onSelectNavKey('Users'),
+    },
+    {
+      key: 'Game',
+      icon: <AndroidOutlined />,
+      label: <Link to={AppRoutesEnum.GAME}>Game</Link>,
+      onClick: () => onSelectNavKey('Game'),
+    },
+  ];
+};
+
 export const NavBar: FC = () => {
   const { totalUsersCount } = useSelector(getUsersState);
 
-  const onSelectNavKey = (key: number) => {
-    sessionStorage.setItem('nav_key', String(key));
-  };
-  const navKey: string = sessionStorage.getItem('nav_key') || '1';
+  const navKey: string = sessionStorage.getItem('nav_key') || 'MyProfile';
 
   return (
     <Sider collapsible width={150}>
-      <Menu defaultSelectedKeys={[navKey]} className="default-box" mode="inline">
-        <Menu.Item key="1" onClick={() => onSelectNavKey(1)} icon={<UserOutlined />}>
-          <Link to={AppRoutesEnum.HOME}>My profile</Link>
-        </Menu.Item>
-        <Menu.Item key="2" onClick={() => onSelectNavKey(2)} icon={<MessageOutlined />}>
-          <Link to={AppRoutesEnum.MESSENGER}>Messenger</Link>
-        </Menu.Item>
-        <Menu.Item key="3" onClick={() => onSelectNavKey(3)} icon={<TeamOutlined />}>
-          <Link to={AppRoutesEnum.USERS}>
-            <div className="NavBarRow">
-              Users <Badge count={totalUsersCount} style={{ backgroundColor: '#1890ff' }} />
-            </div>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="4" onClick={() => onSelectNavKey(4)} icon={<AndroidOutlined />}>
-          <Link to={AppRoutesEnum.GAME}>Game</Link>
-        </Menu.Item>
-      </Menu>
+      <Menu
+        items={renderMenuItems(totalUsersCount)}
+        defaultSelectedKeys={[navKey]}
+        className="default-box"
+        mode="inline"
+      />
     </Sider>
   );
 };

@@ -99,7 +99,14 @@ export type UsersType = {
 };
 
 export type FilterType = {
-  term: any;
-  friend: any;
-  pages?: any;
+  term: string;
+  friend: boolean;
+  pages?: number;
+};
+
+export type MessageType = {
+  message: string;
+  photo: string;
+  userId: number;
+  userName: string;
 };

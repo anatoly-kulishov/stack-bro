@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Timeline } from 'antd';
-import moment from 'moment';
+import { format } from 'date-fns';
 
 import styles from './SideBar.module.scss';
 
 export const SideBar: FC = () => {
-  const currentTime = moment().format('L');
+  const currentTime = format(new Date(), 'L');
 
   return (
     <div className={styles.wrapper}>

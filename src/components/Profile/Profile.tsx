@@ -32,6 +32,7 @@ export const Profile: FC = () => {
       updateProfile(userId);
       dispatch(profileActions.setOwnerStatus(true));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUserId, userId, dispatch]);
 
   return (
