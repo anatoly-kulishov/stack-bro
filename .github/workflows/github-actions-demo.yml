@@ -19,7 +19,7 @@ jobs:
       - name: install modules
         run: npm install
       - name: build project
-        run: npm run build
+        run: react-app-rewired build
       - name: build storybook
         run: npm run build:storybook
       - name: unit test
