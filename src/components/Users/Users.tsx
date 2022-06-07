@@ -44,6 +44,7 @@ export const Users: FC = () => {
       actualFilter = { ...actualFilter, friend: filter?.friend };
     }
     setUsers(actualPage, pageSize, actualFilter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, filter]);
 
   useEffect(() => {

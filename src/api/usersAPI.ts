@@ -15,8 +15,8 @@ export const usersAPI = {
   requestUsers: (currentPage: number, pageSize: number, filter: FilterType) => {
     return baseInstance
       .get<RequestUsersApiType>(
-        `${BASE_URL}?page=${currentPage}&count=${pageSize}${filter.term ? `&term=${filter.term}` : ''}${
-          filter.friend ? `&friend=${filter.friend}` : ''
+        `${BASE_URL}?page=${currentPage}&count=${pageSize}${filter?.term ? `&term=${filter.term}` : ''}${
+          filter?.friend ? `&friend=${filter?.friend}` : ''
         }`,
       )
       .then(res => res.data);

@@ -71,11 +71,15 @@
   "scripts": {
     "start": "react-scripts start" ,
     "build": "react-app-rewired build" ,
-    "test": "react-scripts test" ,
-    "eject": "react-scripts eject" ,
     "lint": "eslint --ext .ts --ext .tsx ." ,
     "lint:fix": "npm run lint -- --fix" ,
-    "prepare": "husky install"
+    "test:unit": "react-scripts test" ,
+    "test:e2e": "node ./scripts/e2e.test.js" ,
+    "type:check": "node ./scripts/typecheck.js" ,
+    "i18n:check": "node ./scripts/i18n-check.js" ,
+    "build:storybook": "node ./scripts/storybook.js" ,
+    "prepare": "husky install" ,
+    "eject": "react-scripts eject"
   } ,
   "eslintConfig": {
     "extends": [

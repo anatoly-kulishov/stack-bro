@@ -3,7 +3,7 @@ import { v1 } from 'uuid';
 
 import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
 import { MessengerActionType } from '../../action-types';
-import { ChatMessageType } from '../../../types';
+import { ChatMessageType, MessageType } from '../../../types';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
@@ -22,7 +22,7 @@ export const messengerReducer = produce(
           ...state,
           messages: [
             ...state.messages,
-            ...action.payload.map((m: any) => ({
+            ...action.payload.map((m: MessageType) => ({
               ...m,
               id: v1(),
             })),
