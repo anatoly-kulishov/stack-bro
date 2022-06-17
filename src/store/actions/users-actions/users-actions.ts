@@ -1,5 +1,5 @@
 import { UsersActionType } from '../../action-types';
-import { FilterType } from '../../../types';
+import { FilterType, UserType } from '../../../types';
 
 export interface SetUsers {
   type: UsersActionType.SET_USERS;
@@ -8,13 +8,13 @@ export interface SetUsers {
 export interface SetUsersSuccess {
   type: UsersActionType.SET_USERS_SUCCESS;
   totalUsersCount: number;
-  users: any;
+  users: UserType[];
 }
 
 export interface SetFriendsSuccess {
   type: UsersActionType.SET_FRIENDS_SUCCESS;
   totalFriendsCount: number;
-  friends: any;
+  friends: UserType[];
 }
 
 export interface SetTotalUserCount {

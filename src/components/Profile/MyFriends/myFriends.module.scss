@@ -20,6 +20,12 @@
       max-width: 52px;
     }
   }
+
+  @media(max-width: $lg) {
+    & > li {
+      max-width: 100%;
+    }
+  }
 }
 
 .boxTitle {

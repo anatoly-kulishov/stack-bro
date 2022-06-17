@@ -22,6 +22,7 @@ export const ProfileInfo: FC = () => {
     if (profile.userId) {
       getStatus(Number(profile.userId));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile.userId]);
 
   return (

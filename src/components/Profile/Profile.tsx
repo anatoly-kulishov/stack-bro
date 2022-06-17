@@ -21,13 +21,11 @@ export const Profile: FC = () => {
   const currentUserId = params.userId;
 
   useEffect(() => {
-    // ToDo: Refactoring!
     if (currentUserId) {
       updateProfile(Number(currentUserId));
       setCurrentUserFollower(Number(currentUserId));
       dispatch(profileActions.setOwnerStatus(false));
     }
-    // ToDo: Refactoring! profile.hasOwnProperty('userId')
     if (!currentUserId && userId) {
       updateProfile(userId);
       dispatch(profileActions.setOwnerStatus(true));
@@ -38,11 +36,11 @@ export const Profile: FC = () => {
   return (
     <div>
       <div className="row">
-        <div className="col-12 col-lg-4 pr-lg-2">
+        <div className="col-12 col-md-12 col-lg-4 pr-lg-2 pb-3 pb-lg-0">
           <ProfilePhoto />
           {isOwner && <MyFriends />}
         </div>
-        <div className="col-12 col-lg-8 pl-lg-2">
+        <div className="col-12 col-md-12 col-lg-8 pl-lg-2">
           <ProfileInfo />
           {isOwner && <PostForm />}
           <ProfilePosts />

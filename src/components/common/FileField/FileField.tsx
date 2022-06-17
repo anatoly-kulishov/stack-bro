@@ -8,7 +8,7 @@ import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../..
 import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../constants/commom';
 
 type FileFieldPropsType = {
-  saveHandler: (file: File, setSubmitting: Function) => any;
+  saveHandler: (file: File, setSubmitting: Function) => void;
   validationHandler: (errorText: string | null) => void;
 };
 
