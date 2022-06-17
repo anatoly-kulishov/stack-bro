@@ -34,7 +34,7 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
     <Formik enableReinitialize initialValues={initialValues} onSubmit={submitHandler}>
       {({ values, handleChange, isSubmitting, setFieldValue }) => (
         <Form className={classes.form}>
-          <div className="d-flex align-items-center mr-2">
+          <div className="d-md-flex align-items-center mr-2">
             <div>
               <Input
                 name="term"
@@ -44,7 +44,7 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
                 style={{ width: 200 }}
               />
             </div>
-            <div className="ml-2">
+            <div className="ml-2 mt-3 mt-md-0">
               <Checkbox
                 checked={values.friend}
                 disabled={isSubmitting}

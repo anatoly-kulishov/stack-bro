@@ -6,6 +6,7 @@ import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@a
 
 import { getUsersState } from '../../store/selectors/users-selectors';
 import { AppRoutesEnum } from '../../types';
+import styles from './NavBar.module.scss';
 
 const { Sider } = Layout;
 
@@ -32,9 +33,9 @@ const renderMenuItems = (totalUsersCount: number) => {
       icon: <TeamOutlined />,
       label: (
         <Link to={AppRoutesEnum.USERS}>
-          <div className="NavBarRow">
+          <span className="NavBarRow">
             Users <Badge count={totalUsersCount} style={{ backgroundColor: '#1890ff' }} />
-          </div>
+          </span>
         </Link>
       ),
       onClick: () => onSelectNavKey('Users'),
@@ -42,6 +43,7 @@ const renderMenuItems = (totalUsersCount: number) => {
     {
       key: 'Game',
       icon: <AndroidOutlined />,
+      id: 'GameLink',
       label: <Link to={AppRoutesEnum.GAME}>Game</Link>,
       onClick: () => onSelectNavKey('Game'),
     },
@@ -54,7 +56,7 @@ export const NavBar: FC = () => {
   const navKey: string = sessionStorage.getItem('nav_key') || 'MyProfile';
 
   return (
-    <Sider collapsible width={150}>
+    <Sider collapsible width={'100%'} className={styles.Sider}>
       <Menu
         items={renderMenuItems(totalUsersCount)}
         defaultSelectedKeys={[navKey]}

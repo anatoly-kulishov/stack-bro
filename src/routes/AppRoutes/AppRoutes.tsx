@@ -18,10 +18,10 @@ export const AppRoutes: FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header />
-      <Layout className="site-layout">
+      <Layout className="site-layout pb-4 pb-md-5 pb-lg-0">
         <div className="container">
           <div className="row mt-3">
-            <div className="col-12 d-none d-lg-block col-md-3 col-lg-2 pr-0">
+            <div className="col-12 col-md-3 col-lg-2 pr-0">
               <NavBar />
             </div>
             <div className="col-12 col-md-9 col-xl-10">

@@ -12,10 +12,10 @@ export const Header: FC = () => {
     <Layout.Header className={`${styles.header} site-layout-background`}>
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-6 col-md-1 col-lg-2">
+          <div className="col-6 col-md-1 col-md-1 col-lg-2">
             <Logo />
           </div>
-          <div className="d-none d-md-block col-md-3 col-lg-3 text-center">
+          <div className="d-none d-md-block col-md-4 col-lg-3 text-center">
             <a href="https://www.linkedin.com/in/anatoliy-kulishov-845392212/" target="_blank" rel="noreferrer">
               <Tag icon={<LinkedinOutlined />} color="#55acee">
                 LinkedIn
@@ -27,7 +27,7 @@ export const Header: FC = () => {
               </Tag>
             </a>
           </div>
-          <div className="d-none d-md-block col-md-5">
+          <div className="d-none d-md-block col-md-4 col-lg-5">
             <AudioPlayer />
           </div>
           <div className="col-6 col-md-3 col-lg-2">

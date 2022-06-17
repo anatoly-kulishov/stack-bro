@@ -28,12 +28,12 @@ export interface AuthMe {
 
 export interface AuthNotValid {
   type: AuthActionType.AUTH_NOT_VALID;
-  error: any;
+  error: string[];
 }
 
 export interface GetCaptchaUrlSuccess {
   type: AuthActionType.GET_CAPTCHA_URL_SUCCESS;
-  payload: any;
+  payload: string;
 }
 
 export type AuthActions =
