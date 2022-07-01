@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 
-// ToDo: Fix these any!
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useResize(ref: RefObject<any>, isFullscreenView: any) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);

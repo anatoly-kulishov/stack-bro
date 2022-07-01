@@ -6,8 +6,8 @@ import { Alert } from 'antd';
 
 import { User } from './User/User';
 import { Paginator } from '../common/Paginator/Paginator';
-import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
+import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
 import { AppRoutesEnum, FilterType } from '../../types';
 import { useActions } from '../../store';
 import styles from './Users.module.scss';
@@ -80,7 +80,7 @@ export const Users: FC = () => {
           <div className="row">
             {users &&
               users.map(user => (
-                <div key={user.id} className="col-12 col-lg-4">
+                <div key={user.id} className="col-12 col-md-4">
                   <User user={user} isLoading={isLoading} />
                 </div>
               ))}

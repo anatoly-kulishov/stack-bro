@@ -14,7 +14,7 @@ export const Header: FC = () => {
     <Layout.Header className={`${styles.header} site-layout-background`}>
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-6 col-md-1 col-lg-2">
+          <div className="col-6 col-md-1 col-md-1 col-lg-2">
             <Logo />
           </div>
           <div className="d-none d-md-block col-md-4 col-lg-3 text-center">

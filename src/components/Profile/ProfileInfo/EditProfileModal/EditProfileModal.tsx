@@ -3,8 +3,8 @@ import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Alert, Button, Checkbox, Input, Modal, Tabs } from 'antd';
 import * as Yup from 'yup';
 
-import { CustomField } from '../../../common/CustomField/CustomField';
 import { ContactsType, FormPropsType, ProfileType } from '../../../../types';
+import { CustomField } from '../../../common/CustomField/CustomField';
 import styles from './EditProfileModal.module.scss';
 
 type EditProfileDataModalPropsType = {

@@ -1,0 +1,11 @@
+@use 'src/assets/styles/variables' as *;
+
+.Sider {
+  padding-bottom: 25px !important;
+
+  @media(max-width: $smd) {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-right: 15px;
+  }
+}

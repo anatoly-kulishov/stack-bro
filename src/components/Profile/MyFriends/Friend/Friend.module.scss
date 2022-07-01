@@ -10,6 +10,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: $blue_650;
+
+  @media(max-width: $lg) {
+    max-width: 100%;
+  }
 }
 
 .friendName:hover {
