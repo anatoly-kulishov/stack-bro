@@ -8,6 +8,6 @@ export const useActions = () => {
   const dispatch = useDispatch();
 
   return useMemo(() => {
-    return bindActionCreators(actionCreators as any, dispatch); // TODO!
+    return bindActionCreators(actionCreators as any, dispatch);
   }, [dispatch]);
 };

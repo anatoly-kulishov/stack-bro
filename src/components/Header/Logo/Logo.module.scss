@@ -1,43 +1,44 @@
 @use 'src/assets/styles/variables' as *;
 
 .wrapper {
-    display: flex;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
 
-    & > span {
-        display: flex;
-        margin-right: 6px;
-    }
+.wrapper > span {
+  display: flex;
+  margin-right: 6px;
 }
 
 .logo {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    transition: all .1s ease;
-    animation: spin 3s linear infinite;
-    cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  transition: all .1s ease;
+  animation: spin 3s linear infinite;
+  cursor: pointer;
 
-    &:active {
-        top: 1px
-    }
+  &:active {
+    top: 1px
+  }
 }
 
 .companyName {
-    font-size: 18px;
-    transition: all .4s ease-in-out;
+  font-size: 18px;
+  transition: all .4s ease-in-out;
+  margin-left: 5px;
 }
 
 .companyNameDarkTheme {
-    color: $x-color-white;
+  color: $x-color-white;
 }
 
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

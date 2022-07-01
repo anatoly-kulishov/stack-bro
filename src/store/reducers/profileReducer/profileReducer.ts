@@ -8,12 +8,12 @@ const initialState = {
   isOwner: true,
   isLoading: true,
   isValid: true,
-  error: null,
+  error: null as Nullable<string[]>,
   posts: [] as PostType[],
   selectedProfile: {},
   ownerProfile: {} as ProfileType,
   profile: {} as ProfileType,
-  status: '',
+  status: '' as string,
   followStatus: null as Nullable<boolean>,
 };
 
@@ -35,9 +35,6 @@ export const profileReducer = produce(
         return state;
       case ProfileActionType.GET_PROFILE_STATUS:
         state.status = action.status;
-        return state;
-      case ProfileActionType.SET_PROFILE_STATUS:
-        state.status = action.status.status;
         return state;
       case ProfileActionType.GET_FOLLOWING_STATUS:
         state.followStatus = action.followStatus;

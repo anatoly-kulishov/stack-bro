@@ -3,9 +3,9 @@ import { Form, Formik } from 'formik';
 import { Checkbox, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
-import classes from './UsersFilterForm.module.scss';
 import { getUsersState } from '../../../store/selectors/users-selectors';
 import { FilterType } from '../../../types';
+import styles from './UsersFilterForm.module.scss';
 
 type UsersSearchFormPropsType = {
   onFilterChanged: (values: FilterType) => void;
@@ -33,7 +33,7 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
   return (
     <Formik enableReinitialize initialValues={initialValues} onSubmit={submitHandler}>
       {({ values, handleChange, isSubmitting, setFieldValue }) => (
-        <Form className={classes.form}>
+        <Form className={styles.Form}>
           <div className="d-flex align-items-center mr-2">
             <div>
               <Input
@@ -41,7 +41,7 @@ export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged 
                 value={values.term}
                 onChange={handleChange}
                 placeholder="Search users"
-                style={{ width: 200 }}
+                className={styles.SearchInput}
               />
             </div>
             <div className="ml-2">

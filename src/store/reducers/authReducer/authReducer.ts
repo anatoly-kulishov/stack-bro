@@ -9,14 +9,14 @@ const initialState = {
   isLoading: false,
   isValid: true,
   isAuth: Boolean(Cookies.get('token')) ?? false,
-  error: null,
+  error: null as Nullable<string[]>,
   userId: null as Nullable<number>,
   myProfile: {
     id: null as Nullable<string>,
     login: null as Nullable<string>,
     email: null as Nullable<string>,
-  } as object | null,
-  captchaUrl: null,
+  } as Nullable<object>,
+  captchaUrl: null as Nullable<string>,
 };
 
 export type AuthInitialStateType = typeof initialState;

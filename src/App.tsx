@@ -25,7 +25,6 @@ export const App: FC = () => {
     if (!isLoading) {
       initializeApp(isAuth);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, isAuth, dispatch]);
 
   useEffect(() => {

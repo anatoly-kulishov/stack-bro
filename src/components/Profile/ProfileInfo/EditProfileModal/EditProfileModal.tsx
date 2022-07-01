@@ -20,14 +20,15 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
   const { onSubmit, errorsText, profile, isModalVisible, hideModal } = props;
   const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
 
+  // Todo: There is will be full validation
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Please enter your full name'),
     /* name: Yup.string().required('Please enter name'), 231312321
-     email: Yup.string().email('Must be email address').required('Please enter email'),
-     phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
-     question: Yup.string().required('Please enter your question'),
-     attachedImages: Yup.array().default([]).notRequired(),
-     isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
+                                         email: Yup.string().email('Must be email address').required('Please enter email'),
+                                         phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
+                                         question: Yup.string().required('Please enter your question'),
+                                         attachedImages: Yup.array().default([]).notRequired(),
+                                         isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
   });
 
   const initialValues = {
@@ -64,13 +65,13 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
     >
       <Formik initialValues={initialValues} onSubmit={submitHandler} validationSchema={validationSchema}>
         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting, errors, touched, isValid, resetForm }) => (
-          <Form onSubmit={handleSubmit} className={styles.form}>
+          <Form onSubmit={handleSubmit} className={styles.Form}>
             <Tabs defaultActiveKey="1">
               <TabPane tab="Main information" key="1">
                 <div className="form-row mb-3">
                   <label htmlFor="fullName">Full name</label>
                   <CustomField
-                    className={`form-control ${styles.customFormControl}`}
+                    className={`form-control ${styles.CustomFormControl}`}
                     id="fullName"
                     name="fullName"
                     type="text"
@@ -127,7 +128,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
                         <div className="form-row" key={key}>
                           <label htmlFor={key}>{key}</label>
                           <CustomField
-                            className={`form-control ${styles.customFormControl}`}
+                            className={`form-control ${styles.CustomFormControl}`}
                             id={`contacts.${key}`}
                             name={`contacts.${key}`}
                             type="text"
@@ -141,7 +142,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
                 </div>
               </TabPane>
             </Tabs>
-            <div className={styles.modalFooter}>
+            <div className={styles.ModalFooter}>
               <div className="validate-box text-center mb-3">
                 {errorsText && <Alert message={errorsText} type="error" />}
               </div>

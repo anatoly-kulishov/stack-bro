@@ -20,3 +20,9 @@
 .desc:hover {
   text-decoration: underline;
 }
+
+@media(max-width: $smd) {
+  .desc {
+    word-break: break-all;
+  }
+}

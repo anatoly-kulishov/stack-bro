@@ -1,13 +1,15 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
 import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
 import { getUsersState } from '../../store/selectors/users-selectors';
-import { AppRoutesEnum } from '../../types';
+import { AppRouteKeys, AppRoutesEnum } from '../../types';
 
 const { Sider } = Layout;
+
+const BADGE_INLINE_STYLES: CSSProperties = { backgroundColor: '#1890ff' };
 
 const renderMenuItems = (totalUsersCount: number) => {
   const onSelectNavKey = (key: string) => {
@@ -19,13 +21,13 @@ const renderMenuItems = (totalUsersCount: number) => {
       key: 'MyProfile',
       icon: <UserOutlined />,
       label: <Link to={AppRoutesEnum.HOME}>My profile</Link>,
-      onClick: () => onSelectNavKey('MyProfile'),
+      onClick: () => onSelectNavKey(AppRouteKeys.MY_PROFILE),
     },
     {
       key: 'Messenger',
       icon: <MessageOutlined />,
       label: <Link to={AppRoutesEnum.MESSENGER}>Messenger</Link>,
-      onClick: () => onSelectNavKey('Messenger'),
+      onClick: () => onSelectNavKey(AppRouteKeys.MESSENGER),
     },
     {
       key: 'Users',
@@ -33,17 +35,17 @@ const renderMenuItems = (totalUsersCount: number) => {
       label: (
         <Link to={AppRoutesEnum.USERS}>
           <div className="NavBarRow">
-            Users <Badge count={totalUsersCount} style={{ backgroundColor: '#1890ff' }} />
+            Users <Badge count={totalUsersCount} style={BADGE_INLINE_STYLES} />
           </div>
         </Link>
       ),
-      onClick: () => onSelectNavKey('Users'),
+      onClick: () => onSelectNavKey(AppRouteKeys.USERS),
     },
     {
       key: 'Game',
       icon: <AndroidOutlined />,
       label: <Link to={AppRoutesEnum.GAME}>Game</Link>,
-      onClick: () => onSelectNavKey('Game'),
+      onClick: () => onSelectNavKey(AppRouteKeys.GAME),
     },
   ];
 };

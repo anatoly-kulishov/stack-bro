@@ -1,16 +1,20 @@
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
 
-export type FormPropsType = {
-  onSubmit: Function;
-  errorsText?: string[] | null;
-  isValid?: boolean | null;
-  captchaUrl?: string | null;
-};
+export enum AppRoutesEnum {
+  HOME = '/',
+  USERS = 'users',
+  SOME_USER = ':userId',
+  MESSENGER = 'messenger',
+  HELP = 'help',
+  GAME = 'game',
+}
 
-export enum ResultCodes {
-  Success = 0,
-  Error = 1,
+export enum AppRouteKeys {
+  MY_PROFILE = 'MyProfile',
+  MESSENGER = 'Messenger',
+  USERS = 'Users',
+  GAME = 'Game',
 }
 
 export enum StatusMessageTypeEnum {
@@ -18,6 +22,18 @@ export enum StatusMessageTypeEnum {
   READY = 'ready',
   ERROR = 'error',
 }
+
+export enum ResultCodes {
+  Success = 0,
+  Error = 1,
+}
+
+export type FormPropsType = {
+  onSubmit: Function;
+  isValid?: Nullable<boolean>;
+  captchaUrl?: Nullable<string>;
+  errorsText?: Nullable<string[]>;
+};
 
 export enum ResultCodesForCaptcha {
   CaptchaIsRequired = 10,
@@ -53,11 +69,11 @@ export type ContactsType = {
 };
 
 export type ProfileType = {
-  userId: number | null;
+  userId: Nullable<number>;
   lookingForAJob: boolean;
-  lookingForAJobDescription: string | null;
-  fullName: string | null;
-  aboutMe: string | null;
+  lookingForAJobDescription: Nullable<string>;
+  fullName: Nullable<string>;
+  aboutMe: Nullable<string>;
   contacts: ContactsType;
   photos: PhotosType;
 };
@@ -83,15 +99,6 @@ export type ChatMessageType = {
   userId: number;
   userName: string;
 };
-
-export enum AppRoutesEnum {
-  HOME = '/',
-  USERS = 'users',
-  SOME_USER = ':userId',
-  MESSENGER = 'messenger',
-  HELP = 'help',
-  GAME = 'game',
-}
 
 export type UsersType = {
   items: UserType[];

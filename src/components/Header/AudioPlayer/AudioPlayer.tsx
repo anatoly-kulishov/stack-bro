@@ -1,18 +1,13 @@
 import React, { FC } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
+import styles from './AudioPlayer.module.scss';
 import song from './my_song.mp3';
 
 export const AudioPlayer: FC = () => {
   return (
     <div className="d-flex align-items-center">
-      <ReactAudioPlayer
-        src={song}
-        style={{ height: '30px', marginLeft: '20px' }}
-        volume={1.0}
-        controls
-        autoPlay={true}
-      />
+      <ReactAudioPlayer className={styles.AudioPlayer} autoPlay={true} volume={1.0} src={song} loop={true} controls />
     </div>
   );
 };

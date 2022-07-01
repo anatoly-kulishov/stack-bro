@@ -1,33 +1,33 @@
 import { ProfileActionType } from '../../action-types';
+import { PhotosType, PostType, ProfileType } from '../../../types';
 
 export interface SetUserProfile {
   type: ProfileActionType.SET_USER_PROFILE;
-  payload: any;
+  payload: ProfileType;
 }
 
 export interface SetOwnerProfile {
   type: ProfileActionType.SET_OWNER_PROFILE;
-  payload: any;
+  payload: ProfileType;
 }
 
 export interface SetOwnerStatus {
   type: ProfileActionType.SET_OWNER_STATUS;
-  payload: any;
+  payload: boolean;
 }
 
 export interface GetProfileStatus {
   type: ProfileActionType.GET_PROFILE_STATUS;
-  status: any;
+  status: string;
 }
 
 export interface SetProfileStatus {
   type: ProfileActionType.SET_PROFILE_STATUS;
-  status: any;
 }
 
 export interface GetFollowingStatus {
   type: ProfileActionType.GET_FOLLOWING_STATUS;
-  followStatus: any;
+  followStatus: boolean;
 }
 
 export interface NewProfilePhotoSends {
@@ -36,7 +36,7 @@ export interface NewProfilePhotoSends {
 
 export interface SavePhotoSuccess {
   type: ProfileActionType.SAVE_PHOTO_SUCCESS;
-  photos: any;
+  photos: PhotosType;
 }
 
 export interface SaveProfileSuccess {
@@ -45,7 +45,7 @@ export interface SaveProfileSuccess {
 
 export interface SaveProfileFailed {
   type: ProfileActionType.SAVE_PROFILE_FAILED;
-  error: any;
+  error: string[];
 }
 
 export interface ShowProfileLoader {
@@ -54,12 +54,12 @@ export interface ShowProfileLoader {
 
 export interface AddPost {
   type: ProfileActionType.ADD_POST;
-  payload: any;
+  payload: PostType;
 }
 
 export interface RemovePost {
   type: ProfileActionType.REMOVE_POST;
-  postId: any;
+  postId: number;
 }
 
 export type ProfileActions =
