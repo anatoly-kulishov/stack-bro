@@ -1,6 +1,10 @@
 @use 'src/assets/styles/variables' as *;
 
-.form {
-    display: flex;
-    align-items: center;
+.Form {
+  display: flex;
+  align-items: center;
+}
+
+.SearchInput {
+  width: 200px;
 }

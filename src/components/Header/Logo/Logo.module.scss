@@ -4,11 +4,11 @@
   display: flex;
   align-items: center;
   height: 100%;
+}
 
-  & > span {
-    display: flex;
-    margin-right: 6px;
-  }
+.wrapper > span {
+  display: flex;
+  margin-right: 6px;
 }
 
 .logo {
@@ -28,7 +28,6 @@
   font-size: 18px;
   transition: all .4s ease-in-out;
   margin-left: 5px;
-  cursor: pointer;
 }
 
 .companyNameDarkTheme {

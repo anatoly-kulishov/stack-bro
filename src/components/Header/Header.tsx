@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import { Layout, Tag } from 'antd';
 import { GithubFilled, LinkedinOutlined } from '@ant-design/icons';
 
@@ -6,6 +6,8 @@ import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import { MyAccount } from './MyAccount/MyAccount';
 import { Logo } from './Logo/Logo';
 import styles from './Header.module.scss';
+
+const TAG_INLINE_STYLES: CSSProperties = { marginRight: 0 };
 
 export const Header: FC = () => {
   return (
@@ -22,7 +24,7 @@ export const Header: FC = () => {
               </Tag>
             </a>
             <a href="https://github.com/dogram99" target="_blank" rel="noreferrer">
-              <Tag icon={<GithubFilled />} color="#333" style={{ marginRight: 0 }}>
+              <Tag icon={<GithubFilled />} color="#333" style={TAG_INLINE_STYLES}>
                 GitHub
               </Tag>
             </a>

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
+import { Nullable, Undetectable } from '../../../../../types';
 import styles from './Contact.module.scss';
-import { Nullable } from '../../../../../types';
 
 type ContactPropsType = {
   isLogic: boolean;
   title: string;
-  value: Nullable<string> | undefined;
+  value: Undetectable<Nullable<string>>;
 };
 
 export const Contact: FC<ContactPropsType> = props => {

@@ -23,7 +23,6 @@ export interface GetProfileStatus {
 
 export interface SetProfileStatus {
   type: ProfileActionType.SET_PROFILE_STATUS;
-  status: number;
 }
 
 export interface GetFollowingStatus {

@@ -1,6 +1,6 @@
 @use 'src/assets/styles/variables' as *;
 
-.header {
+header.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,13 +9,13 @@
 
   display: flex;
   width: 100%;
-  height: auto !important;
-  padding: 5px 0 !important;
+  height: auto;
+  padding: 5px 0;
 
-  line-height: inherit !important;
-  border-bottom: 1px solid #e7e8ec;
+  line-height: inherit;
+  border-bottom: 1px solid $grey_250;
 }
 
 .lightHeader {
-  background-color: $light-theme-bg-color;
+  background-color: $palette-secondary;
 }

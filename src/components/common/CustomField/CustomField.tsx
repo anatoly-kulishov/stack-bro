@@ -8,11 +8,11 @@ import styles from './CustomField.module.scss';
 export const CustomField: FC<FieldAttributes<any>> = props => {
   const { errormessage } = props;
   return (
-    <div className={styles.fieldBox}>
+    <div className={styles.FieldBox}>
       <Field {...props} />
       {errormessage && (
-        <div title={errormessage} className={styles.icon}>
-          <WarningTwoTone twoToneColor="#dc3545" style={{ fontSize: 18 }} />
+        <div title={errormessage} className={styles.Icon}>
+          <WarningTwoTone className={styles.WarningTwoTone} twoToneColor="#dc3545" />
         </div>
       )}
     </div>

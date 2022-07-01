@@ -4,9 +4,9 @@ import { Layout } from 'antd';
 
 import { MessengerPage } from '../../pages/MessengerPage/MessengerPage';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
-import { GamePage } from '../../pages/GamePage/GamePage';
 import { UsersPage } from '../../pages/UsersPage/UsersPage';
 import { NoMatch } from '../../components/NoMatch/NoMatch';
+import { GamePage } from '../../pages/GamePage/GamePage';
 import { HelpPage } from '../../pages/HelpPage/HelpPage';
 import { Header } from '../../components/Header/Header';
 import { NavBar } from '../../components/NavBar/NavBar';
@@ -16,7 +16,7 @@ const { Content } = Layout;
 
 export const AppRoutes: FC = () => {
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout className="h-min-100vh">
       <Header />
       <Layout className="site-layout pb-4 pb-md-5 pb-lg-0">
         <div className="container">

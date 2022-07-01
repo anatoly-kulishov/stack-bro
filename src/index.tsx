@@ -15,7 +15,6 @@ const root = createRoot(rootElement!);
 
 // 👇️ if you use TypeScript, add non-null (!) assertion operator
 // const root = createRoot(rootElement!);
-
 root.render(
   <Provider store={store}>
     <BrowserRouter>

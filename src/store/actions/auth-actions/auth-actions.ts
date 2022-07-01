@@ -5,8 +5,6 @@ export interface SignIn {
   userId: number;
 }
 
-// Todo: -----------------------------------
-
 export interface LogOutStart {
   type: AuthActionType.LOG_OUT_START;
 }

@@ -1,14 +1,14 @@
 @use 'src/assets/styles/variables' as *;
 
-.fieldBox {
+.FieldBox {
   position: relative;
-
-  & > * {
-    width: 100%
-  }
 }
 
-.icon {
+.FieldBox > * {
+  width: 100%
+}
+
+.Icon {
   position: absolute;
   top: 50%;
   right: 20px;
@@ -18,4 +18,8 @@
   height: 15px;
 
   cursor: help;
+}
+
+.WarningTwoTone {
+  font-size: 18px;
 }
