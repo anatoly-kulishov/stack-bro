@@ -1,8 +1,23 @@
 import produce from 'immer';
 
 import { UserType } from '../../../types';
-import { UsersActionType } from '../../action-types';
 import { UsersActions } from '../../actions/users-actions/users-actions';
+import { UsersActionType } from '../../action-types';
+
+export type UsersInitialStateType = {
+  isLoading: boolean;
+  followingInProgress: number[];
+  users: UserType[];
+  friends: UserType[];
+  pageSize: number;
+  totalUsersCount: number;
+  totalFriendsCount: number;
+  currentPage: number;
+  filter: {
+    term: string;
+    friend: boolean;
+  };
+};
 
 const initialState = {
   isLoading: true,
@@ -19,8 +34,6 @@ const initialState = {
     // page: 1 Todo: Fix the problem with pages!
   },
 };
-
-export type UsersInitialStateType = typeof initialState;
 
 export const usersReducer = produce((state: UsersInitialStateType, action: UsersActions): UsersInitialStateType => {
   switch (action.type) {

@@ -6,6 +6,7 @@ import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import { MyAccount } from './MyAccount/MyAccount';
 import { Logo } from './Logo/Logo';
 import styles from './Header.module.scss';
+import { MY_GITHUB, MY_LINKEDIN } from '../../constants/general';
 
 const TAG_INLINE_STYLES: CSSProperties = { marginRight: 0 };
 
@@ -18,12 +19,12 @@ export const Header: FC = () => {
             <Logo />
           </div>
           <div className="d-none d-md-block col-md-4 col-lg-3 text-center">
-            <a href="https://www.linkedin.com/in/anatoliy-kulishov-845392212/" target="_blank" rel="noreferrer">
+            <a href={MY_LINKEDIN} target="_blank" rel="noreferrer">
               <Tag icon={<LinkedinOutlined />} color="#55acee">
                 LinkedIn
               </Tag>
             </a>
-            <a href="https://github.com/dogram99" target="_blank" rel="noreferrer">
+            <a href={MY_GITHUB} target="_blank" rel="noreferrer">
               <Tag icon={<GithubFilled />} color="#333" style={TAG_INLINE_STYLES}>
                 GitHub
               </Tag>

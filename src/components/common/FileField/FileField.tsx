@@ -1,11 +1,11 @@
 import React, { ChangeEvent, FC } from 'react';
 import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
-import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 
-import styles from './FileField.module.scss';
 import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../../../utils/file-helpers/file-helpers';
 import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../constants/commom';
+import styles from './FileField.module.scss';
 
 type FileFieldPropsType = {
   saveHandler: (file: File, setSubmitting: Function) => void;
@@ -55,7 +55,7 @@ export const FileField: FC<FileFieldPropsType> = ({ saveHandler, validationHandl
     <Formik initialValues={INITIAL_VALUES} onSubmit={submitHandler}>
       {({ handleSubmit, setFieldValue, values, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
-          <label className={styles.label} htmlFor="file">
+          <label className={styles.Label} htmlFor="file">
             <span className="mr-2">Update photo</span>
             <UploadOutlined />
           </label>

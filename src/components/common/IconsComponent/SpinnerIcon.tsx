@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 
+import { DEFAULT_ICONS_SIZE } from '../../../constants/general';
+
 type SpinnerIconPropsType = {
   size?: string;
 };
 
-export const SpinnerIcon: FC<SpinnerIconPropsType> = ({ size = '24px' }) => {
+export const SpinnerIcon: FC<SpinnerIconPropsType> = ({ size = DEFAULT_ICONS_SIZE }) => {
   return (
     <svg className="custom-spinner" width={size} height={size} viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
       <circle

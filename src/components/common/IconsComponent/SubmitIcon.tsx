@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 
+import { DEFAULT_ICONS_SIZE } from '../../../constants/general';
+
 type SubmitIconPropsType = {
   size?: string;
 };
 
-export const SubmitIcon: FC<SubmitIconPropsType> = ({ size = '24px' }) => {
+export const SubmitIcon: FC<SubmitIconPropsType> = ({ size = DEFAULT_ICONS_SIZE }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none">
       <g stroke="#a1a1aa" strokeWidth="2" strokeLinejoin="round">

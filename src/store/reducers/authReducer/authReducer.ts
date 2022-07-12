@@ -5,21 +5,33 @@ import { AuthActions } from '../../actions/auth-actions/auth-actions';
 import { AuthActionType } from '../../action-types';
 import { Nullable } from '../../../types';
 
-const initialState = {
+export type AuthInitialStateType = {
+  isLoading: boolean;
+  isValid: boolean;
+  isAuth: boolean;
+  error: Nullable<string[]>;
+  userId: Nullable<number>;
+  myProfile: Nullable<{
+    id: Nullable<number>;
+    login: Nullable<string>;
+    email: Nullable<string>;
+  }>;
+  captchaUrl: Nullable<string>;
+};
+
+const initialState: AuthInitialStateType = {
   isLoading: false,
   isValid: true,
   isAuth: Boolean(Cookies.get('token')) ?? false,
-  error: null as Nullable<string[]>,
-  userId: null as Nullable<number>,
+  error: null,
+  userId: null,
   myProfile: {
-    id: null as Nullable<string>,
-    login: null as Nullable<string>,
-    email: null as Nullable<string>,
-  } as Nullable<object>,
-  captchaUrl: null as Nullable<string>,
+    id: null,
+    login: null,
+    email: null,
+  },
+  captchaUrl: null,
 };
-
-export type AuthInitialStateType = typeof initialState;
 
 export const authReducer = produce((state: AuthInitialStateType, action: AuthActions): AuthInitialStateType => {
   switch (action.type) {

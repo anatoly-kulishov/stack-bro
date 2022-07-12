@@ -26,8 +26,9 @@
 
 .companyName {
   font-size: 18px;
-  transition: all .4s ease-in-out;
   margin-left: 5px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
 }
 
 .companyNameDarkTheme {

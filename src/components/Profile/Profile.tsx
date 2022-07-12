@@ -7,17 +7,17 @@ import { ProfilePosts } from './ProfilePosts/ProfilePosts';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 import { MyFriends } from './MyFriends/MyFriends';
 import { PostForm } from './PostForm/PostForm';
-import { useActions } from '../../store';
-import { getAuthState } from '../../store/selectors/auth-selectors';
-import { getProfileState } from '../../store/selectors/profile-selectors';
+import { getAuthUserId } from '../../store/selectors/auth-selectors';
+import { getProfileIsOwner } from '../../store/selectors/profile-selectors';
 import { profileActions } from '../../store/action-creators';
+import { useActions } from '../../store';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { setCurrentUserFollower, updateProfile } = useActions();
-  const { userId } = useSelector(getAuthState);
-  const { isOwner } = useSelector(getProfileState);
+  const isOwner = useSelector(getProfileIsOwner);
+  const userId = useSelector(getAuthUserId);
   const currentUserId = params.userId;
 
   useEffect(() => {

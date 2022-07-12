@@ -8,7 +8,7 @@ import { TIME_FORMATS } from '../../../../constants/time-format';
 import { Nullable, ProfileType } from '../../../../types';
 
 export type PostPropsType = {
-  profile: ProfileType;
+  profile: Nullable<ProfileType>;
   message: Nullable<string>;
   likesCount: number;
 };
@@ -44,8 +44,6 @@ export const Post: FC<PostPropsType> = memo(props => {
       </span>
     </Tooltip>,
   ];
-
-  // format(Date.now(), TIME_FORMATS.POST_ITEM)
 
   return (
     <Comment

@@ -7,7 +7,7 @@ import styles from './AuthRoutes.module.scss';
 
 export const AuthRoutes: FC = () => {
   return (
-    <div className={styles.auth}>
+    <div className={styles.Auth}>
       <div>
         <Routes>
           <Route path={AppRoutesEnum.HOME} element={<LoginPage />} />

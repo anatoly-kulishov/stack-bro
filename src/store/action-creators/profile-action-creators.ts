@@ -4,11 +4,11 @@ import { profileAPI } from '../../api/profileAPI';
 import { authMe } from './auth-actions-creators';
 
 export const profileActions = {
-  setProfile: (data: Array<ProfileType>) => ({
+  setProfile: (data: ProfileType[]) => ({
     type: ProfileActionType.SET_USER_PROFILE,
     payload: data,
   }),
-  setOwnerProfile: (data: Array<ProfileType>) => ({
+  setOwnerProfile: (data: ProfileType[]) => ({
     type: ProfileActionType.SET_OWNER_PROFILE,
     payload: data,
   }),

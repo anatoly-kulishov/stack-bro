@@ -2,17 +2,20 @@ import produce from 'immer';
 import { v1 } from 'uuid';
 
 import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
-import { MessengerActionType } from '../../action-types';
 import { ChatMessageType, MessageType } from '../../../types';
+import { MessengerActionType } from '../../action-types';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
-const initialState = {
-  messages: [] as ChatMessageType[],
-  status: 'pending' as StatusMessageType,
+export type MessengerInitialStateType = {
+  messages: ChatMessageType[];
+  status: StatusMessageType;
 };
 
-export type MessengerInitialStateType = typeof initialState;
+const initialState: MessengerInitialStateType = {
+  messages: [],
+  status: 'pending',
+};
 
 export const messengerReducer = produce(
   (state: MessengerInitialStateType, action: MessengerActions): MessengerInitialStateType => {

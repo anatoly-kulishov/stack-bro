@@ -1,8 +1,8 @@
-import { baseInstance } from './instances';
 import { BaseResponseType, FilterType, UserType } from '../types';
+import { baseInstance } from './instances';
 
 type RequestUsersApiType = {
-  items: Array<UserType>;
+  items: UserType[];
   data: {};
   totalCount: number;
   error: string;

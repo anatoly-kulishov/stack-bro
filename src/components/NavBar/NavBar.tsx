@@ -1,15 +1,16 @@
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
 import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
-import { getUsersState } from '../../store/selectors/users-selectors';
+import { getUsersTotalCount } from '../../store/selectors/users-selectors';
 import { AppRouteKeys, AppRoutesEnum } from '../../types';
 
 const { Sider } = Layout;
 
 const BADGE_INLINE_STYLES: CSSProperties = { backgroundColor: '#1890ff' };
+const SIDER_WIDTH: number = 150;
 
 const renderMenuItems = (totalUsersCount: number) => {
   const onSelectNavKey = (key: string) => {
@@ -50,13 +51,12 @@ const renderMenuItems = (totalUsersCount: number) => {
   ];
 };
 
-export const NavBar: FC = () => {
-  const { totalUsersCount } = useSelector(getUsersState);
-
-  const navKey: string = sessionStorage.getItem('nav_key') || 'MyProfile';
+export const NavBar: FC = memo(() => {
+  const totalUsersCount = useSelector(getUsersTotalCount);
+  const navKey: string = sessionStorage.getItem('nav_key') || AppRouteKeys.MY_PROFILE;
 
   return (
-    <Sider collapsible width={150}>
+    <Sider collapsible width={SIDER_WIDTH}>
       <Menu
         items={renderMenuItems(totalUsersCount)}
         defaultSelectedKeys={[navKey]}
@@ -65,4 +65,4 @@ export const NavBar: FC = () => {
       />
     </Sider>
   );
-};
+});

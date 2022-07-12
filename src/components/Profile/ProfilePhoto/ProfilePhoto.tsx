@@ -15,7 +15,7 @@ export const ProfilePhoto: FC = () => {
   const [followState, setFollowState] = useState<Nullable<boolean>>(followStatus);
 
   useEffect(() => {
-    setProfilePhoto(profile.photos?.large);
+    setProfilePhoto(profile?.photos?.large);
   }, [profile]);
 
   useEffect(() => {

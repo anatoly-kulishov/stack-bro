@@ -7,8 +7,8 @@ const TITLE_FONT_SIZE: CSSProperties = { fontSize: '40px' };
 
 export const Mock: FC = () => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.content}>
+    <div className={styles.Wrapper}>
+      <div className={styles.Content}>
         <div className="mb-2">
           <strong className="mr-2">WE&apos;RE COMING SOON</strong>
           <RocketTwoTone style={TITLE_FONT_SIZE} />

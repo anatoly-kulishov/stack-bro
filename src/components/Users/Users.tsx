@@ -17,7 +17,6 @@ type QueryParamsType = { term?: string; page?: string; friend?: string };
 export const Users: FC = () => {
   const navigate = useNavigate();
   const { setUsers } = useActions();
-
   const users = useSelector(getUsers);
   const { currentPage, totalUsersCount, pageSize, isLoading, filter } = useSelector(getUsersState);
 

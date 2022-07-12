@@ -1,13 +1,13 @@
 @use 'src/assets/styles/variables' as *;
 
-.label {
+.Label {
   width: 100%;
   text-align: center;
   cursor: pointer;
   user-select: none;
   transition: .05s ease;
+}
 
-  &:hover {
-    color: #40a9ff;
-  }
+.Label:hover {
+  color: $blue_750;
 }

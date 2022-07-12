@@ -3,12 +3,12 @@ import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Alert, Button, Checkbox, Input, Modal, Tabs } from 'antd';
 import * as Yup from 'yup';
 
-import { ContactsType, FormPropsType, ProfileType } from '../../../../types';
+import { ContactsType, FormPropsType, Nullable, ProfileType } from '../../../../types';
 import { CustomField } from '../../../common/CustomField/CustomField';
 import styles from './EditProfileModal.module.scss';
 
 type EditProfileDataModalPropsType = {
-  profile: ProfileType;
+  profile: Nullable<ProfileType>;
   isModalVisible: boolean;
   hideModal: () => void;
 };
@@ -18,26 +18,25 @@ const { TabPane } = Tabs;
 
 export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType> = props => {
   const { onSubmit, errorsText, profile, isModalVisible, hideModal } = props;
-  const { fullName, lookingForAJob, lookingForAJobDescription, aboutMe, contacts } = profile;
 
   // Todo: There is will be full validation
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Please enter your full name'),
     /* name: Yup.string().required('Please enter name'), 231312321
-                                         email: Yup.string().email('Must be email address').required('Please enter email'),
-                                         phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
-                                         question: Yup.string().required('Please enter your question'),
-                                         attachedImages: Yup.array().default([]).notRequired(),
-                                         isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
+                                                                     email: Yup.string().email('Must be email address').required('Please enter email'),
+                                                                     phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
+                                                                     question: Yup.string().required('Please enter your question'),
+                                                                     attachedImages: Yup.array().default([]).notRequired(),
+                                                                     isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
   });
 
   const initialValues = {
-    userId: profile.userId,
-    fullName,
-    lookingForAJob,
-    lookingForAJobDescription,
-    aboutMe,
-    contacts,
+    userId: profile?.userId,
+    fullName: profile?.fullName,
+    lookingForAJob: profile?.lookingForAJob,
+    lookingForAJobDescription: profile?.lookingForAJobDescription,
+    aboutMe: profile?.aboutMe,
+    contacts: profile?.contacts,
   };
 
   const cancelHandler = (resetForm: () => void) => () => {
@@ -123,7 +122,8 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
               <TabPane tab="Contact information" key="2">
                 <div>
                   {values.contacts &&
-                    Object.keys(contacts).map(key => {
+                    profile?.contacts &&
+                    Object.keys(profile.contacts).map(key => {
                       return (
                         <div className="form-row" key={key}>
                           <label htmlFor={key}>{key}</label>
@@ -132,7 +132,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
                             id={`contacts.${key}`}
                             name={`contacts.${key}`}
                             type="text"
-                            value={values?.contacts[key as keyof ContactsType]}
+                            value={profile?.contacts[key as keyof ContactsType]}
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
