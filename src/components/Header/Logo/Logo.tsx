@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AppRoutesEnum } from '../../../types';
@@ -6,9 +6,8 @@ import styles from './Logo.module.scss';
 
 type LogoPropsType = {};
 
-export const Logo: FC<LogoPropsType> = () => {
+export const Logo: FC<LogoPropsType> = memo(() => {
   const navigate = useNavigate();
-
   const goHomeHandler = () => navigate(AppRoutesEnum.HOME);
 
   return (
@@ -27,4 +26,4 @@ export const Logo: FC<LogoPropsType> = () => {
       <strong className={`${styles.companyName} d-md-none d-lg-block`}>StackBro</strong>
     </div>
   );
-};
+});

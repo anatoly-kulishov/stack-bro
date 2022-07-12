@@ -4,6 +4,8 @@ import { AppStateType } from '../reducers';
 import { UserType } from '../../types';
 
 export const getUsersState = (state: AppStateType) => state.users;
+export const getUsersTotalCount = (state: AppStateType) => state.users.totalUsersCount;
+export const getUsersTotalFriendCount = (state: AppStateType) => state.users.totalFriendsCount;
 export const getUsersSelector = (state: AppStateType): UserType[] => state.users.users;
 export const getFriendsSelector = (state: AppStateType): UserType[] => state.users.friends;
 

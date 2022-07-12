@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Empty } from 'antd';
 
@@ -7,7 +7,7 @@ import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { PostType } from '../../../types';
 import styles from './ProfilePosts.module.scss';
 
-export const ProfilePosts: FC = () => {
+export const ProfilePosts: FC = memo(() => {
   const { profile, posts } = useSelector(getProfileState);
 
   const postsElements = posts?.map(({ id, message, likesCount }: PostType) => (
@@ -27,4 +27,4 @@ export const ProfilePosts: FC = () => {
       </div>
     </div>
   );
-};
+});

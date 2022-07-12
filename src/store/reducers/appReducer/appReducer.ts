@@ -1,15 +1,18 @@
 import produce from 'immer';
 
-import { Nullable } from '../../../types';
 import { AppActions } from '../../actions/app-actions/app-actions';
 import { AppActionType } from '../../action-types';
+import { Nullable } from '../../../types';
 
-const initialState = {
-  initialized: false,
-  globalErrors: null as Nullable<string>,
+export type AppInitialStateType = {
+  initialized: boolean;
+  globalErrors: Nullable<string>;
 };
 
-export type AppInitialStateType = typeof initialState;
+const initialState: AppInitialStateType = {
+  initialized: false,
+  globalErrors: null,
+};
 
 export const appReducer = produce((state: AppInitialStateType, action: AppActions): AppInitialStateType => {
   switch (action?.type) {

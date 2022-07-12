@@ -19,11 +19,11 @@ export const ProfileInfo: FC = () => {
   const hideModal = () => setIsModalVisible(false);
 
   useEffect(() => {
-    if (profile.userId) {
+    if (profile?.userId) {
       getStatus(Number(profile.userId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile.userId]);
+  }, [profile?.userId]);
 
   return (
     <div className={`${styles.wrapper} default-box`}>

@@ -18,7 +18,6 @@ type FormType = {
 
 export const UsersFilterForm: FC<UsersSearchFormPropsType> = ({ onFilterChanged }) => {
   const { filter } = useSelector(getUsersState);
-
   const initialValues = { term: filter?.term, friend: filter?.friend };
 
   const submitHandler = (values: FormType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {

@@ -1,6 +1,6 @@
-import { authInstance } from './instances';
 import { APIResponseType, ResultCodes, ResultCodesForCaptcha } from '../types';
 import { ProfileActionType } from '../store/action-creators';
+import { authInstance } from './instances';
 
 type GetAutResponseDataType = {
   email: string;

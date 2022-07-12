@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { MessageInput } from './MessageInput/MessageInput';
 import { Message } from './Message/Message';
 import { AppStateType } from '../../../store';
-import { getMessengerState } from '../../../store/selectors/messenger-selectors';
+import { getMessengerStatus } from '../../../store/selectors/messenger-selectors';
 import { ChatMessageType } from '../../../types';
 import styles from './Messages.module.scss';
 
 export const Messages: FC = () => {
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true);
   const messages = useSelector((state: AppStateType) => state.messenger.messages);
-  const { status } = useSelector(getMessengerState);
+  const status = useSelector(getMessengerStatus);
   const messagesAnchorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

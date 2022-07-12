@@ -9,7 +9,7 @@ const BASE_URL: string = '/profile';
 
 export const profileAPI = {
   getProfile: (userId: number) => {
-    return baseInstance.get<Array<ProfileType>>(`${BASE_URL}/${userId}`).then(res => res.data);
+    return baseInstance.get<ProfileType[]>(`${BASE_URL}/${userId}`).then(res => res.data);
   },
   getStatus: (userId: number) => {
     return baseInstance.get<string>(`${BASE_URL}/status/${userId}`).then(res => res.data);

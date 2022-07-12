@@ -1,6 +1,6 @@
 @use 'src/assets/styles/variables' as *;
 
-.wrapper {
+.Wrapper {
   position: relative;
 
   display: flex;
@@ -8,7 +8,7 @@
   align-items: flex-start;
 }
 
-.textBox {
+.TextBox {
   width: 100%;
   min-height: 50px;
   padding: 6px 40px 6px 15px;
@@ -16,7 +16,7 @@
   background-color: transparent;
 }
 
-.copyButton {
+.CopyButton {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -28,13 +28,13 @@
   background-position: center;
   background-size: contain;
   cursor: pointer;
-
-  &:active {
-    opacity: .6;
-  }
 }
 
-.emptyBox {
+.CopyButton:active {
+  opacity: .6;
+}
+
+.EmptyBox {
   font-size: 12px;
-  color: #bfbfbf; // ToDo: Add variable for it's color
+  color: $grey_750;
 }

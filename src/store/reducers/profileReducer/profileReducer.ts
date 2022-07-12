@@ -1,23 +1,32 @@
 import produce from 'immer';
 
+import { ProfileActions } from '../../actions/profile-action/profile-action';
 import { Nullable, PostType, ProfileType } from '../../../types';
 import { ProfileActionType } from '../../action-types';
-import { ProfileActions } from '../../actions/profile-action/profile-action';
 
-const initialState = {
+export type ProfileInitialStateType = {
+  isOwner: boolean;
+  isLoading: boolean;
+  isValid: boolean;
+  error: Nullable<string[]>;
+  posts: PostType[];
+  ownerProfile: Nullable<ProfileType>;
+  profile: Nullable<any>; // Todo
+  status: string;
+  followStatus: Nullable<boolean>;
+};
+
+const initialState: ProfileInitialStateType = {
   isOwner: true,
   isLoading: true,
   isValid: true,
-  error: null as Nullable<string[]>,
-  posts: [] as PostType[],
-  selectedProfile: {},
-  ownerProfile: {} as ProfileType,
-  profile: {} as ProfileType,
-  status: '' as string,
-  followStatus: null as Nullable<boolean>,
+  error: null,
+  posts: [],
+  ownerProfile: null,
+  profile: null,
+  status: '',
+  followStatus: null,
 };
-
-export type ProfileInitialStateType = typeof initialState;
 
 export const profileReducer = produce(
   (state: ProfileInitialStateType, action: ProfileActions): ProfileInitialStateType => {

@@ -1,12 +1,12 @@
 import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getFriends, getUsersState } from '../../../store/selectors/users-selectors';
+import { getFriends, getUsersTotalFriendCount } from '../../../store/selectors/users-selectors';
 import { Friend } from './Friend/Friend';
 import classes from './myFriends.module.scss';
 
 export const MyFriends: FC = memo(() => {
-  const { totalFriendsCount } = useSelector(getUsersState);
+  const totalFriendsCount = useSelector(getUsersTotalFriendCount);
   const friends = useSelector(getFriends);
 
   return (

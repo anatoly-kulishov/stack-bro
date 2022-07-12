@@ -37,7 +37,7 @@ export const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
 
   return (
     <div
-      className={classNames([styles.wrapper], [customStyles.statusBar], {
+      className={classNames([styles.Wrapper], [customStyles.statusBar], {
         [customStyles.statusBarActive]: !isDisabled,
       })}
       onDoubleClick={e => {
@@ -46,13 +46,13 @@ export const CopyToClipboard: FC<CopyToClipboardPropsType> = props => {
     >
       {isCopy && (
         <span
-          className={styles.copyButton}
+          className={styles.CopyButton}
           style={{ backgroundImage: `url('${copyIcon}')'` }}
           onClick={() => copyToClipboard(copySuccess)}
         />
       )}
-      <div className={`${styles.textBox} ${customStyles.statusTextBox}`}>
-        {children || <span className={styles.emptyBox}>{placeholder}</span>}
+      <div className={`${styles.TextBox} ${customStyles.statusTextBox}`}>
+        {children || <span className={styles.EmptyBox}>{placeholder}</span>}
       </div>
     </div>
   );

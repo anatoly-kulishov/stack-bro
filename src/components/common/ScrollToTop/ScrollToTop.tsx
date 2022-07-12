@@ -1,12 +1,14 @@
 import React, { ReactElement, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface IScrollToTop {
+type ScrollToTopType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: ReactElement<any, any>;
-}
+};
 
-export const ScrollToTop = ({ children }: IScrollToTop) => {
+const TOP_COORDINATE: ScrollToOptions | undefined = { top: 0, behavior: 'auto' };
+
+export const ScrollToTop = ({ children }: ScrollToTopType) => {
   const location = useLocation();
 
   const lastCharInPathName = useMemo(() => {
@@ -15,7 +17,7 @@ export const ScrollToTop = ({ children }: IScrollToTop) => {
 
   useEffect(() => {
     if (window.scrollY > 0 && lastCharInPathName !== '/') {
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'auto' }), 0);
+      setTimeout(() => window.scrollTo(TOP_COORDINATE), 0);
     }
   }, [lastCharInPathName]);
 

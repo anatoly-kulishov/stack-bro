@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { Input } from 'antd';
@@ -14,7 +14,7 @@ const messagesSchema = Yup.object().shape({
   message: Yup.string().min(2, 'Too Short!').max(1000, 'Too Long!').required('Required'),
 });
 
-export const PostForm: FC = () => {
+export const PostForm: FC = memo(() => {
   const dispatch = useDispatch();
 
   const onAddPost = (message: string) => {
@@ -63,4 +63,4 @@ export const PostForm: FC = () => {
       </Formik>
     </div>
   );
-};
+});

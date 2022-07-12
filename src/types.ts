@@ -41,14 +41,14 @@ export enum ResultCodesForCaptcha {
 
 export type BaseResponseType = {
   resultCode: ResultCodes;
-  messages: Array<string>;
+  messages: string[];
   data: {};
 };
 
 export type APIResponseType<D = {}, RC = ResultCodes> = {
   data: D;
   resultCode: RC;
-  messages: Array<string>;
+  messages: string[];
 };
 
 export type PhotosType = {

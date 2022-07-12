@@ -21,6 +21,8 @@ export interface AuthMe {
   type: AuthActionType.AUTH_ME;
   payload: {
     id: number;
+    login: string;
+    email: string;
   };
 }
 
