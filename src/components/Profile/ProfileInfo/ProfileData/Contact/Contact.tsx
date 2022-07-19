@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Nullable, Undetectable } from '../../../../../types';
+import { Nullable, Undetectable } from '../../../../../shared/types';
 import styles from './Contact.module.scss';
 
 type ContactPropsType = {

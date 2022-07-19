@@ -5,7 +5,7 @@ import { MessageInput } from './MessageInput/MessageInput';
 import { Message } from './Message/Message';
 import { AppStateType } from '../../../store';
 import { getMessengerStatus } from '../../../store/selectors/messenger-selectors';
-import { ChatMessageType } from '../../../types';
+import { ChatMessageType } from '../../../shared/types';
 import styles from './Messages.module.scss';
 
 export const Messages: FC = () => {

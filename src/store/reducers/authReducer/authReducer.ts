@@ -3,7 +3,7 @@ import produce from 'immer';
 
 import { AuthActions } from '../../actions/auth-actions/auth-actions';
 import { AuthActionType } from '../../action-types';
-import { Nullable } from '../../../types';
+import { Nullable } from '../../../shared/types';
 
 export type AuthInitialStateType = {
   isLoading: boolean;

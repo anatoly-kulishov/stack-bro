@@ -1,5 +1,5 @@
-import { baseInstance } from './instances';
-import { APIResponseType, BaseResponseType, PhotosType, ProfileType } from '../types';
+import { baseInstance } from '../api.instances';
+import { APIResponseType, BaseResponseType, PhotosType, ProfileType } from '../../shared/types';
 
 type SavePhotoResponseDataType = {
   photos: PhotosType;
@@ -7,7 +7,7 @@ type SavePhotoResponseDataType = {
 
 const BASE_URL: string = '/profile';
 
-export const profileAPI = {
+export const profileApi = {
   getProfile: (userId: number) => {
     return baseInstance.get<ProfileType[]>(`${BASE_URL}/${userId}`).then(res => res.data);
   },

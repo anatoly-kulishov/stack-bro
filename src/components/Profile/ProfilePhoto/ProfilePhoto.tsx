@@ -3,10 +3,10 @@ import { Spin } from 'antd';
 import { useSelector } from 'react-redux';
 
 import styles from './ProfilePhoto.module.scss';
-import { Nullable } from '../../../types';
+import { Nullable } from '../../../shared/types';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import no_photo from './no_photo.png';
 import { ProfileActions } from '../ProfileActions/ProfileActions';
+import no_photo from './no_photo.png';
 
 export const ProfilePhoto: FC = () => {
   const { profile, isLoading, followStatus } = useSelector(getProfileState);

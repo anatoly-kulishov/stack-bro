@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import styles from './ProfileData.module.scss';
 import { Contact } from './Contact/Contact';
-import { ContactsType, Nullable, ProfileType } from '../../../../types';
+import { ContactsType, Nullable, ProfileType } from '../../../../shared/types';
 
 type ProfileDataPropsType = {
   profile: Nullable<ProfileType>;

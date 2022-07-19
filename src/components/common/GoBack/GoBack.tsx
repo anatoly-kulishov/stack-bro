@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
 import { Button } from 'antd';
+import React, { FC } from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
-import { GO_BACK_BUTTON } from '../../../constants/buttons';
-import { Nullable } from '../../../types';
+import { GO_BACK_BUTTON } from '../../../configs/constants';
+import { Nullable } from '../../../shared/types';
 
 type GoBackPropsType = {
   title?: Nullable<string>;

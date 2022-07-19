@@ -1,9 +1,9 @@
 import { Dispatch } from 'redux';
 
 import { StatusMessageType } from '../reducers/messengerReducer/messengerReducer';
-import { messengerAPI } from '../../api/messangerAPI.ts';
+import { messengerAPI } from '../../api/entities/messanger.api.ts';
 import { MessengerActionType } from '../action-types';
-import { ChatMessageType } from '../../types';
+import { ChatMessageType } from '../../shared/types';
 
 export const messengerActions = {
   messagesReceived: (messages: ChatMessageType[]) => ({

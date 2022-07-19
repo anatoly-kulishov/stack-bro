@@ -1,5 +1,5 @@
-import { BaseResponseType, FilterType, UserType } from '../types';
-import { baseInstance } from './instances';
+import { BaseResponseType, FilterType, UserType } from '../../shared/types';
+import { baseInstance } from '../api.instances';
 
 type RequestUsersApiType = {
   items: UserType[];
@@ -11,7 +11,7 @@ type RequestUsersApiType = {
 const BASE_URL: string = 'users';
 const SECONDARY_URL: string = 'follow';
 
-export const usersAPI = {
+export const usersApi = {
   requestUsers: (currentPage: number, pageSize: number, filter: FilterType) => {
     return baseInstance
       .get<RequestUsersApiType>(

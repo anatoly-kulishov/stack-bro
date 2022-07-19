@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { WithLoading } from './WithLoading';
-import { SPINNER_SIZE } from '../../../constants/general';
+import { SPINNER_SIZE } from '../../../configs/constants';
 
 describe('WithLoading', () => {
   test('spinner is displayed and dimensions converge', () => {

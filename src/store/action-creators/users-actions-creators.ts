@@ -1,8 +1,8 @@
 import { Dispatch } from 'react';
 
 import { ProfileActionType, UsersActionType } from '../action-types';
-import { FilterType, ResultCodes, UsersType } from '../../types';
-import { usersAPI } from '../../api/usersAPI';
+import { FilterType, ResultCodes, UsersType } from '../../shared/types';
+import { usersApi } from '../../api/entities/users.api';
 import { UsersActions } from '../actions/users-actions/users-actions';
 
 export const usersActions = {
@@ -36,7 +36,7 @@ export const setUsers = (requestPage: number, pageSize: number, filter: FilterTy
     dispatch(usersActions.toggleIsFetching(true));
     dispatch(usersActions.setCurrentPage(requestPage));
     dispatch(usersActions.setFilter(filter));
-    const data = await usersAPI.requestUsers(requestPage, pageSize, filter);
+    const data = await usersApi.requestUsers(requestPage, pageSize, filter);
     dispatch(usersActions.toggleIsFetching(false));
     dispatch(setUsersSuccess(data));
   };
@@ -44,9 +44,9 @@ export const setUsers = (requestPage: number, pageSize: number, filter: FilterTy
 
 export const setFriends = (requestPage: number, pageSize: number) => {
   return async (dispatch: Function) => {
-    usersAPI
+    usersApi
       .requestUsers(requestPage, pageSize, { term: '', friend: true })
-      .then(data => dispatch(setFriendsSuccess(data)))
+      .then((data: UsersType) => dispatch(setFriendsSuccess(data)))
       .catch(e => console.error(e));
   };
 };
@@ -73,7 +73,7 @@ const setFriendsSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>
  */
 export const setCurrentUserFollower = (userId: number) => {
   return async (dispatch: Function) => {
-    usersAPI
+    usersApi
       .getCurrentUserFollower(userId)
       .then(data => {
         dispatch({
@@ -93,7 +93,7 @@ export const setCurrentUserFollower = (userId: number) => {
 export const userFollow = (userId: number) => {
   return async (dispatch: Function) => {
     await dispatch(usersActions.toggleFollowingProgress(true, userId));
-    usersAPI
+    usersApi
       .postUserFollow(userId)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -116,7 +116,7 @@ export const userFollow = (userId: number) => {
  */
 export const userUnfollow = (userId: number) => {
   return async (dispatch: Function) => {
-    usersAPI
+    usersApi
       .deleteUserUnfollow(userId)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {

@@ -1,5 +1,4 @@
-import { FILE_SIZE_LIMIT } from '../../constants/commom';
-import { ALLOWED_EXTENSIONS } from '../../constants/regex';
+import { ALLOWED_EXTENSIONS, FILE_SIZE_LIMIT } from '../../configs/constants';
 
 /**
  * Get file format

@@ -2,7 +2,7 @@ import produce from 'immer';
 
 import { AppActions } from '../../actions/app-actions/app-actions';
 import { AppActionType } from '../../action-types';
-import { Nullable } from '../../../types';
+import { Nullable } from '../../../shared/types';
 
 export type AppInitialStateType = {
   initialized: boolean;

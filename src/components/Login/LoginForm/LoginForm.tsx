@@ -3,13 +3,20 @@ import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
 
-import { CREATE_NEW_ACCOUNT_BUTTON, LOGIN_AS_GUEST_BUTTON, LOGIN_BUTTON } from '../../../constants/buttons';
-import { CAPTCHA_PLACEHOLDER, EMAIL_PLACEHOLDER, PASSWORD_PLACEHOLDER } from '../../../constants/placeholders';
+import {
+  CAPTCHA_PLACEHOLDER,
+  CREATE_NEW_ACCOUNT_BUTTON,
+  EMAIL_PLACEHOLDER,
+  LOGIN_AS_GUEST_BUTTON,
+  LOGIN_BUTTON,
+  MOCK_USER_AUTH_DATA,
+  PASSWORD_PLACEHOLDER,
+  REMEMBER_ME_LABEL,
+  URL_FOR_REGISTRATION,
+} from '../../../configs/constants';
 import { addCommasToStringsInArray } from '../../../utils/array-helpers/array-strings-helpers';
-import { MOCK_USER_AUTH_DATA, URL_FOR_REGISTRATION } from '../../../constants/api';
 import { CustomField } from '../../common/CustomField/CustomField';
-import { REMEMBER_ME_LABEL } from '../../../constants/labels';
-import { FormPropsType } from '../../../types';
+import { FormPropsType } from '../../../shared/types';
 import styles from './LoginForm.module.scss';
 
 const initialValues = {

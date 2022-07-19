@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Avatar, Card, Skeleton } from 'antd';
 import { EyeOutlined, MinusOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons';
 
-import { UserType } from '../../../types';
+import { UserType } from '../../../shared/types';
 import styles from './User.module.scss';
 import { useActions } from '../../../store';
 

@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { FileField } from '../../common/FileField/FileField';
 import { useActions } from '../../../store';
-import { Nullable } from '../../../types';
+import { Nullable } from '../../../shared/types';
 import styles from './ProfileActions.module.scss';
 
 type ProfileActionsPropsType = {

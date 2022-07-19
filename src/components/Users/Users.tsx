@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { stringify } from 'query-string';
 import { Alert } from 'antd';
 
-import { User } from './User/User';
 import { Paginator } from '../common/Paginator/Paginator';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
 import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
-import { AppRoutesEnum, FilterType } from '../../types';
+import { AppRoutesEnum, FilterType } from '../../shared/types';
 import { useActions } from '../../store';
+import { User } from './User/User';
 import styles from './Users.module.scss';
 
 type QueryParamsType = { term?: string; page?: string; friend?: string };

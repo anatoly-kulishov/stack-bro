@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { DEFAULT_ICONS_SIZE } from '../../../constants/general';
+import { DEFAULT_ICONS_SIZE } from '../../../configs/constants';
 
 type SpinnerIconPropsType = {
   size?: string;

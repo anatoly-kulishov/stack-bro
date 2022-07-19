@@ -1,5 +1,5 @@
+import { FilterType, UserType } from '../../../shared/types';
 import { UsersActionType } from '../../action-types';
-import { FilterType, UserType } from '../../../types';
 
 export interface SetUsers {
   type: UsersActionType.SET_USERS;

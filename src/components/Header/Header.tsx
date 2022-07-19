@@ -1,12 +1,12 @@
 import React, { CSSProperties, FC } from 'react';
-import { Layout, Tag } from 'antd';
 import { GithubFilled, LinkedinOutlined } from '@ant-design/icons';
+import { Layout, Tag } from 'antd';
 
+import { MY_GITHUB, MY_LINKEDIN } from '../../configs/constants';
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import { MyAccount } from './MyAccount/MyAccount';
 import { Logo } from './Logo/Logo';
 import styles from './Header.module.scss';
-import { MY_GITHUB, MY_LINKEDIN } from '../../constants/general';
 
 const TAG_INLINE_STYLES: CSSProperties = { marginRight: 0 };
 

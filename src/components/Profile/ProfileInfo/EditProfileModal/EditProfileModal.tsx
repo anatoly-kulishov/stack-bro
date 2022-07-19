@@ -3,7 +3,7 @@ import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Alert, Button, Checkbox, Input, Modal, Tabs } from 'antd';
 import * as Yup from 'yup';
 
-import { ContactsType, FormPropsType, Nullable, ProfileType } from '../../../../types';
+import { ContactsType, FormPropsType, Nullable, ProfileType } from '../../../../shared/types';
 import { CustomField } from '../../../common/CustomField/CustomField';
 import styles from './EditProfileModal.module.scss';
 
@@ -23,11 +23,11 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Please enter your full name'),
     /* name: Yup.string().required('Please enter name'), 231312321
-                                                                     email: Yup.string().email('Must be email address').required('Please enter email'),
-                                                                     phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
-                                                                     question: Yup.string().required('Please enter your question'),
-                                                                     attachedImages: Yup.array().default([]).notRequired(),
-                                                                     isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
+																																		 email: Yup.string().email('Must be email address').required('Please enter email'),
+																																		 phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
+																																		 question: Yup.string().required('Please enter your question'),
+																																		 attachedImages: Yup.array().default([]).notRequired(),
+																																		 isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
   });
 
   const initialValues = {

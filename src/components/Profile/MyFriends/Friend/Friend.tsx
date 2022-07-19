@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 
-import { UserType } from '../../../../types';
+import { UserType } from '../../../../shared/types';
 import classes from './Friend.module.scss';
 
 type FriendPropsType = {

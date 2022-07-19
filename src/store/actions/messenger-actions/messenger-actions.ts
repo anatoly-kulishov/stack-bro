@@ -1,6 +1,6 @@
 import { StatusMessageType } from '../../reducers/messengerReducer/messengerReducer';
 import { MessengerActionType } from '../../action-types';
-import { ChatMessageType } from '../../../types';
+import { ChatMessageType } from '../../../shared/types';
 
 export interface MessagesReceived {
   type: MessengerActionType.MESSAGES_RECEIVED;

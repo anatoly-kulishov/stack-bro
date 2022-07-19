@@ -1,10 +1,10 @@
 import Cookies from 'js-cookie';
 
-import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../types';
+import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../shared/types';
 import { updateOwnerProfile } from './profile-action-creators';
-import { securityAPI } from '../../api/securityAPI.ts';
+import { securityAPI } from '../../api/entities/security.api.ts';
+import { authApi } from '../../api/entities/auth.api';
 import { AuthActionType } from '../action-types';
-import { authAPI } from '../../api/authAPI';
 
 export const authActions = {
   getCaptchaUrlSuccess: (captchaUrl: string) => ({
@@ -41,7 +41,7 @@ export const signIn = (
   resetForm: Nullable<Function> = null,
 ) => {
   return async (dispatch: Function) => {
-    authAPI
+    authApi
       .postSignIn(profile)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -74,7 +74,7 @@ export const signIn = (
  */
 export const authMe = () => {
   return async (dispatch: Function) => {
-    authAPI
+    authApi
       .getAuthMe()
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -97,7 +97,7 @@ export const logOut = () => {
   return async (dispatch: Function) => {
     try {
       dispatch(authActions.logOutStart());
-      await authAPI.deleteLogOut().then(() => Cookies.remove('token'));
+      await authApi.deleteLogOut().then(() => Cookies.remove('token'));
       dispatch(authActions.logOutAccepted());
     } catch (e) {
       console.error(e);
