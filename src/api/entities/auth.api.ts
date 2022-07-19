@@ -1,6 +1,6 @@
-import { APIResponseType, ResultCodes, ResultCodesForCaptcha } from '../types';
-import { ProfileActionType } from '../store/action-creators';
-import { authInstance } from './instances';
+import { APIResponseType, ResultCodes, ResultCodesForCaptcha } from '../../shared/types';
+import { ProfileActionType } from '../../store/action-creators';
+import { authInstance } from '../api.instances';
 
 type GetAutResponseDataType = {
   email: string;
@@ -14,7 +14,7 @@ type PostSignInDataType = {
 
 const BASE_URL: string = '/auth';
 
-export const authAPI = {
+export const authApi = {
   postSignIn: (profile: ProfileActionType) => {
     return authInstance
       .post<APIResponseType<PostSignInDataType, ResultCodes | ResultCodesForCaptcha>>(`${BASE_URL}/login`, {

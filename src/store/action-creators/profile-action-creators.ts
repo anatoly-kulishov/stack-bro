@@ -1,6 +1,6 @@
-import { PhotosType, PostType, ProfileType, ResultCodes } from '../../types';
+import { PhotosType, PostType, ProfileType, ResultCodes } from '../../shared/types';
+import { profileApi } from '../../api/entities/profile.api';
 import { ProfileActionType } from '../action-types';
-import { profileAPI } from '../../api/profileAPI';
 import { authMe } from './auth-actions-creators';
 
 export const profileActions = {
@@ -55,7 +55,7 @@ export const profileActions = {
 export const updateProfile = (userId: number) => {
   return async (dispatch: Function) => {
     dispatch(profileActions.showLoader());
-    profileAPI
+    profileApi
       .getProfile(userId)
       .then(data => {
         dispatch(profileActions.setProfile(data));
@@ -70,7 +70,7 @@ export const updateProfile = (userId: number) => {
  */
 export const updateOwnerProfile = (userId: number) => {
   return async (dispatch: Function) => {
-    profileAPI
+    profileApi
       .getProfile(userId)
       .then(data => dispatch(profileActions.setOwnerProfile(data)))
       .catch(e => console.error(e));
@@ -83,7 +83,7 @@ export const updateOwnerProfile = (userId: number) => {
  */
 export const getStatus = (userId: number) => {
   return async (dispatch: Function) => {
-    profileAPI
+    profileApi
       .getStatus(userId)
       .then(data => {
         dispatch(profileActions.getStatus(data));
@@ -98,7 +98,7 @@ export const getStatus = (userId: number) => {
  */
 export const setStatus = (status: string) => {
   return async (dispatch: Function) => {
-    profileAPI
+    profileApi
       .setStatus(status)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -117,7 +117,7 @@ export const setStatus = (status: string) => {
 export const savePhoto = (file: File, setSubmitting: Function) => {
   return async (dispatch: Function) => {
     dispatch(profileActions.sendNewPhoto());
-    profileAPI
+    profileApi
       .putPhoto(file)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -137,7 +137,7 @@ export const savePhoto = (file: File, setSubmitting: Function) => {
  */
 export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
   return (dispatch: Function, getState: Function) => {
-    profileAPI
+    profileApi
       .putProfile(profile)
       .then(data => {
         const { userId } = getState().auth;

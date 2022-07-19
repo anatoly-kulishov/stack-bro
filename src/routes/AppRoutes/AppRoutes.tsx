@@ -10,7 +10,7 @@ import { GamePage } from '../../pages/GamePage/GamePage';
 import { HelpPage } from '../../pages/HelpPage/HelpPage';
 import { Header } from '../../components/Header/Header';
 import { NavBar } from '../../components/NavBar/NavBar';
-import { AppRoutesEnum } from '../../types';
+import { AppRoutesEnum } from '../../shared/types';
 
 const { Content } = Layout;
 

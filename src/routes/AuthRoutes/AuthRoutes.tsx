@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { LoginPage } from '../../pages/LoginPage/LoginPage';
-import { AppRoutesEnum } from '../../types';
+import { AppRoutesEnum } from '../../shared/types';
 import styles from './AuthRoutes.module.scss';
 
 export const AuthRoutes: FC = () => {

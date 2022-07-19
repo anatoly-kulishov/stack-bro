@@ -2,7 +2,7 @@ import produce from 'immer';
 import { v1 } from 'uuid';
 
 import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
-import { ChatMessageType, MessageType } from '../../../types';
+import { ChatMessageType, MessageType } from '../../../shared/types';
 import { MessengerActionType } from '../../action-types';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';

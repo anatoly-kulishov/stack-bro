@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-import { UserType } from '../../../types';
+import { UserType } from '../../../shared/types';
 import { UsersActions } from '../../actions/users-actions/users-actions';
 import { UsersActionType } from '../../action-types';
 

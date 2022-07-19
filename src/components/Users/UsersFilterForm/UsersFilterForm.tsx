@@ -4,7 +4,7 @@ import { Checkbox, Input } from 'antd';
 import { useSelector } from 'react-redux';
 
 import { getUsersState } from '../../../store/selectors/users-selectors';
-import { FilterType } from '../../../types';
+import { FilterType } from '../../../shared/types';
 import styles from './UsersFilterForm.module.scss';
 
 type UsersSearchFormPropsType = {

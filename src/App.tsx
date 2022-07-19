@@ -8,7 +8,7 @@ import { getAppState } from './store/selectors/app-selectors';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
 import { AppRoutes } from './routes/AppRoutes/AppRoutes';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
-import { SPINNER_SIZE } from './constants/general';
+import { SPINNER_SIZE } from './configs/constants';
 import { useActions } from './store';
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';

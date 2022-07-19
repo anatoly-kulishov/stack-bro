@@ -5,7 +5,7 @@ import { Badge, Layout, Menu } from 'antd';
 import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
 import { getUsersTotalCount } from '../../store/selectors/users-selectors';
-import { AppRouteKeys, AppRoutesEnum } from '../../types';
+import { AppRouteKeys, AppRoutesEnum } from '../../shared/types';
 
 const { Sider } = Layout;
 

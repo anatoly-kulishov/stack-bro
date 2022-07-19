@@ -1,7 +1,7 @@
 import produce from 'immer';
 
 import { ProfileActions } from '../../actions/profile-action/profile-action';
-import { Nullable, PostType, ProfileType } from '../../../types';
+import { Nullable, PostType, ProfileType } from '../../../shared/types';
 import { ProfileActionType } from '../../action-types';
 
 export type ProfileInitialStateType = {

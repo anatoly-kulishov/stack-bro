@@ -1,5 +1,5 @@
 import { convertFileSizeToMb, getFileFormData, validateFileFormat, validateFileSize } from './file-helpers';
-import { ALLOWED_EXTENSIONS } from '../../constants/regex';
+import { ALLOWED_EXTENSIONS } from '../../configs/constants';
 
 describe('boolean-helpers', () => {
   let filePng: File;

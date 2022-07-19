@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { getAuthState } from '../../store/selectors/auth-selectors';
 import { WithLoading } from '../common/WithLoading/WithLoading';
-import { SITE_TITLE, SPINNER_SIZE } from '../../constants/general';
+import { SITE_TITLE, SPINNER_SIZE } from '../../configs/constants';
 import { LoginForm } from './LoginForm/LoginForm';
 import { useActions } from '../../store';
 import styles from './Login.module.scss';

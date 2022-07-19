@@ -4,7 +4,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../../../utils/file-helpers/file-helpers';
-import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../constants/commom';
+import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../configs/constants';
 import styles from './FileField.module.scss';
 
 type FileFieldPropsType = {

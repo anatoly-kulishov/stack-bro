@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_BASE_PATH, API_KEY } from '../constants/api';
+import { API_BASE_PATH, API_KEY } from '../configs/constants';
 
 export const authInstance = axios.create({
   withCredentials: true,

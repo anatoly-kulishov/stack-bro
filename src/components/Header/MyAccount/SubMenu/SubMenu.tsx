@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
 import { LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
+import { AppRoutesEnum } from '../../../../shared/types';
 import { useActions } from '../../../../store';
-import { AppRoutesEnum } from '../../../../types';
 
 const renderMenuItems = (logOut: () => void) => [
   {

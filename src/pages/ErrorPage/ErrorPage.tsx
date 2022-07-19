@@ -4,7 +4,7 @@ import { ReloadOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import { getAppGlobalErrors } from '../../store/selectors/app-selectors';
-import { smthWentWrong } from '../../constants/errors';
+import { smthWentWrong } from '../../configs/constants';
 import styles from './ErrorPage.module.scss';
 
 type ErrorPagePropsType = {};

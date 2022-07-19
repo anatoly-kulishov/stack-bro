@@ -1,5 +1,5 @@
+import { PhotosType, PostType, ProfileType } from '../../../shared/types';
 import { ProfileActionType } from '../../action-types';
-import { PhotosType, PostType, ProfileType } from '../../../types';
 
 export interface SetUserProfile {
   type: ProfileActionType.SET_USER_PROFILE;

@@ -4,7 +4,7 @@ import { Empty } from 'antd';
 
 import { Post } from './Post/Post';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { PostType } from '../../../types';
+import { PostType } from '../../../shared/types';
 import styles from './ProfilePosts.module.scss';
 
 export const ProfilePosts: FC = memo(() => {

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Avatar } from 'antd';
 
 import { getAuthState } from '../../../../store/selectors/auth-selectors';
-import { ChatMessageType } from '../../../../types';
+import { ChatMessageType } from '../../../../shared/types';
 import styles from './Message.module.scss';
 
 export const Message: FC<ChatMessageType> = ({ message, photo, userId, userName }) => {

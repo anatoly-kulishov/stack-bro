@@ -4,8 +4,8 @@ import { Avatar, Comment, Tooltip } from 'antd';
 import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
 import { format } from 'date-fns';
 
-import { TIME_FORMATS } from '../../../../constants/time-format';
-import { Nullable, ProfileType } from '../../../../types';
+import { TIME_FORMATS } from '../../../../configs/constants';
+import { Nullable, ProfileType } from '../../../../shared/types';
 
 export type PostPropsType = {
   profile: Nullable<ProfileType>;
