@@ -1,7 +1,7 @@
-import { addCommasToStringsInArray } from './array-strings-helpers';
+import { addCommasToStringsInArray } from './index';
 
-describe('array-strings-helpers', () => {
-  test('addCommasToStringsInArray()', () => {
+describe('addCommasToStringsInArray', () => {
+  test('general cases', () => {
     expect(addCommasToStringsInArray(['1', '2', '3'])).toStrictEqual('1, 2, 3');
     expect(addCommasToStringsInArray(['React', 'Redux', 'TypeScript'])).toStrictEqual('React, Redux, TypeScript');
     expect(addCommasToStringsInArray([])).toBe('');

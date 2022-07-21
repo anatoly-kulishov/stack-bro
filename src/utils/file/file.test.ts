@@ -1,7 +1,8 @@
-import { convertFileSizeToMb, getFileFormData, validateFileFormat, validateFileSize } from './file-helpers';
 import { ALLOWED_EXTENSIONS } from '../../configs/constants';
 
-describe('boolean-helpers', () => {
+import { convertFileSizeToMb, getFileFormData, validateFileFormat, validateFileSize } from './index';
+
+describe('file-helpers', () => {
   let filePng: File;
   let fileTxt: File;
   let filePngSize: number;

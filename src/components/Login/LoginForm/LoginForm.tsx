@@ -14,7 +14,7 @@ import {
   REMEMBER_ME_LABEL,
   URL_FOR_REGISTRATION,
 } from '../../../configs/constants';
-import { addCommasToStringsInArray } from '../../../utils/array-helpers/array-strings-helpers';
+import { addCommasToStringsInArray } from '../../../utils/array/addCommasToStringsInArray';
 import { CustomField } from '../../common/CustomField/CustomField';
 import { FormPropsType } from '../../../shared/types';
 import styles from './LoginForm.module.scss';
