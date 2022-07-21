@@ -183,6 +183,10 @@ textarea {
   overflow: auto;
 }
 
+.ant-card-meta {
+  overflow: hidden;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -265,4 +269,12 @@ textarea {
   @media(max-width: $smd) {
     display: none;
   }
+}
+
+.border-red {
+  border-color: red;
+}
+
+.outline-red {
+  outline-color: red;
 }

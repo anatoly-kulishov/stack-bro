@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
 import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
+import { AppRouteKeys, AppRoutesEnum } from '../../shared/types/routes.types';
 import { getUsersTotalCount } from '../../store/selectors/users-selectors';
-import { AppRouteKeys, AppRoutesEnum } from '../../shared/types';
 
 const { Sider } = Layout;
 

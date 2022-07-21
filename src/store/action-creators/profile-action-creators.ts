@@ -1,7 +1,9 @@
-import { PhotosType, PostType, ProfileType, ResultCodes } from '../../shared/types';
-import { profileApi } from '../../api/entities/profile.api';
+import { ProfilePhotosType, ProfileType } from '../../shared/types/profile.types';
+import { profileService } from '../../services/profile.service';
+import { PostType } from '../../shared/types/posts.types';
 import { ProfileActionType } from '../action-types';
 import { authMe } from './auth-actions-creators';
+import { ResultCodes } from '../../shared/types';
 
 export const profileActions = {
   setProfile: (data: ProfileType[]) => ({
@@ -16,7 +18,7 @@ export const profileActions = {
     type: ProfileActionType.SET_OWNER_STATUS,
     payload: flag,
   }),
-  savePhotoSuccess: (photos: PhotosType) => ({
+  savePhotoSuccess: (photos: ProfilePhotosType) => ({
     type: ProfileActionType.SAVE_PHOTO_SUCCESS,
     photos,
   }),
@@ -55,7 +57,7 @@ export const profileActions = {
 export const updateProfile = (userId: number) => {
   return async (dispatch: Function) => {
     dispatch(profileActions.showLoader());
-    profileApi
+    profileService
       .getProfile(userId)
       .then(data => {
         dispatch(profileActions.setProfile(data));
@@ -70,7 +72,7 @@ export const updateProfile = (userId: number) => {
  */
 export const updateOwnerProfile = (userId: number) => {
   return async (dispatch: Function) => {
-    profileApi
+    profileService
       .getProfile(userId)
       .then(data => dispatch(profileActions.setOwnerProfile(data)))
       .catch(e => console.error(e));
@@ -83,7 +85,7 @@ export const updateOwnerProfile = (userId: number) => {
  */
 export const getStatus = (userId: number) => {
   return async (dispatch: Function) => {
-    profileApi
+    profileService
       .getStatus(userId)
       .then(data => {
         dispatch(profileActions.getStatus(data));
@@ -98,7 +100,7 @@ export const getStatus = (userId: number) => {
  */
 export const setStatus = (status: string) => {
   return async (dispatch: Function) => {
-    profileApi
+    profileService
       .setStatus(status)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -117,7 +119,7 @@ export const setStatus = (status: string) => {
 export const savePhoto = (file: File, setSubmitting: Function) => {
   return async (dispatch: Function) => {
     dispatch(profileActions.sendNewPhoto());
-    profileApi
+    profileService
       .putPhoto(file)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -137,7 +139,7 @@ export const savePhoto = (file: File, setSubmitting: Function) => {
  */
 export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
   return (dispatch: Function, getState: Function) => {
-    profileApi
+    profileService
       .putProfile(profile)
       .then(data => {
         const { userId } = getState().auth;

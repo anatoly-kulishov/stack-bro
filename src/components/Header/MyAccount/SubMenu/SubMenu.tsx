@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
 import { LogoutOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
-import { AppRoutesEnum } from '../../../../shared/types';
+import { AppRoutesEnum } from '../../../../shared/types/routes.types';
 import { useActions } from '../../../../store';
 
 const renderMenuItems = (logOut: () => void) => [
@@ -23,5 +23,5 @@ const renderMenuItems = (logOut: () => void) => [
 export const SubMenu: FC = () => {
   const { logOut } = useActions();
 
-  return <Menu items={renderMenuItems(logOut)} mode="inline" />;
+  return <Menu items={renderMenuItems(logOut)} />;
 };

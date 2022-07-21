@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { stringify } from 'query-string';
 import { Alert } from 'antd';
 
-import { Paginator } from '../common/Paginator/Paginator';
-import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
 import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
-import { AppRoutesEnum, FilterType } from '../../shared/types';
+import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
+import { AppRoutesEnum } from '../../shared/types/routes.types';
+import { UserFilterType } from '../../shared/types/user.types';
+import { Paginator } from '../common/Paginator/Paginator';
 import { useActions } from '../../store';
 import { User } from './User/User';
 import styles from './Users.module.scss';
@@ -60,7 +61,7 @@ export const Users: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, currentPage]);
 
-  const onFilterChanged = (values: FilterType) => {
+  const onFilterChanged = (values: UserFilterType) => {
     setUsers(currentPage, pageSize, values);
   };
 

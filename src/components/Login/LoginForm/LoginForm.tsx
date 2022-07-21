@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
+import classNames from 'classnames';
+import * as Yup from 'yup';
 
 import {
   CAPTCHA_PLACEHOLDER,
@@ -16,7 +18,8 @@ import {
 } from '../../../configs/constants';
 import { addCommasToStringsInArray } from '../../../utils/array/addCommasToStringsInArray';
 import { CustomField } from '../../common/CustomField/CustomField';
-import { FormPropsType } from '../../../shared/types';
+import { FormPropsType } from '../../../shared/types/form.types';
+import { isValidInput } from '../../../utils/error';
 import styles from './LoginForm.module.scss';
 
 const initialValues = {
@@ -28,9 +31,17 @@ const initialValues = {
 
 type ILoginFormValues = typeof initialValues;
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email address').required('Please enter your email'),
+  password: Yup.string().required('Please enter your password'),
+});
+
 export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, captchaUrl }) => {
   const [isGuest, setIsGuest] = useState<boolean>(false);
-  const setGuestStatusHandler = () => setIsGuest(true);
+
+  const setGuestStatusHandler = () => {
+    setIsGuest(true);
+  };
 
   const submitHandler: FormikConfig<ILoginFormValues>['onSubmit'] = (values, formikHelpers) => {
     if (isGuest) {
@@ -50,13 +61,17 @@ export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, ca
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={submitHandler}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={submitHandler}
+      validationSchema={isGuest ? Yup.object() : loginSchema}
+    >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit} className={styles.form}>
           <div className="form-row">
             <label htmlFor="email">Email Address</label>
             <CustomField
-              className="form-control"
+              className={classNames('form-control', isValidInput(errors.email))}
               id="email"
               name="email"
               type="email"
@@ -70,7 +85,7 @@ export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, ca
           <div className="form-row mb-3">
             <label htmlFor="password">Password</label>
             <CustomField
-              className={`form-control`}
+              className={classNames('form-control', isValidInput(errors.password))}
               id="password"
               name="password"
               type="password"

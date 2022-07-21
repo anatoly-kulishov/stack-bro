@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AppRoutesEnum } from '../../../shared/types';
+import { AppRoutesEnum } from '../../../shared/types/routes.types';
 import styles from './Logo.module.scss';
 
 type LogoPropsType = {};

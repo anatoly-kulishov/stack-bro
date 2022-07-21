@@ -2,9 +2,9 @@ import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Empty } from 'antd';
 
-import { Post } from './Post/Post';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { PostType } from '../../../shared/types';
+import { PostType } from '../../../shared/types/posts.types';
+import { Post } from './Post/Post';
 import styles from './ProfilePosts.module.scss';
 
 export const ProfilePosts: FC = memo(() => {

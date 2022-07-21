@@ -1,4 +1,4 @@
-import { ALLOWED_EXTENSIONS } from '../../configs/constants';
+import { ALLOWED_EXTENSIONS } from '../../shared/regex';
 
 import { convertFileSizeToMb, getFileFormData, validateFileFormat, validateFileSize } from './index';
 

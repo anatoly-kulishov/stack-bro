@@ -1,5 +1,5 @@
-import { FilterType, UserType } from '../../../shared/types';
 import { UsersActionType } from '../../action-types';
+import { UserFilterType, UserType } from '../../../shared/types/user.types';
 
 export interface SetUsers {
   type: UsersActionType.SET_USERS;
@@ -40,7 +40,7 @@ export interface ToggleFollowingProgress {
 
 export interface SetFilter {
   type: UsersActionType.SET_USERS_FILTER;
-  filter: FilterType;
+  filter: UserFilterType;
 }
 
 export interface ToggleIsFetching {

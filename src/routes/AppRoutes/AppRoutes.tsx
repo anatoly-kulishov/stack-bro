@@ -4,13 +4,13 @@ import { Layout } from 'antd';
 
 import { MessengerPage } from '../../pages/MessengerPage/MessengerPage';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
+import { AppRoutesEnum } from '../../shared/types/routes.types';
 import { UsersPage } from '../../pages/UsersPage/UsersPage';
 import { NoMatch } from '../../components/NoMatch/NoMatch';
 import { GamePage } from '../../pages/GamePage/GamePage';
 import { HelpPage } from '../../pages/HelpPage/HelpPage';
 import { Header } from '../../components/Header/Header';
 import { NavBar } from '../../components/NavBar/NavBar';
-import { AppRoutesEnum } from '../../shared/types';
 
 const { Content } = Layout;
 

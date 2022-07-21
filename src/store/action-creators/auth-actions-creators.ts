@@ -2,8 +2,8 @@ import Cookies from 'js-cookie';
 
 import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../shared/types';
 import { updateOwnerProfile } from './profile-action-creators';
-import { securityAPI } from '../../api/entities/security.api.ts';
-import { authApi } from '../../api/entities/auth.api';
+import { securityAPI } from '../../services/security.service';
+import { authService } from '../../services/auth.service';
 import { AuthActionType } from '../action-types';
 
 export const authActions = {
@@ -41,7 +41,7 @@ export const signIn = (
   resetForm: Nullable<Function> = null,
 ) => {
   return async (dispatch: Function) => {
-    authApi
+    authService
       .postSignIn(profile)
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -74,7 +74,7 @@ export const signIn = (
  */
 export const authMe = () => {
   return async (dispatch: Function) => {
-    authApi
+    authService
       .getAuthMe()
       .then(data => {
         if (data.resultCode === ResultCodes.Success) {
@@ -97,7 +97,7 @@ export const logOut = () => {
   return async (dispatch: Function) => {
     try {
       dispatch(authActions.logOutStart());
-      await authApi.deleteLogOut().then(() => Cookies.remove('token'));
+      await authService.deleteLogOut().then(() => Cookies.remove('token'));
       dispatch(authActions.logOutAccepted());
     } catch (e) {
       console.error(e);
