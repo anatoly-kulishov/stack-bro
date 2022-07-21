@@ -35,8 +35,8 @@ export const FileField: FC<FileFieldPropsType> = ({ saveHandler, validationHandl
     (setFieldValue: (file: string, values: Partial<File>) => void) => (event: ChangeEvent<HTMLInputElement>) => {
       if (event.currentTarget.files !== null) {
         const file = event.currentTarget.files[0];
-        const fileFormat = file.type;
-        const fileSizeInMb = convertFileSizeToMb(file.size);
+        const fileFormat = file?.type;
+        const fileSizeInMb = convertFileSizeToMb(file?.size);
         const isValidSizing = validateFileSize(fileSizeInMb);
         const isValidFormat = validateFileFormat(fileFormat);
         if (!isValidSizing) {

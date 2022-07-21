@@ -1,4 +1,5 @@
-import { ALLOWED_EXTENSIONS, FILE_SIZE_LIMIT } from '../../configs/constants';
+import { FILE_SIZE_LIMIT } from '../../configs/constants';
+import { ALLOWED_EXTENSIONS } from '../../shared/regex';
 
 /**
  * Get file format

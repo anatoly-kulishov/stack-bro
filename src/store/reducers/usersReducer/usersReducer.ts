@@ -1,7 +1,7 @@
 import produce from 'immer';
 
-import { UserType } from '../../../shared/types';
 import { UsersActions } from '../../actions/users-actions/users-actions';
+import { UserType } from '../../../shared/types/user.types';
 import { UsersActionType } from '../../action-types';
 
 export type UsersInitialStateType = {

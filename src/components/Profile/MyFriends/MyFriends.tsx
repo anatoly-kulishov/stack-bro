@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { getFriends, getUsersTotalFriendCount } from '../../../store/selectors/users-selectors';
 import { Friend } from './Friend/Friend';
-import classes from './myFriends.module.scss';
+import styles from './myFriends.module.scss';
 
 export const MyFriends: FC = memo(() => {
   const totalFriendsCount = useSelector(getUsersTotalFriendCount);
@@ -12,10 +12,10 @@ export const MyFriends: FC = memo(() => {
   return (
     <div className={`default-box pt-3 pl-3 pr-3 pb-2 mt-3`}>
       <div className="pb-1">
-        <div className={classes.boxTitle}>
-          Friends <span className={classes.count}>{totalFriendsCount}</span>
+        <div className={styles.boxTitle}>
+          Friends <span className={styles.count}>{totalFriendsCount}</span>
         </div>
-        <ul className={classes.myFriends}>
+        <ul className={styles.myFriends}>
           {friends.map(friend => (
             <Friend key={friend.id} data={friend} />
           ))}

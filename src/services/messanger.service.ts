@@ -1,5 +1,6 @@
-import { ChatMessageType, Nullable } from '../../shared/types';
-import { StatusMessageType } from '../../store/reducers/messengerReducer/messengerReducer';
+import { StatusMessageType } from '../store/reducers/messengerReducer/messengerReducer';
+import { ChatMessageType } from '../shared/types/chat.types';
+import { Nullable } from '../shared/types';
 
 type EventsNamesType = 'messages-received' | 'status-changed';
 

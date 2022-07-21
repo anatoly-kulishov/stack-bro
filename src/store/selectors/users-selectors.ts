@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { UserType } from '../../shared/types/user.types';
 import { AppStateType } from '../reducers';
-import { UserType } from '../../shared/types';
 
 export const getUsersState = (state: AppStateType) => state.users;
 export const getUsersTotalCount = (state: AppStateType) => state.users.totalUsersCount;

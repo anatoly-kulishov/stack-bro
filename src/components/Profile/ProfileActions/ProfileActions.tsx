@@ -4,8 +4,8 @@ import { Button } from 'antd';
 
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { FileField } from '../../common/FileField/FileField';
-import { useActions } from '../../../store';
 import { Nullable } from '../../../shared/types';
+import { useActions } from '../../../store';
 import styles from './ProfileActions.module.scss';
 
 type ProfileActionsPropsType = {
@@ -39,12 +39,12 @@ export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFo
       {isOwner && <FileField saveHandler={savePhoto} validationHandler={setErrorText} />}
       {errorText && <div className={styles.errorText}>{errorText}</div>}
       {!isOwner && !followState && (
-        <Button onClick={followHandler} htmlType="button" block type="primary" disabled={!profile.userId}>
+        <Button onClick={followHandler} htmlType="button" block type="primary" disabled={!profile?.userId}>
           Add friend
         </Button>
       )}
       {!isOwner && followState && (
-        <Button onClick={unfollowHandler} htmlType="button" block danger disabled={!profile.userId}>
+        <Button onClick={unfollowHandler} htmlType="button" block danger disabled={!profile?.userId}>
           Unfriend
         </Button>
       )}

@@ -1,8 +1,10 @@
 import produce from 'immer';
 
 import { ProfileActions } from '../../actions/profile-action/profile-action';
-import { Nullable, PostType, ProfileType } from '../../../shared/types';
+import { ProfileType } from '../../../shared/types/profile.types';
+import { PostType } from '../../../shared/types/posts.types';
 import { ProfileActionType } from '../../action-types';
+import { Nullable } from '../../../shared/types';
 
 export type ProfileInitialStateType = {
   isOwner: boolean;
@@ -11,7 +13,7 @@ export type ProfileInitialStateType = {
   error: Nullable<string[]>;
   posts: PostType[];
   ownerProfile: Nullable<ProfileType>;
-  profile: Nullable<any>; // Todo
+  profile: Nullable<any>;
   status: string;
   followStatus: Nullable<boolean>;
 };

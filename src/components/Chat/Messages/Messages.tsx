@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { MessageInput } from './MessageInput/MessageInput';
-import { Message } from './Message/Message';
-import { AppStateType } from '../../../store';
 import { getMessengerStatus } from '../../../store/selectors/messenger-selectors';
-import { ChatMessageType } from '../../../shared/types';
+import { ChatMessageTypeWithID } from '../../../shared/types/chat.types';
+import { MessageInput } from './MessageInput/MessageInput';
+import { AppStateType } from '../../../store';
+import { Message } from './Message/Message';
 import styles from './Messages.module.scss';
 
 export const Messages: FC = () => {
@@ -33,7 +33,7 @@ export const Messages: FC = () => {
     <div className={styles.messages}>
       <div className={styles.messagesList} onScroll={scrollHandler}>
         <div className={styles.yourMessages}>
-          {messages.map((message: ChatMessageType) => (
+          {messages.map((message: ChatMessageTypeWithID) => (
             <Message key={message.id} {...message} />
           ))}
           <div ref={messagesAnchorRef} />

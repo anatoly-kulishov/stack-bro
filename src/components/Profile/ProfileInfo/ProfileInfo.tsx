@@ -2,11 +2,11 @@ import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ApiTwoTone, EditTwoTone } from '@ant-design/icons';
 
-import { useActions } from '../../../store';
-import { ProfileStatus } from './ProfileStatus/ProfileStatus';
-import { ProfileData } from './ProfileData/ProfileData';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { EditProfileModal } from './EditProfileModal/EditProfileModal';
+import { ProfileStatus } from './ProfileStatus/ProfileStatus';
+import { ProfileData } from './ProfileData/ProfileData';
+import { useActions } from '../../../store';
 import styles from './ProfileInfo.module.scss';
 
 export const ProfileInfo: FC = () => {

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
-import styles from './ProfileData.module.scss';
+import { ProfileContactsType, ProfileType } from '../../../../shared/types/profile.types';
+import { Nullable } from '../../../../shared/types';
 import { Contact } from './Contact/Contact';
-import { ContactsType, Nullable, ProfileType } from '../../../../shared/types';
+import styles from './ProfileData.module.scss';
 
 type ProfileDataPropsType = {
   profile: Nullable<ProfileType>;
@@ -28,7 +29,7 @@ export const ProfileData: FC<ProfileDataPropsType> = ({ profile }) => {
         </div>
         {profile?.contacts &&
           Object.keys(profile?.contacts).map((key: string) => (
-            <Contact key={key} isLogic={true} title={key} value={profile?.contacts[key as keyof ContactsType]} />
+            <Contact key={key} isLogic={true} title={key} value={profile?.contacts[key as keyof ProfileContactsType]} />
           ))}
       </div>
     </div>

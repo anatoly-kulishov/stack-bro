@@ -1,14 +1,14 @@
 import produce from 'immer';
 import { v1 } from 'uuid';
 
+import { ChatMessageType, ChatMessageTypeWithID } from '../../../shared/types/chat.types';
 import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
-import { ChatMessageType, MessageType } from '../../../shared/types';
 import { MessengerActionType } from '../../action-types';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
 export type MessengerInitialStateType = {
-  messages: ChatMessageType[];
+  messages: ChatMessageTypeWithID[];
   status: StatusMessageType;
 };
 
@@ -25,7 +25,7 @@ export const messengerReducer = produce(
           ...state,
           messages: [
             ...state.messages,
-            ...action.payload.map((m: MessageType) => ({
+            ...action.payload.map((m: ChatMessageType) => ({
               ...m,
               id: v1(),
             })),

@@ -3,8 +3,10 @@ import { Form, Formik, FormikConfig, FormikHelpers } from 'formik';
 import { Alert, Button, Checkbox, Input, Modal, Tabs } from 'antd';
 import * as Yup from 'yup';
 
-import { ContactsType, FormPropsType, Nullable, ProfileType } from '../../../../shared/types';
+import { ProfileType } from '../../../../shared/types/profile.types';
 import { CustomField } from '../../../common/CustomField/CustomField';
+import { FormPropsType } from '../../../../shared/types/form.types';
+import { Nullable } from '../../../../shared/types';
 import styles from './EditProfileModal.module.scss';
 
 type EditProfileDataModalPropsType = {
@@ -16,19 +18,12 @@ type EditProfileDataModalPropsType = {
 const { TextArea } = Input;
 const { TabPane } = Tabs;
 
+const validationSchema = Yup.object().shape({
+  fullName: Yup.string().required('Please enter your full name'),
+});
+
 export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType> = props => {
   const { onSubmit, errorsText, profile, isModalVisible, hideModal } = props;
-
-  // Todo: There is will be full validation
-  const validationSchema = Yup.object().shape({
-    fullName: Yup.string().required('Please enter your full name'),
-    /* name: Yup.string().required('Please enter name'), 231312321
-																																		 email: Yup.string().email('Must be email address').required('Please enter email'),
-																																		 phoneNumber: Yup.string().min(12, 'Invalid phone number').required('Please enter phone number'),
-																																		 question: Yup.string().required('Please enter your question'),
-																																		 attachedImages: Yup.array().default([]).notRequired(),
-																																		 isAgreed: Yup.boolean().oneOf([true]).required('Required'), */
-  });
 
   const initialValues = {
     userId: profile?.userId,
@@ -128,11 +123,10 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
                         <div className="form-row" key={key}>
                           <label htmlFor={key}>{key}</label>
                           <CustomField
-                            className={`form-control ${styles.CustomFormControl}`}
+                            type="text"
+                            className="form-control"
                             id={`contacts.${key}`}
                             name={`contacts.${key}`}
-                            type="text"
-                            value={profile?.contacts[key as keyof ContactsType]}
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
@@ -142,7 +136,7 @@ export const EditProfileModal: FC<FormPropsType & EditProfileDataModalPropsType>
                 </div>
               </TabPane>
             </Tabs>
-            <div className={styles.ModalFooter}>
+            <div>
               <div className="validate-box text-center mb-3">
                 {errorsText && <Alert message={errorsText} type="error" />}
               </div>

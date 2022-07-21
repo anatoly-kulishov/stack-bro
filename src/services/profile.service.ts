@@ -1,13 +1,14 @@
-import { baseInstance } from '../api.instances';
-import { APIResponseType, BaseResponseType, PhotosType, ProfileType } from '../../shared/types';
+import { ProfilePhotosType, ProfileType } from '../shared/types/profile.types';
+import { APIResponseType, BaseResponseType } from '../shared/types';
+import { baseInstance } from '../api/api.instances';
 
 type SavePhotoResponseDataType = {
-  photos: PhotosType;
+  photos: ProfilePhotosType;
 };
 
 const BASE_URL: string = '/profile';
 
-export const profileApi = {
+export const profileService = {
   getProfile: (userId: number) => {
     return baseInstance.get<ProfileType[]>(`${BASE_URL}/${userId}`).then(res => res.data);
   },
@@ -26,7 +27,7 @@ export const profileApi = {
     return baseInstance
       .put<APIResponseType<SavePhotoResponseDataType>>(`${BASE_URL}/photo`, formData, {
         headers: {
-          'Content-type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
         },
       })
       .then(res => res.data);

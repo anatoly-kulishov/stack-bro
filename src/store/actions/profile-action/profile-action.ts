@@ -1,5 +1,6 @@
-import { PhotosType, PostType, ProfileType } from '../../../shared/types';
 import { ProfileActionType } from '../../action-types';
+import { ProfilePhotosType, ProfileType } from '../../../shared/types/profile.types';
+import { PostType } from '../../../shared/types/posts.types';
 
 export interface SetUserProfile {
   type: ProfileActionType.SET_USER_PROFILE;
@@ -36,7 +37,7 @@ export interface NewProfilePhotoSends {
 
 export interface SavePhotoSuccess {
   type: ProfileActionType.SAVE_PHOTO_SUCCESS;
-  photos: PhotosType;
+  photos: ProfilePhotosType;
 }
 
 export interface SaveProfileSuccess {
