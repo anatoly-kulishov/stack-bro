@@ -1,15 +1,15 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { catchAllUnhandledErrors } from './utils/errors-helpers/errors-helpers';
 import { WithLoading } from './components/common/WithLoading/WithLoading';
 import { getAuthState } from './store/selectors/auth-selectors';
 import { getAppState } from './store/selectors/app-selectors';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
 import { AppRoutes } from './routes/AppRoutes/AppRoutes';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
-import { SPINNER_SIZE } from './configs/constants';
+import { catchAllUnhandledErrors } from './utils/error';
 import { useActions } from './store';
+import { SPINNER_SIZE } from './configs/constants';
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
@@ -25,7 +25,7 @@ export const App: FC = () => {
     if (!isLoading) {
       initializeApp(isAuth);
     }
-  }, [isLoading, isAuth, dispatch]);
+  }, [dispatch, initializeApp, isLoading, isAuth]);
 
   useEffect(() => {
     window.addEventListener('unhandledrejection', catchAllUnhandledErrors);

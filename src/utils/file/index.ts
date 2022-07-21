@@ -45,6 +45,7 @@ export const validateFileSize = (fileSize: number, maxFileSizeInMb: number = FIL
 /**
  * Validate file format
  * @param fileFormat
+ * @param allowedExtensions
  */
 export const validateFileFormat = (fileFormat: string, allowedExtensions: RegExp = ALLOWED_EXTENSIONS): boolean => {
   return !!fileFormat.match(allowedExtensions);

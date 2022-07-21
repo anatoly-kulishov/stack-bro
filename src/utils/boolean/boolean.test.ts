@@ -1,4 +1,4 @@
-import { isDarkTheme, isLightTheme } from './boolean-helpers';
+import { isDarkTheme, isLightTheme } from './index';
 
 describe('boolean-helpers', () => {
   test('isLightTheme()', () => {
