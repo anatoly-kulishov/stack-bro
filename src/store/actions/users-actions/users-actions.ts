@@ -1,5 +1,5 @@
 import { UsersActionType } from '../../action-types';
-import { UserFilterType, UserType } from '../../../shared/types/user.types';
+import { IUserFilter, IUserType } from '../../../shared/types/user.types';
 
 export interface SetUsers {
   type: UsersActionType.SET_USERS;
@@ -8,13 +8,13 @@ export interface SetUsers {
 export interface SetUsersSuccess {
   type: UsersActionType.SET_USERS_SUCCESS;
   totalUsersCount: number;
-  users: UserType[];
+  users: IUserType[];
 }
 
 export interface SetFriendsSuccess {
   type: UsersActionType.SET_FRIENDS_SUCCESS;
   totalFriendsCount: number;
-  friends: UserType[];
+  friends: IUserType[];
 }
 
 export interface SetTotalUserCount {
@@ -40,7 +40,7 @@ export interface ToggleFollowingProgress {
 
 export interface SetFilter {
   type: UsersActionType.SET_USERS_FILTER;
-  filter: UserFilterType;
+  filter: IUserFilter;
 }
 
 export interface ToggleIsFetching {

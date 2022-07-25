@@ -3,8 +3,8 @@ import { Dispatch } from 'react';
 import { ProfileActionType, UsersActionType } from '../action-types';
 import { UsersActions } from '../actions/users-actions/users-actions';
 import { usersService } from '../../services/users.service';
-import { ResultCodes } from '../../shared/types';
-import { UserFilterType, UsersType } from '../../shared/types/user.types';
+import { ResultCodesEnum } from '../../shared/types';
+import { IUserFilter, IUsersType } from '../../shared/types/user.types';
 
 export const usersActions = {
   toggleFollowingProgress: (followingInProgress: boolean, userId: number) => ({
@@ -24,7 +24,7 @@ export const usersActions = {
     type: UsersActionType.TOGGLE_IS_FETCHING_USERS,
     isFetching,
   }),
-  setFilter: (filter: UserFilterType) => ({ type: UsersActionType.SET_USERS_FILTER, payload: filter }),
+  setFilter: (filter: IUserFilter) => ({ type: UsersActionType.SET_USERS_FILTER, payload: filter }),
 };
 
 /**
@@ -32,7 +32,7 @@ export const usersActions = {
  * @param:number requestPage
  * @param:number pageSize
  */
-export const setUsers = (requestPage: number, pageSize: number, filter: UserFilterType) => {
+export const setUsers = (requestPage: number, pageSize: number, filter: IUserFilter) => {
   return async (dispatch: Function) => {
     dispatch(usersActions.toggleIsFetching(true));
     dispatch(usersActions.setCurrentPage(requestPage));
@@ -47,12 +47,12 @@ export const setFriends = (requestPage: number, pageSize: number) => {
   return async (dispatch: Function) => {
     usersService
       .requestUsers(requestPage, pageSize, { term: '', friend: true })
-      .then((data: UsersType) => dispatch(setFriendsSuccess(data)))
+      .then((data: IUsersType) => dispatch(setFriendsSuccess(data)))
       .catch(e => console.error(e));
   };
 };
 
-const setUsersSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>) => {
+const setUsersSuccess = (data: IUsersType) => (dispatch: Dispatch<UsersActions>) => {
   dispatch({
     type: UsersActionType.SET_USERS_SUCCESS,
     users: data.items,
@@ -60,7 +60,7 @@ const setUsersSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>) 
   });
 };
 
-const setFriendsSuccess = (data: UsersType) => (dispatch: Dispatch<UsersActions>) => {
+const setFriendsSuccess = (data: IUsersType) => (dispatch: Dispatch<UsersActions>) => {
   dispatch({
     type: UsersActionType.SET_FRIENDS_SUCCESS,
     friends: data.items,
@@ -97,7 +97,7 @@ export const userFollow = (userId: number) => {
     usersService
       .postUserFollow(userId)
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch({
             type: UsersActionType.TOGGLE_FOLLOW_UNFOLLOW,
             userId,
@@ -120,7 +120,7 @@ export const userUnfollow = (userId: number) => {
     usersService
       .deleteUserUnfollow(userId)
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch(usersActions.toggleFollowingProgress(false, userId));
           dispatch({
             type: UsersActionType.TOGGLE_FOLLOW_UNFOLLOW,

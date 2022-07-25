@@ -3,7 +3,6 @@ import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
 import classNames from 'classnames';
-import * as Yup from 'yup';
 
 import {
   CAPTCHA_PLACEHOLDER,
@@ -16,9 +15,10 @@ import {
   REMEMBER_ME_LABEL,
   URL_FOR_REGISTRATION,
 } from '../../../configs/constants';
+import { CustomField } from '../../UI/CustomField/CustomField';
 import { addCommasToStringsInArray } from '../../../utils/array/addCommasToStringsInArray';
-import { CustomField } from '../../common/CustomField/CustomField';
-import { FormPropsType } from '../../../shared/types/form.types';
+import { emptySchema, loginSchema } from '../../../configs/yup-schemas';
+import { IFormProps } from '../../../shared/types/form.types';
 import { isValidInput } from '../../../utils/error';
 import styles from './LoginForm.module.scss';
 
@@ -29,21 +29,16 @@ const initialValues = {
   rememberMe: false,
 };
 
-type ILoginFormValues = typeof initialValues;
+type LoginFormValuesType = typeof initialValues;
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email address').required('Please enter your email'),
-  password: Yup.string().required('Please enter your password'),
-});
-
-export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, captchaUrl }) => {
+export const LoginForm: FC<IFormProps> = ({ onSubmit, isValid, errorsText, captchaUrl }) => {
   const [isGuest, setIsGuest] = useState<boolean>(false);
 
   const setGuestStatusHandler = () => {
     setIsGuest(true);
   };
 
-  const submitHandler: FormikConfig<ILoginFormValues>['onSubmit'] = (values, formikHelpers) => {
+  const submitHandler: FormikConfig<LoginFormValuesType>['onSubmit'] = (values, formikHelpers) => {
     if (isGuest) {
       onSubmit(
         {
@@ -64,7 +59,7 @@ export const LoginForm: FC<FormPropsType> = ({ onSubmit, isValid, errorsText, ca
     <Formik
       initialValues={initialValues}
       onSubmit={submitHandler}
-      validationSchema={isGuest ? Yup.object() : loginSchema}
+      validationSchema={isGuest ? emptySchema : loginSchema}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit} className={styles.form}>

@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom';
 import { Avatar, Card, Skeleton } from 'antd';
 import { EyeOutlined, MinusOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons';
 
-import { UserType } from '../../../shared/types/user.types';
+import { IUserType } from '../../../shared/types/user.types';
 import { useActions } from '../../../store';
 import styles from './User.module.scss';
 
-export type UserPropsType = {
-  user: UserType;
+interface IUser {
+  user: IUserType;
   isLoading: boolean;
-};
+}
 
 const { Meta } = Card;
 
-export const User: FC<UserPropsType> = ({ user, isLoading }) => {
+export const User: FC<IUser> = ({ user, isLoading }) => {
   const { userFollow, userUnfollow } = useActions();
   // const followingInProgress = useSelector(getFollowingInProgress);
 

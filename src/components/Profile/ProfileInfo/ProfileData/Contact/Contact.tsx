@@ -3,13 +3,13 @@ import React, { FC } from 'react';
 import { Nullable, Undetectable } from '../../../../../shared/types';
 import styles from './Contact.module.scss';
 
-type ContactPropsType = {
+interface IContact {
   isLogic: boolean;
   title: string;
   value: Undetectable<Nullable<string>>;
-};
+}
 
-export const Contact: FC<ContactPropsType> = props => {
+export const Contact: FC<IContact> = props => {
   const { isLogic, title = '', value } = props;
 
   if (isLogic && value) {

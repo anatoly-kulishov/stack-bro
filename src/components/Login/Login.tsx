@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getAuthState } from '../../store/selectors/auth-selectors';
-import { WithLoading } from '../common/WithLoading/WithLoading';
+import { WithLoading } from '../UI/WithLoading/WithLoading';
 import { SITE_TITLE, SPINNER_SIZE } from '../../configs/constants';
 import { LoginForm } from './LoginForm/LoginForm';
 import { useActions } from '../../store';

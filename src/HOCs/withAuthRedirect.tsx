@@ -7,20 +7,20 @@ import { AppStateType } from '../store';
 const mapStateToPropsForRedirect = (state: AppStateType) =>
   ({
     isAuth: state.auth.isAuth,
-  } as MapPropsType);
+  } as IMap);
 
-type MapPropsType = {
+interface IMap {
   isAuth: boolean;
-};
+}
 
-type DispatchPropsType = {};
+interface IDispatch {}
 
 export function withAuthRedirect<WCP>(
   WrappedComponent: React.ExoticComponent<React.ComponentPropsWithRef<() => JSX.Element>> & {
     readonly _result: () => JSX.Element;
   },
 ) {
-  const RedirectComponent: FC<MapPropsType & DispatchPropsType> = props => {
+  const RedirectComponent: FC<IMap & IDispatch> = props => {
     const { isAuth, ...restProps } = props;
 
     if (!isAuth) return <Navigate to="/" />;
@@ -28,5 +28,5 @@ export function withAuthRedirect<WCP>(
     return <WrappedComponent {...(restProps as WCP)} />;
   };
 
-  return connect<MapPropsType, DispatchPropsType, WCP, AppStateType>(mapStateToPropsForRedirect, {})(RedirectComponent);
+  return connect<IMap, IDispatch, WCP, AppStateType>(mapStateToPropsForRedirect, {})(RedirectComponent);
 }

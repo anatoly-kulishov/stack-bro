@@ -1,10 +1,10 @@
 import { StatusMessageType } from '../../reducers/messengerReducer/messengerReducer';
-import { ChatMessageTypeWithID } from '../../../shared/types/chat.types';
+import { IChatMessageWithID } from '../../../shared/types/chat.types';
 import { MessengerActionType } from '../../action-types';
 
 export interface MessagesReceived {
   type: MessengerActionType.MESSAGES_RECEIVED;
-  payload: ChatMessageTypeWithID[];
+  payload: IChatMessageWithID[];
 }
 
 export interface MessagesStatusChanged {

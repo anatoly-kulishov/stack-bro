@@ -4,17 +4,17 @@ import { AppActions } from '../../actions/app-actions/app-actions';
 import { AppActionType } from '../../action-types';
 import { Nullable } from '../../../shared/types';
 
-export type AppInitialStateType = {
+interface IAppInitialState {
   initialized: boolean;
   globalErrors: Nullable<string>;
-};
+}
 
-const initialState: AppInitialStateType = {
+const initialState: IAppInitialState = {
   initialized: false,
   globalErrors: null,
 };
 
-export const appReducer = produce((state: AppInitialStateType, action: AppActions): AppInitialStateType => {
+export const appReducer = produce((state: IAppInitialState, action: AppActions): IAppInitialState => {
   switch (action?.type) {
     case AppActionType.INITIALIZED_SUCCESS:
       state.initialized = true;

@@ -1,20 +1,20 @@
-export type ChatMessageTypeWithID = {
+export type StatusMessageType = 'pending' | 'ready' | 'error';
+
+export interface IChatMessageWithID {
   id: string | number;
   message: string;
   photo: string;
   userId: number;
   userName: string;
-};
+}
 
-export type ChatMessageType = {
+export interface IChatMessage {
   message: string;
   photo: string;
   userId: number;
   userName: string;
-};
+}
 
-export enum ChatStatusMessageTypeEnum {
-  PENDING = 'pending',
-  READY = 'ready',
-  ERROR = 'error',
+export interface IChatMessageInput {
+  status: StatusMessageType;
 }

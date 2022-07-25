@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { WithLoading } from './components/common/WithLoading/WithLoading';
+import { WithLoading } from './components/UI/WithLoading/WithLoading';
 import { getAuthState } from './store/selectors/auth-selectors';
 import { getAppState } from './store/selectors/app-selectors';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';

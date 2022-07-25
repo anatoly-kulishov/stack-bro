@@ -5,7 +5,7 @@ import { AuthActions } from '../../actions/auth-actions/auth-actions';
 import { AuthActionType } from '../../action-types';
 import { Nullable } from '../../../shared/types';
 
-export type AuthInitialStateType = {
+interface IAuthInitialState {
   isLoading: boolean;
   isValid: boolean;
   isAuth: boolean;
@@ -17,9 +17,9 @@ export type AuthInitialStateType = {
     email: Nullable<string>;
   }>;
   captchaUrl: Nullable<string>;
-};
+}
 
-const initialState: AuthInitialStateType = {
+const initialState: IAuthInitialState = {
   isLoading: false,
   isValid: true,
   isAuth: Boolean(Cookies.get('token')) ?? false,
@@ -33,7 +33,7 @@ const initialState: AuthInitialStateType = {
   captchaUrl: null,
 };
 
-export const authReducer = produce((state: AuthInitialStateType, action: AuthActions): AuthInitialStateType => {
+export const authReducer = produce((state: IAuthInitialState, action: AuthActions): IAuthInitialState => {
   switch (action.type) {
     case AuthActionType.SIGN_IN:
       state.isAuth = true;
