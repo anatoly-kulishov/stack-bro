@@ -2,16 +2,16 @@ import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Empty } from 'antd';
 
+import { ProfilePost } from './ProfilePost/ProfilePost';
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { PostType } from '../../../shared/types/posts.types';
-import { Post } from './Post/Post';
+import { IPost } from '../../../shared/types/posts.types';
 import styles from './ProfilePosts.module.scss';
 
 export const ProfilePosts: FC = memo(() => {
   const { profile, posts } = useSelector(getProfileState);
 
-  const postsElements = posts?.map(({ id, message, likesCount }: PostType) => (
-    <Post key={id} profile={profile} message={message} likesCount={likesCount} />
+  const postsElements = posts?.map(({ id, message, likesCount }: IPost) => (
+    <ProfilePost key={id} profile={profile} message={message} likesCount={likesCount} />
   ));
 
   return (

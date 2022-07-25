@@ -1,15 +1,15 @@
 import { ProfileActionType } from '../../action-types';
-import { ProfilePhotosType, ProfileType } from '../../../shared/types/profile.types';
-import { PostType } from '../../../shared/types/posts.types';
+import { IProfile, IProfilePhotos } from '../../../shared/types/profile.types';
+import { IPost } from '../../../shared/types/posts.types';
 
 export interface SetUserProfile {
   type: ProfileActionType.SET_USER_PROFILE;
-  payload: ProfileType;
+  payload: IProfile;
 }
 
 export interface SetOwnerProfile {
   type: ProfileActionType.SET_OWNER_PROFILE;
-  payload: ProfileType;
+  payload: IProfile;
 }
 
 export interface SetOwnerStatus {
@@ -37,7 +37,7 @@ export interface NewProfilePhotoSends {
 
 export interface SavePhotoSuccess {
   type: ProfileActionType.SAVE_PHOTO_SUCCESS;
-  photos: ProfilePhotosType;
+  photos: IProfilePhotos;
 }
 
 export interface SaveProfileSuccess {
@@ -55,7 +55,7 @@ export interface ShowProfileLoader {
 
 export interface AddPost {
   type: ProfileActionType.ADD_POST;
-  payload: PostType;
+  payload: IPost;
 }
 
 export interface RemovePost {

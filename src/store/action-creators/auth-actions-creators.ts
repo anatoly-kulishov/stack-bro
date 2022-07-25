@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { Nullable, ResultCodes, ResultCodesForCaptcha } from '../../shared/types';
+import { Nullable, ResultCodesEnum, ResultCodesForCaptchaEnum } from '../../shared/types';
 import { updateOwnerProfile } from './profile-action-creators';
 import { securityAPI } from '../../services/security.service';
 import { authService } from '../../services/auth.service';
@@ -22,12 +22,12 @@ export const authActions = {
   }),
 };
 
-export type ProfileActionType = {
+export interface IProfileAction {
   email: string;
   password: string;
   captcha?: string;
   rememberMe?: boolean;
-};
+}
 
 /**
  * Authorize on the service
@@ -36,7 +36,7 @@ export type ProfileActionType = {
  * @param resetForm
  */
 export const signIn = (
-  profile: ProfileActionType,
+  profile: IProfileAction,
   setSubmitting: Nullable<Function> = null,
   resetForm: Nullable<Function> = null,
 ) => {
@@ -44,7 +44,7 @@ export const signIn = (
     authService
       .postSignIn(profile)
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           resetForm && resetForm();
           dispatch({
             type: AuthActionType.SIGN_IN,
@@ -52,7 +52,7 @@ export const signIn = (
           });
           dispatch(authMe());
         } else {
-          if (data.resultCode === ResultCodesForCaptcha.CaptchaIsRequired) {
+          if (data.resultCode === ResultCodesForCaptchaEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrl());
           }
           dispatch({
@@ -77,7 +77,7 @@ export const authMe = () => {
     authService
       .getAuthMe()
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch({
             type: AuthActionType.AUTH_ME,
             payload: data.data,

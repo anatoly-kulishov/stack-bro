@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
-import { ProfileContactsType, ProfileType } from '../../../../shared/types/profile.types';
+import { IProfile, IProfileContacts } from '../../../../shared/types/profile.types';
 import { Nullable } from '../../../../shared/types';
 import { Contact } from './Contact/Contact';
 import styles from './ProfileData.module.scss';
 
-type ProfileDataPropsType = {
-  profile: Nullable<ProfileType>;
-};
+interface IProfileData {
+  profile: Nullable<IProfile>;
+}
 
-export const ProfileData: FC<ProfileDataPropsType> = ({ profile }) => {
+export const ProfileData: FC<IProfileData> = ({ profile }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.infoList}>
@@ -29,7 +29,7 @@ export const ProfileData: FC<ProfileDataPropsType> = ({ profile }) => {
         </div>
         {profile?.contacts &&
           Object.keys(profile?.contacts).map((key: string) => (
-            <Contact key={key} isLogic={true} title={key} value={profile?.contacts[key as keyof ProfileContactsType]} />
+            <Contact key={key} isLogic={true} title={key} value={profile?.contacts[key as keyof IProfileContacts]} />
           ))}
       </div>
     </div>

@@ -2,10 +2,10 @@ import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ApiTwoTone, EditTwoTone } from '@ant-design/icons';
 
-import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { EditProfileModal } from './EditProfileModal/EditProfileModal';
+import { ProfileEditModal } from './ProfileEditModal/ProfileEditModal';
 import { ProfileStatus } from './ProfileStatus/ProfileStatus';
 import { ProfileData } from './ProfileData/ProfileData';
+import { getProfileState } from '../../../store/selectors/profile-selectors';
 import { useActions } from '../../../store';
 import styles from './ProfileInfo.module.scss';
 
@@ -47,7 +47,7 @@ export const ProfileInfo: FC = () => {
       )}
       <div>
         <ProfileData profile={profile} />
-        <EditProfileModal
+        <ProfileEditModal
           profile={profile}
           onSubmit={saveProfile}
           errorsText={error}

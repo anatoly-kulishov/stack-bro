@@ -1,21 +1,21 @@
 import { Nullable } from './index';
 
-export type ProfileType = {
+export interface IProfile {
   userId: Nullable<number>;
   lookingForAJob: boolean;
   lookingForAJobDescription: Nullable<string>;
   fullName: Nullable<string>;
   aboutMe: Nullable<string>;
-  contacts: ProfileContactsType;
-  photos: ProfilePhotosType;
-};
+  contacts: IProfileContacts;
+  photos: IProfilePhotos;
+}
 
-export type ProfilePhotosType = {
+export interface IProfilePhotos {
   small: Nullable<string>;
   large: Nullable<string>;
-};
+}
 
-export type ProfileContactsType = {
+export interface IProfileContacts {
   key?: Nullable<string>;
   github: Nullable<string>;
   vk: Nullable<string>;
@@ -25,4 +25,4 @@ export type ProfileContactsType = {
   website: Nullable<string>;
   youtube: Nullable<string>;
   mainLink: Nullable<string>;
-};
+}

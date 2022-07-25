@@ -1,31 +1,31 @@
 import produce from 'immer';
 import { v1 } from 'uuid';
 
-import { ChatMessageType, ChatMessageTypeWithID } from '../../../shared/types/chat.types';
+import { IChatMessage, IChatMessageWithID } from '../../../shared/types/chat.types';
 import { MessengerActions } from '../../actions/messenger-actions/messenger-actions';
 import { MessengerActionType } from '../../action-types';
 
 export type StatusMessageType = 'pending' | 'ready' | 'error';
 
-export type MessengerInitialStateType = {
-  messages: ChatMessageTypeWithID[];
+interface IMessengerInitialState {
+  messages: IChatMessageWithID[];
   status: StatusMessageType;
-};
+}
 
-const initialState: MessengerInitialStateType = {
+const initialState: IMessengerInitialState = {
   messages: [],
   status: 'pending',
 };
 
 export const messengerReducer = produce(
-  (state: MessengerInitialStateType, action: MessengerActions): MessengerInitialStateType => {
+  (state: IMessengerInitialState, action: MessengerActions): IMessengerInitialState => {
     switch (action.type) {
       case MessengerActionType.MESSAGES_RECEIVED:
         return {
           ...state,
           messages: [
             ...state.messages,
-            ...action.payload.map((m: ChatMessageType) => ({
+            ...action.payload.map((m: IChatMessage) => ({
               ...m,
               id: v1(),
             })),

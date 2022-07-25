@@ -1,10 +1,10 @@
 import { StatusMessageType } from '../store/reducers/messengerReducer/messengerReducer';
-import { ChatMessageType } from '../shared/types/chat.types';
+import { IChatMessage } from '../shared/types/chat.types';
 import { Nullable } from '../shared/types';
 
 type EventsNamesType = 'messages-received' | 'status-changed';
 
-type MessagesReceivedSubscribersType = (messages: ChatMessageType[]) => void;
+type MessagesReceivedSubscribersType = (messages: IChatMessage[]) => void;
 type StatusChangedSubscribersType = (messages: StatusMessageType) => void;
 
 const subscribers = {

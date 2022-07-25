@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Mock } from '../common/Mock/Mock';
+import { Mock } from '../UI/Mock/Mock';
 
 export const Help: FC = () => {
   return (

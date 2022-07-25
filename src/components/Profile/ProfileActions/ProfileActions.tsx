@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 import { Button } from 'antd';
 
 import { getProfileState } from '../../../store/selectors/profile-selectors';
-import { FileField } from '../../common/FileField/FileField';
+import { FileField } from '../../UI/FileField/FileField';
 import { Nullable } from '../../../shared/types';
 import { useActions } from '../../../store';
 import styles from './ProfileActions.module.scss';
 
-type ProfileActionsPropsType = {
+interface IProfileActions {
   followState: Nullable<boolean>;
   setFollowState: (followStatus: Nullable<boolean>) => void;
-};
+}
 
-export const ProfileActions: FC<ProfileActionsPropsType> = ({ followState, setFollowState }) => {
+export const ProfileActions: FC<IProfileActions> = ({ followState, setFollowState }) => {
   const { userUnfollow, userFollow, savePhoto } = useActions();
   const { profile, followStatus, isOwner } = useSelector(getProfileState);
   const [errorText, setErrorText] = useState<Nullable<string>>(null);

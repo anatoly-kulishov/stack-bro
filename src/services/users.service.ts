@@ -1,21 +1,21 @@
-import { UserFilterType, UserType } from '../shared/types/user.types';
+import { IUserFilter, IUserType } from '../shared/types/user.types';
 import { baseInstance } from '../api/api.instances';
-import { BaseResponseType } from '../shared/types';
+import { IBaseResponse } from '../shared/types';
 
-type RequestUsersApiType = {
-  items: UserType[];
+interface IRequestUsersApi {
+  items: IUserType[];
   data: {};
   totalCount: number;
   error: string;
-};
+}
 
 const BASE_URL: string = 'users';
 const SECONDARY_URL: string = 'follow';
 
 export const usersService = {
-  requestUsers: (currentPage: number, pageSize: number, filter: UserFilterType) => {
+  requestUsers: (currentPage: number, pageSize: number, filter: IUserFilter) => {
     return baseInstance
-      .get<RequestUsersApiType>(
+      .get<IRequestUsersApi>(
         `${BASE_URL}?page=${currentPage}&count=${pageSize}${filter?.term ? `&term=${filter.term}` : ''}${
           filter?.friend ? `&friend=${filter?.friend}` : ''
         }`,
@@ -26,9 +26,9 @@ export const usersService = {
     return baseInstance.get<boolean>(`${SECONDARY_URL}/${userId}`).then(res => res.data);
   },
   postUserFollow: (userId: number) => {
-    return baseInstance.post<BaseResponseType>(`${SECONDARY_URL}/${userId}`, null).then(res => res.data);
+    return baseInstance.post<IBaseResponse>(`${SECONDARY_URL}/${userId}`, null).then(res => res.data);
   },
   deleteUserUnfollow: (userId: number) => {
-    return baseInstance.delete<BaseResponseType>(`${SECONDARY_URL}/${userId}`).then(res => res.data);
+    return baseInstance.delete<IBaseResponse>(`${SECONDARY_URL}/${userId}`).then(res => res.data);
   },
 };

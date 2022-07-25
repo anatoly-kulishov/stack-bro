@@ -7,13 +7,17 @@ import { Alert } from 'antd';
 import { getUsers, getUsersState } from '../../store/selectors/users-selectors';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
 import { AppRoutesEnum } from '../../shared/types/routes.types';
-import { UserFilterType } from '../../shared/types/user.types';
-import { Paginator } from '../common/Paginator/Paginator';
+import { IUserFilter } from '../../shared/types/user.types';
+import { Paginator } from '../UI/Paginator/Paginator';
 import { useActions } from '../../store';
 import { User } from './User/User';
 import styles from './Users.module.scss';
 
-type QueryParamsType = { term?: string; page?: string; friend?: string };
+interface IQueryParams {
+  term?: string;
+  page?: string;
+  friend?: string;
+}
 
 export const Users: FC = () => {
   const navigate = useNavigate();
@@ -48,7 +52,7 @@ export const Users: FC = () => {
   }, [currentPage, filter]);
 
   useEffect(() => {
-    const query: QueryParamsType = {};
+    const query: IQueryParams = {};
 
     if (filter?.term) query.term = filter.term;
     if (filter?.friend !== null) query.friend = String(filter?.friend);
@@ -61,7 +65,7 @@ export const Users: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, currentPage]);
 
-  const onFilterChanged = (values: UserFilterType) => {
+  const onFilterChanged = (values: IUserFilter) => {
     setUsers(currentPage, pageSize, values);
   };
 

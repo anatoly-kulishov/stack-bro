@@ -1,14 +1,14 @@
 import produce from 'immer';
 
 import { UsersActions } from '../../actions/users-actions/users-actions';
-import { UserType } from '../../../shared/types/user.types';
+import { IUserType } from '../../../shared/types/user.types';
 import { UsersActionType } from '../../action-types';
 
-export type UsersInitialStateType = {
+export interface IUsersInitialState {
   isLoading: boolean;
   followingInProgress: number[];
-  users: UserType[];
-  friends: UserType[];
+  users: IUserType[];
+  friends: IUserType[];
   pageSize: number;
   totalUsersCount: number;
   totalFriendsCount: number;
@@ -17,13 +17,13 @@ export type UsersInitialStateType = {
     term: string;
     friend: boolean;
   };
-};
+}
 
 const initialState = {
   isLoading: true,
   followingInProgress: [] as number[],
-  users: [] as UserType[],
-  friends: [] as UserType[],
+  users: [] as IUserType[],
+  friends: [] as IUserType[],
   pageSize: 9,
   totalUsersCount: 0,
   totalFriendsCount: 0,
@@ -35,7 +35,7 @@ const initialState = {
   },
 };
 
-export const usersReducer = produce((state: UsersInitialStateType, action: UsersActions): UsersInitialStateType => {
+export const usersReducer = produce((state: IUsersInitialState, action: UsersActions): IUsersInitialState => {
   switch (action.type) {
     case UsersActionType.SET_USERS_SUCCESS:
       state.users = action.users;

@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect } from 'react';
 
-import { Messages } from './Messages/Messages';
+import { ChatMessages } from './ChatMessages/ChatMessages';
 import { useActions } from '../../store';
 import styles from './Chat.module.scss';
 
@@ -17,7 +17,7 @@ export const Chat: FC = memo(() => {
 
   return (
     <section className={`${styles.wrapper} default-box`}>
-      <Messages />
+      <ChatMessages />
     </section>
   );
 });

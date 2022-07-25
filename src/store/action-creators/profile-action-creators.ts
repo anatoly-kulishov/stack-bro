@@ -1,16 +1,16 @@
-import { ProfilePhotosType, ProfileType } from '../../shared/types/profile.types';
+import { IProfile, IProfilePhotos } from '../../shared/types/profile.types';
 import { profileService } from '../../services/profile.service';
-import { PostType } from '../../shared/types/posts.types';
+import { IPost } from '../../shared/types/posts.types';
 import { ProfileActionType } from '../action-types';
 import { authMe } from './auth-actions-creators';
-import { ResultCodes } from '../../shared/types';
+import { ResultCodesEnum } from '../../shared/types';
 
 export const profileActions = {
-  setProfile: (data: ProfileType[]) => ({
+  setProfile: (data: IProfile[]) => ({
     type: ProfileActionType.SET_USER_PROFILE,
     payload: data,
   }),
-  setOwnerProfile: (data: ProfileType[]) => ({
+  setOwnerProfile: (data: IProfile[]) => ({
     type: ProfileActionType.SET_OWNER_PROFILE,
     payload: data,
   }),
@@ -18,7 +18,7 @@ export const profileActions = {
     type: ProfileActionType.SET_OWNER_STATUS,
     payload: flag,
   }),
-  savePhotoSuccess: (photos: ProfilePhotosType) => ({
+  savePhotoSuccess: (photos: IProfilePhotos) => ({
     type: ProfileActionType.SAVE_PHOTO_SUCCESS,
     photos,
   }),
@@ -40,7 +40,7 @@ export const profileActions = {
     type: ProfileActionType.SAVE_PROFILE_FAILED,
     error: data.messages,
   }),
-  addPost: (post: PostType) => ({
+  addPost: (post: IPost) => ({
     type: ProfileActionType.ADD_POST,
     payload: post,
   }),
@@ -103,7 +103,7 @@ export const setStatus = (status: string) => {
     profileService
       .setStatus(status)
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch(profileActions.setStatus(data));
         }
       })
@@ -122,7 +122,7 @@ export const savePhoto = (file: File, setSubmitting: Function) => {
     profileService
       .putPhoto(file)
       .then(data => {
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch(profileActions.savePhotoSuccess(data.data.photos));
           dispatch(authMe());
         }
@@ -137,13 +137,13 @@ export const savePhoto = (file: File, setSubmitting: Function) => {
  * @param profile
  * @param setSubmitting
  */
-export const saveProfile = (profile: ProfileType, setSubmitting: Function) => {
+export const saveProfile = (profile: IProfile, setSubmitting: Function) => {
   return (dispatch: Function, getState: Function) => {
     profileService
       .putProfile(profile)
       .then(data => {
         const { userId } = getState().auth;
-        if (data.resultCode === ResultCodes.Success) {
+        if (data.resultCode === ResultCodesEnum.Success) {
           dispatch(updateProfile(userId));
         } else {
           dispatch(profileActions.saveProfileFailed(data));

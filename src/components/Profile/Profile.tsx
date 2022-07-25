@@ -2,13 +2,13 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { ProfilePostForm } from './ProfilePostForm/ProfilePostForm';
+import { ProfileFriends } from './ProfileFriends/ProfileFriends';
 import { ProfilePhoto } from './ProfilePhoto/ProfilePhoto';
 import { ProfilePosts } from './ProfilePosts/ProfilePosts';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
-import { MyFriends } from './MyFriends/MyFriends';
-import { PostForm } from './PostForm/PostForm';
-import { getAuthUserId } from '../../store/selectors/auth-selectors';
 import { getProfileIsOwner } from '../../store/selectors/profile-selectors';
+import { getAuthUserId } from '../../store/selectors/auth-selectors';
 import { profileActions } from '../../store/action-creators';
 import { useActions } from '../../store';
 
@@ -38,11 +38,11 @@ export const Profile: FC = () => {
       <div className="row">
         <div className="col-12 col-md-12 col-lg-4 pr-lg-2 pb-3 pb-lg-0">
           <ProfilePhoto />
-          {isOwner && <MyFriends />}
+          {isOwner && <ProfileFriends />}
         </div>
         <div className="col-12 col-md-12 col-lg-8 pl-lg-2">
           <ProfileInfo />
-          {isOwner && <PostForm />}
+          {isOwner && <ProfilePostForm />}
           <ProfilePosts />
         </div>
       </div>

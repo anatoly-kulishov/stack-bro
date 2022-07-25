@@ -1,12 +1,12 @@
 import { Dispatch } from 'redux';
 
 import { StatusMessageType } from '../reducers/messengerReducer/messengerReducer';
-import { ChatMessageType } from '../../shared/types/chat.types';
+import { IChatMessage } from '../../shared/types/chat.types';
 import { messengerAPI } from '../../services/messanger.service';
 import { MessengerActionType } from '../action-types';
 
 export const messengerActions = {
-  messagesReceived: (messages: ChatMessageType[]) => ({
+  messagesReceived: (messages: IChatMessage[]) => ({
     type: MessengerActionType.MESSAGES_RECEIVED,
     payload: messages,
   }),
@@ -16,10 +16,10 @@ export const messengerActions = {
   }),
 };
 
-let newMessageHandler: ((messages: ChatMessageType[]) => void) | null = null;
+let newMessageHandler: ((messages: IChatMessage[]) => void) | null = null;
 const newMessageHandlerCreator = (dispatch: Dispatch) => {
   if (newMessageHandler === null) {
-    newMessageHandler = (messages: ChatMessageType[]) => {
+    newMessageHandler = (messages: IChatMessage[]) => {
       dispatch(messengerActions.messagesReceived(messages));
     };
   }

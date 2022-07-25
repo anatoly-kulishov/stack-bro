@@ -7,9 +7,7 @@ import { getAppGlobalErrors } from '../../store/selectors/app-selectors';
 import { smthWentWrong } from '../../configs/constants';
 import styles from './ErrorPage.module.scss';
 
-type ErrorPagePropsType = {};
-
-export const ErrorPage: FC<ErrorPagePropsType> = () => {
+export const ErrorPage: FC = () => {
   const globalErrors = useSelector(getAppGlobalErrors);
 
   const refreshPage = () => {

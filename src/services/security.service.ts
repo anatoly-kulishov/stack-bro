@@ -1,13 +1,13 @@
 import { baseInstance } from '../api/api.instances';
 
-type GetCaptchaApiResponseType = {
+interface IGetCaptchaApiResponse {
   url: string;
-};
+}
 
 const BASE_URL: string = '/security';
 
 export const securityAPI = {
   getCaptcha: () => {
-    return baseInstance.get<GetCaptchaApiResponseType>(`${BASE_URL}/get-captcha-url`).then(res => res.data);
+    return baseInstance.get<IGetCaptchaApiResponse>(`${BASE_URL}/get-captcha-url`).then(res => res.data);
   },
 };

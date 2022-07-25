@@ -1,17 +1,17 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { CopyToClipboard } from '../../../common/CopyToClipboard/CopyToClipboard';
+import { CopyToClipboard } from '../../../UI/CopyToClipboard/CopyToClipboard';
 import { getProfileInfo } from '../../../../store/selectors/profile-selectors';
 import { useActions } from '../../../../store';
 import styles from './ProfileStatus.module.scss';
 
-type ProfileStatusPropsType = {
+interface IProfileStatus {
   status: string;
   isDisabled: boolean;
-};
+}
 
-export const ProfileStatus: FC<ProfileStatusPropsType> = ({ status, isDisabled }) => {
+export const ProfileStatus: FC<IProfileStatus> = ({ status, isDisabled }) => {
   const profile = useSelector(getProfileInfo);
   const { setStatus } = useActions();
 

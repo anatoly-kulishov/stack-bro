@@ -1,23 +1,23 @@
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
 
-export enum ResultCodes {
+export enum ResultCodesEnum {
   Success = 0,
   Error = 1,
 }
 
-export enum ResultCodesForCaptcha {
+export enum ResultCodesForCaptchaEnum {
   CaptchaIsRequired = 10,
 }
 
-export type BaseResponseType = {
-  resultCode: ResultCodes;
+export interface IBaseResponse {
+  resultCode: ResultCodesEnum;
   messages: string[];
   data: {};
-};
+}
 
-export type APIResponseType<D = {}, RC = ResultCodes> = {
+export interface IAPIResponseType<D = {}, RC = ResultCodesEnum> {
   data: D;
   resultCode: RC;
   messages: string[];
-};
+}
