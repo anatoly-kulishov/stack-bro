@@ -7,6 +7,7 @@ import './WithLoading.scss';
 interface IWithLoading {
   isLoading: boolean;
   spinnerSize: string;
+  children?: React.ReactNode;
 }
 
 export const WithLoading: FC<IWithLoading> = ({ isLoading, spinnerSize, children }) => {
