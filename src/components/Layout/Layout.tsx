@@ -6,7 +6,7 @@ import { Header } from './Header/Header';
 
 const { Content } = AntLayout;
 
-export const Layout: FC = ({ children }) => {
+export const Layout: FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <AntLayout className="h-min-100vh">
       <Header />

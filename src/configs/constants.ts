@@ -15,8 +15,8 @@ export const MOCK_USER_AUTH_DATA = {
 export const SITE_TITLE = 'StackBro';
 export const SPINNER_SIZE = '40px';
 export const DEFAULT_ICONS_SIZE = '24px';
-export const MY_LINKEDIN = 'https://www.linkedin.com/in/anatoliy-kulishov';
-export const MY_GITHUB = 'https://github.com/dogram99';
+export const MY_LINKEDIN = 'https://www.linkedin.com/in/anatoly-kulishov';
+export const MY_GITHUB = 'https://github.com/anatoly-kulishov';
 export const smthWentWrong = 'Something went wrong, please reload the page';
 
 /**
