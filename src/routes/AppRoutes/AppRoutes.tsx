@@ -5,10 +5,10 @@ import { MessengerPage } from '../../pages/MessengerPage/MessengerPage';
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage';
 import { AppRoutesEnum } from '../../shared/types/routes.types';
 import { UsersPage } from '../../pages/UsersPage/UsersPage';
-import { NoMatch } from '../../components/NoMatch/NoMatch';
 import { GamePage } from '../../pages/GamePage/GamePage';
 import { HelpPage } from '../../pages/HelpPage/HelpPage';
-import { Layout } from '../../components/Layout/Layout';
+import { NoMatch } from '../../components/screens/NoMatch/NoMatch';
+import Layout from '../../components/layout';
 
 export const AppRoutes: FC = () => {
   return (

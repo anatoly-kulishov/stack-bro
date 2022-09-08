@@ -1,6 +1,6 @@
 {
   "name": "stackbro",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": true,
   "homepage": "/",
   "dependencies": {
@@ -15,6 +15,7 @@
     "classnames": "^2.3.1",
     "date-fns": "^2.29.1",
     "formik": "^2.2.9",
+    "framer-motion": "^7.3.2",
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
     "node-sass": "^7.0.1",

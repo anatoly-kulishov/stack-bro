@@ -1,7 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { WithLoading } from './components/UI/WithLoading/WithLoading';
+import { WithLoading } from './components/ui/WithLoading/WithLoading';
+import { UpButton } from './components/ui/UpButton/UpButton';
 import { getAuthState } from './store/selectors/auth-selectors';
 import { getAppState } from './store/selectors/app-selectors';
 import { AuthRoutes } from './routes/AuthRoutes/AuthRoutes';
@@ -41,6 +42,7 @@ export const App: FC = () => {
   return (
     <WithLoading isLoading={isAppReady} spinnerSize={SPINNER_SIZE}>
       <div className="default-background">{isAuth ? <AppRoutes /> : <AuthRoutes />}</div>
+      <UpButton />
     </WithLoading>
   );
 };
