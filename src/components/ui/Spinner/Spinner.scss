@@ -1,0 +1,67 @@
+@use 'src/assets/styles/variables' as *;
+@use 'sass:math';
+
+$spinner-offset: 187;
+$spinner-duration: 1.4s;
+$spinner-color-1: $blue_400;
+$spinner-color-2: #C0BEFF;
+$spinner-color-3: #FF50B9;
+
+.custom-spinner-wrapper {
+  display: inline-block;
+
+  .custom-spinner {
+    animation: rotator $spinner-duration linear infinite;
+
+    .custom-spinner-path {
+      stroke-dasharray: $spinner-offset;
+      stroke-dashoffset: 0;
+      transform-origin: center;
+      animation: dash $spinner-duration ease-in-out infinite,
+      colors ($spinner-duration*3) ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: $spinner-offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash $spinner-duration ease-in-out infinite,
+  colors ($spinner-duration*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: $spinner-color-1;
+  }
+  50% {
+    stroke: $spinner-color-2;
+  }
+  100% {
+    stroke: $spinner-color-3;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: $spinner-offset;
+  }
+  50% {
+    stroke-dashoffset: math.div($spinner-offset, 4);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: $spinner-offset;
+    transform: rotate(450deg);
+  }
+}

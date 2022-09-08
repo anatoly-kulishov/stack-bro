@@ -1,0 +1,26 @@
+@use 'src/assets/styles/variables' as *;
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+
+  border-radius: 8px;
+}
+
+.spinnerCentered {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: 300;
+  transform: translate(50%, -50%);
+}
+
+.blurred {
+  background-color: rgba(255, 255, 255, .9);
+}
