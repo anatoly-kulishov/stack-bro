@@ -3,10 +3,12 @@ import { DetailedHTMLProps, SVGAttributes } from 'react';
 import { SpinnerIcon } from './Icons/SpinnerIcon';
 import { SubmitIcon } from './Icons/SubmitIcon';
 import { UpIcon } from './Icons/UpIcon';
+import { EyeIcon } from './Icons/EyeIcon';
 
 export const icons = {
   SpinnerIcon,
   SubmitIcon,
+  EyeIcon,
   UpIcon,
 };
 
@@ -18,5 +20,6 @@ export interface IconCompProps extends DetailedHTMLProps<SVGAttributes<SVGElemen
 }
 
 export interface IconComponent {
+  fill?: string;
   size?: string | number;
 }

@@ -3,10 +3,11 @@ import { Layout as AntLayout } from 'antd';
 
 import { NavBar } from './NavBar/NavBar';
 import { Header } from './Header/Header';
+import { IChildren } from '../../shared/types';
 
 const { Content } = AntLayout;
 
-export const Layout: FC<{ children?: React.ReactNode }> = ({ children }) => {
+export const Layout: FC<IChildren> = ({ children }) => {
   return (
     <AntLayout className="h-min-100vh">
       <Header />

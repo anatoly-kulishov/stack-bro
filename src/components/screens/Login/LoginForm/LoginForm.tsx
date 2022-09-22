@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Alert, Button, Checkbox } from 'antd';
 import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Formik, FormikConfig } from 'formik';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 import {
   CAPTCHA_PLACEHOLDER,
@@ -64,9 +64,9 @@ export const LoginForm: FC<IFormProps> = ({ onSubmit, isValid, errorsText, captc
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit} className={styles.form}>
           <div className="form-row">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">Email</label>
             <CustomField
-              className={classNames('form-control', isValidInput(errors.email))}
+              className={cn('form-control', isValidInput(errors.email))}
               id="email"
               name="email"
               type="email"
@@ -80,7 +80,7 @@ export const LoginForm: FC<IFormProps> = ({ onSubmit, isValid, errorsText, captc
           <div className="form-row mb-3">
             <label htmlFor="password">Password</label>
             <CustomField
-              className={classNames('form-control', isValidInput(errors.password))}
+              className={cn('form-control', isValidInput(errors.password))}
               id="password"
               name="password"
               type="password"

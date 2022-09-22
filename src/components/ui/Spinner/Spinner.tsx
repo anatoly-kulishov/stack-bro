@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
 
 import { IconComp } from '../IconComp/IconComp';
+import { ISpinner } from './Spinner.props';
 import './Spinner.scss';
-
-interface ISpinner {
-  size: string;
-}
 
 export const Spinner: FC<ISpinner> = ({ size }) => {
   return (

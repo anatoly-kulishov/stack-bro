@@ -5,25 +5,17 @@ import { Button } from 'antd';
 
 import { convertFileSizeToMb, validateFileFormat, validateFileSize } from '../../../utils/file';
 import { ALLOWED_EXTENSIONS_ERROR, FILE_SIZE_LIMIT_ERROR } from '../../../configs/constants';
+import { IFileField, IFileFieldInitialValues } from './FileField.props';
 import styles from './FileField.module.scss';
 
-interface IFileField {
-  saveHandler: (file: File, setSubmitting: Function) => void;
-  validationHandler: (errorText: string | null) => void;
-}
-
-interface InitialValues {
-  file: File | null;
-}
-
-const INITIAL_VALUES: InitialValues = {
+const INITIAL_VALUES: IFileFieldInitialValues = {
   file: null,
 };
 
 export const FileField: FC<IFileField> = ({ saveHandler, validationHandler }) => {
-  const submitHandler: FormikConfig<InitialValues>['onSubmit'] = (
-    values: InitialValues,
-    { setSubmitting }: FormikHelpers<InitialValues>,
+  const submitHandler: FormikConfig<IFileFieldInitialValues>['onSubmit'] = (
+    values: IFileFieldInitialValues,
+    { setSubmitting }: FormikHelpers<IFileFieldInitialValues>,
   ) => {
     setSubmitting(true);
     if (values.file) {
