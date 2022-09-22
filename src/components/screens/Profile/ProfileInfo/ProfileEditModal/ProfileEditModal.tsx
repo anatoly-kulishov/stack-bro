@@ -61,11 +61,11 @@ export const ProfileEditModal: FC<IFormProps & IEditProfileDataModal> = props =>
                 <div className="form-row mb-3">
                   <label htmlFor="fullName">Full name</label>
                   <CustomField
-                    className={`form-control ${styles.CustomFormControl}`}
+                    className={`form-control ${styles.CustomsFormControl}`}
                     id="fullName"
                     name="fullName"
                     type="text"
-                    value={values.fullName}
+                    value={values.fullName ?? ''}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Full name"

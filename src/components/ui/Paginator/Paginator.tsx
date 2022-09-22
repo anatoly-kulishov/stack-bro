@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import { Pagination } from 'antd';
 
-interface IPaginator {
-  currentPage: number;
-  totalUsersCount: number;
-  pageSize: number;
-  onPageChanged: (pageNumber: number) => void;
-}
+import { IPaginator } from './Paginator.props';
 
 export const Paginator: FC<IPaginator> = props => {
   const { currentPage, totalUsersCount, pageSize, onPageChanged } = props;

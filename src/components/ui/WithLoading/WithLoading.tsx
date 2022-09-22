@@ -2,15 +2,11 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import { Spinner } from '../Spinner/Spinner';
+import { IChildren } from '../../../shared/types';
+import { IWithLoading } from './WithLoading.props';
 import styles from './WithLoading.module.scss';
 
-interface IWithLoading {
-  isLoading: boolean;
-  spinnerSize: string;
-  children?: React.ReactNode;
-}
-
-export const WithLoading: FC<IWithLoading> = ({ isLoading, spinnerSize, children }) => {
+export const WithLoading: FC<IWithLoading & IChildren> = ({ isLoading, spinnerSize, children }) => {
   return (
     <>
       {isLoading ? (

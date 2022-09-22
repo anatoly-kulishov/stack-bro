@@ -1,27 +1,18 @@
 import React, { FC, useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
+import { ICopyToClipboard } from './CopyToClipboard.props';
 import styles from './CopyToClipboard.module.scss';
 import copyIcon from './copy-icon.svg';
 
-interface ICopyToClipboard {
-  children: string;
-  customStyles: { readonly [key: string]: string };
-  isCopy: boolean;
-  placeholder: string;
-  onDoubleClickHandler: () => void;
-  isDisabled?: boolean;
-}
-
-export const CopyToClipboard: FC<ICopyToClipboard> = props => {
-  const {
-    onDoubleClickHandler,
-    customStyles,
-    children = '',
-    isCopy = true,
-    isDisabled,
-    placeholder = 'No Data',
-  } = props;
+export const CopyToClipboard: FC<ICopyToClipboard> = ({
+  onDoubleClickHandler,
+  customStyles,
+  children = '',
+  isCopy = true,
+  isDisabled,
+  placeholder = 'No Data',
+}) => {
   const [copySuccess] = useState<string>(children);
 
   const copyToClipboard = (text: string) => {
@@ -37,7 +28,7 @@ export const CopyToClipboard: FC<ICopyToClipboard> = props => {
 
   return (
     <div
-      className={classNames([styles.Wrapper], [customStyles.statusBar], {
+      className={cn([styles.Wrapper], [customStyles.statusBar], {
         [customStyles.statusBarActive]: !isDisabled,
       })}
       onDoubleClick={e => {

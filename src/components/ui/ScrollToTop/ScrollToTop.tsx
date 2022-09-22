@@ -1,10 +1,8 @@
-import React, { FC, ReactElement, useEffect, useMemo } from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface IScrollToTop {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: ReactElement<any, any>;
-}
+import { IScrollToTop } from './ScrollToTop.props';
+import { AppRoutesEnum } from '../../../shared/types/routes.types';
 
 const TOP_COORDINATE: ScrollToOptions | undefined = { top: 0, behavior: 'auto' };
 
@@ -16,7 +14,7 @@ export const ScrollToTop: FC<IScrollToTop> = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (window.scrollY > 0 && lastCharInPathName !== '/') {
+    if (window.scrollY > 0 && lastCharInPathName !== AppRoutesEnum.HOME) {
       setTimeout(() => window.scrollTo(TOP_COORDINATE), 0);
     }
   }, [lastCharInPathName]);

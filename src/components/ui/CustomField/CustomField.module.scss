@@ -23,3 +23,18 @@
 .WarningTwoTone {
   font-size: 18px;
 }
+
+.ShowPasswordButton {
+  position: absolute;
+  top: -16px;
+  left: 68px;
+  transform: translateY(-50%);
+
+  display: inline-flex;
+
+  cursor: pointer;
+
+  &:active {
+    opacity: .7;
+  }
+}

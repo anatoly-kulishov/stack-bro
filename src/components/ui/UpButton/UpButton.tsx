@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 import { IconComp } from '../IconComp/IconComp';
 import { useScrollY } from '../../../hooks/useScrollY';
 import styles from './UpButton.module.scss';
 
-export const UpButton = (): JSX.Element => {
+export const UpButton: FC = () => {
   const controls = useAnimation();
   const y = useScrollY();
 
