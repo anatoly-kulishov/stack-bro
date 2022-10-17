@@ -33,7 +33,9 @@
     "sass": "^1.54.4",
     "uuid": "^8.3.2",
     "web-vitals": "^3.0.0-rc.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "@react-buddy/ide-toolbox": "^2.2.1",
+    "@react-buddy/palette-antd": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
