@@ -11,6 +11,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { catchAllUnhandledErrors } from './utils/error';
 import { SPINNER_SIZE } from './configs/constants';
 import { useActions } from './store';
+
 import './assets/styles/bootstrap-grid.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';

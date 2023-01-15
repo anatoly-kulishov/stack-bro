@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, memo } from 'react';
+import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
@@ -6,11 +6,9 @@ import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@a
 
 import { AppRouteKeys, AppRoutesEnum } from '../../../shared/types/routes.types';
 import { getUsersTotalCount } from '../../../store/selectors/users-selectors';
+import { BADGE_INLINE_STYLES, SIDER_WIDTH } from './NavBar.constants';
 
 const { Sider } = Layout;
-
-const BADGE_INLINE_STYLES: CSSProperties = { backgroundColor: '#1890ff' };
-const SIDER_WIDTH: number = 150;
 
 const renderMenuItems = (totalUsersCount: number) => {
   const onSelectNavKey = (key: string) => {
