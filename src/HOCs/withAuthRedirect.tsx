@@ -15,7 +15,7 @@ interface IMap {
 
 interface IDispatch {}
 
-export function withAuthRedirect<WCP>(
+export function withAuthRedirect(
   WrappedComponent: React.ExoticComponent<React.ComponentPropsWithRef<() => JSX.Element>> & {
     readonly _result: () => JSX.Element;
   },
@@ -25,8 +25,8 @@ export function withAuthRedirect<WCP>(
 
     if (!isAuth) return <Navigate to="/" />;
 
-    return <WrappedComponent {...(restProps as WCP)} />;
+    return <WrappedComponent {...(restProps as any)} />;
   };
 
-  return connect<IMap, IDispatch, WCP, AppStateType>(mapStateToPropsForRedirect, {})(RedirectComponent);
+  return connect<IMap, IDispatch, any, AppStateType>(mapStateToPropsForRedirect, {})(RedirectComponent);
 }
