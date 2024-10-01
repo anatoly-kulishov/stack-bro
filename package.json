@@ -5,13 +5,15 @@
   "homepage": "/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@react-buddy/ide-toolbox": "^2.2.1",
+    "@react-buddy/palette-antd": "^4.1.2",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
     "@typescript-eslint/parser": "^5.33.0",
     "antd": "^4.22.4",
-    "axios": "^0.27.2",
+    "axios": "1.6.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.29.1",
     "formik": "^2.2.9",
@@ -19,7 +21,7 @@
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
     "query-string": "^7.1.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
@@ -32,9 +34,7 @@
     "sass": "^1.54.4",
     "uuid": "^8.3.2",
     "web-vitals": "^3.0.0-rc.0",
-    "yup": "^0.32.11",
-    "@react-buddy/ide-toolbox": "^2.2.1",
-    "@react-buddy/palette-antd": "^4.1.2"
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",

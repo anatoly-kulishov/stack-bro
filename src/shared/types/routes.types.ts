@@ -5,6 +5,7 @@ export enum AppRoutesEnum {
   MESSENGER = 'messenger',
   HELP = 'help',
   GAME = 'game',
+  TEST = 'test',
 }
 
 export enum AppRouteKeys {
@@ -12,4 +13,5 @@ export enum AppRouteKeys {
   MESSENGER = 'Messenger',
   USERS = 'Users',
   GAME = 'Game',
+  Test = 'Test',
 }

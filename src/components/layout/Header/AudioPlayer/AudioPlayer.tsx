@@ -7,7 +7,7 @@ import song from './my_song.mp3';
 export const AudioPlayer: FC = () => {
   return (
     <div className="d-flex align-items-center">
-      <ReactAudioPlayer className={styles.AudioPlayer} autoPlay={true} volume={1.0} src={song} loop={true} controls />
+      <ReactAudioPlayer className={styles.AudioPlayer} autoPlay={false} volume={1.0} src={song} loop={true} controls />
     </div>
   );
 };

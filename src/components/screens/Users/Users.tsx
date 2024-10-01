@@ -92,8 +92,7 @@ export const Users: FC = () => {
               <div className="w-100">
                 <Alert
                   message="Sorry, no results were found."
-                  description="Recommendations: Make sure all words are spelled correctly.
-                                            Try using other keywords. Try using more popular keywords."
+                  description="Recommendations: Make sure all words are spelled correctly. Try using other keywords. Try using more popular keywords."
                   type="warning"
                 />
               </div>

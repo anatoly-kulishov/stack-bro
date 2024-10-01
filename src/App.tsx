@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { WithLoading } from './components/ui/WithLoading/WithLoading';
 import { UpButton } from './components/ui/UpButton/UpButton';
@@ -17,7 +17,6 @@ import 'antd/dist/antd.css';
 import './App.scss';
 
 export const App: FC = () => {
-  const dispatch = useDispatch();
   const { initializeApp } = useActions();
   const { isAuth, isLoading } = useSelector(getAuthState);
   const { initialized, globalErrors } = useSelector(getAppState);
@@ -27,7 +26,7 @@ export const App: FC = () => {
     if (!isLoading) {
       initializeApp(isAuth);
     }
-  }, [dispatch, initializeApp, isLoading, isAuth]);
+  }, [initializeApp, isLoading, isAuth]);
 
   useEffect(() => {
     window.addEventListener('unhandledrejection', catchAllUnhandledErrors);

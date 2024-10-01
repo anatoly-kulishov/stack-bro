@@ -2,7 +2,7 @@ import React, { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Badge, Layout, Menu } from 'antd';
-import { AndroidOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { AndroidOutlined, DropboxOutlined, MessageOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
 import { AppRouteKeys, AppRoutesEnum } from '../../../shared/types/routes.types';
 import { getUsersTotalCount } from '../../../store/selectors/users-selectors';
@@ -45,6 +45,12 @@ const renderMenuItems = (totalUsersCount: number) => {
       icon: <AndroidOutlined />,
       label: <Link to={AppRoutesEnum.GAME}>Game</Link>,
       onClick: () => onSelectNavKey(AppRouteKeys.GAME),
+    },
+    {
+      key: 'Test',
+      icon: <DropboxOutlined />,
+      label: <Link to={AppRoutesEnum.TEST}>Test</Link>,
+      onClick: () => onSelectNavKey(AppRouteKeys.Test),
     },
   ];
 };
