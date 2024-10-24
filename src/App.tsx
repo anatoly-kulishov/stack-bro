@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { WithLoading } from './components/ui/WithLoading/WithLoading';
@@ -20,20 +20,24 @@ export const App: FC = () => {
   const { initializeApp } = useActions();
   const { isAuth, isLoading } = useSelector(getAuthState);
   const { initialized, globalErrors } = useSelector(getAppState);
-  const isAppReady = !initialized || isLoading;
 
-  useEffect(() => {
+  const isAppReady = useMemo(() => !initialized || isLoading, [initialized, isLoading]);
+
+  const initApp = useCallback(() => {
     if (!isLoading) {
       initializeApp(isAuth);
     }
   }, [initializeApp, isLoading, isAuth]);
 
-  useEffect(() => {
+  const setupErrorHandling = useCallback(() => {
     window.addEventListener('unhandledrejection', catchAllUnhandledErrors);
     return () => {
       window.removeEventListener('unhandledrejection', catchAllUnhandledErrors);
     };
   }, []);
+
+  useEffect(initApp, [initApp]);
+  useEffect(setupErrorHandling, [setupErrorHandling]);
 
   if (globalErrors) {
     return <ErrorPage />;
