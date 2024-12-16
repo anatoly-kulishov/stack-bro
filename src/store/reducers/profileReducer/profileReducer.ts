@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 
 import { ProfileActions } from '../../actions/profile-action/profile-action';
 import { IProfile } from '../../../shared/types/profile.types';

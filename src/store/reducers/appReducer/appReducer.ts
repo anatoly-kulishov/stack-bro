@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 
 import { AppActions } from '../../actions/app-actions/app-actions';
 import { AppActionType } from '../../action-types';

@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { v1 } from 'uuid';
 
 import { IChatMessage, IChatMessageWithID } from '../../../shared/types/chat.types';

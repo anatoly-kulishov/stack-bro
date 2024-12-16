@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -7,7 +7,7 @@ import { AppStateType } from '../store';
 const mapStateToPropsForRedirect = (state: AppStateType) =>
   ({
     isAuth: state.auth.isAuth,
-  } as IMap);
+  }) as IMap;
 
 interface IMap {
   isAuth: boolean;
@@ -16,8 +16,8 @@ interface IMap {
 interface IDispatch {}
 
 export function withAuthRedirect(
-  WrappedComponent: React.ExoticComponent<React.ComponentPropsWithRef<() => JSX.Element>> & {
-    readonly _result: () => JSX.Element;
+  WrappedComponent: React.ExoticComponent<React.ComponentPropsWithRef<() => ReactNode>> & {
+    readonly _result: () => ReactNode;
   },
 ) {
   const RedirectComponent: FC<IMap & IDispatch> = props => {

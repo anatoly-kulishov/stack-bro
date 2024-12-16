@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { stringify } from 'query-string';
 import { Alert } from 'antd';
+import qs from 'qs';
 
 import { getUsers, getUsersState } from '../../../store/selectors/users-selectors';
 import { UsersFilterForm } from './UsersFilterForm/UsersFilterForm';
@@ -60,7 +60,7 @@ export const Users: FC = () => {
 
     navigate({
       pathname: `/${AppRoutesEnum.USERS}`,
-      search: stringify(query),
+      search: qs.stringify(query),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, currentPage]);

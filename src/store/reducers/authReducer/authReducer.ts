@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import produce from 'immer';
+import { produce } from 'immer';
 
 import { AuthActions } from '../../actions/auth-actions/auth-actions';
 import { AuthActionType } from '../../action-types';

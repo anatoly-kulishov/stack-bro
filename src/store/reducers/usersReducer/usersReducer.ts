@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 
 import { UsersActions } from '../../actions/users-actions/users-actions';
 import { IUserType } from '../../../shared/types/user.types';

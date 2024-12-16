@@ -1,6 +1,8 @@
 import React, { createElement, FC, memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Avatar, Comment, Tooltip } from 'antd';
+import { Avatar, Tooltip } from 'antd';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Comment } from '@ant-design/compatible';
 import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
 import { format } from 'date-fns';
 
